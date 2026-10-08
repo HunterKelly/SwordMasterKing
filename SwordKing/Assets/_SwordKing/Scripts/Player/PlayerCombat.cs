@@ -19,6 +19,7 @@ namespace SwordKing
                 if (d.health <= 0 || delta.magnitude > reach || Vector3.Angle(player.forward, delta) > attackAngle * .5f) continue;
                 float dealt = Mathf.Min(d.health, lastDamage); d.health -= dealt;
                 d.flashUntil = Time.time + .08f;
+                if (Feedback != null) Feedback.Impact(d.root.position + Vector3.up * 1.2f, delta, SwingModel.Charge(elapsed, recovery) >= .8f, d.health <= 0);
                 damageHistory.Enqueue(new Vector2(Time.time, dealt));
                 if (d.health <= 0) d.resetAt = Time.time + 1.5f;
             }

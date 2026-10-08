@@ -33,7 +33,8 @@ namespace SwordKing
                 float t=i/44100f, phase=t/seconds;
                 float envelope=Mathf.Min(1,phase*30)*Mathf.Exp(-4*phase);
                 float tone=Mathf.Sin(2*Mathf.PI*frequency*t)+.3f*Mathf.Sin(2*Mathf.PI*frequency*1.5f*t);
-                data[i]=((1-noise)*tone+noise*((float)random.NextDouble()*2-1))*envelope*.28f;
+                float clang = name=="heavy" ? Mathf.Sin(2*Mathf.PI*1800*t)*Mathf.Exp(-55*t)*.22f : 0;
+                data[i]=((1-noise)*tone+noise*((float)random.NextDouble()*2-1))*envelope*.28f+clang;
             }
             // Remove the tail discontinuity.
             for(int i=Mathf.Max(0,count-256);i<count;i++) data[i]*=(count-1-i)/256f;

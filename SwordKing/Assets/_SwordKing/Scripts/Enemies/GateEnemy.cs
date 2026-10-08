@@ -23,6 +23,10 @@ namespace SwordKing
         readonly Material bodyMaterial;
         readonly Color baseColor;
         readonly int style;
+        readonly EnemyCombatSettings tuning;
+        Quaternion strikeFrom;
+        float strikeStartedAt, recoilUntil;
+        Vector3 recoilDirection;
         State state;
         float until, windupStart, windupDuration, flashUntil, staggerReady, deadAt;
         int comboIndex;
@@ -31,6 +35,7 @@ namespace SwordKing
 
         public GateEnemy(BrokenGateLevel owner, int id, int zone, string title, Vector3 position, int attackStyle, bool boss = false)
         {
+            tuning=owner.EnemyCombat;
             level=owner; Id=id; Zone=zone; Name=title; spawn=position; IsBoss=boss; style=attackStyle;
             MaxHealth=boss?1000:attackStyle==1?160:120; Health=MaxHealth;
             var w=level.World;
@@ -70,6 +75,7 @@ namespace SwordKing
             controller.enabled=!defeated; Health=defeated?0:MaxHealth;
             state=defeated?State.Dead:State.Idle; until=Time.time+.5f; staggerReady=0; comboIndex=0;
             graphics.localRotation=Quaternion.identity; graphics.localPosition=Vector3.zero; warning.enabled=false;
+            weapon.localRotation=Quaternion.identity; recoilUntil=0; facing=Vector3.back;
             if(defeated) Root.gameObject.SetActive(false);
         }
         public void Tick(float dt)
@@ -77,16 +83,20 @@ namespace SwordKing
             if(!Root.gameObject.activeSelf) return;
             if(!Alive)
             {
-                graphics.localRotation=Quaternion.Slerp(graphics.localRotation,Quaternion.Euler(0,0,85),dt*5);
+                graphics.localRotation=Quaternion.Slerp(graphics.localRotation,Quaternion.Euler(10,0,85),dt*8);
                 if(Time.time-deadAt>1.5f) Root.gameObject.SetActive(false);
                 return;
             }
             bodyMaterial.color=Time.time<flashUntil?Color.white:baseColor;
+            float recoil = Mathf.Clamp01((recoilUntil-Time.time)/.18f);
+            graphics.localRotation = Quaternion.Euler(-12f*recoil, 0, (Id%2==0?1:-1)*8f*recoil);
+            graphics.localPosition = recoilDirection * (.14f*recoil);
+
             Vector3 delta=level.Player.PlayerTransform.position-Root.position; delta.y=0;
             float distance=delta.magnitude;
             if(state==State.Idle)
             {
-                if(level.CanEngage(this) && distance<(IsBoss?18:12)) state=State.Chase;
+                if(level.CanEngage(this) && distance<(IsBoss?tuning.bossDetectionRange:tuning.detectionRange)) state=State.Chase;
                 return;
             }
             if(state==State.Chase)
@@ -94,17 +104,19 @@ namespace SwordKing
                 if(!level.CanEngage(this)) { state=State.Idle; return; }
                 if(delta.sqrMagnitude>.01f) facing=delta.normalized;
                 Root.rotation=Quaternion.Slerp(Root.rotation,Quaternion.LookRotation(facing),dt*8);
-                if(distance > (IsBoss?3.1f:2.15f))
+                float attackDistance = IsBoss ? 3.1f : 2.15f;
+                if (distance > attackDistance)
+                    MoveAlong(facing + level.Separation(this) * .7f, tuning.ChaseSpeed(IsBoss), dt);
+                else if (Time.time >= until && level.TryClaimAttack(this)) BeginWindup();
+                else
                 {
-                    float speed=IsBoss?2.5f:2.25f;
-                    Vector3 destination=Root.position+Steer(facing)*speed*dt;
-                    float minZ=Zone==0?17:Zone==1?65:102, maxZ=Zone==0?38:Zone==1?84:124;
-                    destination.x=Mathf.Clamp(destination.x,Zone==2?-10:-8,Zone==2?10:8);
-                    destination.z=Mathf.Clamp(destination.z,minZ,maxZ);
-                    controller.Move(destination-Root.position+Vector3.down*dt*3);
-                    graphics.localPosition=Vector3.up*(Mathf.Sin(Time.time*10+Id)*.035f);
+                    // Non-attacking enemies circle and keep space instead of standing in a pile.
+                    float side = Id % 2 == 0 ? 1 : -1;
+                    if (Mathf.Sin(Time.time * .8f + Id) < -.6f) side = -side;
+                    Vector3 tangent = Vector3.Cross(Vector3.up, facing) * side;
+                    Vector3 radial = facing * Mathf.Clamp((distance - attackDistance * .9f) * 1.5f, -.7f, .7f);
+                    MoveAlong(tangent + radial + level.Separation(this), Mathf.Max(0, tuning.strafeSpeed), dt);
                 }
-                else if(Time.time>=until && level.TryClaimAttack(this)) BeginWindup();
             }
             else if(state==State.Windup)
             {
@@ -113,25 +125,49 @@ namespace SwordKing
                 DrawWarning(progress);
                 if(Time.time>=until)
                 {
-                    warning.enabled=false; state=State.Strike; until=Time.time+.16f;
+                    warning.enabled=false; state=State.Strike; strikeStartedAt=Time.time;
+                    strikeFrom=weapon.localRotation; until=Time.time+Mathf.Max(.08f,tuning.strikeDuration);
                     level.ResolveEnemyAttack(this,lowAttack,IsBoss?3.7f:2.8f,IsBoss?26:16);
                 }
             }
             else if(state==State.Strike)
             {
-                weapon.localRotation=lowAttack?Quaternion.Euler(5,95,0):Quaternion.Euler(70,0,0);
+                float progress = Mathf.Clamp01((Time.time-strikeStartedAt)/Mathf.Max(.08f,tuning.strikeDuration));
+                var strikeTo = lowAttack?Quaternion.Euler(5,95,0):Quaternion.Euler(70,0,0);
+                weapon.localRotation=Quaternion.Slerp(strikeFrom,strikeTo,1f-(1f-progress)*(1f-progress));
                 if(Time.time>=until)
                 {
                     state=State.Recover;
                     // Both build extremes get a punish window, shortened in phase two.
-                    until=Time.time+(IsBoss?(Health<MaxHealth*.5f?.85f:1.3f):1.25f);
+                    until=Time.time+tuning.Recovery(IsBoss,Health<MaxHealth*.5f);
                 }
             }
             else if(state==State.Recover)
             {
                 weapon.localRotation=Quaternion.Slerp(weapon.localRotation,Quaternion.identity,dt*5);
-                if(Time.time>=until) { state=State.Chase; until=Time.time+.15f; }
+                if(Time.time>=until) { state=State.Chase; until=Time.time+.1f; }
             }
+        }
+        void MoveAlong(Vector3 desired, float speed, float dt)
+        {
+            if (desired.sqrMagnitude < .001f) return;
+            Vector3 movement = Steer(desired.normalized) * speed * dt;
+            Vector3 destination = Root.position + movement;
+            // Stay on this encounter's route; bridge gaps remain traversal challenges for the player.
+            float minZ = Zone==0?10:Zone==1?64.5f:101;
+            float maxZ = Zone==0?44:Zone==1?98:125;
+            float halfWidth = Zone==2?10:(destination.z<16 || destination.z>86?4:8);
+            destination.x = Mathf.Clamp(destination.x,-halfWidth,halfWidth);
+            destination.z = Mathf.Clamp(destination.z,minZ,maxZ);
+            destination = Root.position + Vector3.ClampMagnitude(destination-Root.position, speed*dt);
+            // Never chase off a ledge. Ground normals distinguish walkable support from a wall.
+            bool supported = false;
+            foreach (var hit in Physics.RaycastAll(destination+Vector3.up*.7f, Vector3.down, 1.6f, ~0, QueryTriggerInteraction.Ignore))
+                if (!(hit.collider is CharacterController) && !hit.collider.transform.IsChildOf(Root) && !hit.collider.transform.IsChildOf(level.Player.PlayerTransform)
+                    && hit.normal.y > .6f) { supported=true; break; }
+            if (!supported) return;
+            controller.Move(destination-Root.position+Vector3.down*dt*3);
+            graphics.localPosition += Vector3.up*(Mathf.Sin(Time.time*12+Id)*.035f);
         }
         Vector3 Steer(Vector3 desired)
         {
@@ -152,7 +188,7 @@ namespace SwordKing
         {
             comboIndex++;
             lowAttack=IsBoss?comboIndex%3!=0:style==1 || (style==2 && comboIndex%2==0);
-            windupDuration=IsBoss?(Health<MaxHealth*.5f?.65f:.9f):.9f;
+            windupDuration=tuning.Windup(IsBoss,Health<MaxHealth*.5f);
             windupStart=Time.time; until=Time.time+windupDuration; state=State.Windup;
             Root.rotation=Quaternion.LookRotation(facing); // Attack direction locks at the tell.
             level.PlaySound(lowAttack?"tellLow":"tellHigh");
@@ -173,6 +209,10 @@ namespace SwordKing
         {
             if(!Alive) return 0;
             float dealt=Mathf.Min(Health,damage); Health-=dealt; flashUntil=Time.time+.1f;
+            recoilUntil=Time.time+.18f;
+            Vector3 away=Root.position-level.Player.PlayerTransform.position; away.y=0;
+            recoilDirection=Root.InverseTransformDirection(away.normalized);
+            if (state==State.Idle && level.CanEngage(this)) state=State.Chase;
             if(Health<=0)
             {
                 state=State.Dead; deadAt=Time.time; controller.enabled=false; warning.enabled=false;

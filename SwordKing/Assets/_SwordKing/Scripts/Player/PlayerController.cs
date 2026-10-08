@@ -19,6 +19,7 @@ namespace SwordKing
         [SerializeField] LevelDefinition levelDefinition;
         PlayerInputReader playerInput;
         ThirdPersonCamera cameraRig;
+        public CombatFeedback Feedback { get; private set; }
         public PlayerInputFrame InputFrame => playerInput.Read();
         public BrokenGateWorld AuthoredWorld => authoredWorld;
         public LevelDefinition LevelDefinition => levelDefinition;
@@ -95,6 +96,7 @@ namespace SwordKing
                 else SetMenu(!menu);
             }
             if (adventureMode && (Level == null || Level.InputBlocked)) return;
+            if (Feedback != null && Feedback.ImpactPaused) return;
             if (!menu)
             {
                 yaw += look.x; pitch = Mathf.Clamp(pitch - look.y, 5, 65);

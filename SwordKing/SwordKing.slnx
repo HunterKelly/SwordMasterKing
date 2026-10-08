@@ -1,7 +1,7 @@
 ﻿<Solution>
   <Project Path="SwordKing.Runtime.csproj" />
   <Project Path="SwordKing.Editor.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="SwordKing.EditModeTests.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
 </Solution>

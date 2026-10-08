@@ -77,6 +77,8 @@ namespace SwordKing
             view.fieldOfView = 65; view.nearClipPlane = .1f; view.backgroundColor = new Color(.025f, .04f, .07f); view.clearFlags = CameraClearFlags.SolidColor;
             view.gameObject.AddComponent<AudioListener>();
             cameraRig = view.gameObject.AddComponent<ThirdPersonCamera>();
+            Feedback = gameObject.AddComponent<CombatFeedback>();
+            Feedback.Initialize(cameraRig, levelDefinition != null ? levelDefinition.combatFeedback : null);
             var light = new GameObject("Arena sun").AddComponent<Light>(); light.transform.SetParent(transform);
             light.type = LightType.Directional; light.intensity = 1.3f; light.transform.rotation = Quaternion.Euler(50, -35, 0);
             RenderSettings.ambientLight = new Color(.5f, .55f, .65f);

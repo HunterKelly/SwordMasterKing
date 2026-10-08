@@ -17,6 +17,8 @@ namespace SwordKing
             public EnemySpawn(int id, int zone, string title, Vector3 position, int style, bool boss = false)
             { this.id=id; this.zone=zone; this.title=title; this.position=position; attackStyle=style; this.boss=boss; }
         }
+        public EnemyCombatSettings enemyCombat = new EnemyCombatSettings();
+        public CombatFeedbackSettings combatFeedback = new CombatFeedbackSettings();
         public Vector3 arrival = new Vector3(0, .15f, -5);
         // v1 saves address exactly seven stable encounter IDs. Positions and styles are editable.
         public EnemySpawn[] encounters = DefaultEncounters();

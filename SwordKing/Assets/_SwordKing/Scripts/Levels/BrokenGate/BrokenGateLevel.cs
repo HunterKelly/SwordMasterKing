@@ -28,6 +28,7 @@ namespace SwordKing
         ScreenState screen=ScreenState.Title;
         AudioSource audioSource, wind;
         GateEnemy boss;
+        public EnemyCombatSettings EnemyCombat { get; private set; }
         bool bossActive, ready, hasSave, confirmNew;
         int flasks=2, chosenStyle=1;
         float nextEnemyAttack, messageUntil, hurtFlashUntil;
@@ -53,6 +54,7 @@ namespace SwordKing
                 World.Build();
             }
             World.EnsureMaterials();
+            EnemyCombat = player.LevelDefinition != null && player.LevelDefinition.enemyCombat != null ? player.LevelDefinition.enemyCombat : new EnemyCombatSettings();
             var spawns = player.LevelDefinition != null ? player.LevelDefinition.encounters : LevelDefinition.DefaultEncounters();
             LevelDefinition.ValidateEncounters(spawns);
             foreach (var spawn in spawns)
@@ -116,6 +118,7 @@ namespace SwordKing
         }
         void SetScreen(ScreenState value)
         {
+            if (Player.Feedback != null) Player.Feedback.CancelImpactPause();
             screen=value; Time.timeScale=value==ScreenState.Playing?1:0;
             Player.SetGameplayInput(value==ScreenState.Playing);
             if(wind!=null) wind.volume=value==ScreenState.Playing?.16f:.06f;
@@ -128,7 +131,7 @@ namespace SwordKing
         }
         void Update()
         {
-            if(!ready || InputBlocked) return;
+            if(!ready || InputBlocked || (Player.Feedback != null && Player.Feedback.ImpactPaused)) return;
             save.seconds+=Time.deltaTime;
             var input = Player.InputFrame;
             bool interact = input.Interact, heal = input.Heal;
@@ -172,13 +175,25 @@ namespace SwordKing
             if(InputBlocked) return false;
             float z=Player.PlayerTransform.position.z;
             if(enemy.IsBoss) return bossActive;
-            return enemy.Zone==0?z>16 && z<40:z>64 && z<86;
+            return enemy.Zone==0?z>10 && z<48:z>58 && z<100;
+        }
+        public Vector3 Separation(GateEnemy moving)
+        {
+            Vector3 push = Vector3.zero;
+            foreach (var other in enemies)
+            {
+                if (other == moving || !other.Alive || other.Zone != moving.Zone) continue;
+                Vector3 away = moving.Root.position - other.Root.position; away.y = 0;
+                float distance = away.magnitude;
+                if (distance > .01f && distance < 1.5f) push += away / distance * (1.5f - distance);
+            }
+            return Vector3.ClampMagnitude(push, 1f);
         }
         public bool TryClaimAttack(GateEnemy enemy)
         {
             if(Time.time<nextEnemyAttack) return false;
             // Space group attacks apart so tells remain readable.
-            nextEnemyAttack=Time.time+(enemy.IsBoss?.5f:1.05f); return true;
+            nextEnemyAttack=Time.time+(enemy.IsBoss?.5f:Mathf.Max(.5f,EnemyCombat.groupAttackSpacing)); return true;
         }
         public void ResolvePlayerAttack(float damage,float reach,float angle,float charge)
         {
@@ -192,6 +207,8 @@ namespace SwordKing
                 float dealt=enemy.ReceiveHit(damage,charge);
                 hits.Add(new FloatingHit { p=enemy.Root.position+Vector3.up*(enemy.IsBoss?3.7f:2.3f), text=Mathf.RoundToInt(dealt).ToString(), until=Time.time+.6f });
                 PlaySound(charge>=.8f?"heavy":"hit");
+                if (dealt > 0 && Player.Feedback != null)
+                    Player.Feedback.Impact(enemy.Root.position + Vector3.up * (enemy.IsBoss ? 1.8f : 1.2f), delta, charge >= .8f, !enemy.Alive);
             }
         }
         bool HasClearStrike(Vector3 from,Vector3 to,GateEnemy target)
@@ -269,6 +286,7 @@ namespace SwordKing
         void OnApplicationQuit() { if(ready && screen!=ScreenState.Title) Save(); }
         void OnDestroy()
         {
+            if (Player != null && Player.Feedback != null) Player.Feedback.CancelImpactPause();
             Time.timeScale=originalTimeScale<=0?1:originalTimeScale;
             RenderSettings.fog=originalFog; RenderSettings.fogColor=originalFogColor;
             RenderSettings.fogDensity=originalFogDensity; RenderSettings.fogMode=originalFogMode; RenderSettings.ambientLight=originalAmbient;
