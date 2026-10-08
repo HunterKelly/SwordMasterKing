@@ -1,0 +1,6 @@
+{
+  "name": "SwordKing.EditModeTests",
+  "references": ["SwordKing.Runtime"],
+  "includePlatforms": ["Editor"],
+  "optionalUnityReferences": ["TestAssemblies"]
+}

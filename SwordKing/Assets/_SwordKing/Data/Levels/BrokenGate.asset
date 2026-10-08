@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 201a1c8f58d35088a5fe01e67b134be5, type: 3}
+  m_Name: BrokenGate
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.LevelDefinition
+  arrival: {x: 0, y: 0.15, z: -5}
+  encounters:
+  - id: 0
+    zone: 0
+    title: Road Warden
+    position: {x: 0, y: 0.1, z: 23}
+    attackStyle: 0
+    boss: 0
+  - id: 1
+    zone: 0
+    title: Ash Swordsman
+    position: {x: -4, y: 0.1, z: 31}
+    attackStyle: 2
+    boss: 0
+  - id: 2
+    zone: 0
+    title: Courtyard Reaper
+    position: {x: 4, y: 0.1, z: 34}
+    attackStyle: 1
+    boss: 0
+  - id: 3
+    zone: 1
+    title: Gatehouse Reaper
+    position: {x: -3, y: 0.1, z: 69}
+    attackStyle: 1
+    boss: 0
+  - id: 4
+    zone: 1
+    title: Iron Sentinel
+    position: {x: 4, y: 0.1, z: 76}
+    attackStyle: 0
+    boss: 0
+  - id: 5
+    zone: 1
+    title: Captain of the Watch
+    position: {x: -2, y: 0.1, z: 80}
+    attackStyle: 2
+    boss: 0
+  - id: 6
+    zone: 2
+    title: THE GATEKEEPER
+    position: {x: 0, y: 0.1, z: 116}
+    attackStyle: 2
+    boss: 1

@@ -1,0 +1,6 @@
+{
+  "name": "SwordKing.Runtime",
+  "rootNamespace": "SwordKing",
+  "references": ["Unity.InputSystem"],
+  "autoReferenced": true
+}

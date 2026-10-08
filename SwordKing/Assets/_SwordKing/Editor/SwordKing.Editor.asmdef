@@ -1,0 +1,7 @@
+{
+  "name": "SwordKing.Editor",
+  "rootNamespace": "SwordKing.Editor",
+  "references": ["SwordKing.Runtime"],
+  "includePlatforms": ["Editor"],
+  "autoReferenced": true
+}
