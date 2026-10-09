@@ -95,8 +95,8 @@ namespace SwordKing
                     float a=i/31f*Mathf.PI*4;
                     var local=new Vector3((layer-1)*.18f+Mathf.Sin(a*3)*.08f,1.5f+Mathf.Cos(a)*1.1f,
                         strikeReach*.45f+Mathf.Sin(a)*strikeReach*.4f);
-                    if(!overhead) local=new Vector3(Mathf.Cos(a)*strikeReach*.65f,
-                        1.25f+(layer-1)*.14f+Mathf.Sin(a*3)*.08f,strikeReach*.4f+Mathf.Sin(a)*strikeReach*.5f);
+                    if(!overhead) local=new Vector3(Mathf.Cos(a)*strikeReach*.55f,
+                        1.25f+(layer-1)*.14f+Mathf.Sin(a*3)*.08f,strikeReach*.55f+Mathf.Sin(a)*strikeReach*.25f);
                     line.SetPosition(i,player.TransformPoint(local));
                 }
                 slashes.Add(new Slash { line=line,born=Time.time });

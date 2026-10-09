@@ -46,7 +46,10 @@ namespace SwordKing.Tests
         public void SpinChargesInPointSixSecondsAndHeavyVariantsHaveHigherBaseDamage()
         {
             Assert.That(PlayerAttackModel.ChargeSeconds(PlayerAttackKind.Spin),Is.EqualTo(.6f));
-            Assert.That(PlayerAttackModel.ChargeSeconds(PlayerAttackKind.Overhead),Is.EqualTo(2));
+            Assert.That(PlayerAttackModel.ChargeSeconds(PlayerAttackKind.Overhead),Is.EqualTo(.6f));
+            Assert.That(PlayerAttackModel.ChargeSeconds(PlayerAttackKind.ChargedOverhead),Is.EqualTo(.6f));
+            Assert.That(PlayerAttackModel.ChargeFraction(.6f,PlayerAttackKind.ChargedOverhead),Is.EqualTo(1));
+            Assert.That(PlayerAttackModel.ChargeSeconds(PlayerAttackKind.JumpingOverhead),Is.EqualTo(2));
             Assert.That(PlayerAttackModel.DamageMultiplier(PlayerAttackKind.ChargedOverhead,2,2),
                 Is.GreaterThan(PlayerAttackModel.DamageMultiplier(PlayerAttackKind.Overhead,2,2)));
             Assert.That(PlayerAttackModel.DamageMultiplier(PlayerAttackKind.JumpingOverhead,0,2),Is.EqualTo(3.5f));

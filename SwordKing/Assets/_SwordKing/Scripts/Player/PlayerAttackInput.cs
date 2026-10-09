@@ -74,12 +74,13 @@ namespace SwordKing
         void UpdateJumpStrike()
         {
             if(!jumpStrikePending || Time.time-jumpStrikeStarted<.08f) return;
-            if(!jumpDescending && (verticalSpeed<=0 || controller.isGrounded))
+            const float swingLead=.04f;
+            if(!jumpDescending && (verticalSpeed<=Mathf.Max(1,gravityStrength)*swingLead || controller.isGrounded))
             {
                 jumpDescending=true; animationStart=Time.time;
-                animationDuration=Mathf.Sqrt(2f*controller.height*Mathf.Max(.1f,jumpHeightFraction)/Mathf.Max(1,gravityStrength));
+                animationDuration=Mathf.Sqrt(2f*controller.height*Mathf.Max(.1f,jumpHeightFraction)/Mathf.Max(1,gravityStrength))+swingLead;
             }
-            // Hold the raised sword on ascent, swing on descent, impact on landing.
+            // Begin the swing about 40 ms before the apex; impact still lands with the player.
             if(!controller.isGrounded) return;
             jumpStrikePending=false;
             ResolveAttack(jumpStrikeDamage,jumpStrikeReach,jumpStrikeAngle,jumpStrikeCharge);

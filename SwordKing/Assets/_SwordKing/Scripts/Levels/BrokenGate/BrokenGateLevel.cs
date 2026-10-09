@@ -227,7 +227,7 @@ namespace SwordKing
                 if(!enemy.Alive || !CanEngage(enemy) || (window!=null && window.HasHit(enemy.Id))) continue;
                 Vector3 delta=enemy.Root.position-p; float vertical=Mathf.Abs(delta.y); delta.y=0;
                 if(delta.magnitude>reach+(enemy.IsBoss?.45f:0) || vertical>2 || Vector3.Angle(Player.PlayerTransform.forward,delta)>angle*.5f) continue;
-                if(!HasClearStrike(p+Vector3.up*1.2f,enemy.Root.position+Vector3.up*1.2f,enemy,window!=null)) continue;
+                if(!HasClearStrike(p+Vector3.up*1.2f,enemy.Root.position+Vector3.up*1.2f,enemy,window!=null || angle>=359f)) continue;
                 if(window!=null && !window.TryHit(enemy.Id,Time.time)) continue;
                 float dealt=enemy.ReceiveHit(damage,charge);
                 hits.Add(new FloatingHit { p=enemy.Root.position+Vector3.up*(enemy.IsBoss?3.7f:2.3f), text=Mathf.RoundToInt(dealt).ToString(), until=Time.time+.6f });

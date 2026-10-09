@@ -36,3 +36,11 @@ Quick horizontal clicks regain the horizontal flurry scribbles after three accep
 Walking right-click held at least 0.25 seconds selects ChargedOverhead: a stronger overhead with base style multiplier 1.8, charging to twice that at two seconds. Quick right clicks retain the 1.25 multiplier and overhead flurry. Sprint right click remains JumpingOverhead with base multiplier 3.5, charging to twice that at two seconds. Existing charge/sprint recovery windows remain.
 
 Jumping overhead's landing adds an expanding cosmetic shockwave, sparks, low impact sound and stronger camera shake even on a miss. Damage still resolves once through the forward heavy-attack volume, not from the cosmetic shockwave.
+
+## Front-facing flurry and spin targeting correction
+
+Horizontal cloud trails stay entirely in front of the player (their forward offset stays positive), without wrapping behind. Walking right-click overheads now fully charge in 0.6 seconds, matching the spin. Sprint attack charge caps remain two seconds.
+
+Spin strikes test every eligible enemy within the 360-degree radius. Other enemies no longer occlude those strike checks, so a cluster can all be hit; solid scenery still blocks strikes. Each enemy receives one damage event per spin.
+
+Jumping overhead animation starts about 0.04 seconds before the apex, with its animation duration extended by that same small lead. Damage and landing effects still trigger on ground contact.
