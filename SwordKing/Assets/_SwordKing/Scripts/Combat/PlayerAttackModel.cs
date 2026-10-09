@@ -18,7 +18,7 @@ namespace SwordKing
                         : (sprint ? PlayerAttackKind.Thrust : PlayerAttackKind.Slash);
         public static float DamageMultiplier(PlayerAttackKind kind, float heldSeconds, float fullChargeMultiplier)
         {
-            float style = kind == PlayerAttackKind.JumpingOverhead ? 3.5f : kind == PlayerAttackKind.ChargedOverhead ? 1.8f : kind == PlayerAttackKind.Overhead ? 1.25f : kind == PlayerAttackKind.Thrust ? 1.15f : 1;
+            float style = kind == PlayerAttackKind.JumpingOverhead ? 3.5f : kind == PlayerAttackKind.ChargedOverhead ? 1.8f : kind == PlayerAttackKind.Overhead ? 1.25f : kind == PlayerAttackKind.Thrust ? 1.15f : kind == PlayerAttackKind.Spin ? 1.5f : 1;
             return style * (1 + (Math.Max(1, fullChargeMultiplier) - 1) * ChargeFraction(heldSeconds,kind));
         }
     }

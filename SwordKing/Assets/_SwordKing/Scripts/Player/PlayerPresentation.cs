@@ -35,6 +35,8 @@ namespace SwordKing
             if (settings != null)
             {
                 power = settings.power; recovery = settings.recovery; speed = settings.speed;
+                maxStamina = settings.maxStamina; specialStaminaCost = settings.specialStaminaCost; sprintStaminaDrain = settings.sprintStaminaDrain;
+                staminaRegeneration = settings.staminaRegeneration; staminaRegenerationDelay = settings.staminaRegenerationDelay;
                 sprintMultiplier = settings.sprintMultiplier;
                 fullChargeDamageMultiplier = settings.fullChargeDamageMultiplier;
                 thrustHopHeight = settings.thrustHopHeight;
@@ -50,6 +52,7 @@ namespace SwordKing
                 rollDistance = settings.rollDistance; rollRecovery = settings.rollRecovery;
                 gravityStrength = settings.gravityStrength;
             }
+            stamina = new StaminaPool(maxStamina,staminaRegeneration,staminaRegenerationDelay);
             var floor = MakeMaterial(new Color(.09f, .13f, .18f));
             var stone = MakeMaterial(new Color(.22f, .28f, .34f));
             var metal = MakeMaterial(new Color(.75f, .87f, .93f));

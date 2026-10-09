@@ -13,6 +13,12 @@ namespace SwordKing
         [InspectorName("Strafe Turn Angle"), Range(0, 60)] public float strafeLeanAngle = 45f;
         [InspectorName("Strafe Turn Speed"), Min(1)] public float strafeLeanSpeed = 360f;
         [Range(30, 180)] public float attackAngle = 110f;
+        [Header("Stamina")]
+        [Min(1)] public float maxStamina = 100f;
+        [Min(0)] public float specialStaminaCost = 35f;
+        [Min(0)] public float sprintStaminaDrain = 8f;
+        [Min(0)] public float staminaRegeneration = 60f;
+        [Min(0)] public float staminaRegenerationDelay = .2f;
         [Header("Sprint and charged attacks")]
         [Min(1)] public float sprintMultiplier = 1.6f;
         [Min(1)] public float fullChargeDamageMultiplier = 2f;

@@ -38,11 +38,13 @@ namespace SwordKing
             GUI.matrix=Matrix4x4.TRS(new Vector3(offset.x,offset.y,0),Quaternion.identity,Vector3.one*scale);
             if(screen==ScreenState.Playing)
             {
-                Panel(new Rect(22,20,292,108),ink);
+                Panel(new Rect(22,20,292,155),ink);
                 GUI.Label(new Rect(38,29,255,24),LevelTitle,small);
                 Bar(new Rect(38,60,255,13),Player.PlayerHealth/100,new Color(.78f,.24f,.23f));
                 GUI.Label(new Rect(38,78,170,20),"HEALTH  "+Mathf.CeilToInt(Player.PlayerHealth),small);
                 Bar(new Rect(38,103,255,7),Player.SwingCharge,gold);
+                Bar(new Rect(38,122,255,11),Player.StaminaFraction,Player.StaminaShortage?new Color(.9f,.35f,.15f):new Color(.25f,.8f,.45f));
+                GUI.Label(new Rect(38,140,255,22),Player.StaminaShortage?"NOT ENOUGH STAMINA":"STAMINA  "+Mathf.FloorToInt(Player.PlayerStamina)+" / "+Mathf.RoundToInt(Player.maxStamina),small);
                 GUI.Label(new Rect(340,24,600,54),Objective(),subtitle);
                 Panel(new Rect(22,605,310,92),ink);
                 GUI.Label(new Rect(38,617,280,26),"Q  Ember flask  "+flasks+" / 2",body);

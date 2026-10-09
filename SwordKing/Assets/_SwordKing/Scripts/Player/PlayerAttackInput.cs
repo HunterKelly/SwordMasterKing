@@ -5,6 +5,7 @@ namespace SwordKing
     public partial class PlayerController
     {
         bool shiftSpecialHeld;
+        bool sprintExhausted;
         bool ignoreShiftUntilRelease, chargingAttack, chargeOverhead, chargeSprint;
         float chargeStarted, queuedHold;
         PlayerAttackKind queuedAttack, activeAttack;
@@ -33,7 +34,9 @@ namespace SwordKing
                 shiftSpecialHeld=false; IsSprinting=false; return;
             }
             shiftSpecialHeld=held;
-            IsSprinting=shiftSpecialHeld && movement.sqrMagnitude>.01f && !IsRolling && !jumpStrikePending;
+            // Refill a little before resuming so empty stamina cannot flicker sprint every frame.
+            if(!held || stamina==null || stamina.Current>=Mathf.Min(8f,stamina.Maximum)) sprintExhausted=false;
+            IsSprinting=shiftSpecialHeld && !sprintExhausted && movement.sqrMagnitude>.01f && !IsRolling && !jumpStrikePending && (stamina==null || stamina.Current>0);
         }
         void ReadAttackInput(PlayerInputFrame input)
         {

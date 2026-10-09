@@ -114,6 +114,7 @@ namespace SwordKing
         public void RestoreAt(Vector3 position)
         {
             controller.enabled = false; player.position = position; controller.enabled = true;
+            if(stamina!=null) stamina.Reset(); staminaWarningUntil=0;
             PlayerHealth = 100; verticalSpeed = 0; damageGraceUntil = Time.time + 1f;
             yaw = 0; pitch = 22; player.rotation = Quaternion.identity;
             rollEndsAt = -100; rollReadyAt = 0; activeRollDuration = 0; rollTravelTime = 0;

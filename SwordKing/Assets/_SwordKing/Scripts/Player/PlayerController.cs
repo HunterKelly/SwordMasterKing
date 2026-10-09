@@ -13,6 +13,11 @@ namespace SwordKing
         public float SwingCharge => chargingAttack ? ChargeFraction : SwingModel.Charge(Time.time - lastAttack, recovery);
         public bool IsSprinting { get; private set; }
         public bool IsChargingAttack => chargingAttack;
+        StaminaPool stamina;
+        public float PlayerStamina => stamina != null ? stamina.Current : maxStamina;
+        public float StaminaFraction => stamina != null ? stamina.Current/stamina.Maximum : 1;
+        public bool StaminaShortage => Time.time < staminaWarningUntil;
+        float staminaWarningUntil;
         float damageGraceUntil;
         readonly AttackInputBuffer attackBuffer = new AttackInputBuffer();
         [Header("Project assets")]
@@ -38,6 +43,12 @@ namespace SwordKing
         public float reach = 2.8f;
         [Range(30, 180)] public float attackAngle = 110f;
 
+        [Header("Stamina")]
+        [Min(1)] public float maxStamina = 100f;
+        [Min(0)] public float specialStaminaCost = 35f;
+        [Min(0)] public float sprintStaminaDrain = 8f;
+        [Min(0)] public float staminaRegeneration = 60f;
+        [Min(0)] public float staminaRegenerationDelay = .2f;
         [Header("Sprint and charged attacks")]
         [Min(1)] public float sprintMultiplier = 1.6f;
         [Min(1)] public float fullChargeDamageMultiplier = 2f;
@@ -127,6 +138,12 @@ namespace SwordKing
             if (menu || IsRolling) CancelAttackInput();
             else ReadAttackInput(input);
             if (Feedback != null && Feedback.ImpactPaused) return;
+            if(stamina!=null)
+            {
+                if(!menu && IsSprinting) stamina.Drain(Mathf.Max(0,sprintStaminaDrain)*Time.deltaTime);
+                else stamina.Tick(Time.deltaTime,!menu && !chargingAttack && !jumpStrikePending && Time.time>=specialPoseUntil);
+                if(stamina.Current<=0) { IsSprinting=false; sprintExhausted=true; }
+            }
             if (!menu)
             {
                 yaw += look.x; pitch = Mathf.Clamp(pitch - look.y, 5, 65);

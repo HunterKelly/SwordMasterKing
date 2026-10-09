@@ -12,6 +12,7 @@ namespace SwordKing
             GUI.matrix = Matrix4x4.Scale(new Vector3(scale, scale, 1));
             GUILayout.BeginArea(new Rect(18, 18, 325, 660), GUI.skin.box);
             GUILayout.Label("SWORDPLAY / COMBAT LAB");
+            GUILayout.Label("Stamina: " + Mathf.FloorToInt(PlayerStamina) + " / " + Mathf.RoundToInt(maxStamina));
             GUILayout.Label("WASD move | LMB slash / thrust | RMB overhead / jump");
             GUILayout.Label("Hold click charge (2s) | Hold Shift sprint / C roll | Esc build controls");
             GUILayout.Label(IsRolling ? "ROLLING - INVINCIBLE" : (airborne ? "AIRBORNE - lower hitbox OFF" : "GROUNDED - both hitboxes ON"));

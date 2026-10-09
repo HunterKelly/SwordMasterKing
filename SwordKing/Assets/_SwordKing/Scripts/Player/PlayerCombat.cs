@@ -8,11 +8,17 @@ namespace SwordKing
         {
             float elapsed = Time.time - lastAttack;
             if (elapsed + .00001f < 1f / SwingModel.MaxRate(speed)) { rejected++; return; }
+            bool spendsStamina=queuedAttack==PlayerAttackKind.Thrust || queuedAttack==PlayerAttackKind.JumpingOverhead;
+            if(spendsStamina && stamina!=null && !stamina.Spend(specialStaminaCost))
+            {
+                staminaWarningUntil=Time.time+.8f;
+                return;
+            }
             activeAttack=queuedAttack;
             float charge=PlayerAttackModel.ChargeFraction(queuedHold,activeAttack);
             lastDamage=SwingModel.Damage(elapsed,power,recovery,speed) * PlayerAttackModel.DamageMultiplier(activeAttack,queuedHold,fullChargeDamageMultiplier);
             lastAttack=Time.time; totalAttacks++; attackHistory.Enqueue(Time.time);
-            animationStart=Time.time; animationDuration=activeAttack==PlayerAttackKind.Spin ? .45f : activeAttack==PlayerAttackKind.Slash ? Mathf.Clamp(elapsed,.1f,.48f) : activeAttack==PlayerAttackKind.Thrust ? Mathf.Max(.1f,thrustDuration) : .32f;
+            animationStart=Time.time; animationDuration=activeAttack==PlayerAttackKind.Spin ? .28f : activeAttack==PlayerAttackKind.Slash ? Mathf.Clamp(elapsed,.1f,.48f) : activeAttack==PlayerAttackKind.Thrust ? Mathf.Max(.1f,thrustDuration) : .32f;
             swingIndex++; swordPivot.localPosition=swordRestPosition;
             float strikeReach=reach * (activeAttack==PlayerAttackKind.Thrust ? Mathf.Max(1,thrustReachMultiplier)
                 : activeAttack==PlayerAttackKind.JumpingOverhead ? Mathf.Max(1,jumpingOverheadReachMultiplier)

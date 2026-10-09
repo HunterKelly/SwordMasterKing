@@ -20,6 +20,11 @@ MonoBehaviour:
   strafeLeanSpeed: 360
   reach: 2.8
   attackAngle: 110
+  maxStamina: 100
+  specialStaminaCost: 35
+  sprintStaminaDrain: 8
+  staminaRegeneration: 60
+  staminaRegenerationDelay: 0.2
   sprintMultiplier: 1.6
   fullChargeDamageMultiplier: 2
   thrustHopHeight: 0.12

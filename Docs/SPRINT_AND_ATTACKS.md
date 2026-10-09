@@ -47,3 +47,13 @@ The flurry visual is exactly three parallel copies of the ordinary slash trail: 
 Holding Shift selects thrust (left click) or jumping overhead (right click), even with no movement input. Moving while holding Shift still sprints, and C rolls. The player does not need to run forward to select either special.
 
 Grounded thrusts add a tiny 0.12-metre hop alongside their existing forward slide. Thrust Hop Height in DefaultPlayer.asset adjusts it; zero disables it. An already airborne thrust does not add another jump. The existing damage window, one hit per enemy and recovery remain in effect.
+
+## Stamina
+
+The bar holds 100 points. Shift thrust and jumping heavy cost 35 per accepted attack. Sprinting drains 8 points per second while moving. Standing with Shift held costs nothing. Normal slash/overhead, charged spin/overhead, jumping and rolling cost nothing. At zero, sprint falls back to normal walking; Shift still selects specials, which require at least 35 points to execute.
+
+Stamina pauses regeneration while sprinting, charging, executing a special, or in a menu. After 0.2 seconds of eligible recovery time, it refills at 60 points per second. Respawns and chapter arrivals refill it. Max Stamina, Special Stamina Cost, Sprint Stamina Drain, Stamina Regeneration and Stamina Regeneration Delay are editable in DefaultPlayer.asset.
+
+Spin now rotates in 0.28 seconds (previously 0.45), with a base damage multiplier of 1.5 (50% more). Its charge cap remains 0.6 seconds and its recovery remains 0.15 seconds. It and charged overhead consume no stamina.
+
+Unity is not installed here; run the edit-mode tests and gameplay checks in Unity, including sustained sprint drain, empty-stamina walking, Shift specials at a standstill, and free charged attacks.
