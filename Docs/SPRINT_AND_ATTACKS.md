@@ -44,3 +44,7 @@ Horizontal cloud trails stay entirely in front of the player (their forward offs
 Spin strikes test every eligible enemy within the 360-degree radius. Other enemies no longer occlude those strike checks, so a cluster can all be hit; solid scenery still blocks strikes. Each enemy receives one damage event per spin.
 
 Jumping overhead animation starts about 0.04 seconds before the apex, with its animation duration extended by that same small lead. Damage and landing effects still trigger on ground contact.
+
+## Final hyper-speed slash presentation
+
+The flurry visual is exactly three parallel copies of the ordinary slash trail: the main slash and two offset bars. Horizontal quick slashes offset the copies vertically; overhead quick slashes offset the copies left and right. Three accepted quick attacks of that type within 0.5 seconds activate the effect. Normal speed shows one bar. Circular scribble/cloud geometry has been removed from flurries. The extra bars never resolve extra damage.

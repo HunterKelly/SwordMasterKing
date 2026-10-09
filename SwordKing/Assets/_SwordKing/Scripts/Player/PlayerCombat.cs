@@ -53,15 +53,24 @@ namespace SwordKing
             if(activeAttack==PlayerAttackKind.Overhead && !charged)
             {
                 overheadHistory.Enqueue(Time.time);
-                if(OverheadFlurry) EmitSwingCloud(strikeReach,true);
             }
             while(horizontalHistory.Count>0 && Time.time-horizontalHistory.Peek()>.5f) horizontalHistory.Dequeue();
             if(activeAttack==PlayerAttackKind.Slash && !charged)
             {
                 horizontalHistory.Enqueue(Time.time);
-                if(HorizontalFlurry) EmitSwingCloud(strikeReach,false);
             }
             EmitAttackTrail(activeAttack,strikeReach,strikeAngle);
+            // Hyper speed shows the normal slash plus two parallel copies: three bars total.
+            if(activeAttack==PlayerAttackKind.Slash && HorizontalFlurry)
+            {
+                EmitAttackTrail(activeAttack,strikeReach,strikeAngle,Vector3.up*.22f);
+                EmitAttackTrail(activeAttack,strikeReach,strikeAngle,Vector3.down*.22f);
+            }
+            else if(activeAttack==PlayerAttackKind.Overhead && OverheadFlurry)
+            {
+                EmitAttackTrail(activeAttack,strikeReach,strikeAngle,Vector3.right*.22f);
+                EmitAttackTrail(activeAttack,strikeReach,strikeAngle,Vector3.left*.22f);
+            }
         }
         void ResolveAttack(float damage,float strikeReach,float strikeAngle,float charge,HitOnceWindow window=null,bool playSound=true)
         {
@@ -82,26 +91,6 @@ namespace SwordKing
                 if(playSound) Level.PlaySound("swing");
             }
         }
-        void EmitSwingCloud(float strikeReach,bool overhead)
-        {
-            // Layered vertical scribbles sell the rapid overhead cartoon flurry.
-            for(int layer=0;layer<3;layer++)
-            {
-                var line=new GameObject(overhead?"Overhead cartoon cloud":"Horizontal cartoon cloud").AddComponent<LineRenderer>();
-                line.transform.SetParent(transform); line.sharedMaterial=slashMaterial;
-                line.positionCount=32; line.widthMultiplier=.07f; line.useWorldSpace=true;
-                for(int i=0;i<32;i++)
-                {
-                    float a=i/31f*Mathf.PI*4;
-                    var local=new Vector3((layer-1)*.18f+Mathf.Sin(a*3)*.08f,1.5f+Mathf.Cos(a)*1.1f,
-                        strikeReach*.45f+Mathf.Sin(a)*strikeReach*.4f);
-                    if(!overhead) local=new Vector3(Mathf.Cos(a)*strikeReach*.55f,
-                        1.25f+(layer-1)*.14f+Mathf.Sin(a*3)*.08f,strikeReach*.55f+Mathf.Sin(a)*strikeReach*.25f);
-                    line.SetPosition(i,player.TransformPoint(local));
-                }
-                slashes.Add(new Slash { line=line,born=Time.time });
-            }
-        }
         void EmitLandingBlast()
         {
             var line=new GameObject("Landing shockwave").AddComponent<LineRenderer>();
@@ -111,7 +100,7 @@ namespace SwordKing
             for(int i=0;i<49;i++) line.SetPosition(i,center+Vector3.up*.06f);
             slashes.Add(new Slash { line=line,born=Time.time,duration=.35f,shockwave=true,center=center });
         }
-        void EmitAttackTrail(PlayerAttackKind kind,float strikeReach,float strikeAngle)
+        void EmitAttackTrail(PlayerAttackKind kind,float strikeReach,float strikeAngle,Vector3 offset=default(Vector3))
         {
             var line=new GameObject("Cosmetic "+kind+" trail").AddComponent<LineRenderer>();
             line.transform.SetParent(transform); line.sharedMaterial=slashMaterial; line.positionCount=kind==PlayerAttackKind.Spin ? 49 : 18;
@@ -132,6 +121,7 @@ namespace SwordKing
                     float a=Mathf.Lerp(-strikeAngle*.5f,strikeAngle*.5f,t)*Mathf.Deg2Rad;
                     local=new Vector3(Mathf.Sin(a)*strikeReach,1.25f+Mathf.Sin(a)*.22f*(swingIndex%2==0?1:-1),Mathf.Cos(a)*strikeReach);
                 }
+                local+=offset;
                 line.SetPosition(i,kind==PlayerAttackKind.Thrust ? local : player.TransformPoint(local));
             }
             slashes.Add(new Slash { line=line,born=Time.time,duration=kind==PlayerAttackKind.Thrust ? Mathf.Min(animationDuration,Mathf.Max(.1f,thrustDamageWindow)) : .18f });
