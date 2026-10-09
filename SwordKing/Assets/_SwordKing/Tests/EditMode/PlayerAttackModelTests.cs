@@ -42,16 +42,35 @@ namespace SwordKing.Tests
             Assert.That(PlayerAttackModel.ChargedKind(false,true,2),Is.EqualTo(PlayerAttackKind.Thrust));
             Assert.That(PlayerAttackModel.ChargedKind(true,false,2),Is.EqualTo(PlayerAttackKind.Overhead));
         }
+        [Test]
+        public void SpinChargesInOneSecondAndJumpHeavyHasHigherBaseDamage()
+        {
+            Assert.That(PlayerAttackModel.ChargeSeconds(PlayerAttackKind.Spin),Is.EqualTo(1));
+            Assert.That(PlayerAttackModel.ChargeSeconds(PlayerAttackKind.Overhead),Is.EqualTo(2));
+            Assert.That(PlayerAttackModel.DamageMultiplier(PlayerAttackKind.JumpingOverhead,0,2),Is.EqualTo(2.2f));
+        }
+        [Test]
+        public void SustainedAttackHitsEachTargetOnceAndCanAcquireNewTargets()
+        {
+            var window=new HitOnceWindow(); window.Begin(1,.45f);
+            Assert.That(window.TryHit(10,1),Is.True);
+            Assert.That(window.TryHit(10,1.2f),Is.False);
+            Assert.That(window.TryHit(20,1.3f),Is.True);
+            Assert.That(window.TryHit(30,1.5f),Is.False);
+            window.Begin(2,.45f);
+            Assert.That(window.TryHit(10,2),Is.True);
+            window.Cancel(); Assert.That(window.TryHit(20,2.1f),Is.False);
+        }
         [TestCase(PlayerAttackKind.Spin)]
         [TestCase(PlayerAttackKind.Slash)]
         [TestCase(PlayerAttackKind.Overhead)]
         [TestCase(PlayerAttackKind.Thrust)]
         [TestCase(PlayerAttackKind.JumpingOverhead)]
-        public void EveryAttackChargesMonotonicallyAndCapsAtTwoSeconds(PlayerAttackKind kind)
+        public void EveryAttackChargesMonotonicallyAndCapsAtItsChargeLimit(PlayerAttackKind kind)
         {
             float tap=PlayerAttackModel.DamageMultiplier(kind,0,2);
-            float half=PlayerAttackModel.DamageMultiplier(kind,1,2);
-            float full=PlayerAttackModel.DamageMultiplier(kind,2,2);
+            float half=PlayerAttackModel.DamageMultiplier(kind,PlayerAttackModel.ChargeSeconds(kind)*.5f,2);
+            float full=PlayerAttackModel.DamageMultiplier(kind,PlayerAttackModel.ChargeSeconds(kind),2);
             Assert.That(half,Is.GreaterThan(tap)); Assert.That(full,Is.GreaterThan(half));
             Assert.That(full,Is.EqualTo(tap*2).Within(.0001));
             Assert.That(PlayerAttackModel.DamageMultiplier(kind,20,2),Is.EqualTo(full));

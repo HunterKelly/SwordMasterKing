@@ -219,15 +219,16 @@ namespace SwordKing
             // Space group attacks apart so tells remain readable.
             nextEnemyAttack=Time.time+(enemy.IsBoss?.5f:Mathf.Max(.5f,EnemyCombat.groupAttackSpacing)); return true;
         }
-        public void ResolvePlayerAttack(float damage,float reach,float angle,float charge)
+        public void ResolvePlayerAttack(float damage,float reach,float angle,float charge,HitOnceWindow window=null)
         {
             Vector3 p=Player.PlayerTransform.position;
             foreach(var enemy in enemies)
             {
-                if(!enemy.Alive || !CanEngage(enemy)) continue;
+                if(!enemy.Alive || !CanEngage(enemy) || (window!=null && window.HasHit(enemy.Id))) continue;
                 Vector3 delta=enemy.Root.position-p; float vertical=Mathf.Abs(delta.y); delta.y=0;
                 if(delta.magnitude>reach+(enemy.IsBoss?.45f:0) || vertical>2 || Vector3.Angle(Player.PlayerTransform.forward,delta)>angle*.5f) continue;
-                if(!HasClearStrike(p+Vector3.up*1.2f,enemy.Root.position+Vector3.up*1.2f,enemy)) continue;
+                if(!HasClearStrike(p+Vector3.up*1.2f,enemy.Root.position+Vector3.up*1.2f,enemy,window!=null)) continue;
+                if(window!=null && !window.TryHit(enemy.Id,Time.time)) continue;
                 float dealt=enemy.ReceiveHit(damage,charge);
                 hits.Add(new FloatingHit { p=enemy.Root.position+Vector3.up*(enemy.IsBoss?3.7f:2.3f), text=Mathf.RoundToInt(dealt).ToString(), until=Time.time+.6f });
                 PlaySound(charge>=.8f?"heavy":"hit");
@@ -235,13 +236,13 @@ namespace SwordKing
                     Player.Feedback.Impact(enemy.Root.position + Vector3.up * (enemy.IsBoss ? 1.8f : 1.2f), delta, charge >= .8f, !enemy.Alive);
             }
         }
-        bool HasClearStrike(Vector3 from,Vector3 to,GateEnemy target)
+        bool HasClearStrike(Vector3 from,Vector3 to,GateEnemy target,bool piercing=false)
         {
             Vector3 delta=to-from;
             foreach(var hit in Physics.RaycastAll(from,delta.normalized,delta.magnitude,~0,QueryTriggerInteraction.Ignore))
             {
                 Transform t=hit.collider.transform;
-                if(t.IsChildOf(Player.PlayerTransform) || t.IsChildOf(target.Root)) continue;
+                if(t.IsChildOf(Player.PlayerTransform) || t.IsChildOf(target.Root) || (piercing && hit.collider is CharacterController)) continue;
                 return false;
             }
             return true;

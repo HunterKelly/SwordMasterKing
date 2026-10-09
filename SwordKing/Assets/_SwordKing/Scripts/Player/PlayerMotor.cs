@@ -18,7 +18,7 @@ namespace SwordKing
                 activeRollDistance = Mathf.Max(.1f, rollDistance);
                 rollStartedAt = Time.time; rollEndsAt = Time.time + activeRollDuration;
                 rollReadyAt = rollEndsAt + Mathf.Max(0, rollRecovery); rollTravelTime = 0;
-                CancelAttackInput(); jumpStrikePending = false; IsSprinting = false;
+                CancelAttackInput(); jumpStrikePending = false; thrustWindow.Cancel(); IsSprinting = false;
                 attackHistory.Clear(); animationStart = -100f;
                 foreach (var slash in slashes) Destroy(slash.line.gameObject);
                 slashes.Clear();

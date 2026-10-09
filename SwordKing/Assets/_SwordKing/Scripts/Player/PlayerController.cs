@@ -42,9 +42,15 @@ namespace SwordKing
         [Min(1)] public float sprintMultiplier = 1.6f;
         [Range(.1f, .3f)] public float sprintHoldThreshold = .18f;
         [Min(1)] public float fullChargeDamageMultiplier = 2f;
+        [Header("Attack windows and recovery")]
+        [Min(.1f)] public float thrustDuration = .55f;
+        [Min(.1f)] public float thrustDamageWindow = .45f;
+        [Min(0)] public float specialAttackRecovery = .15f;
+        [Min(0)] public float jumpingHeavyRecovery = .2f;
+        [Min(0)] public float chargedAttackRecovery = .12f;
         [Header("Special attack reach multipliers")]
         [Min(1)] public float overheadReachMultiplier = 1.6f;
-        [Min(1)] public float thrustReachMultiplier = 1.8f;
+        [Min(1)] public float thrustReachMultiplier = 2.1f;
         [Min(1)] public float jumpingOverheadReachMultiplier = 1.6f;
         [Header("Jump and roll")]
         [Range(.1f, 1.5f)] public float jumpHeightFraction = .5f;
@@ -75,7 +81,7 @@ namespace SwordKing
         class Slash
         {
             public LineRenderer line;
-            public float born;
+            public float born, duration = .18f;
         }
         readonly List<Dummy> dummies = new List<Dummy>();
         readonly List<Slash> slashes = new List<Slash>();
@@ -126,11 +132,12 @@ namespace SwordKing
             RefreshHurtboxes();
             if (!menu)
             {
-                if (IsRolling) { CancelAttackInput(); jumpStrikePending = false; }
+                if (IsRolling) { CancelAttackInput(); jumpStrikePending = false; thrustWindow.Cancel(); }
                 else
                 {
                     UpdateJumpStrike();
-                    if (!jumpStrikePending && attackBuffer.Consume(Time.unscaledTime,
+                    UpdateAttackWindows();
+                    if (!jumpStrikePending && Time.time >= attackReadyAt && attackBuffer.Consume(Time.unscaledTime,
                         Time.time - lastAttack + .00001f >= 1f / SwingModel.MaxRate(speed))) Attack();
                 }
                 if (!adventureMode && testLow) ProbeDamage(lowerHurtbox);

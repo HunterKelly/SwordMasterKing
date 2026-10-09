@@ -98,7 +98,7 @@ namespace SwordKing
                 else if(screen==ScreenState.Paused)
                 {
                     GUI.Label(new Rect(300,135,680,60),"JOURNEY PAUSED",heading);
-                    GUI.Label(new Rect(340,214,600,60),"LMB slash / sprint thrust. RMB overhead / sprint jump.\nHold either click up to 2s; release to strike.",centered);
+                    GUI.Label(new Rect(340,214,600,60),"LMB slash / sprint thrust. RMB overhead / sprint jump.\nHold to charge: spin 1s / others 2s; release to strike.",centered);
                     if(Button(460,320,360,"Return to the road")) SetScreen(ScreenState.Playing);
                     if(Button(460,378,360,"Save and return to title")) { Save(); SetScreen(ScreenState.Title); }
                     GUI.Label(new Rect(340,450,600,70),"Power "+Player.power+"   /   Recovery "+Player.recovery+"   /   Speed "+Player.speed+"\nSpend upgrade embers at the shrine beyond the gatehouse.",centered);

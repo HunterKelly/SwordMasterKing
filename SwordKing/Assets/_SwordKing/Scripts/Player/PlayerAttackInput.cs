@@ -9,10 +9,16 @@ namespace SwordKing
         float chargeStarted, queuedHold;
         PlayerAttackKind queuedAttack, activeAttack;
         Vector3 swordRestPosition;
-        bool jumpStrikePending;
+        bool jumpStrikePending, jumpDescending;
+        float attackReadyAt, specialPoseUntil;
+        readonly HitOnceWindow thrustWindow = new HitOnceWindow();
+        float thrustDamage, thrustReach, thrustAngle, thrustCharge;
+        readonly System.Collections.Generic.Queue<float> overheadHistory = new System.Collections.Generic.Queue<float>();
+        bool OverheadFlurry => overheadHistory.Count >= 3 && Time.time-lastAttack < .2f;
         float jumpStrikeStarted, jumpStrikeDamage, jumpStrikeCharge, jumpStrikeReach, jumpStrikeAngle;
         bool SpinActive => activeAttack == PlayerAttackKind.Spin && Time.time-animationStart < animationDuration && !IsRolling;
-        public float ChargeFraction => PlayerAttackModel.ChargeFraction(Time.time - chargeStarted);
+        public float ChargeFraction => PlayerAttackModel.ChargeFraction(Time.time-chargeStarted,
+            !chargeOverhead && !chargeSprint ? PlayerAttackKind.Spin : PlayerAttackModel.Kind(chargeOverhead,chargeSprint));
 
         bool UpdateShiftGesture(bool held, Vector2 movement)
         {
@@ -27,7 +33,7 @@ namespace SwordKing
         }
         void ReadAttackInput(PlayerInputFrame input)
         {
-            if(jumpStrikePending || SpinActive) { CancelAttackInput(); return; }
+            if(jumpStrikePending || Time.time < specialPoseUntil || SpinActive) { CancelAttackInput(); return; }
             if(!chargingAttack && (input.HeavyAttack || input.Attack))
             {
                 chargingAttack=true; chargeOverhead=input.HeavyAttack;
@@ -53,18 +59,29 @@ namespace SwordKing
         }
         void CancelCombatInput()
         {
-            CancelAttackInput(); jumpStrikePending=false; shiftGesture.Clear(); IsSprinting=false;
+            CancelAttackInput(); jumpStrikePending=false; jumpDescending=false; thrustWindow.Cancel();
+            specialPoseUntil=0; attackReadyAt=0; shiftGesture.Clear(); IsSprinting=false;
             ignoreShiftUntilRelease=playerInput!=null && playerInput.Read().ShiftHeld;
+        }
+        void UpdateAttackWindows()
+        {
+            if(thrustWindow.Active(Time.time)) ResolveAttack(thrustDamage,thrustReach,thrustAngle,thrustCharge,thrustWindow,false);
         }
         void UpdateJumpStrike()
         {
             if(!jumpStrikePending || Time.time-jumpStrikeStarted<.08f) return;
-            // Deliver the overhead on descent, rather than dealing damage on takeoff.
-            if(verticalSpeed>0 && !controller.isGrounded) return;
+            if(!jumpDescending && (verticalSpeed<=0 || controller.isGrounded))
+            {
+                jumpDescending=true; animationStart=Time.time;
+                animationDuration=Mathf.Sqrt(2f*controller.height*Mathf.Max(.1f,jumpHeightFraction)/Mathf.Max(1,gravityStrength));
+            }
+            // Hold the raised sword on ascent, swing on descent, impact on landing.
+            if(!controller.isGrounded) return;
             jumpStrikePending=false;
-            animationStart=Time.time; animationDuration=.28f;
             ResolveAttack(jumpStrikeDamage,jumpStrikeReach,jumpStrikeAngle,jumpStrikeCharge);
             EmitAttackTrail(PlayerAttackKind.JumpingOverhead,jumpStrikeReach,jumpStrikeAngle);
+            attackReadyAt=Time.time+Mathf.Max(0,jumpingHeavyRecovery);
+            specialPoseUntil=attackReadyAt; rollReadyAt=Mathf.Max(rollReadyAt,attackReadyAt);
         }
     }
 }
