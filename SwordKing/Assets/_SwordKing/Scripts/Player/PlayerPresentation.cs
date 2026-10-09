@@ -35,11 +35,24 @@ namespace SwordKing
             if (settings != null)
             {
                 power = settings.power; recovery = settings.recovery; speed = settings.speed;
+                maxStamina = settings.maxStamina; sprintStaminaDrain = settings.sprintStaminaDrain;
+                staminaRegeneration = settings.staminaRegeneration; staminaRegenerationDelay = settings.staminaRegenerationDelay;
+                sprintMultiplier = settings.sprintMultiplier;
+                fullChargeDamageMultiplier = settings.fullChargeDamageMultiplier;
+                thrustHopHeight = settings.thrustHopHeight;
+                thrustSlideDistance = settings.thrustSlideDistance; thrustSlideDuration = settings.thrustSlideDuration;
+                thrustDuration = settings.thrustDuration; thrustDamageWindow = settings.thrustDamageWindow;
+                specialAttackRecovery = settings.specialAttackRecovery; jumpingHeavyRecovery = settings.jumpingHeavyRecovery;
+                chargedAttackRecovery = settings.chargedAttackRecovery;
+                overheadReachMultiplier = settings.overheadReachMultiplier; thrustReachMultiplier = settings.thrustReachMultiplier;
+                jumpingOverheadReachMultiplier = settings.jumpingOverheadReachMultiplier;
+                strafeLeanAngle = settings.strafeLeanAngle; strafeLeanSpeed = settings.strafeLeanSpeed;
                 moveSpeed = settings.moveSpeed; reach = settings.reach; attackAngle = settings.attackAngle;
                 jumpHeightFraction = settings.jumpHeightFraction; rollDuration = settings.rollDuration;
                 rollDistance = settings.rollDistance; rollRecovery = settings.rollRecovery;
                 gravityStrength = settings.gravityStrength;
             }
+            stamina = new StaminaPool(maxStamina,staminaRegeneration,staminaRegenerationDelay);
             var floor = MakeMaterial(new Color(.09f, .13f, .18f));
             var stone = MakeMaterial(new Color(.22f, .28f, .34f));
             var metal = MakeMaterial(new Color(.75f, .87f, .93f));
@@ -59,7 +72,7 @@ namespace SwordKing
             player = rig.transform; player.SetParent(transform, false);
             player.position = new Vector3(0, .1f, -3);
             controller = rig.controller; visualRoot = rig.visualRoot; swordPivot = rig.swordPivot;
-            leftLeg = rig.leftLeg; rightLeg = rig.rightLeg;
+            leftLeg = rig.leftLeg; rightLeg = rig.rightLeg; swordRestPosition = swordPivot.localPosition;
             lowerHurtbox = CreateHurtbox("Lower body damage hitbox", true, .475f);
             upperHurtbox = CreateHurtbox("Upper body damage hitbox", false, 1.425f);
             if (!adventureMode)
@@ -91,15 +104,45 @@ namespace SwordKing
         void UpdatePresentation()
         {
             while (attackHistory.Count > 0 && Time.time - attackHistory.Peek() > .5f) attackHistory.Dequeue();
-            flurry = attackHistory.Count >= 3 && Time.time - lastAttack < .2f;
+            flurry = HorizontalFlurry;
             float t = (Time.time - animationStart) / animationDuration;
             float angle = flurry ? Mathf.Sin((Time.time - animationStart) * 65) * 65 : Mathf.Lerp(-75, 75, Mathf.Clamp01(t));
             if (IsRolling) swordPivot.localRotation = Quaternion.Euler(-65, -30, 0);
-            else if (t < 1 || flurry) swordPivot.localRotation = Quaternion.Euler(-10, angle * (swingIndex % 2 == 0 ? 1 : -1), 0);
+            else if (jumpStrikePending && !jumpDescending) swordPivot.localRotation = Quaternion.Euler(-135,0,0);
+            else if (chargingAttack)
+            {
+                swordPivot.localRotation = chargeOverhead ? Quaternion.Euler(-135, 0, 0) : Quaternion.Euler(-15, -65, 0);
+                if (chargeSprint && !chargeOverhead) swordPivot.localPosition = swordRestPosition + Vector3.back * .25f;
+            }
+            else if (t < 1)
+            {
+                float progress = Mathf.Clamp01(t);
+                if (activeAttack == PlayerAttackKind.Overhead || activeAttack == PlayerAttackKind.ChargedOverhead || activeAttack == PlayerAttackKind.JumpingOverhead)
+                    swordPivot.localRotation = Quaternion.Euler(activeAttack == PlayerAttackKind.Overhead && OverheadFlurry
+                        ? -30 + Mathf.Sin((Time.time-animationStart)*65)*100 : Mathf.Lerp(-135,70,progress),0,0);
+                else if (activeAttack == PlayerAttackKind.Thrust)
+                {
+                    swordPivot.localRotation = Quaternion.identity;
+                    float extension = progress < .15f ? progress/.15f : progress < .85f ? 1 : (1-progress)/.15f;
+                    swordPivot.localPosition = swordRestPosition + Vector3.forward * (Mathf.Clamp01(extension) * .9f);
+                }
+                else if (activeAttack == PlayerAttackKind.Spin) swordPivot.localRotation = Quaternion.Euler(-10, 70, 0);
+                else swordPivot.localRotation = Quaternion.Euler(-10, angle * (swingIndex % 2 == 0 ? 1 : -1), 0);
+            }
             else swordPivot.localRotation = Quaternion.Slerp(swordPivot.localRotation, Quaternion.Euler(-25, 10, 0), Time.deltaTime * 12);
+            if (!chargingAttack && (activeAttack != PlayerAttackKind.Thrust || t >= 1)) swordPivot.localPosition = swordRestPosition;
             for (int i = slashes.Count - 1; i >= 0; i--)
             {
-                float life = (Time.time - slashes[i].born) / .18f;
+                float life = (Time.time - slashes[i].born) / slashes[i].duration;
+                if(slashes[i].shockwave)
+                {
+                    float radius=Mathf.Lerp(.15f,slashes[i].radius,Mathf.Clamp01(life));
+                    for(int j=0;j<slashes[i].line.positionCount;j++)
+                    {
+                        float a=j/(float)(slashes[i].line.positionCount-1)*Mathf.PI*2;
+                        slashes[i].line.SetPosition(j,slashes[i].center+new Vector3(Mathf.Sin(a)*radius,.06f,Mathf.Cos(a)*radius));
+                    }
+                }
                 if (life >= 1) { Destroy(slashes[i].line.gameObject); slashes.RemoveAt(i); }
                 else slashes[i].line.widthMultiplier = .075f * (1 - life);
             }

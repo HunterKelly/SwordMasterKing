@@ -18,6 +18,7 @@ namespace SwordKing
                 activeRollDistance = Mathf.Max(.1f, rollDistance);
                 rollStartedAt = Time.time; rollEndsAt = Time.time + activeRollDuration;
                 rollReadyAt = rollEndsAt + Mathf.Max(0, rollRecovery); rollTravelTime = 0;
+                CancelAttackInput(); jumpStrikePending = false; thrustWindow.Cancel(); thrustSlideRemaining=0; IsSprinting = false;
                 attackHistory.Clear(); animationStart = -100f;
                 foreach (var slash in slashes) Destroy(slash.line.gameObject);
                 slashes.Clear();
@@ -39,7 +40,13 @@ namespace SwordKing
                 horizontal = rollDirection * (activeRollDistance / activeRollDuration) * step;
                 rollTravelTime += step;
             }
-            else horizontal = direction * moveSpeed * dt;
+            else horizontal = direction * moveSpeed * (IsSprinting ? Mathf.Max(1, sprintMultiplier) : 1) * dt;
+            if(!IsRolling && thrustSlideRemaining>0)
+            {
+                float slideStep=Mathf.Min(dt,thrustSlideRemaining);
+                horizontal+=thrustSlideDirection*(Mathf.Max(0,thrustSlideDistance)/Mathf.Max(.05f,thrustSlideDuration))*slideStep;
+                thrustSlideRemaining-=slideStep;
+            }
             float rise = verticalSpeed * dt - .5f * gravity * dt * dt;
             verticalSpeed -= gravity * dt;
             CollisionFlags flags = controller.Move(horizontal + Vector3.up * rise);
@@ -49,6 +56,7 @@ namespace SwordKing
 
             if (IsRolling)
             {
+                strafeLean = 0;
                 float progress = Mathf.Clamp01((Time.time - rollStartedAt) / activeRollDuration);
                 float tuck = Mathf.Sin(progress * Mathf.PI);
                 visualRoot.localPosition = Vector3.up * (.95f - .22f * tuck);
@@ -59,7 +67,11 @@ namespace SwordKing
             else
             {
                 visualRoot.localPosition = Vector3.up * .95f;
-                visualRoot.localRotation = Quaternion.identity; visualRoot.localScale = Vector3.one;
+                // Turn the visual body toward the strafe direction while keeping it upright.
+                float targetLean = Mathf.Clamp(input.x, -1, 1) * Mathf.Clamp(strafeLeanAngle, 0, 60);
+                strafeLean = Mathf.MoveTowards(strafeLean, targetLean, Mathf.Max(1, strafeLeanSpeed) * dt);
+                float spinTurn = SpinActive ? 360f * Mathf.Clamp01((Time.time-animationStart)/animationDuration) : 0;
+                visualRoot.localRotation = Quaternion.Euler(0, strafeLean + spinTurn, 0); visualRoot.localScale = Vector3.one;
                 walkPhase += direction.magnitude * moveSpeed * dt * 2;
                 float legAngle = airborne ? -30 : (direction.sqrMagnitude > .01f ? Mathf.Sin(walkPhase) * 25 : 0);
                 leftLeg.localRotation = Quaternion.Euler(legAngle, 0, 0);
@@ -102,10 +114,13 @@ namespace SwordKing
         public void RestoreAt(Vector3 position)
         {
             controller.enabled = false; player.position = position; controller.enabled = true;
+            if(stamina!=null) stamina.Reset();
             PlayerHealth = 100; verticalSpeed = 0; damageGraceUntil = Time.time + 1f;
             yaw = 0; pitch = 22; player.rotation = Quaternion.identity;
             rollEndsAt = -100; rollReadyAt = 0; activeRollDuration = 0; rollTravelTime = 0;
             lastAttack = -100; animationStart = -100; attackHistory.Clear();
+            CancelCombatInput(); jumpStrikePending = false;
+            strafeLean = 0;
             airborne = false; visualRoot.localRotation = Quaternion.identity;
             visualRoot.localPosition = Vector3.up * .95f; visualRoot.localScale = Vector3.one;
             foreach (var slash in slashes) Destroy(slash.line.gameObject);

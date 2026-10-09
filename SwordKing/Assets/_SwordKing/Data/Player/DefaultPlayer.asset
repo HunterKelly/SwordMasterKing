@@ -15,11 +15,30 @@ MonoBehaviour:
   power: 4
   recovery: 4
   speed: 4
-  moveSpeed: 5
+  moveSpeed: 6
+  strafeLeanAngle: 45
+  strafeLeanSpeed: 360
   reach: 2.8
   attackAngle: 110
+  maxStamina: 100
+  sprintStaminaDrain: 6
+  staminaRegeneration: 60
+  staminaRegenerationDelay: 0.2
+  sprintMultiplier: 1.6
+  fullChargeDamageMultiplier: 2
+  thrustHopHeight: 0.12
+  thrustSlideDistance: 1.2
+  thrustSlideDuration: 0.2
+  thrustDuration: 0.55
+  thrustDamageWindow: 0.45
+  specialAttackRecovery: 0.15
+  jumpingHeavyRecovery: 0.2
+  chargedAttackRecovery: 0.12
+  overheadReachMultiplier: 1.6
+  thrustReachMultiplier: 2.1
+  jumpingOverheadReachMultiplier: 1.6
   jumpHeightFraction: 0.5
-  rollDuration: 0.55
+  rollDuration: 0.45
   rollDistance: 3.6
-  rollRecovery: 0.18
+  rollRecovery: 0.1
   gravityStrength: 20

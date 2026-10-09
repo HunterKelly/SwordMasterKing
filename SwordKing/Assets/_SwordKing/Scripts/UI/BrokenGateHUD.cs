@@ -4,7 +4,7 @@ namespace SwordKing
 {
     public partial class BrokenGateLevel
     {
-        GUIStyle heading, subtitle, body, small, button, centered;
+        GUIStyle heading, subtitle, body, small, button, centered, damageNumbers;
         readonly Color ink=new Color(.025f,.045f,.055f,.94f), gold=new Color(.94f,.72f,.38f), teal=new Color(.22f,.8f,.72f);
         void Styles()
         {
@@ -18,6 +18,10 @@ namespace SwordKing
             small=new GUIStyle(body) { fontSize=14 };
             centered=new GUIStyle(body) { alignment=TextAnchor.MiddleCenter };
             button=new GUIStyle(GUI.skin.button) { fontSize=18, padding=new RectOffset(14,14,10,10) };
+            damageNumbers=new GUIStyle(GUI.skin.label) {
+                font=Resources.Load<Font>("DamageNumbers"), fontSize=32,
+                fontStyle=FontStyle.Normal, alignment=TextAnchor.MiddleCenter, wordWrap=false
+            };
         }
         void Panel(Rect rect,Color color)
         {
@@ -38,17 +42,21 @@ namespace SwordKing
             GUI.matrix=Matrix4x4.TRS(new Vector3(offset.x,offset.y,0),Quaternion.identity,Vector3.one*scale);
             if(screen==ScreenState.Playing)
             {
-                Panel(new Rect(22,20,292,108),ink);
+                Panel(new Rect(22,20,292,155),ink);
                 GUI.Label(new Rect(38,29,255,24),LevelTitle,small);
                 Bar(new Rect(38,60,255,13),Player.PlayerHealth/100,new Color(.78f,.24f,.23f));
                 GUI.Label(new Rect(38,78,170,20),"HEALTH  "+Mathf.CeilToInt(Player.PlayerHealth),small);
                 Bar(new Rect(38,103,255,7),Player.SwingCharge,gold);
+                Bar(new Rect(38,122,255,11),Player.StaminaFraction,new Color(.25f,.8f,.45f));
+                GUI.Label(new Rect(38,140,255,22),"STAMINA  "+Mathf.FloorToInt(Player.PlayerStamina)+" / "+Mathf.RoundToInt(Player.maxStamina),small);
                 GUI.Label(new Rect(340,24,600,54),Objective(),subtitle);
                 Panel(new Rect(22,605,310,92),ink);
                 GUI.Label(new Rect(38,617,280,26),"Q  Ember flask  "+flasks+" / 2",body);
                 GUI.Label(new Rect(38,650,270,24),save.shards+" upgrade embers",small);
-                GUI.Label(new Rect(908,630,350,65),"WASD move  •  Mouse aim  •  Click attack\nSpace jump  •  Shift roll  •  Esc pause",small);
+                GUI.Label(new Rect(908,605,350,100),"WASD move • Mouse aim • Space jump\nLMB slash • RMB overhead • Hold to charge\nHold Shift sprint • C roll • Esc pause",small);
                 GUI.Label(new Rect(634,348,24,24),"+",centered);
+                if(Player.IsChargingAttack) GUI.Label(new Rect(450,480,380,28),"CHARGING " + Mathf.RoundToInt(Player.ChargeFraction * 100) + "% • Release to strike",subtitle);
+                else if(Player.IsSprinting) GUI.Label(new Rect(500,480,280,28),"SPRINTING",small);
                 if(Player.IsRolling) GUI.Label(new Rect(500,520,280,25),"INVINCIBLE",subtitle);
                 else if(Player.LowerBodyProtected) GUI.Label(new Rect(500,520,280,25),"AIRBORNE",small);
                 if(interaction.Length>0) { Panel(new Rect(350,568,580,42),ink); GUI.Label(new Rect(360,574,560,30),interaction,centered); }
@@ -73,8 +81,19 @@ namespace SwordKing
                 }
                 foreach(var hit in hits)
                 {
-                    Vector3 point=Player.PlayerCamera.WorldToScreenPoint(hit.p+Vector3.up*(.6f-(hit.until-Time.time)));
-                    if(point.z>0) GUI.Label(new Rect((point.x-offset.x)/scale-30,(Screen.height-point.y-offset.y)/scale-20,70,32),hit.text,subtitle);
+                    float age=Time.time-hit.born;
+                    Vector3 point=Player.PlayerCamera.WorldToScreenPoint(hit.p+Vector3.up*age*.85f);
+                    if(point.z<=0) continue;
+                    float pop=1+Mathf.Sin(Mathf.Clamp01(age/.16f)*Mathf.PI)*.18f;
+                    damageNumbers.fontSize=Mathf.RoundToInt(32*pop);
+                    var rect=new Rect((point.x-offset.x)/scale-70+hit.offset.x,
+                        (Screen.height-point.y-offset.y)/scale-28+hit.offset.y,140,56);
+                    float alpha=Mathf.Clamp01((hit.until-Time.time)/.2f);
+                    damageNumbers.normal.textColor=new Color(.03f,.025f,.02f,alpha);
+                    for(int x=-1;x<=1;x++) for(int y=-1;y<=1;y++)
+                        if(x!=0 || y!=0) GUI.Label(new Rect(rect.x+x*2,rect.y+y*2,rect.width,rect.height),hit.text,damageNumbers);
+                    damageNumbers.normal.textColor=hit.aoe?new Color(.4f,.95f,1,alpha):new Color(1,.84f,.36f,alpha);
+                    GUI.Label(rect,hit.text,damageNumbers);
                 }
                 if(Time.time<hurtFlashUntil)
                 {
@@ -87,11 +106,16 @@ namespace SwordKing
             {
                 Panel(new Rect(0,0,1280,720),new Color(.015f,.025f,.03f,.79f));
                 Panel(new Rect(260,75,760,570),ink); Panel(new Rect(260,75,760,3),gold);
-                if(screen==ScreenState.Title) TitleScreen();
+                if(screen==ScreenState.Transition)
+                {
+                    GUI.Label(new Rect(300,180,680,60),"THE WATCH HAS FALLEN",heading);
+                    GUI.Label(new Rect(340,290,600,60),"Entering Chapter II • Ice World",subtitle);
+                }
+                else if(screen==ScreenState.Title) TitleScreen();
                 else if(screen==ScreenState.Paused)
                 {
                     GUI.Label(new Rect(300,135,680,60),"JOURNEY PAUSED",heading);
-                    GUI.Label(new Rect(340,214,600,60),"Click quickly for light cuts. Wait for a heavy strike.\nJump amber sweeps. Roll through red strikes.",centered);
+                    GUI.Label(new Rect(340,214,600,60),"LMB slash / sprint thrust. RMB overhead / sprint jump.\nHold to charge: spin / overhead 0.6s; sprint attacks 2s; release to strike.",centered);
                     if(Button(460,320,360,"Return to the road")) SetScreen(ScreenState.Playing);
                     if(Button(460,378,360,"Save and return to title")) { Save(); SetScreen(ScreenState.Title); }
                     GUI.Label(new Rect(340,450,600,70),"Power "+Player.power+"   /   Recovery "+Player.recovery+"   /   Speed "+Player.speed+"\nSpend upgrade embers at the shrine beyond the gatehouse.",centered);
@@ -111,8 +135,7 @@ namespace SwordKing
                     GUI.Label(new Rect(340,315,600,110),"Time  "+Mathf.FloorToInt(save.seconds/60)+"m "+Mathf.FloorToInt(save.seconds%60)+"s\nDeaths  "+save.deaths+"\nLost knight's coffer  "+(save.cache?"Found":"Unclaimed"),centered);
                     if(!IceWorld && Button(460,423,360,"Continue to Level 2 - Ice World"))
                     {
-                        SetScreen(ScreenState.Playing);
-                        UnityEngine.SceneManagement.SceneManager.LoadScene("IceWorld");
+                        BeginNextChapter();
                     }
                     if(Button(460,473,360,"Return to title")) SetScreen(ScreenState.Title);
                 }
@@ -143,7 +166,7 @@ namespace SwordKing
                 if(confirmNew) GUI.Label(new Rect(340,528,600,35),"Starting again replaces this level's saved journey.",centered);
             }
             else if(Button(440,474,400,"Begin the journey")) StartRun(false);
-            GUI.Label(new Rect(340,581,600,28),"WASD • Mouse • Click • Space jump • Shift roll • Q heal",small);
+            GUI.Label(new Rect(340,581,600,28),"LMB / RMB • Hold click charge • Hold Shift sprint / C roll • Q heal",small);
         }
         void ShrineScreen()
         {

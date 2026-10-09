@@ -7,7 +7,7 @@ namespace SwordKing
     [DefaultExecutionOrder(100)]
     public partial class BrokenGateLevel : MonoBehaviour
     {
-        enum ScreenState { Title, Playing, Paused, Shrine, Dead, Victory }
+        enum ScreenState { Title, Playing, Paused, Shrine, Dead, Victory, Transition }
         [Serializable]
         public class SaveData
         {
@@ -26,7 +26,7 @@ namespace SwordKing
         readonly List<GateEnemy> enemies=new List<GateEnemy>();
         readonly Dictionary<string,AudioClip> sounds=new Dictionary<string,AudioClip>();
         readonly List<FloatingHit> hits=new List<FloatingHit>();
-        class FloatingHit { public Vector3 p; public string text; public float until; }
+        class FloatingHit { public Vector3 p; public string text; public float born, until; public bool aoe; public Vector2 offset; }
         SaveData save=new SaveData();
         ScreenState screen=ScreenState.Title;
         AudioSource audioSource, wind;
@@ -84,6 +84,14 @@ namespace SwordKing
             }
             CreateAudio(); hasSave=PlayerPrefs.HasKey(SaveKey);
             Player.RestoreAt(Arrival); SetScreen(ScreenState.Title); ready=true;
+            if (IceWorld && chapterTransfer != null)
+            {
+                var transfer = chapterTransfer; chapterTransfer = null;
+                StartRun(false);
+                Player.power=transfer.power; Player.recovery=transfer.recovery; Player.speed=transfer.speed;
+                save.shards=transfer.shards; Save();
+                Notify("CHAPTER II • Your sword upgrades and embers carry forward.");
+            }
         }
         Vector3 Arrival => Player.LevelDefinition != null ? Player.LevelDefinition.arrival : new Vector3(0, .15f, -5);
 
@@ -109,6 +117,7 @@ namespace SwordKing
             ResetEncounters();
             Player.RestoreAt(save.checkpoint?World.Camp+Vector3.back*2:Arrival);
             flasks=2; confirmNew=false; Save(); SetScreen(save.completed?ScreenState.Victory:ScreenState.Playing);
+            if (!IceWorld && Cleared(0) && Cleared(1) && Cleared(2)) { BeginNextChapter(); return; }
             Notify(load?"Journey resumed at your last refuge.":IceWorld?"Explore the frost courtyard. Defeat the Frost Warden and his watch.":"Find the road through the fortress.");
         }
         void ResetEncounters()
@@ -176,9 +185,11 @@ namespace SwordKing
                     PlaySound("reward"); SetScreen(ScreenState.Shrine);
                 }
             }
-            if(IceWorld ? Cleared(0) && !boss.Alive : !boss.Alive && p.z>132)
+            if(Cleared(0) && Cleared(1) && Cleared(2))
             {
-                save.completed=true; Save(); PlaySound("victory"); SetScreen(ScreenState.Victory);
+                save.completed=true; Save(); PlaySound("victory");
+                if (IceWorld) SetScreen(ScreenState.Victory);
+                else BeginNextChapter();
             }
             hits.RemoveAll(h=>h.until<Time.time);
         }
@@ -208,29 +219,37 @@ namespace SwordKing
             // Space group attacks apart so tells remain readable.
             nextEnemyAttack=Time.time+(enemy.IsBoss?.5f:Mathf.Max(.5f,EnemyCombat.groupAttackSpacing)); return true;
         }
-        public void ResolvePlayerAttack(float damage,float reach,float angle,float charge)
+        public void ResolvePlayerAttack(float damage,float reach,float angle,float charge,HitOnceWindow window=null,PlayerAttackKind kind=PlayerAttackKind.Slash,Vector3? origin=null)
         {
-            Vector3 p=Player.PlayerTransform.position;
+            Vector3 p=origin ?? Player.PlayerTransform.position;
             foreach(var enemy in enemies)
             {
-                if(!enemy.Alive || !CanEngage(enemy)) continue;
+                if(!enemy.Alive || !CanEngage(enemy) || (window!=null && window.HasHit(enemy.Id))) continue;
                 Vector3 delta=enemy.Root.position-p; float vertical=Mathf.Abs(delta.y); delta.y=0;
                 if(delta.magnitude>reach+(enemy.IsBoss?.45f:0) || vertical>2 || Vector3.Angle(Player.PlayerTransform.forward,delta)>angle*.5f) continue;
-                if(!HasClearStrike(p+Vector3.up*1.2f,enemy.Root.position+Vector3.up*1.2f,enemy)) continue;
+                if(!HasClearStrike(p+Vector3.up*1.2f,enemy.Root.position+Vector3.up*1.2f,enemy,window!=null || angle>=359f)) continue;
+                if(window!=null && !window.TryHit(enemy.Id,Time.time)) continue;
                 float dealt=enemy.ReceiveHit(damage,charge);
-                hits.Add(new FloatingHit { p=enemy.Root.position+Vector3.up*(enemy.IsBoss?3.7f:2.3f), text=Mathf.RoundToInt(dealt).ToString(), until=Time.time+.6f });
+                if(dealt>0) enemy.ReactToSpecial(kind,Player.PlayerTransform.forward);
+                // Each damage event gets its own popup; splash is offset from the earlier sword hit.
+                hits.Add(new FloatingHit {
+                    p=enemy.Root.position+Vector3.up*(enemy.IsBoss?3.7f:2.3f),
+                    text=Mathf.RoundToInt(dealt).ToString(), born=Time.time, until=Time.time+.85f,
+                    aoe=origin.HasValue,
+                    offset=new Vector2((origin.HasValue?24:-18)+(enemy.Id%3-1)*14,-(enemy.Id%3)*8)
+                });
                 PlaySound(charge>=.8f?"heavy":"hit");
                 if (dealt > 0 && Player.Feedback != null)
                     Player.Feedback.Impact(enemy.Root.position + Vector3.up * (enemy.IsBoss ? 1.8f : 1.2f), delta, charge >= .8f, !enemy.Alive);
             }
         }
-        bool HasClearStrike(Vector3 from,Vector3 to,GateEnemy target)
+        bool HasClearStrike(Vector3 from,Vector3 to,GateEnemy target,bool piercing=false)
         {
             Vector3 delta=to-from;
             foreach(var hit in Physics.RaycastAll(from,delta.normalized,delta.magnitude,~0,QueryTriggerInteraction.Ignore))
             {
                 Transform t=hit.collider.transform;
-                if(t.IsChildOf(Player.PlayerTransform) || t.IsChildOf(target.Root)) continue;
+                if(t.IsChildOf(Player.PlayerTransform) || t.IsChildOf(target.Root) || (piercing && hit.collider is CharacterController)) continue;
                 return false;
             }
             return true;

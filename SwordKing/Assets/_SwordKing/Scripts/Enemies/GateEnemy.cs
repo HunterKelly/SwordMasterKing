@@ -27,6 +27,9 @@ namespace SwordKing
         Quaternion strikeFrom;
         float strikeStartedAt, recoilUntil;
         Vector3 recoilDirection;
+        Vector3 pushDirection;
+        float pushRemaining, popVelocity;
+        bool popped;
         State state;
         float until, windupStart, windupDuration, flashUntil, staggerReady, deadAt;
         int comboIndex;
@@ -76,11 +79,24 @@ namespace SwordKing
             state=defeated?State.Dead:State.Idle; until=Time.time+.5f; staggerReady=0; comboIndex=0;
             graphics.localRotation=Quaternion.identity; graphics.localPosition=Vector3.zero; warning.enabled=false;
             weapon.localRotation=Quaternion.identity; recoilUntil=0; facing=Vector3.back;
+            pushRemaining=0; popVelocity=0; popped=false;
             if(defeated) Root.gameObject.SetActive(false);
         }
         public void Tick(float dt)
         {
             if(!Root.gameObject.activeSelf) return;
+            if(pushRemaining>0)
+            {
+                float step=Mathf.Min(dt,pushRemaining);
+                // A ground slide must not step up onto the hopping player or another enemy.
+                float previousStep=controller.stepOffset;
+                controller.stepOffset=0;
+                MoveAlong(pushDirection,Mathf.Max(0,tuning.thrustPushDistance)/Mathf.Max(.05f,tuning.thrustPushDuration),step,false);
+                controller.stepOffset=previousStep;
+                pushRemaining=Mathf.Max(0,pushRemaining-step);
+                if(!Alive && pushRemaining<=0) controller.enabled=false;
+                if(Alive && !popped) return;
+            }
             if(!Alive)
             {
                 graphics.localRotation=Quaternion.Slerp(graphics.localRotation,Quaternion.Euler(10,0,85),dt*8);
@@ -91,6 +107,19 @@ namespace SwordKing
             float recoil = Mathf.Clamp01((recoilUntil-Time.time)/.18f);
             graphics.localRotation = Quaternion.Euler(-12f*recoil, 0, (Id%2==0?1:-1)*8f*recoil);
             graphics.localPosition = recoilDirection * (.14f*recoil);
+
+            // Physical reactions pause attacks and pursuit; walls and encounter edges still block pushes.
+            if(popped)
+            {
+                const float gravity=20f;
+                float vertical=popVelocity*dt-.5f*gravity*dt*dt;
+                popVelocity-=gravity*dt;
+                var collisions=controller.Move(Vector3.up*vertical);
+                if((collisions & CollisionFlags.Above)!=0 && popVelocity>0) popVelocity=0;
+                if(popVelocity<=0 && (collisions & CollisionFlags.Below)!=0)
+                { popped=false; popVelocity=0; until=Time.time+.1f; }
+                return;
+            }
 
             Vector3 delta=level.Player.PlayerTransform.position-Root.position; delta.y=0;
             float distance=delta.magnitude;
@@ -148,10 +177,10 @@ namespace SwordKing
                 if(Time.time>=until) { state=State.Chase; until=Time.time+.1f; }
             }
         }
-        void MoveAlong(Vector3 desired, float speed, float dt)
+        void MoveAlong(Vector3 desired, float speed, float dt, bool steer=true)
         {
             if (desired.sqrMagnitude < .001f) return;
-            Vector3 movement = Steer(desired.normalized) * speed * dt;
+            Vector3 movement = (steer?Steer(desired.normalized):desired.normalized) * speed * dt;
             Vector3 destination = Root.position + movement;
             // Stay on this encounter's route; bridge gaps remain traversal challenges for the player.
             bool ice = level.Player.LevelDefinition != null && level.Player.LevelDefinition.iceWorld;
@@ -167,7 +196,7 @@ namespace SwordKing
                 if (!(hit.collider is CharacterController) && !hit.collider.transform.IsChildOf(Root) && !hit.collider.transform.IsChildOf(level.Player.PlayerTransform)
                     && hit.normal.y > .6f) { supported=true; break; }
             if (!supported) return;
-            controller.Move(destination-Root.position+Vector3.down*dt*3);
+            controller.Move(destination-Root.position+(popped?Vector3.zero:Vector3.down*dt*3));
             graphics.localPosition += Vector3.up*(Mathf.Sin(Time.time*12+Id)*.035f);
         }
         Vector3 Steer(Vector3 desired)
@@ -224,6 +253,31 @@ namespace SwordKing
                 state=State.Recover; until=Time.time+.5f; staggerReady=Time.time+2.5f; warning.enabled=false;
             }
             return dealt;
+        }
+        public void ReactToSpecial(PlayerAttackKind kind, Vector3 direction)
+        {
+            if(IsBoss) return;
+            if(kind==PlayerAttackKind.Thrust && tuning.thrustPushDistance>0)
+            {
+                direction.y=0;
+                if(direction.sqrMagnitude<.001f) return;
+                pushDirection=direction.normalized;
+                pushRemaining=Mathf.Max(.05f,tuning.thrustPushDuration);
+                popped=false; popVelocity=0;
+                // ReceiveHit disables movement on death; let the killing thrust push the body first.
+                controller.enabled=true;
+                controller.Move(Vector3.down*2f);
+            }
+            else if(Alive && kind==PlayerAttackKind.JumpingOverhead && tuning.landingPopHeight>0)
+            {
+                pushRemaining=0;
+                popVelocity=Mathf.Sqrt(2f*20f*tuning.landingPopHeight);
+                popped=true;
+            }
+            else return;
+            if(!Alive) return;
+            state=State.Recover; warning.enabled=false;
+            until=Time.time+Mathf.Max(pushRemaining,.1f);
         }
     }
 }
