@@ -15,9 +15,10 @@ namespace SwordKing
         void BeginNextChapter()
         {
             if(screen==ScreenState.Transition) return;
-            if(!Application.CanStreamedLevelBeLoaded("IceWorld"))
+            string nextScene=IceWorld?"CinderCastle":"IceWorld";
+            if(!Application.CanStreamedLevelBeLoaded(nextScene))
             {
-                saveWarning="Add IceWorld to your active Build Profile scene list to continue.";
+                saveWarning="Add "+nextScene+" to your active Build Profile scene list to continue.";
                 SetScreen(ScreenState.Victory); return;
             }
             Save();
@@ -31,7 +32,7 @@ namespace SwordKing
             // remain blocked during the scene change.
             yield return new WaitForSecondsRealtime(1f);
             Time.timeScale=1;
-            var loading=SceneManager.LoadSceneAsync("IceWorld",LoadSceneMode.Single);
+            var loading=SceneManager.LoadSceneAsync(IceWorld?"CinderCastle":"IceWorld",LoadSceneMode.Single);
             if(loading!=null) yield return loading;
         }
     }

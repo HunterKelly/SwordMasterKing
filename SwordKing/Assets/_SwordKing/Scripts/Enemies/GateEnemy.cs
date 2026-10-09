@@ -33,20 +33,22 @@ namespace SwordKing
         State state;
         float until, windupStart, windupDuration, flashUntil, staggerReady, deadAt;
         int comboIndex;
-        bool lowAttack;
+        bool lowAttack, fireAttack;
+        Vector3 fireTarget;
+        public bool FireAttack => fireAttack;
         Vector3 facing = Vector3.back;
 
         public GateEnemy(BrokenGateLevel owner, int id, int zone, string title, Vector3 position, int attackStyle, bool boss = false)
         {
             tuning=owner.EnemyCombat;
             level=owner; Id=id; Zone=zone; Name=title; spawn=position; IsBoss=boss; style=attackStyle;
-            MaxHealth=boss?1000:attackStyle==1?160:120; Health=MaxHealth;
+            MaxHealth=boss?(owner.CastleWorld?owner.Player.LevelDefinition.castleBossHealth:1000):attackStyle==1?160:120; Health=MaxHealth;
             var w=level.World;
             Root=new GameObject(title).transform; Root.SetParent(w.Root); Root.position=position;
             controller=Root.gameObject.AddComponent<CharacterController>();
-            controller.height=boss?2.8f:1.9f; controller.radius=boss?.65f:.35f; controller.center=Vector3.up*controller.height*.5f;
+            controller.height=boss?(owner.CastleWorld?7.5f:2.8f):1.9f; controller.radius=boss?(owner.CastleWorld?1.4f:.65f):.35f; controller.center=Vector3.up*controller.height*.5f;
             graphics=new GameObject("Armored body").transform; graphics.SetParent(Root,false);
-            float scale=boss?1.45f:1;
+            float scale=boss?(owner.CastleWorld?owner.Player.LevelDefinition.castleBossScale:1.45f):1;
             baseColor=boss?new Color(.24f,.20f,.25f):new Color(.38f,.27f,.23f);
             bodyMaterial=w.Material(baseColor);
             w.Shape("Cuirass",PrimitiveType.Capsule,new Vector3(0,1.1f,0),new Vector3(.75f,.55f,.5f),bodyMaterial,false,graphics);
@@ -133,7 +135,8 @@ namespace SwordKing
                 if(!level.CanEngage(this)) { state=State.Idle; return; }
                 if(delta.sqrMagnitude>.01f) facing=delta.normalized;
                 Root.rotation=Quaternion.Slerp(Root.rotation,Quaternion.LookRotation(facing),dt*8);
-                float attackDistance = IsBoss ? 3.1f : 2.15f;
+                float attackDistance = IsBoss ? (level.CastleWorld?5.5f:3.1f) : 2.15f;
+                if(IsBoss && level.CastleWorld && distance<25 && Time.time>=until && level.TryClaimAttack(this)) { BeginWindup(); return; }
                 if (distance > attackDistance)
                     MoveAlong(facing + level.Separation(this) * .7f, tuning.ChaseSpeed(IsBoss), dt);
                 else if (Time.time >= until && level.TryClaimAttack(this)) BeginWindup();
@@ -156,7 +159,8 @@ namespace SwordKing
                 {
                     warning.enabled=false; state=State.Strike; strikeStartedAt=Time.time;
                     strikeFrom=weapon.localRotation; until=Time.time+Mathf.Max(.08f,tuning.strikeDuration);
-                    level.ResolveEnemyAttack(this,lowAttack,IsBoss?3.7f:2.8f,IsBoss?26:16);
+                    if(fireAttack) level.GetComponent<CastleHazards>().Launch(Root.position+Vector3.up*5,fireTarget);
+                    else level.ResolveEnemyAttack(this,lowAttack,IsBoss?(level.CastleWorld?6.5f:3.7f):2.8f,IsBoss?26:16);
                 }
             }
             else if(state==State.Strike)
@@ -184,9 +188,10 @@ namespace SwordKing
             Vector3 destination = Root.position + movement;
             // Stay on this encounter's route; bridge gaps remain traversal challenges for the player.
             bool ice = level.Player.LevelDefinition != null && level.Player.LevelDefinition.iceWorld;
-            float minZ = ice ? -23 : Zone==0?10:Zone==1?64.5f:101;
-            float maxZ = ice ? 23 : Zone==0?44:Zone==1?98:125;
-            float halfWidth = ice ? 19 : Zone==2?10:(destination.z<16 || destination.z>86?4:8);
+            bool castle=level.CastleWorld;
+            float minZ = castle ? (IsBoss?81:Zone==0?3:35) : ice ? -23 : Zone==0?10:Zone==1?64.5f:101;
+            float maxZ = castle ? (IsBoss?111:Zone==0?33:66) : ice ? 23 : Zone==0?44:Zone==1?98:125;
+            float halfWidth = castle ? (IsBoss?17:22) : ice ? 19 : Zone==2?10:(destination.z<16 || destination.z>86?4:8);
             destination.x = Mathf.Clamp(destination.x,-halfWidth,halfWidth);
             destination.z = Mathf.Clamp(destination.z,minZ,maxZ);
             destination = Root.position + Vector3.ClampMagnitude(destination-Root.position, speed*dt);
@@ -217,8 +222,12 @@ namespace SwordKing
         void BeginWindup()
         {
             comboIndex++;
+            fireAttack=IsBoss && level.CastleWorld && (comboIndex%2==1 || Vector3.Distance(Root.position,level.Player.PlayerTransform.position)>7);
+            fireTarget=level.Player.PlayerTransform.position;
+            if(fireAttack) fireTarget.y=30;
+            if(fireAttack) level.GetComponent<CastleHazards>().Telegraph(fireTarget);
             lowAttack=IsBoss?comboIndex%3!=0:style==1 || (style==2 && comboIndex%2==0);
-            windupDuration=tuning.Windup(IsBoss,Health<MaxHealth*.5f);
+            windupDuration=fireAttack?1.2f:tuning.Windup(IsBoss,Health<MaxHealth*.5f);
             windupStart=Time.time; until=Time.time+windupDuration; state=State.Windup;
             Root.rotation=Quaternion.LookRotation(facing); // Attack direction locks at the tell.
             level.PlaySound(lowAttack?"tellLow":"tellHigh");
@@ -226,7 +235,8 @@ namespace SwordKing
         void DrawWarning(float progress)
         {
             warning.enabled=true;
-            float radius=IsBoss?3.7f:2.8f;
+            if(fireAttack) { warning.enabled=false; return; }
+            float radius=IsBoss?(level.CastleWorld?6.5f:3.7f):2.8f;
             warning.sharedMaterial.color=lowAttack?new Color(1,.7f,.15f):new Color(1,.2f,.18f);
             warning.widthMultiplier=.04f+progress*.08f;
             for(int i=0;i<26;i++)

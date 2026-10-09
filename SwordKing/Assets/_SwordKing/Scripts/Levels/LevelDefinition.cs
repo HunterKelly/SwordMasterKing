@@ -19,6 +19,11 @@ namespace SwordKing
         }
         [Header("Level identity")]
         public bool iceWorld;
+        public bool castleWorld;
+        [Header("Castle boss")]
+        [Min(1)] public float castleBossHealth = 5000;
+        [Min(1)] public float castleBossScale = 3.6f;
+        [Min(1)] public float fireLifetime = 10;
         public string displayName = "THE BROKEN GATE";
         public string bossName = "THE GATEKEEPER";
         public string saveKey = "BrokenGate.Level1.Save.v1";

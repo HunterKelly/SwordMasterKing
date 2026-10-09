@@ -75,7 +75,7 @@ namespace SwordKing
                     if(!enemy.IsBoss) Bar(new Rect(x-45,y,90,5),enemy.Health/enemy.MaxHealth,new Color(.8f,.35f,.2f));
                     if(enemy.Telegraphing)
                     {
-                        string tell=enemy.LowAttack?"SWEEP • JUMP / ROLL":"OVERHEAD • ROLL";
+                        string tell=enemy.FireAttack?"FIREBALL • MOVE FROM THE MARKER":enemy.LowAttack?"SWEEP • JUMP / ROLL":"OVERHEAD • ROLL";
                         GUI.Label(new Rect(x-150,y-36,300,28),tell,subtitle);
                     }
                 }
@@ -131,9 +131,13 @@ namespace SwordKing
                 else if(screen==ScreenState.Victory)
                 {
                     GUI.Label(new Rect(300,133,680,60),"THE ROAD IS OPEN",heading);
-                    GUI.Label(new Rect(340,212,600,60),IceWorld?"CHAPTER II  •  COMPLETE\nThe frozen watch has fallen.":"CHAPTER I  •  COMPLETE\nThe watch is broken. Beyond the gate, your journey begins.",subtitle);
+                    GUI.Label(new Rect(340,212,600,60),CastleWorld?"CHAPTER III  •  COMPLETE\nThe Cinder King has fallen.":IceWorld?"CHAPTER II  •  COMPLETE\nThe frozen watch has fallen.":"CHAPTER I  •  COMPLETE\nThe watch is broken. Beyond the gate, your journey begins.",subtitle);
                     GUI.Label(new Rect(340,315,600,110),"Time  "+Mathf.FloorToInt(save.seconds/60)+"m "+Mathf.FloorToInt(save.seconds%60)+"s\nDeaths  "+save.deaths+"\nLost knight's coffer  "+(save.cache?"Found":"Unclaimed"),centered);
-                    if(!IceWorld && Button(460,423,360,"Continue to Level 2 - Ice World"))
+                    if(IceWorld && Button(460,423,360,"Continue to Level 3 - Cinder Castle"))
+                    {
+                        BeginNextChapter();
+                    }
+                    if(!CastleWorld && !IceWorld && Button(460,423,360,"Continue to Level 2 - Ice World"))
                     {
                         BeginNextChapter();
                     }
@@ -146,8 +150,8 @@ namespace SwordKing
         void TitleScreen()
         {
             GUI.Label(new Rect(300,109,680,64),LevelTitle,heading);
-            GUI.Label(new Rect(340,179,600,36),IceWorld?"CHAPTER II  •  ICE WORLD":"CHAPTER I  •  THE MOUNTAIN FORTRESS",subtitle);
-            GUI.Label(new Rect(340,239,600,60),IceWorld?"Snow falls over the frozen watch.\nClear the courtyard and defeat its Warden.":"A sealed road. A fallen watch.\nFight your way through, and open the gate.",centered);
+            GUI.Label(new Rect(340,179,600,36),CastleWorld?"CHAPTER III  •  CINDER CASTLE":IceWorld?"CHAPTER II  •  ICE WORLD":"CHAPTER I  •  THE MOUNTAIN FORTRESS",subtitle);
+            GUI.Label(new Rect(340,239,600,60),CastleWorld?"Beyond the frost stands a burning castle.\nClimb its tower and challenge the Cinder King.":IceWorld?"Snow falls over the frozen watch.\nClear the courtyard and defeat its Warden.":"A sealed road. A fallen watch.\nFight your way through, and open the gate.",centered);
             GUI.Label(new Rect(340,319,600,30),"Choose your starting sword style",centered);
             string[] titles={"Heavy","Balanced","Fast"};
             for(int i=0;i<3;i++)

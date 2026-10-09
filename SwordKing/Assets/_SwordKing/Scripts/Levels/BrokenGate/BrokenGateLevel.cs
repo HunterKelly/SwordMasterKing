@@ -16,10 +16,11 @@ namespace SwordKing
             public bool[] defeated=new bool[7];
             public float seconds;
         }
+        public bool CastleWorld => Player.LevelDefinition != null && Player.LevelDefinition.castleWorld;
         bool IceWorld => Player.LevelDefinition != null && Player.LevelDefinition.iceWorld;
-        string LevelTitle => IceWorld ? Player.LevelDefinition.displayName : "THE BROKEN GATE";
-        string BossTitle => IceWorld ? Player.LevelDefinition.bossName : "THE GATEKEEPER";
-        string SaveKey => IceWorld ? Player.LevelDefinition.saveKey : "BrokenGate.Level1.Save.v1";
+        string LevelTitle => IceWorld || CastleWorld ? Player.LevelDefinition.displayName : "THE BROKEN GATE";
+        string BossTitle => IceWorld || CastleWorld ? Player.LevelDefinition.bossName : "THE GATEKEEPER";
+        string SaveKey => IceWorld || CastleWorld ? Player.LevelDefinition.saveKey : "BrokenGate.Level1.Save.v1";
         public PlayerController Player { get; private set; }
         public BrokenGateWorld World { get; private set; }
         public bool InputBlocked => screen!=ScreenState.Playing;
@@ -54,12 +55,13 @@ namespace SwordKing
                 var worldRoot = new GameObject("The Broken Gate - World");
                 worldRoot.transform.SetParent(transform, false);
                 World = worldRoot.AddComponent<BrokenGateWorld>();
-                if (IceWorld) IceWorldBuilder.Build(World); else World.Build();
+                if (CastleWorld) CastleWorldBuilder.Build(World); else if (IceWorld) IceWorldBuilder.Build(World); else World.Build();
             }
             World.EnsureMaterials();
             EnemyCombat = player.LevelDefinition != null && player.LevelDefinition.enemyCombat != null ? player.LevelDefinition.enemyCombat : new EnemyCombatSettings();
             var spawns = player.LevelDefinition != null ? player.LevelDefinition.encounters : LevelDefinition.DefaultEncounters();
-            if (IceWorld) spawns = IceWorldBuilder.Encounters(Player.LevelDefinition);
+            if (CastleWorld) spawns = CastleWorldBuilder.Encounters(Player.LevelDefinition);
+            else if (IceWorld) spawns = IceWorldBuilder.Encounters(Player.LevelDefinition);
             else LevelDefinition.ValidateEncounters(spawns);
             foreach (var spawn in spawns)
             {
@@ -82,9 +84,16 @@ namespace SwordKing
                 Player.PlayerCamera.backgroundColor = RenderSettings.fogColor;
                 gameObject.AddComponent<IceWorldAtmosphere>().Initialize(this);
             }
+            if(CastleWorld)
+            {
+                RenderSettings.fogColor=new Color(.16f,.18f,.23f); RenderSettings.fogDensity=.003f;
+                RenderSettings.ambientLight=new Color(.52f,.46f,.40f);
+                Player.PlayerCamera.backgroundColor=RenderSettings.fogColor;
+                gameObject.AddComponent<CastleHazards>().Initialize(this);
+            }
             CreateAudio(); hasSave=PlayerPrefs.HasKey(SaveKey);
             Player.RestoreAt(Arrival); SetScreen(ScreenState.Title); ready=true;
-            if (IceWorld && chapterTransfer != null)
+            if ((IceWorld || CastleWorld) && chapterTransfer != null)
             {
                 var transfer = chapterTransfer; chapterTransfer = null;
                 StartRun(false);
@@ -118,12 +127,13 @@ namespace SwordKing
             Player.RestoreAt(save.checkpoint?World.Camp+Vector3.back*2:Arrival);
             flasks=2; confirmNew=false; Save(); SetScreen(save.completed?ScreenState.Victory:ScreenState.Playing);
             if (!IceWorld && Cleared(0) && Cleared(1) && Cleared(2)) { BeginNextChapter(); return; }
-            Notify(load?"Journey resumed at your last refuge.":IceWorld?"Explore the frost courtyard. Defeat the Frost Warden and his watch.":"Find the road through the fortress.");
+            Notify(load?"Journey resumed at your last refuge.":CastleWorld?"Leave the frost behind. Ascend the castle and confront the Cinder King.":IceWorld?"Explore the frost courtyard. Defeat the Frost Warden and his watch.":"Find the road through the fortress.");
         }
         void ResetEncounters()
         {
             for(int i=0;i<enemies.Count;i++) enemies[i].Reset(save.defeated[i]);
             bossActive=false; nextEnemyAttack=Time.time+.8f; hits.Clear(); SyncGates();
+            if(CastleWorld) GetComponent<CastleHazards>().ResetHazards();
             World.BossEntrance.SetActive(false); World.Cache.SetActive(!save.cache);
         }
         bool Cleared(int zone)
@@ -133,7 +143,7 @@ namespace SwordKing
         }
         void SyncGates()
         {
-            World.CourtyardGate.SetActive(!IceWorld && !Cleared(0)); World.GatehouseGate.SetActive(!IceWorld && !Cleared(1));
+            World.CourtyardGate.SetActive(!IceWorld && !CastleWorld && !Cleared(0)); World.GatehouseGate.SetActive(!IceWorld && !CastleWorld && !Cleared(1));
             World.ExitGate.SetActive(boss.Alive);
             if(!boss.Alive) World.BossEntrance.SetActive(false);
         }
@@ -159,7 +169,7 @@ namespace SwordKing
             Vector3 p=Player.PlayerTransform.position;
             if(p.y < -6) { Die("The ravine claims another traveler."); return; }
             if(heal && !Player.IsRolling && flasks>0 && Player.Heal(45)) { flasks--; PlaySound("heal"); Notify("Ember flask • health restored"); }
-            if((IceWorld ? Vector3.Distance(p,boss.Root.position)<14 : p.z>103 && p.z<126) && boss.Alive && !bossActive)
+            if((CastleWorld ? p.y>27 && Vector3.Distance(p,new Vector3(0,30,98))<19 : IceWorld ? Vector3.Distance(p,boss.Root.position)<14 : p.z>103 && p.z<126) && boss.Alive && !bossActive)
             { bossActive=true; World.BossEntrance.SetActive(true); Notify(BossTitle+" • Break his watch."); PlaySound("boss"); }
             foreach(var enemy in enemies)
             {
@@ -176,7 +186,7 @@ namespace SwordKing
                     Notify("Lost knight's coffer • +2 upgrade embers"); PlaySound("reward");
                 }
             }
-            else if(Vector3.Distance(p,World.Camp)<3 && (IceWorld || Cleared(1)))
+            else if(Vector3.Distance(p,World.Camp)<3 && (IceWorld || CastleWorld || Cleared(1)))
             {
                 interaction="E  Rest at the shrine / improve your sword";
                 if(interact && !Player.IsRolling)
@@ -185,10 +195,10 @@ namespace SwordKing
                     PlaySound("reward"); SetScreen(ScreenState.Shrine);
                 }
             }
-            if(Cleared(0) && Cleared(1) && Cleared(2))
+            if(CastleWorld ? !boss.Alive : Cleared(0) && Cleared(1) && Cleared(2))
             {
                 save.completed=true; Save(); PlaySound("victory");
-                if (IceWorld) SetScreen(ScreenState.Victory);
+                if (CastleWorld) SetScreen(ScreenState.Victory);
                 else BeginNextChapter();
             }
             hits.RemoveAll(h=>h.until<Time.time);
@@ -198,6 +208,7 @@ namespace SwordKing
             if(InputBlocked) return false;
             float z=Player.PlayerTransform.position.z;
             if(enemy.IsBoss) return bossActive;
+            if(CastleWorld) return Mathf.Abs(Player.PlayerTransform.position.y-enemy.Root.position.y)<3;
             if(IceWorld) return true;
             return enemy.Zone==0?z>10 && z<48:z>58 && z<100;
         }
@@ -226,7 +237,7 @@ namespace SwordKing
             {
                 if(!enemy.Alive || !CanEngage(enemy) || (window!=null && window.HasHit(enemy.Id))) continue;
                 Vector3 delta=enemy.Root.position-p; float vertical=Mathf.Abs(delta.y); delta.y=0;
-                if(delta.magnitude>reach+(enemy.IsBoss?.45f:0) || vertical>2 || Vector3.Angle(Player.PlayerTransform.forward,delta)>angle*.5f) continue;
+                if(delta.magnitude>reach+(enemy.IsBoss?(CastleWorld?1.4f:.45f):0) || vertical>2 || Vector3.Angle(Player.PlayerTransform.forward,delta)>angle*.5f) continue;
                 if(!HasClearStrike(p+Vector3.up*1.2f,enemy.Root.position+Vector3.up*1.2f,enemy,window!=null || angle>=359f)) continue;
                 if(window!=null && !window.TryHit(enemy.Id,Time.time)) continue;
                 float dealt=enemy.ReceiveHit(damage,charge);
@@ -277,7 +288,7 @@ namespace SwordKing
             if(save.defeated[enemy.Id]) return;
             save.defeated[enemy.Id]=true; save.shards+=enemy.IsBoss?3:1;
             SyncGates(); Save(); PlaySound("reward");
-            if(enemy.IsBoss) Notify(IceWorld?BossTitle+" HAS FALLEN • Finish clearing the courtyard.":"THE GATEKEEPER HAS FALLEN • Cross the open gate.");
+            if(enemy.IsBoss) Notify(CastleWorld?BossTitle+" HAS FALLEN":IceWorld?BossTitle+" HAS FALLEN • Finish clearing the courtyard.":"THE GATEKEEPER HAS FALLEN • Cross the open gate.");
             else if(!IceWorld && Cleared(enemy.Zone)) Notify("The seal is broken. The way is open.");
             else Notify("+1 upgrade ember");
         }
@@ -299,6 +310,7 @@ namespace SwordKing
         void Notify(string text) { message=text; messageUntil=Time.time+4; }
         string Objective()
         {
+            if(CastleWorld) return boss.Alive ? (Player.PlayerTransform.position.y<7 ? "Explore the great hall • ascend either staircase" : Player.PlayerTransform.position.y<27 ? "Cross the upper gallery • climb the spiral tower" : "Defeat the Cinder King • avoid lingering fire") : "The Cinder King has fallen";
             if (IceWorld)
             {
                 int remaining = 0;

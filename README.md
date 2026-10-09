@@ -60,3 +60,9 @@ The fortress is now a serialized scene object graph, built once by the editor. R
 ## Validation
 
 Open **Window > General > Test Runner**, select EditMode, and run SwordKing's combat regression tests. Then follow `Docs/PLAYTEST.md` for scene, defense, save, and build checks.
+
+### Chapter III — Cinder Castle
+
+Clearing Ice World now transitions automatically to CinderCastle, carrying sword upgrades and embers. The snowy approach leads through a double-staircase great hall, the upper royal gallery, and a two-turn spiral tower to the crown arena. Eight guards patrol the castle; the Cinder King has 5,000 HP and stands approximately 7.5 metres tall. His marked fireballs leave a 2.5 metre radius burning patch for 10 seconds. Roll the impact or move out of the marker; jump or avoid burning ground. Four green globes each restore 40 HP and refresh on retry. The upper gallery shrine saves a checkpoint.
+
+Open `Assets/_SwordKing/Scenes/CinderCastle.unity` and press Play to test directly. Geometry generates at runtime by default. To author it in Scene view, run **SwordKing → Setup → Create Level 3 - Cinder Castle**. Tune boss HP, visual scale, and fire duration in `Data/Levels/CinderCastle.asset`; layout and encounters live in `Scripts/Levels/Castle/CastleWorldBuilder.cs`. Keep CinderCastle enabled in any active Build Profile scene overrides.
