@@ -60,7 +60,7 @@ Unity is not installed here; run the edit-mode tests and gameplay checks in Unit
 
 ## Regular enemy special reactions
 
-Shift + left click pushes each surviving regular enemy up to 0.65 metres along the player's forward direction over 0.2 seconds. The existing per-target hit window prevents repeated pushes from one thrust. Walls, encounter boundaries and unsupported ledges stop the push.
+Shift + left click pushes each surviving regular enemy up to 0.8 metres along the player's forward direction over 0.2 seconds. The existing per-target hit window prevents repeated pushes from one thrust. Walls, encounter boundaries and unsupported ledges stop the push.
 
 Shift + right click pops struck surviving regular enemies up approximately 0.35 metres when the jumping heavy lands. Gravity brings them down, with CharacterController collision against floors and ceilings. Both reactions interrupt their current attack and pause pursuit during the reaction. Bosses ignore both reactions.
 
@@ -75,3 +75,9 @@ Unity gameplay checks are required for sword-plus-splash totals, surrounding ene
 ## Damage number presentation
 
 Every sword and AOE damage event keeps its own popup. Sword hits are gold; charged overhead splash hits are cyan and offset to the other side, so the two damage portions remain visible on the same enemy. All encounter attacks use 32-pixel bold italic DejaVu Sans Mono digits, dark outlines, a brief size pop, upward drift and a final fade over an 0.85-second lifetime. The bundled numeric font subset includes the DejaVu licence. Check overlapping sword/AOE hits and crowd readability in Unity.
+
+## Jumping heavy landing AOE fix
+
+Shift + right click now resolves two independent damage events on landing: 50% of its damage in the existing forward sword cone and 50% in a 4-metre, 360-degree blast centred at the player's actual landing position. Enemies behind and beside the player take the blast even when the sword misses them. Targets surviving the sword and within the blast display separate gold sword and cyan splash numbers. The blast pops surviving regular enemies upward; bosses resist the pop. Walls still block damage. The earlier standing charged-overhead splash remains available.
+
+Thrust push distance is now 0.8 metres (previously 0.65). Verify front/back/side targets, separate damage numbers, landing timing and boss pop immunity in Unity; Unity is unavailable in this environment.

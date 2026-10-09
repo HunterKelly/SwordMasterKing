@@ -94,9 +94,10 @@ namespace SwordKing
             // Begin the swing about 40 ms before the apex; impact still lands with the player.
             if(!controller.isGrounded) return;
             jumpStrikePending=false;
-            ResolveAttack(jumpStrikeDamage,jumpStrikeReach,jumpStrikeAngle,jumpStrikeCharge);
+            // The sword stays directional; the landing blast hits the full circle independently.
+            ResolveAttack(jumpStrikeDamage*.5f,jumpStrikeReach,jumpStrikeAngle,jumpStrikeCharge);
+            ResolveChargedGroundSlam(jumpStrikeDamage*.5f,PlayerAttackKind.JumpingOverhead,false);
             EmitAttackTrail(PlayerAttackKind.JumpingOverhead,jumpStrikeReach,jumpStrikeAngle);
-            EmitLandingBlast();
             if(cameraRig!=null) cameraRig.AddImpact(1.1f,.28f);
             if(Feedback!=null) Feedback.Impact(player.position+player.forward,player.forward,true,false);
             if(Level!=null) Level.PlaySound("slam");

@@ -104,7 +104,7 @@ namespace SwordKing
                 if(playSound) Level.PlaySound("swing");
             }
         }
-        void ResolveChargedGroundSlam(float damage)
+        void ResolveChargedGroundSlam(float damage,PlayerAttackKind reaction=PlayerAttackKind.Slash,bool playFeedback=true)
         {
             const float radius=4f;
             Vector3 center=player.position;
@@ -121,11 +121,11 @@ namespace SwordKing
             }
             if(Level!=null)
             {
-                Level.ResolvePlayerAttack(damage,radius,360,0,null,PlayerAttackKind.Slash,center);
-                Level.PlaySound("slam");
+                Level.ResolvePlayerAttack(damage,radius,360,0,null,reaction,center);
+                if(playFeedback) Level.PlaySound("slam");
             }
             EmitLandingBlast(center,radius);
-            if(cameraRig!=null) cameraRig.AddImpact(.25f,.12f);
+            if(playFeedback && cameraRig!=null) cameraRig.AddImpact(.25f,.12f);
         }
         void EmitLandingBlast(Vector3? impactCenter=null,float radius=3.5f)
         {
