@@ -9,7 +9,7 @@ namespace SwordKing
         {
             var list=new List<LevelDefinition.EnemySpawn>();
             foreach(var p in new[]{new Vector3(-9,.15f,13),new Vector3(9,.15f,13),new Vector3(0,.15f,23),
-                new Vector3(-17,8.15f,36),new Vector3(17,8.15f,36),new Vector3(-9,8.15f,49),new Vector3(9,8.15f,49),new Vector3(0,8.15f,59)})
+                new Vector3(-17,8.15f,36),new Vector3(17,8.15f,36),new Vector3(-20,8.15f,49),new Vector3(20,8.15f,49),new Vector3(0,8.15f,61)})
                 list.Add(new LevelDefinition.EnemySpawn(list.Count,p.y<4?0:1,"Cinder Guard "+(list.Count+1),p,list.Count%3));
             list.Add(new LevelDefinition.EnemySpawn(list.Count,2,d.bossName,new Vector3(0,30.15f,98),2,true));
             return list.ToArray();
@@ -23,20 +23,20 @@ namespace SwordKing
             var carpet=w.Material(new Color(.38f,.055f,.06f));
             // Snow approach leads into a 48 metre wide, double-height entrance hall.
             w.Box("Frozen approach",new Vector3(0,-.5f,-12),new Vector3(24,1,28),snow,true);
-            w.Box("Great hall foundation",new Vector3(0,-.5f,18),new Vector3(48,1,36),stone,true);
+            w.Box("Ground floor foundation",new Vector3(0,-.5f,32),new Vector3(48,1,64),stone,true);
             w.Box("Royal carpet",new Vector3(0,.015f,16),new Vector3(6,.025f,31),carpet);
             foreach(int side in new[]{-1,1})
             {
-                w.Box("Castle outer wall",new Vector3(side*24,9,32),new Vector3(1,18,68),stone,true);
+                SideRooms(w,stone,carpet,side);
                 w.Box("Entrance door pier",new Vector3(side*15,8,0),new Vector3(18,16,1),stone,true);
-                w.Box("Upper side gallery",new Vector3(side*22,7.7f,15),new Vector3(4,.6f,30),stone,true);
+                w.Box("Upper side gallery",new Vector3(side*22,7.7f,15.6f),new Vector3(4,.6f,31.2f),stone,true);
                 // Each stair rises 8m in 32 steps; broad treads stay under the motor's step limit.
                 for(int i=0;i<32;i++)
                 {
                     float h=(i+1)*.25f;
                     w.Box("Grand staircase "+side+" step "+i,new Vector3(side*17,h*.5f,9+i*.7f),new Vector3(7,h,.72f),stone,true);
                 }
-                for(float z=5;z<64;z+=10)
+                foreach(float z in new[]{5f,27f,55f})
                 {
                     w.Box("Hall buttress",new Vector3(side*23,6,z),new Vector3(2,12,2),w.Dark,true);
                     w.Box("Crimson banner",new Vector3(side*22,10,z),new Vector3(.1f,4,1.7f),carpet);
@@ -53,9 +53,24 @@ namespace SwordKing
                 w.Torch(new Vector3(side*7,0,-3));
             }
             w.Box("Entrance lintel",new Vector3(0,15,0),new Vector3(12,2,1),stone,true);
-            w.Box("Hall ceiling",new Vector3(0,18,26),new Vector3(48,.7f,56),stone,true);
-            w.Box("Upper royal gallery",new Vector3(0,7.7f,47.55f),new Vector3(48,.6f,32.9f),stone,true);
-            w.Box("Upper carpet",new Vector3(0,8.015f,49),new Vector3(6,.025f,30),carpet);
+            w.Box("Hall ceiling",new Vector3(0,18,16),new Vector3(48,.7f,32),stone,true);
+            // Walk straight between the staircases into the open courtyard. The upstairs
+            // gallery follows the same side-room route around its open centre.
+            w.Box("Upper stair landing",new Vector3(0,7.7f,33.05f),new Vector3(48,.6f,3.9f),stone,true);
+            foreach(int side in new[]{-1,1})
+            {
+                w.Box("Upper courtyard side gallery",new Vector3(side*20,7.7f,48),new Vector3(8,.6f,26),stone,true);
+                w.Box("Courtyard gallery railing",new Vector3(side*16,8.7f,48),new Vector3(.25f,1.4f,26),w.Gold,true);
+            }
+            w.Box("Upper courtyard north gallery",new Vector3(0,7.7f,61),new Vector3(48,.6f,6),stone,true);
+            w.Box("Upper landing railing",new Vector3(0,8.7f,35),new Vector3(32,1.4f,.25f),w.Gold,true);
+            w.Box("Upper north railing",new Vector3(0,8.7f,58),new Vector3(32,1.4f,.25f),w.Gold,true);
+            w.Box("Courtyard north wall west",new Vector3(-14,9,64),new Vector3(20,18,1),stone,true);
+            w.Box("Courtyard north wall east",new Vector3(14,9,64),new Vector3(20,18,1),stone,true);
+            w.Box("North tower door lintel",new Vector3(0,14.75f,64),new Vector3(8,6.5f,1),stone,true);
+            w.Box("Ground north wall",new Vector3(0,3.8f,64),new Vector3(8,7.6f,1),stone,true);
+            for(float z=38;z<=56;z+=6) w.Box("Courtyard paving seam",new Vector3(0,.015f,z),new Vector3(30,.02f,.06f),w.Dark);
+            foreach(int side in new[]{-1,1}) w.Torch(new Vector3(side*12,0,54));
             w.Box("Tower threshold",new Vector3(0,7.7f,65),new Vector3(12,.6f,4),stone,true);
             // Spiral: two full turns, 96 broad treads, from gallery at 8m to crown at 30m.
             for(int i=0;i<96;i++)
@@ -63,8 +78,12 @@ namespace SwordKing
                 float a=Mathf.PI+i*Mathf.PI*4/96, y=8+(i+1)*22f/96;
                 var tread=w.Box("Spiral tower tread "+i,new Vector3(Mathf.Sin(a)*7,y-.15f,72+Mathf.Cos(a)*7),new Vector3(1.05f,.3f,4),stone,true);
                 tread.transform.rotation=Quaternion.Euler(0,a*Mathf.Rad2Deg,0);
-                var rail=w.Box("Spiral outer rail",new Vector3(Mathf.Sin(a)*9,y+.65f,72+Mathf.Cos(a)*9),new Vector3(1.3f,1.3f,.2f),w.Gold,true);
-                rail.transform.rotation=tread.transform.rotation;
+                // Leave both door landings open so the railing cannot seal the route.
+                if(i>=3 && i<93)
+                {
+                    var rail=w.Box("Spiral outer rail",new Vector3(Mathf.Sin(a)*9,y+.65f,72+Mathf.Cos(a)*9),new Vector3(1.3f,1.3f,.2f),w.Gold,true);
+                    rail.transform.rotation=tread.transform.rotation;
+                }
             }
             w.Shape("Tower central column",PrimitiveType.Cylinder,new Vector3(0,19,72),new Vector3(8,11,8),w.Dark,true);
             for(int i=0;i<24;i++)
@@ -78,7 +97,10 @@ namespace SwordKing
             w.Box("Tower crown landing",new Vector3(0,29.7f,63),new Vector3(20,.6f,4),stone,true);
             w.Box("Crown bridge",new Vector3(-15,29.7f,74.5f),new Vector3(10,.6f,27),stone,true);
             w.Box("Landing bridge connector",new Vector3(-10,29.7f,63),new Vector3(10,.6f,4),stone,true);
-            w.Shape("Cinder King arena",PrimitiveType.Cylinder,new Vector3(0,29.7f,98),new Vector3(40,.3f,40),stone,true);
+            // Unity's primitive Cylinder uses a CapsuleCollider: flattening a wide
+            // capsule still leaves a giant rounded collision volume. Use the mesh.
+            var arena=w.Shape("Cinder King arena",PrimitiveType.Cylinder,new Vector3(0,29.7f,98),new Vector3(40,.3f,40),stone);
+            arena.AddComponent<MeshCollider>().sharedMesh=arena.GetComponent<MeshFilter>().sharedMesh;
             for(int i=0;i<40;i++)
             {
                 float a=i*Mathf.PI*2/40;
@@ -87,11 +109,33 @@ namespace SwordKing
                 wall.transform.rotation=Quaternion.Euler(0,a*Mathf.Rad2Deg,0);
             }
             foreach(float x in new[]{-15f,15f}) foreach(float z in new[]{88f,108f}) w.Torch(new Vector3(x,30,z));
-            w.Camp=new Vector3(0,8.15f,56); w.Torch(w.Camp+Vector3.left*3); w.Torch(w.Camp+Vector3.right*3);
-            w.CachePosition=new Vector3(19,8.15f,44);
+            w.Camp=new Vector3(0,8.15f,61); w.Torch(w.Camp+Vector3.left*3); w.Torch(w.Camp+Vector3.right*3);
+            w.CachePosition=new Vector3(32,8.15f,44);
             w.Cache=w.Box("Royal supply coffer",w.CachePosition+Vector3.up*.4f,new Vector3(1,.8f,.7f),w.Gold);
             w.CourtyardGate=Marker(w,"Hall seal unused"); w.GatehouseGate=Marker(w,"Gallery seal unused");
             w.BossEntrance=Marker(w,"Crown encounter"); w.ExitGate=Marker(w,"Castle victory");
+        }
+        static void SideRooms(BrokenGateWorld w,Material stone,Material carpet,int side)
+        {
+            // Two rooms per side on each main floor. Doorways are actual gaps,
+            // eight metres wide, with 3.5m headroom on each floor.
+            foreach(var span in new[]{new Vector2(0,13),new Vector2(21,40),new Vector2(48,64)})
+                w.Box("Side wall between doorways",new Vector3(side*24,9,(span.x+span.y)*.5f),new Vector3(1,18,span.y-span.x),stone,true);
+            foreach(float z in new[]{17f,44f})
+            {
+                w.Box("Room ground foundation",new Vector3(side*31,-.5f,z),new Vector3(14,1,16),stone,true);
+                w.Box("Room upper floor",new Vector3(side*31,7.7f,z),new Vector3(14,.6f,16),stone,true);
+                w.Box("Room roof",new Vector3(side*31,16.2f,z),new Vector3(14,.5f,16),stone,true);
+                w.Box("Room exterior wall",new Vector3(side*38,8,z),new Vector3(1,16,16),stone,true);
+                foreach(int end in new[]{-1,1}) w.Box("Room end wall",new Vector3(side*31,8,z+end*8),new Vector3(14,16,1),stone,true);
+                foreach(float y in new[]{0f,8f})
+                {
+                    w.Box("Side room doorway lintel",new Vector3(side*24,y+5.75f,z),new Vector3(1,4.5f,8),stone,true);
+                    w.Box("Side room rug",new Vector3(side*31,y+.015f,z),new Vector3(8,.025f,10),carpet);
+                    w.Torch(new Vector3(side*35,y,z+5));
+                    w.Box("Room stone bench",new Vector3(side*35,y+.4f,z-4),new Vector3(1,.8f,4),w.Dark,true);
+                }
+            }
         }
         static GameObject Marker(BrokenGateWorld w,string name)
         { var g=new GameObject(name); g.transform.SetParent(w.Root,false); return g; }
