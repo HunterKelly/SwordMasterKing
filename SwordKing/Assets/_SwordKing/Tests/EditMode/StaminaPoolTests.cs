@@ -5,26 +5,26 @@ namespace SwordKing.Tests
     public sealed class StaminaPoolTests
     {
         [Test]
-        public void TwoSpecialsSucceedButThirdFailsWithoutSpendingMore()
+        public void FourSpecialsSucceedButFifthFailsWithoutSpendingMore()
         {
             var pool=new StaminaPool();
-            Assert.That(pool.Spend(35),Is.True); Assert.That(pool.Spend(35),Is.True);
-            Assert.That(pool.Current,Is.EqualTo(30));
-            Assert.That(pool.Spend(35),Is.False); Assert.That(pool.Current,Is.EqualTo(30));
+            for(int i=0;i<4;i++) Assert.That(pool.Spend(25),Is.True);
+            Assert.That(pool.Current,Is.EqualTo(0));
+            Assert.That(pool.Spend(25),Is.False); Assert.That(pool.Current,Is.EqualTo(0));
         }
         [Test]
         public void RegenerationWaitsThenQuicklyUnlocksNextSpecial()
         {
-            var pool=new StaminaPool(); pool.Spend(35); pool.Spend(35);
-            pool.Tick(.2f,true); Assert.That(pool.Current,Is.EqualTo(30));
-            pool.Tick(.1f,true); Assert.That(pool.Current,Is.EqualTo(36).Within(.001));
-            Assert.That(pool.Spend(35),Is.True);
+            var pool=new StaminaPool(); pool.Spend(100);
+            pool.Tick(.2f,true); Assert.That(pool.Current,Is.EqualTo(0));
+            pool.Tick(.5f,true); Assert.That(pool.Current,Is.EqualTo(30).Within(.001));
+            Assert.That(pool.Spend(25),Is.True);
         }
         [Test]
         public void SprintDrainIsGradualAndStopsAtZero()
         {
-            var pool=new StaminaPool(); pool.Drain(8*.5f);
-            Assert.That(pool.Current,Is.EqualTo(96));
+            var pool=new StaminaPool(); pool.Drain(6*.5f);
+            Assert.That(pool.Current,Is.EqualTo(97));
             pool.Drain(1000); Assert.That(pool.Current,Is.EqualTo(0));
             pool.Tick(.2f,true); Assert.That(pool.Current,Is.EqualTo(0));
             pool.Tick(.1f,true); Assert.That(pool.Current,Is.EqualTo(6).Within(.001));

@@ -21,8 +21,8 @@ MonoBehaviour:
   reach: 2.8
   attackAngle: 110
   maxStamina: 100
-  specialStaminaCost: 35
-  sprintStaminaDrain: 8
+  specialStaminaCost: 25
+  sprintStaminaDrain: 6
   staminaRegeneration: 60
   staminaRegenerationDelay: 0.2
   sprintMultiplier: 1.6

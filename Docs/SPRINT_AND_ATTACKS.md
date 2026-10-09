@@ -50,7 +50,7 @@ Grounded thrusts add a tiny 0.12-metre hop alongside their existing forward slid
 
 ## Stamina
 
-The bar holds 100 points. Shift thrust and jumping heavy cost 35 per accepted attack. Sprinting drains 8 points per second while moving. Standing with Shift held costs nothing. Normal slash/overhead, charged spin/overhead, jumping and rolling cost nothing. At zero, sprint falls back to normal walking; Shift still selects specials, which require at least 35 points to execute.
+The bar holds 100 points. Shift thrust and jumping heavy cost 25 per accepted attack. Sprinting drains 6 points per second while moving. Standing with Shift held costs nothing. Normal slash/overhead, charged spin/overhead, jumping and rolling cost nothing. At zero, sprint falls back to normal walking; Shift still selects specials, which require at least 25 points to execute.
 
 Stamina pauses regeneration while sprinting, charging, executing a special, or in a menu. After 0.2 seconds of eligible recovery time, it refills at 60 points per second. Respawns and chapter arrivals refill it. Max Stamina, Special Stamina Cost, Sprint Stamina Drain, Stamina Regeneration and Stamina Regeneration Delay are editable in DefaultPlayer.asset.
 
