@@ -28,7 +28,11 @@ namespace SwordKing
         [Range(0, 10)] public int power = 4;
         [Range(0, 10)] public int recovery = 4;
         [Range(0, 10)] public int speed = 4;
-        public float moveSpeed = 5f;
+        public float moveSpeed = 6f;
+        [Header("Strafe presentation (visuals only)")]
+        [Range(0, 60)] public float strafeLeanAngle = 45f;
+        [Min(1)] public float strafeLeanSpeed = 360f;
+        float strafeLean;
         public float reach = 2.8f;
         [Range(30, 180)] public float attackAngle = 110f;
 

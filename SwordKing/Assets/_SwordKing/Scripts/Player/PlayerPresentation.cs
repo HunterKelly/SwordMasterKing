@@ -35,6 +35,7 @@ namespace SwordKing
             if (settings != null)
             {
                 power = settings.power; recovery = settings.recovery; speed = settings.speed;
+                strafeLeanAngle = settings.strafeLeanAngle; strafeLeanSpeed = settings.strafeLeanSpeed;
                 moveSpeed = settings.moveSpeed; reach = settings.reach; attackAngle = settings.attackAngle;
                 jumpHeightFraction = settings.jumpHeightFraction; rollDuration = settings.rollDuration;
                 rollDistance = settings.rollDistance; rollRecovery = settings.rollRecovery;

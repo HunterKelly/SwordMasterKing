@@ -15,7 +15,9 @@ MonoBehaviour:
   power: 4
   recovery: 4
   speed: 4
-  moveSpeed: 5
+  moveSpeed: 6
+  strafeLeanAngle: 45
+  strafeLeanSpeed: 360
   reach: 2.8
   attackAngle: 110
   jumpHeightFraction: 0.5

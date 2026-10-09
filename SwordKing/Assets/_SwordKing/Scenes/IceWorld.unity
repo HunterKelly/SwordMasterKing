@@ -163,14 +163,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.PlayerController
   adventureMode: 1
-  settings: {fileID: 0}
+  settings: {fileID: 11400000, guid: 09b0ac95947226743827a52b07d3416e, type: 2}
   playerPrefab: {fileID: 0}
   authoredWorld: {fileID: 0}
   levelDefinition: {fileID: 11400000, guid: db2660048a0a46f3a6ca09c90c4a589d, type: 2}
   power: 4
   recovery: 4
   speed: 4
-  moveSpeed: 5
+  moveSpeed: 6
+  strafeLeanAngle: 45
+  strafeLeanSpeed: 360
   reach: 2.8
   attackAngle: 110
   jumpHeightFraction: 0.5

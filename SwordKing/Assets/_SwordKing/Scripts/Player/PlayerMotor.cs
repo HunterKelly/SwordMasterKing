@@ -49,6 +49,7 @@ namespace SwordKing
 
             if (IsRolling)
             {
+                strafeLean = 0;
                 float progress = Mathf.Clamp01((Time.time - rollStartedAt) / activeRollDuration);
                 float tuck = Mathf.Sin(progress * Mathf.PI);
                 visualRoot.localPosition = Vector3.up * (.95f - .22f * tuck);
@@ -59,7 +60,10 @@ namespace SwordKing
             else
             {
                 visualRoot.localPosition = Vector3.up * .95f;
-                visualRoot.localRotation = Quaternion.identity; visualRoot.localScale = Vector3.one;
+                // Positive local Z leans left, so right strafe uses a negative angle.
+                float targetLean = -Mathf.Clamp(input.x, -1, 1) * Mathf.Clamp(strafeLeanAngle, 0, 60);
+                strafeLean = Mathf.MoveTowards(strafeLean, targetLean, Mathf.Max(1, strafeLeanSpeed) * dt);
+                visualRoot.localRotation = Quaternion.Euler(0, 0, strafeLean); visualRoot.localScale = Vector3.one;
                 walkPhase += direction.magnitude * moveSpeed * dt * 2;
                 float legAngle = airborne ? -30 : (direction.sqrMagnitude > .01f ? Mathf.Sin(walkPhase) * 25 : 0);
                 leftLeg.localRotation = Quaternion.Euler(legAngle, 0, 0);
@@ -106,6 +110,7 @@ namespace SwordKing
             yaw = 0; pitch = 22; player.rotation = Quaternion.identity;
             rollEndsAt = -100; rollReadyAt = 0; activeRollDuration = 0; rollTravelTime = 0;
             lastAttack = -100; animationStart = -100; attackHistory.Clear();
+            strafeLean = 0;
             airborne = false; visualRoot.localRotation = Quaternion.identity;
             visualRoot.localPosition = Vector3.up * .95f; visualRoot.localScale = Vector3.one;
             foreach (var slash in slashes) Destroy(slash.line.gameObject);
