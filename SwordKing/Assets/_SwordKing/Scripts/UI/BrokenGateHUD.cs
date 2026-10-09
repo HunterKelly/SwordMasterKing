@@ -4,7 +4,7 @@ namespace SwordKing
 {
     public partial class BrokenGateLevel
     {
-        GUIStyle heading, subtitle, body, small, button, centered;
+        GUIStyle heading, subtitle, body, small, button, centered, damageNumbers;
         readonly Color ink=new Color(.025f,.045f,.055f,.94f), gold=new Color(.94f,.72f,.38f), teal=new Color(.22f,.8f,.72f);
         void Styles()
         {
@@ -18,6 +18,10 @@ namespace SwordKing
             small=new GUIStyle(body) { fontSize=14 };
             centered=new GUIStyle(body) { alignment=TextAnchor.MiddleCenter };
             button=new GUIStyle(GUI.skin.button) { fontSize=18, padding=new RectOffset(14,14,10,10) };
+            damageNumbers=new GUIStyle(GUI.skin.label) {
+                font=Resources.Load<Font>("DamageNumbers"), fontSize=32,
+                fontStyle=FontStyle.Normal, alignment=TextAnchor.MiddleCenter, wordWrap=false
+            };
         }
         void Panel(Rect rect,Color color)
         {
@@ -43,8 +47,8 @@ namespace SwordKing
                 Bar(new Rect(38,60,255,13),Player.PlayerHealth/100,new Color(.78f,.24f,.23f));
                 GUI.Label(new Rect(38,78,170,20),"HEALTH  "+Mathf.CeilToInt(Player.PlayerHealth),small);
                 Bar(new Rect(38,103,255,7),Player.SwingCharge,gold);
-                Bar(new Rect(38,122,255,11),Player.StaminaFraction,Player.StaminaShortage?new Color(.9f,.35f,.15f):new Color(.25f,.8f,.45f));
-                GUI.Label(new Rect(38,140,255,22),Player.StaminaShortage?"NOT ENOUGH STAMINA":"STAMINA  "+Mathf.FloorToInt(Player.PlayerStamina)+" / "+Mathf.RoundToInt(Player.maxStamina),small);
+                Bar(new Rect(38,122,255,11),Player.StaminaFraction,new Color(.25f,.8f,.45f));
+                GUI.Label(new Rect(38,140,255,22),"STAMINA  "+Mathf.FloorToInt(Player.PlayerStamina)+" / "+Mathf.RoundToInt(Player.maxStamina),small);
                 GUI.Label(new Rect(340,24,600,54),Objective(),subtitle);
                 Panel(new Rect(22,605,310,92),ink);
                 GUI.Label(new Rect(38,617,280,26),"Q  Ember flask  "+flasks+" / 2",body);
@@ -77,8 +81,19 @@ namespace SwordKing
                 }
                 foreach(var hit in hits)
                 {
-                    Vector3 point=Player.PlayerCamera.WorldToScreenPoint(hit.p+Vector3.up*(.6f-(hit.until-Time.time)));
-                    if(point.z>0) GUI.Label(new Rect((point.x-offset.x)/scale-30,(Screen.height-point.y-offset.y)/scale-20,70,32),hit.text,subtitle);
+                    float age=Time.time-hit.born;
+                    Vector3 point=Player.PlayerCamera.WorldToScreenPoint(hit.p+Vector3.up*age*.85f);
+                    if(point.z<=0) continue;
+                    float pop=1+Mathf.Sin(Mathf.Clamp01(age/.16f)*Mathf.PI)*.18f;
+                    damageNumbers.fontSize=Mathf.RoundToInt(32*pop);
+                    var rect=new Rect((point.x-offset.x)/scale-70+hit.offset.x,
+                        (Screen.height-point.y-offset.y)/scale-28+hit.offset.y,140,56);
+                    float alpha=Mathf.Clamp01((hit.until-Time.time)/.2f);
+                    damageNumbers.normal.textColor=new Color(.03f,.025f,.02f,alpha);
+                    for(int x=-1;x<=1;x++) for(int y=-1;y<=1;y++)
+                        if(x!=0 || y!=0) GUI.Label(new Rect(rect.x+x*2,rect.y+y*2,rect.width,rect.height),hit.text,damageNumbers);
+                    damageNumbers.normal.textColor=hit.aoe?new Color(.4f,.95f,1,alpha):new Color(1,.84f,.36f,alpha);
+                    GUI.Label(rect,hit.text,damageNumbers);
                 }
                 if(Time.time<hurtFlashUntil)
                 {

@@ -16,8 +16,6 @@ namespace SwordKing
         StaminaPool stamina;
         public float PlayerStamina => stamina != null ? stamina.Current : maxStamina;
         public float StaminaFraction => stamina != null ? stamina.Current/stamina.Maximum : 1;
-        public bool StaminaShortage => Time.time < staminaWarningUntil;
-        float staminaWarningUntil;
         float damageGraceUntil;
         readonly AttackInputBuffer attackBuffer = new AttackInputBuffer();
         [Header("Project assets")]
@@ -45,7 +43,6 @@ namespace SwordKing
 
         [Header("Stamina")]
         [Min(1)] public float maxStamina = 100f;
-        [Min(0)] public float specialStaminaCost = 25f;
         [Min(0)] public float sprintStaminaDrain = 6f;
         [Min(0)] public float staminaRegeneration = 60f;
         [Min(0)] public float staminaRegenerationDelay = .2f;
@@ -142,7 +139,7 @@ namespace SwordKing
             if(stamina!=null)
             {
                 if(!menu && IsSprinting) stamina.Drain(Mathf.Max(0,sprintStaminaDrain)*Time.deltaTime);
-                else stamina.Tick(Time.deltaTime,!menu && !chargingAttack && !jumpStrikePending && Time.time>=specialPoseUntil);
+                else stamina.Tick(Time.deltaTime,!menu);
                 if(stamina.Current<=0) { IsSprinting=false; sprintExhausted=true; }
             }
             if (!menu)

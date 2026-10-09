@@ -35,7 +35,7 @@ namespace SwordKing
             if (settings != null)
             {
                 power = settings.power; recovery = settings.recovery; speed = settings.speed;
-                maxStamina = settings.maxStamina; specialStaminaCost = settings.specialStaminaCost; sprintStaminaDrain = settings.sprintStaminaDrain;
+                maxStamina = settings.maxStamina; sprintStaminaDrain = settings.sprintStaminaDrain;
                 staminaRegeneration = settings.staminaRegeneration; staminaRegenerationDelay = settings.staminaRegenerationDelay;
                 sprintMultiplier = settings.sprintMultiplier;
                 fullChargeDamageMultiplier = settings.fullChargeDamageMultiplier;

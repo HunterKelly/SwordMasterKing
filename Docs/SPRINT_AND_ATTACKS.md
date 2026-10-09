@@ -50,9 +50,9 @@ Grounded thrusts add a tiny 0.12-metre hop alongside their existing forward slid
 
 ## Stamina
 
-The bar holds 100 points. Shift thrust and jumping heavy cost 25 per accepted attack. Sprinting drains 6 points per second while moving. Standing with Shift held costs nothing. Normal slash/overhead, charged spin/overhead, jumping and rolling cost nothing. At zero, sprint falls back to normal walking; Shift still selects specials, which require at least 25 points to execute.
+The bar holds 100 points and is used only for sprinting, which drains 6 points per second while moving. All attacks, jumping, rolling and standing with Shift held cost nothing. At zero, sprint falls back to walking, but both Shift attacks remain available.
 
-Stamina pauses regeneration while sprinting, charging, executing a special, or in a menu. After 0.2 seconds of eligible recovery time, it refills at 60 points per second. Respawns and chapter arrivals refill it. Max Stamina, Special Stamina Cost, Sprint Stamina Drain, Stamina Regeneration and Stamina Regeneration Delay are editable in DefaultPlayer.asset.
+Stamina pauses regeneration while sprinting or in a menu. Attacks do not pause regeneration. After 0.2 seconds of eligible recovery time, it refills at 60 points per second. Respawns and chapter arrivals refill it. Max Stamina, Sprint Stamina Drain, Stamina Regeneration and Stamina Regeneration Delay are editable in DefaultPlayer.asset.
 
 Spin now rotates in 0.28 seconds (previously 0.45), with a base damage multiplier of 1.5 (50% more). Its charge cap remains 0.6 seconds and its recovery remains 0.15 seconds. It and charged overhead consume no stamina.
 
@@ -68,6 +68,10 @@ Tune Thrust Push Distance, Thrust Push Duration and Landing Pop Height in the le
 
 ## Charged overhead ground slam
 
-The non-Shift charged overhead splits its original damage: 90% remains on the sword hit and 10% hits each enemy once within a 2-metre circle centred 1.2 metres in front of the player when the swing finishes. A sword target also inside the slam receives the original total damage. Nearby targets receive only the small splash. Walls block the splash; the shockwave visual matches the damage radius. The splash causes no thrust push or jumping-heavy pop. Pause, respawn and combat cancellation discard any pending slam.
+The non-Shift charged overhead splits its original damage: 50% remains on the sword hit and 50% hits each enemy once within a 4-metre, 360-degree circle centred on the player when the swing finishes. A sword target also inside the slam receives the original total damage. Surrounding targets receive the AOE half. Walls block the splash; the shockwave visual matches the damage radius. The splash causes no thrust push or jumping-heavy pop. Pause, respawn and combat cancellation discard any pending slam.
 
 Unity gameplay checks are required for sword-plus-splash totals, surrounding enemies, walls, cancellation and visual timing.
+
+## Damage number presentation
+
+Every sword and AOE damage event keeps its own popup. Sword hits are gold; charged overhead splash hits are cyan and offset to the other side, so the two damage portions remain visible on the same enemy. All encounter attacks use 32-pixel bold italic DejaVu Sans Mono digits, dark outlines, a brief size pop, upward drift and a final fade over an 0.85-second lifetime. The bundled numeric font subset includes the DejaVu licence. Check overlapping sword/AOE hits and crowd readability in Unity.

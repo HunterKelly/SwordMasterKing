@@ -11,12 +11,6 @@ namespace SwordKing
         public StaminaPool(float maximum=100,float regeneration=60,float delay=.2f)
         { Maximum=Math.Max(1,maximum); this.regeneration=Math.Max(0,regeneration); this.delay=Math.Max(0,delay); Reset(); }
         public void Reset() { Current=Maximum; waiting=0; }
-        public bool Spend(float amount)
-        {
-            amount=Math.Max(0,amount);
-            if(Current<amount) return false;
-            Current-=amount; waiting=delay; return true;
-        }
         public void Drain(float amount)
         {
             if(amount<=0 || Current<=0) return;

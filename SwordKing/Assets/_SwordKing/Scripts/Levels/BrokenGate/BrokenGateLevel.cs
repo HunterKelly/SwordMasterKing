@@ -26,7 +26,7 @@ namespace SwordKing
         readonly List<GateEnemy> enemies=new List<GateEnemy>();
         readonly Dictionary<string,AudioClip> sounds=new Dictionary<string,AudioClip>();
         readonly List<FloatingHit> hits=new List<FloatingHit>();
-        class FloatingHit { public Vector3 p; public string text; public float until; }
+        class FloatingHit { public Vector3 p; public string text; public float born, until; public bool aoe; public Vector2 offset; }
         SaveData save=new SaveData();
         ScreenState screen=ScreenState.Title;
         AudioSource audioSource, wind;
@@ -231,7 +231,13 @@ namespace SwordKing
                 if(window!=null && !window.TryHit(enemy.Id,Time.time)) continue;
                 float dealt=enemy.ReceiveHit(damage,charge);
                 if(dealt>0) enemy.ReactToSpecial(kind,Player.PlayerTransform.forward);
-                hits.Add(new FloatingHit { p=enemy.Root.position+Vector3.up*(enemy.IsBoss?3.7f:2.3f), text=Mathf.RoundToInt(dealt).ToString(), until=Time.time+.6f });
+                // Each damage event gets its own popup; splash is offset from the earlier sword hit.
+                hits.Add(new FloatingHit {
+                    p=enemy.Root.position+Vector3.up*(enemy.IsBoss?3.7f:2.3f),
+                    text=Mathf.RoundToInt(dealt).ToString(), born=Time.time, until=Time.time+.85f,
+                    aoe=origin.HasValue,
+                    offset=new Vector2((origin.HasValue?24:-18)+(enemy.Id%3-1)*14,-(enemy.Id%3)*8)
+                });
                 PlaySound(charge>=.8f?"heavy":"hit");
                 if (dealt > 0 && Player.Feedback != null)
                     Player.Feedback.Impact(enemy.Root.position + Vector3.up * (enemy.IsBoss ? 1.8f : 1.2f), delta, charge >= .8f, !enemy.Alive);

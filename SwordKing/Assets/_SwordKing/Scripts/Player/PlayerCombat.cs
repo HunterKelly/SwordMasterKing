@@ -8,12 +8,6 @@ namespace SwordKing
         {
             float elapsed = Time.time - lastAttack;
             if (elapsed + .00001f < 1f / SwingModel.MaxRate(speed)) { rejected++; return; }
-            bool spendsStamina=queuedAttack==PlayerAttackKind.Thrust || queuedAttack==PlayerAttackKind.JumpingOverhead;
-            if(spendsStamina && stamina!=null && !stamina.Spend(specialStaminaCost))
-            {
-                staminaWarningUntil=Time.time+.8f;
-                return;
-            }
             activeAttack=queuedAttack;
             float charge=PlayerAttackModel.ChargeFraction(queuedHold,activeAttack);
             lastDamage=SwingModel.Damage(elapsed,power,recovery,speed) * PlayerAttackModel.DamageMultiplier(activeAttack,queuedHold,fullChargeDamageMultiplier);
@@ -61,9 +55,9 @@ namespace SwordKing
             }
             else if(activeAttack==PlayerAttackKind.ChargedOverhead)
             {
-                // Redirect a small share into the slam; a target struck by both takes the original total.
-                ResolveAttack(lastDamage*.9f,strikeReach,strikeAngle,impactCharge);
-                chargedSlamDamage=lastDamage*.1f;
+                // Split damage equally into the sword and slam; a target struck by both takes the original total.
+                ResolveAttack(lastDamage*.5f,strikeReach,strikeAngle,impactCharge);
+                chargedSlamDamage=lastDamage*.5f;
                 chargedSlamAt=Time.time+animationDuration;
                 chargedSlamPending=true;
             }
@@ -112,8 +106,8 @@ namespace SwordKing
         }
         void ResolveChargedGroundSlam(float damage)
         {
-            const float radius=2f;
-            Vector3 center=player.position+player.forward*1.2f;
+            const float radius=4f;
+            Vector3 center=player.position;
             foreach(var d in dummies)
             {
                 Vector3 delta=d.root.position-center;
