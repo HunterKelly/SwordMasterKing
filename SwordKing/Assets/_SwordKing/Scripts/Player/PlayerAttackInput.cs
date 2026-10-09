@@ -4,7 +4,7 @@ namespace SwordKing
 {
     public partial class PlayerController
     {
-        readonly ShiftGesture shiftGesture = new ShiftGesture();
+        bool shiftSpecialHeld;
         bool ignoreShiftUntilRelease, chargingAttack, chargeOverhead, chargeSprint;
         float chargeStarted, queuedHold;
         PlayerAttackKind queuedAttack, activeAttack;
@@ -16,7 +16,7 @@ namespace SwordKing
         Vector3 thrustSlideDirection;
         float thrustSlideRemaining;
         readonly System.Collections.Generic.Queue<float> horizontalHistory = new System.Collections.Generic.Queue<float>();
-        bool ShiftSpecialReady => shiftGesture.SprintHeld && !IsRolling && !jumpStrikePending;
+        bool ShiftSpecialReady => shiftSpecialHeld && !IsRolling && !jumpStrikePending;
         bool HorizontalFlurry => activeAttack==PlayerAttackKind.Slash && horizontalHistory.Count>=3 && Time.time-lastAttack<.2f;
         readonly System.Collections.Generic.Queue<float> overheadHistory = new System.Collections.Generic.Queue<float>();
         bool OverheadFlurry => overheadHistory.Count >= 3 && Time.time-lastAttack < .2f;
@@ -25,16 +25,15 @@ namespace SwordKing
         public float ChargeFraction => PlayerAttackModel.ChargeFraction(Time.time-chargeStarted,
             !chargeOverhead && !chargeSprint ? PlayerAttackKind.Spin : PlayerAttackModel.Kind(chargeOverhead,chargeSprint));
 
-        bool UpdateShiftGesture(bool held, Vector2 movement)
+        void UpdateSprint(bool held, Vector2 movement)
         {
             if(ignoreShiftUntilRelease)
             {
                 if(!held) ignoreShiftUntilRelease=false;
-                IsSprinting=false; return false;
+                shiftSpecialHeld=false; IsSprinting=false; return;
             }
-            bool roll=shiftGesture.Tick(held,Time.time,Mathf.Clamp(sprintHoldThreshold,.1f,.3f));
-            IsSprinting=shiftGesture.SprintHeld && movement.sqrMagnitude>.01f && !IsRolling && !jumpStrikePending;
-            return roll;
+            shiftSpecialHeld=held;
+            IsSprinting=shiftSpecialHeld && movement.sqrMagnitude>.01f && !IsRolling && !jumpStrikePending;
         }
         void ReadAttackInput(PlayerInputFrame input)
         {
@@ -65,7 +64,7 @@ namespace SwordKing
         void CancelCombatInput()
         {
             CancelAttackInput(); jumpStrikePending=false; jumpDescending=false; thrustWindow.Cancel();
-            specialPoseUntil=0; attackReadyAt=0; thrustSlideRemaining=0; horizontalHistory.Clear(); overheadHistory.Clear(); shiftGesture.Clear(); IsSprinting=false;
+            specialPoseUntil=0; attackReadyAt=0; thrustSlideRemaining=0; horizontalHistory.Clear(); overheadHistory.Clear(); shiftSpecialHeld=false; IsSprinting=false;
             ignoreShiftUntilRelease=playerInput!=null && playerInput.Read().ShiftHeld;
         }
         void UpdateAttackWindows()

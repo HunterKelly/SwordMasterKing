@@ -1,21 +1,14 @@
-# Sprint, roll, and charged attacks
+# Current controls
 
-- Tap either Shift key and release within 0.18 seconds to roll. Roll begins on release, so it can be distinguished from sprinting. Rolling still requires ground contact and respects the existing recovery.
-- Hold Shift for at least 0.18 seconds while moving to sprint at 1.6 times walk speed (9.6 m/s with the default 6 m/s walk). Releasing a sprint does not trigger a roll.
-- Left click: quick tap slashes; holding at least 0.25 seconds while walking releases a 360-degree spin that hits all around you. While sprinting, left click remains a narrow forward thrust with 110% longer reach.
-- Right click: overhead attack with 60% longer reach; while sprinting: jumping overhead heavy with 60% longer reach, which holds the sword on ascent, swings on descent and hits on landing.
-- Hold either mouse button to charge, then release to attack. Damage increases smoothly up to a 0.6-second cap for the spin and a two-second cap for other attacks. Holding longer retains a full charge and never repeats attacks automatically.
-- At full charge, damage is twice that variant's uncharged damage. Default variant multipliers: slash 1, overhead 1.25, thrust 1.15, jumping overhead 3.5. The existing sword stats and recovery-based damage still apply.
-- Only one attack can charge at a time. If both buttons start together, right click takes priority. Sprinting during a charge selects the sprint variant for that charge, even if Shift is released first.
-- Menus, loss of focus, respawns and chapter transitions cancel pending attacks. Rolls cancel active attacks when permitted by the recovery clock. Releasing a button during a cooldown still uses the short single-attack buffer. Airborne jumping heavies cannot be stacked.
+- **C:** roll on press, respecting the existing ground and recovery requirements.
+- **Hold Shift:** sprint immediately while moving; selects special attacks while stationary too. No tap/hold delay and releasing Shift never rolls.
+- **Left click:** slash. Hold at least 0.25 seconds for a spin, fully charged at 0.6 seconds.
+- **Right click:** overhead. Hold at least 0.25 seconds for a stronger overhead, fully charged at 0.6 seconds.
+- **Shift + left click:** forward piercing thrust with a tiny hop and slide; chargeable up to two seconds.
+- **Shift + right click:** jumping overhead heavy with landing impact; chargeable up to two seconds.
+- **Space:** jump. **Q:** heal. **E:** interact. **Escape:** pause.
 
-Select `Assets/_SwordKing/Data/Player/DefaultPlayer.asset` to adjust Sprint Multiplier, Sprint Hold Threshold Full Charge Damage Multiplier, and the three Special Attack Reach Multipliers. Attack reach, angle and style multipliers are in `PlayerCombat.cs` and `PlayerAttackModel.cs`. The charge cap is `PlayerAttackModel.MaxChargeSeconds`.
-
-Both old and new Unity input backends are supported. HUD controls describe the new behavior and show charge percentage / sprint status. Current models use procedural sword poses and trails; model-specific animation clips can replace this presentation later.
-
-Validation: edit-mode tests cover Shift tap/hold/cancellation, attack selection and charge scaling/capping. Unity is not installed in the authoring environment, so those tests and gameplay need to be run in the Editor. Check tap versus hold at low frame rates, click-release timing, both mouse buttons, charging into a roll, pausing while held, jumping-heavy collisions, chapter transfer, and both levels.
-
-The walking spin completes in 0.45 seconds. New mouse attacks wait until it finishes; it has 0.15 seconds of recovery before another attack or roll. Damage resolves once per enemy on release, with the existing wall checks. The spin rotates only the visual body and leaves camera aim/collisions unchanged.
+Mouse attacks fire on release. Shift can be held at a standstill to select either special. C cancels charging when a roll can start. Roll wins over jump if both inputs arrive together; sprint or charge recovery still prevents premature rolls. Holding C does not repeat rolls.
 
 ## Attack timing polish
 
@@ -51,6 +44,6 @@ The flurry visual is exactly three parallel copies of the ordinary slash trail: 
 
 ## Standing Shift specials and tiny thrust hop
 
-Holding Shift past the existing 0.18-second tap/hold threshold selects thrust (left click) or jumping overhead (right click), even with no movement input. Moving while holding Shift still sprints, and tapping Shift still rolls. The player does not need to run forward to select either special.
+Holding Shift selects thrust (left click) or jumping overhead (right click), even with no movement input. Moving while holding Shift still sprints, and C rolls. The player does not need to run forward to select either special.
 
 Grounded thrusts add a tiny 0.12-metre hop alongside their existing forward slide. Thrust Hop Height in DefaultPlayer.asset adjusts it; zero disables it. An already airborne thrust does not add another jump. The existing damage window, one hit per enemy and recovery remain in effect.

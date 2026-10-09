@@ -4,30 +4,6 @@ namespace SwordKing.Tests
 {
     public sealed class PlayerAttackModelTests
     {
-        [Test]
-        public void ShiftTapRollsOnceOnRelease()
-        {
-            var shift=new ShiftGesture();
-            Assert.That(shift.Tick(true,0,.18f),Is.False);
-            Assert.That(shift.SprintHeld,Is.False);
-            Assert.That(shift.Tick(false,.1f,.18f),Is.True);
-            Assert.That(shift.Tick(false,.11f,.18f),Is.False);
-        }
-        [Test]
-        public void SprintHoldNeverRollsOnRelease()
-        {
-            var shift=new ShiftGesture(); shift.Tick(true,0,.18f);
-            Assert.That(shift.Tick(true,.2f,.18f),Is.False);
-            Assert.That(shift.SprintHeld,Is.True);
-            Assert.That(shift.Tick(false,.5f,.18f),Is.False);
-            Assert.That(shift.SprintHeld,Is.False);
-        }
-        [Test]
-        public void ClearingShiftCancelsPendingTap()
-        {
-            var shift=new ShiftGesture(); shift.Tick(true,0,.18f); shift.Clear();
-            Assert.That(shift.Tick(false,.1f,.18f),Is.False);
-        }
         [TestCase(false,false,PlayerAttackKind.Slash)]
         [TestCase(true,false,PlayerAttackKind.Overhead)]
         [TestCase(false,true,PlayerAttackKind.Thrust)]

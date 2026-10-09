@@ -40,7 +40,6 @@ namespace SwordKing
 
         [Header("Sprint and charged attacks")]
         [Min(1)] public float sprintMultiplier = 1.6f;
-        [Range(.1f, .3f)] public float sprintHoldThreshold = .18f;
         [Min(1)] public float fullChargeDamageMultiplier = 2f;
         [Header("Attack windows and recovery")]
         [Range(0, .4f)] public float thrustHopHeight = .12f;
@@ -123,7 +122,8 @@ namespace SwordKing
                 else SetMenu(!menu);
             }
             if (adventureMode && (Level == null || Level.InputBlocked)) { CancelCombatInput(); return; }
-            bool roll = UpdateShiftGesture(!menu && input.ShiftHeld, move);
+            UpdateSprint(!menu && input.ShiftHeld, move);
+            bool roll = input.Roll;
             if (menu || IsRolling) CancelAttackInput();
             else ReadAttackInput(input);
             if (Feedback != null && Feedback.ImpactPaused) return;

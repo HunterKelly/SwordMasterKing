@@ -21,7 +21,6 @@ MonoBehaviour:
   reach: 2.8
   attackAngle: 110
   sprintMultiplier: 1.6
-  sprintHoldThreshold: 0.18
   fullChargeDamageMultiplier: 2
   thrustHopHeight: 0.12
   thrustSlideDistance: 1.2

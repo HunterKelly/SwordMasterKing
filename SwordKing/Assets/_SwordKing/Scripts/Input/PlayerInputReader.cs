@@ -32,6 +32,7 @@ namespace SwordKing
                     (keyboard.wKey.isPressed ? 1 : 0) - (keyboard.sKey.isPressed ? 1 : 0));
                 frame.Pause = keyboard.escapeKey.wasPressedThisFrame;
                 frame.Jump = keyboard.spaceKey.wasPressedThisFrame;
+                frame.Roll = keyboard.cKey.wasPressedThisFrame;
                 frame.ShiftHeld = keyboard.leftShiftKey.isPressed || keyboard.rightShiftKey.isPressed;
                 frame.Interact = keyboard.eKey.wasPressedThisFrame; frame.Heal = keyboard.qKey.wasPressedThisFrame;
                 frame.TestLow = keyboard.lKey.wasPressedThisFrame; frame.TestHigh = keyboard.hKey.wasPressedThisFrame;
@@ -52,6 +53,7 @@ namespace SwordKing
             frame.HeavyAttack = Input.GetMouseButtonDown(1); frame.HeavyHeld = Input.GetMouseButton(1); frame.HeavyReleased = Input.GetMouseButtonUp(1);
             frame.Pause = Input.GetKeyDown(KeyCode.Escape);
             frame.Jump = Input.GetKeyDown(KeyCode.Space);
+            frame.Roll = Input.GetKeyDown(KeyCode.C);
             frame.ShiftHeld = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
             frame.Interact = Input.GetKeyDown(KeyCode.E); frame.Heal = Input.GetKeyDown(KeyCode.Q);
             frame.TestLow = Input.GetKeyDown(KeyCode.L); frame.TestHigh = Input.GetKeyDown(KeyCode.H);

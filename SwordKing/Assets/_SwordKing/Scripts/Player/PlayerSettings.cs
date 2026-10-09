@@ -15,7 +15,6 @@ namespace SwordKing
         [Range(30, 180)] public float attackAngle = 110f;
         [Header("Sprint and charged attacks")]
         [Min(1)] public float sprintMultiplier = 1.6f;
-        [Range(.1f, .3f)] public float sprintHoldThreshold = .18f;
         [Min(1)] public float fullChargeDamageMultiplier = 2f;
         [Header("Attack windows and recovery")]
         [Range(0, .4f)] public float thrustHopHeight = .12f;

@@ -13,7 +13,7 @@ namespace SwordKing
             GUILayout.BeginArea(new Rect(18, 18, 325, 660), GUI.skin.box);
             GUILayout.Label("SWORDPLAY / COMBAT LAB");
             GUILayout.Label("WASD move | LMB slash / thrust | RMB overhead / jump");
-            GUILayout.Label("Hold click charge (2s) | Shift hold sprint / tap roll | Esc build controls");
+            GUILayout.Label("Hold click charge (2s) | Hold Shift sprint / C roll | Esc build controls");
             GUILayout.Label(IsRolling ? "ROLLING - INVINCIBLE" : (airborne ? "AIRBORNE - lower hitbox OFF" : "GROUNDED - both hitboxes ON"));
             GUILayout.Label("HP: " + PlayerHealth.ToString("F0") + " / 100  |  Roll: " + (Time.time >= rollReadyAt ? "READY" : "recovering"));
             GUILayout.Label(lastDefenseResult);

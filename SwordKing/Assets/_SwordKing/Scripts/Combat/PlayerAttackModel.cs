@@ -22,18 +22,4 @@ namespace SwordKing
             return style * (1 + (Math.Max(1, fullChargeMultiplier) - 1) * ChargeFraction(heldSeconds,kind));
         }
     }
-    public sealed class ShiftGesture
-    {
-        bool held;
-        float started;
-        public bool SprintHeld { get; private set; }
-        public bool Tick(bool pressed, float now, float threshold)
-        {
-            if(pressed && !held) started=now;
-            bool roll=held && !pressed && now-started < threshold;
-            SprintHeld=pressed && now-started >= threshold;
-            held=pressed; return roll;
-        }
-        public void Clear() { held=false; SprintHeld=false; }
-    }
 }
