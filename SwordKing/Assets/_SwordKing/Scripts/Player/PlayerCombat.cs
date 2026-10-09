@@ -59,6 +59,14 @@ namespace SwordKing
                 thrustDamage=lastDamage; thrustReach=strikeReach; thrustAngle=strikeAngle; thrustCharge=impactCharge;
                 ResolveAttack(lastDamage,strikeReach,strikeAngle,impactCharge,thrustWindow);
             }
+            else if(activeAttack==PlayerAttackKind.ChargedOverhead)
+            {
+                // Redirect a small share into the slam; a target struck by both takes the original total.
+                ResolveAttack(lastDamage*.9f,strikeReach,strikeAngle,impactCharge);
+                chargedSlamDamage=lastDamage*.1f;
+                chargedSlamAt=Time.time+animationDuration;
+                chargedSlamPending=true;
+            }
             else ResolveAttack(lastDamage,strikeReach,strikeAngle,impactCharge);
             while(overheadHistory.Count>0 && Time.time-overheadHistory.Peek()>.5f) overheadHistory.Dequeue();
             if(activeAttack==PlayerAttackKind.Overhead && !charged)
@@ -98,18 +106,41 @@ namespace SwordKing
             }
             if(Level!=null)
             {
-                Level.ResolvePlayerAttack(damage,strikeReach,strikeAngle,charge,window);
+                Level.ResolvePlayerAttack(damage,strikeReach,strikeAngle,charge,window,activeAttack);
                 if(playSound) Level.PlaySound("swing");
             }
         }
-        void EmitLandingBlast()
+        void ResolveChargedGroundSlam(float damage)
+        {
+            const float radius=2f;
+            Vector3 center=player.position+player.forward*1.2f;
+            foreach(var d in dummies)
+            {
+                Vector3 delta=d.root.position-center;
+                if(d.health<=0 || Mathf.Abs(delta.y)>2) continue;
+                delta.y=0;
+                if(delta.sqrMagnitude>radius*radius) continue;
+                float dealt=Mathf.Min(d.health,damage);
+                d.health-=dealt; d.flashUntil=Time.time+.08f;
+                damageHistory.Enqueue(new Vector2(Time.time,dealt));
+                if(d.health<=0) d.resetAt=Time.time+1.5f;
+            }
+            if(Level!=null)
+            {
+                Level.ResolvePlayerAttack(damage,radius,360,0,null,PlayerAttackKind.Slash,center);
+                Level.PlaySound("slam");
+            }
+            EmitLandingBlast(center,radius);
+            if(cameraRig!=null) cameraRig.AddImpact(.25f,.12f);
+        }
+        void EmitLandingBlast(Vector3? impactCenter=null,float radius=3.5f)
         {
             var line=new GameObject("Landing shockwave").AddComponent<LineRenderer>();
             line.transform.SetParent(transform); line.sharedMaterial=slashMaterial;
             line.positionCount=49; line.widthMultiplier=.15f; line.useWorldSpace=true;
-            var center=player.position;
+            var center=impactCenter ?? player.position;
             for(int i=0;i<49;i++) line.SetPosition(i,center+Vector3.up*.06f);
-            slashes.Add(new Slash { line=line,born=Time.time,duration=.35f,shockwave=true,center=center });
+            slashes.Add(new Slash { line=line,born=Time.time,duration=.35f,shockwave=true,center=center,radius=radius });
         }
         void EmitAttackTrail(PlayerAttackKind kind,float strikeReach,float strikeAngle,Vector3 offset=default(Vector3))
         {

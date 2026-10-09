@@ -96,6 +96,7 @@ namespace SwordKing
             public LineRenderer line;
             public float born, duration = .18f;
             public bool shockwave;
+            public float radius=3f;
             public Vector3 center;
         }
         readonly List<Dummy> dummies = new List<Dummy>();

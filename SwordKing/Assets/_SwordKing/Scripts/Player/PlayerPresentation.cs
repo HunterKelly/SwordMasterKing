@@ -136,7 +136,7 @@ namespace SwordKing
                 float life = (Time.time - slashes[i].born) / slashes[i].duration;
                 if(slashes[i].shockwave)
                 {
-                    float radius=Mathf.Lerp(.15f,3.5f,Mathf.Clamp01(life));
+                    float radius=Mathf.Lerp(.15f,slashes[i].radius,Mathf.Clamp01(life));
                     for(int j=0;j<slashes[i].line.positionCount;j++)
                     {
                         float a=j/(float)(slashes[i].line.positionCount-1)*Mathf.PI*2;

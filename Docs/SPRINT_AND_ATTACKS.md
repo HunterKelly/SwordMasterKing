@@ -57,3 +57,17 @@ Stamina pauses regeneration while sprinting, charging, executing a special, or i
 Spin now rotates in 0.28 seconds (previously 0.45), with a base damage multiplier of 1.5 (50% more). Its charge cap remains 0.6 seconds and its recovery remains 0.15 seconds. It and charged overhead consume no stamina.
 
 Unity is not installed here; run the edit-mode tests and gameplay checks in Unity, including sustained sprint drain, empty-stamina walking, Shift specials at a standstill, and free charged attacks.
+
+## Regular enemy special reactions
+
+Shift + left click pushes each surviving regular enemy up to 0.65 metres along the player's forward direction over 0.2 seconds. The existing per-target hit window prevents repeated pushes from one thrust. Walls, encounter boundaries and unsupported ledges stop the push.
+
+Shift + right click pops struck surviving regular enemies up approximately 0.35 metres when the jumping heavy lands. Gravity brings them down, with CharacterController collision against floors and ceilings. Both reactions interrupt their current attack and pause pursuit during the reaction. Bosses ignore both reactions.
+
+Tune Thrust Push Distance, Thrust Push Duration and Landing Pop Height in the level definition's Enemy Combat settings. Unity gameplay checks are still required for walls, ledges, boss immunity, one push per thrust, landing timing and return to pursuit.
+
+## Charged overhead ground slam
+
+The non-Shift charged overhead splits its original damage: 90% remains on the sword hit and 10% hits each enemy once within a 2-metre circle centred 1.2 metres in front of the player when the swing finishes. A sword target also inside the slam receives the original total damage. Nearby targets receive only the small splash. Walls block the splash; the shockwave visual matches the damage radius. The splash causes no thrust push or jumping-heavy pop. Pause, respawn and combat cancellation discard any pending slam.
+
+Unity gameplay checks are required for sword-plus-splash totals, surrounding enemies, walls, cancellation and visual timing.

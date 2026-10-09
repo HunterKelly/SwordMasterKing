@@ -5,6 +5,8 @@ namespace SwordKing
     public partial class PlayerController
     {
         bool shiftSpecialHeld;
+        bool chargedSlamPending;
+        float chargedSlamAt, chargedSlamDamage;
         bool sprintExhausted;
         bool ignoreShiftUntilRelease, chargingAttack, chargeOverhead, chargeSprint;
         float chargeStarted, queuedHold;
@@ -67,11 +69,17 @@ namespace SwordKing
         void CancelCombatInput()
         {
             CancelAttackInput(); jumpStrikePending=false; jumpDescending=false; thrustWindow.Cancel();
+            chargedSlamPending=false;
             specialPoseUntil=0; attackReadyAt=0; thrustSlideRemaining=0; horizontalHistory.Clear(); overheadHistory.Clear(); shiftSpecialHeld=false; IsSprinting=false;
             ignoreShiftUntilRelease=playerInput!=null && playerInput.Read().ShiftHeld;
         }
         void UpdateAttackWindows()
         {
+            if(chargedSlamPending && Time.time>=chargedSlamAt)
+            {
+                chargedSlamPending=false;
+                ResolveChargedGroundSlam(chargedSlamDamage);
+            }
             if(thrustWindow.Active(Time.time)) ResolveAttack(thrustDamage,thrustReach,thrustAngle,thrustCharge,thrustWindow,false);
         }
         void UpdateJumpStrike()
