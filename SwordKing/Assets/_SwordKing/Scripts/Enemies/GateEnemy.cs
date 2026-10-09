@@ -85,6 +85,14 @@ namespace SwordKing
         public void Tick(float dt)
         {
             if(!Root.gameObject.activeSelf) return;
+            if(pushRemaining>0)
+            {
+                float step=Mathf.Min(dt,pushRemaining);
+                MoveAlong(pushDirection,Mathf.Max(0,tuning.thrustPushDistance)/Mathf.Max(.05f,tuning.thrustPushDuration),step,false);
+                pushRemaining=Mathf.Max(0,pushRemaining-step);
+                if(!Alive && pushRemaining<=0) controller.enabled=false;
+                if(Alive && !popped) return;
+            }
             if(!Alive)
             {
                 graphics.localRotation=Quaternion.Slerp(graphics.localRotation,Quaternion.Euler(10,0,85),dt*8);
@@ -97,13 +105,6 @@ namespace SwordKing
             graphics.localPosition = recoilDirection * (.14f*recoil);
 
             // Physical reactions pause attacks and pursuit; walls and encounter edges still block pushes.
-            if(pushRemaining>0)
-            {
-                float step=Mathf.Min(dt,pushRemaining);
-                MoveAlong(pushDirection,Mathf.Max(0,tuning.thrustPushDistance)/Mathf.Max(.05f,tuning.thrustPushDuration),step,false);
-                pushRemaining=Mathf.Max(0,pushRemaining-step);
-                if(!popped) return;
-            }
             if(popped)
             {
                 const float gravity=20f;
@@ -251,21 +252,24 @@ namespace SwordKing
         }
         public void ReactToSpecial(PlayerAttackKind kind, Vector3 direction)
         {
-            if(IsBoss || !Alive) return;
+            if(IsBoss) return;
             if(kind==PlayerAttackKind.Thrust && tuning.thrustPushDistance>0)
             {
                 direction.y=0;
                 if(direction.sqrMagnitude<.001f) return;
                 pushDirection=direction.normalized;
                 pushRemaining=Mathf.Max(.05f,tuning.thrustPushDuration);
+                // ReceiveHit disables movement on death; let the killing thrust push the body first.
+                controller.enabled=true;
             }
-            else if(kind==PlayerAttackKind.JumpingOverhead && tuning.landingPopHeight>0)
+            else if(Alive && kind==PlayerAttackKind.JumpingOverhead && tuning.landingPopHeight>0)
             {
                 pushRemaining=0;
                 popVelocity=Mathf.Sqrt(2f*20f*tuning.landingPopHeight);
                 popped=true;
             }
             else return;
+            if(!Alive) return;
             state=State.Recover; warning.enabled=false;
             until=Time.time+Mathf.Max(pushRemaining,.1f);
         }

@@ -81,3 +81,7 @@ Every sword and AOE damage event keeps its own popup. Sword hits are gold; charg
 Shift + right click now resolves two independent damage events on landing: 50% of its damage in the existing forward sword cone and 50% in a 4-metre, 360-degree blast centred at the player's actual landing position. Enemies behind and beside the player take the blast even when the sword misses them. Targets surviving the sword and within the blast display separate gold sword and cyan splash numbers. The blast pops surviving regular enemies upward; bosses resist the pop. Walls still block damage. The earlier standing charged-overhead splash remains available.
 
 Thrust push distance is now 1.5 metres (previously 0.8). Verify front/back/side targets, separate damage numbers, landing timing and boss pop immunity in Unity; Unity is unavailable in this environment.
+
+## Shift-left knockback on lethal hits
+
+The Shift + left click attack (called Thrust in code) now applies its 1.5-metre push to regular enemies even when the sword hit kills them. Previously ReceiveHit disabled the dead enemy's controller and ReactToSpecial skipped dead targets, so lethal hits showed no physical knockback. The dying body keeps collision-resolved movement for the brief push, then disables its controller again. Boss immunity and one push per target per attack remain. Unity must verify both lethal and nonlethal hits in open space and near walls.
