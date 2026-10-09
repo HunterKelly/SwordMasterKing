@@ -154,9 +154,10 @@ namespace SwordKing
             Vector3 movement = Steer(desired.normalized) * speed * dt;
             Vector3 destination = Root.position + movement;
             // Stay on this encounter's route; bridge gaps remain traversal challenges for the player.
-            float minZ = Zone==0?10:Zone==1?64.5f:101;
-            float maxZ = Zone==0?44:Zone==1?98:125;
-            float halfWidth = Zone==2?10:(destination.z<16 || destination.z>86?4:8);
+            bool ice = level.Player.LevelDefinition != null && level.Player.LevelDefinition.iceWorld;
+            float minZ = ice ? -23 : Zone==0?10:Zone==1?64.5f:101;
+            float maxZ = ice ? 23 : Zone==0?44:Zone==1?98:125;
+            float halfWidth = ice ? 19 : Zone==2?10:(destination.z<16 || destination.z>86?4:8);
             destination.x = Mathf.Clamp(destination.x,-halfWidth,halfWidth);
             destination.z = Mathf.Clamp(destination.z,minZ,maxZ);
             destination = Root.position + Vector3.ClampMagnitude(destination-Root.position, speed*dt);

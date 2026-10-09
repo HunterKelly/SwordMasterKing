@@ -17,6 +17,16 @@ namespace SwordKing
             public EnemySpawn(int id, int zone, string title, Vector3 position, int style, bool boss = false)
             { this.id=id; this.zone=zone; this.title=title; this.position=position; attackStyle=style; this.boss=boss; }
         }
+        [Header("Level identity")]
+        public bool iceWorld;
+        public string displayName = "THE BROKEN GATE";
+        public string bossName = "THE GATEKEEPER";
+        public string saveKey = "BrokenGate.Level1.Save.v1";
+        [Header("Ice World")]
+        public int placementSeed = 2026;
+        [Range(1, 24)] public int randomEnemyCount = 12;
+        [Range(0, 1)] public float snowFootstepVolume = .16f;
+        [Range(0, 600)] public float snowfallRate = 180;
         public EnemyCombatSettings enemyCombat = new EnemyCombatSettings();
         public CombatFeedbackSettings combatFeedback = new CombatFeedbackSettings();
         public Vector3 arrival = new Vector3(0, .15f, -5);

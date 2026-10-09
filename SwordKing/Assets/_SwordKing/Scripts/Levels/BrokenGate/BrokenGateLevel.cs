@@ -16,7 +16,10 @@ namespace SwordKing
             public bool[] defeated=new bool[7];
             public float seconds;
         }
-        const string SaveKey="BrokenGate.Level1.Save.v1";
+        bool IceWorld => Player.LevelDefinition != null && Player.LevelDefinition.iceWorld;
+        string LevelTitle => IceWorld ? Player.LevelDefinition.displayName : "THE BROKEN GATE";
+        string BossTitle => IceWorld ? Player.LevelDefinition.bossName : "THE GATEKEEPER";
+        string SaveKey => IceWorld ? Player.LevelDefinition.saveKey : "BrokenGate.Level1.Save.v1";
         public PlayerController Player { get; private set; }
         public BrokenGateWorld World { get; private set; }
         public bool InputBlocked => screen!=ScreenState.Playing;
@@ -51,12 +54,13 @@ namespace SwordKing
                 var worldRoot = new GameObject("The Broken Gate - World");
                 worldRoot.transform.SetParent(transform, false);
                 World = worldRoot.AddComponent<BrokenGateWorld>();
-                World.Build();
+                if (IceWorld) IceWorldBuilder.Build(World); else World.Build();
             }
             World.EnsureMaterials();
             EnemyCombat = player.LevelDefinition != null && player.LevelDefinition.enemyCombat != null ? player.LevelDefinition.enemyCombat : new EnemyCombatSettings();
             var spawns = player.LevelDefinition != null ? player.LevelDefinition.encounters : LevelDefinition.DefaultEncounters();
-            LevelDefinition.ValidateEncounters(spawns);
+            if (IceWorld) spawns = IceWorldBuilder.Encounters(Player.LevelDefinition);
+            else LevelDefinition.ValidateEncounters(spawns);
             foreach (var spawn in spawns)
             {
                 var enemy = new GateEnemy(this, spawn.id, spawn.zone, spawn.title, spawn.position, spawn.attackStyle, spawn.boss);
@@ -70,6 +74,14 @@ namespace SwordKing
             Player.PlayerCamera.farClipPlane=220;
             foreach(var light in GetComponentsInChildren<Light>()) if(light.type==LightType.Directional)
             { light.color=new Color(1,.85f,.66f); light.shadows=LightShadows.Soft; light.shadowStrength=.7f; }
+            if (IceWorld)
+            {
+                RenderSettings.fogColor = new Color(.70f,.79f,.87f);
+                RenderSettings.fogDensity = .005f;
+                RenderSettings.ambientLight = new Color(.68f,.76f,.85f);
+                Player.PlayerCamera.backgroundColor = RenderSettings.fogColor;
+                gameObject.AddComponent<IceWorldAtmosphere>().Initialize(this);
+            }
             CreateAudio(); hasSave=PlayerPrefs.HasKey(SaveKey);
             Player.RestoreAt(Arrival); SetScreen(ScreenState.Title); ready=true;
         }
@@ -77,12 +89,12 @@ namespace SwordKing
 
         void StartRun(bool load)
         {
-            save=new SaveData();
+            save=new SaveData { defeated = new bool[enemies.Count] };
             if(load)
             {
                 try { save=JsonUtility.FromJson<SaveData>(PlayerPrefs.GetString(SaveKey)); }
                 catch(Exception) { save=null; }
-                if(save==null || save.version!=1 || save.defeated==null || save.defeated.Length!=7)
+                if(save==null || save.version!=1 || save.defeated==null || save.defeated.Length!=enemies.Count)
                 { saveWarning="Save could not be read. Start a new journey."; return; }
                 save.power=Mathf.Clamp(save.power,0,10); save.recovery=Mathf.Clamp(save.recovery,0,10); save.speed=Mathf.Clamp(save.speed,0,10);
                 save.shards=Mathf.Max(0,save.shards); save.deaths=Mathf.Max(0,save.deaths);
@@ -97,7 +109,7 @@ namespace SwordKing
             ResetEncounters();
             Player.RestoreAt(save.checkpoint?World.Camp+Vector3.back*2:Arrival);
             flasks=2; confirmNew=false; Save(); SetScreen(save.completed?ScreenState.Victory:ScreenState.Playing);
-            Notify(load?"Journey resumed at your last refuge.":"Find the road through the fortress.");
+            Notify(load?"Journey resumed at your last refuge.":IceWorld?"Explore the frost courtyard. Defeat the Frost Warden and his watch.":"Find the road through the fortress.");
         }
         void ResetEncounters()
         {
@@ -112,7 +124,7 @@ namespace SwordKing
         }
         void SyncGates()
         {
-            World.CourtyardGate.SetActive(!Cleared(0)); World.GatehouseGate.SetActive(!Cleared(1));
+            World.CourtyardGate.SetActive(!IceWorld && !Cleared(0)); World.GatehouseGate.SetActive(!IceWorld && !Cleared(1));
             World.ExitGate.SetActive(boss.Alive);
             if(!boss.Alive) World.BossEntrance.SetActive(false);
         }
@@ -138,8 +150,8 @@ namespace SwordKing
             Vector3 p=Player.PlayerTransform.position;
             if(p.y < -6) { Die("The ravine claims another traveler."); return; }
             if(heal && !Player.IsRolling && flasks>0 && Player.Heal(45)) { flasks--; PlaySound("heal"); Notify("Ember flask • health restored"); }
-            if(p.z>103 && p.z<126 && boss.Alive && !bossActive)
-            { bossActive=true; World.BossEntrance.SetActive(true); Notify("THE GATEKEEPER • Break his watch."); PlaySound("boss"); }
+            if((IceWorld ? Vector3.Distance(p,boss.Root.position)<14 : p.z>103 && p.z<126) && boss.Alive && !bossActive)
+            { bossActive=true; World.BossEntrance.SetActive(true); Notify(BossTitle+" • Break his watch."); PlaySound("boss"); }
             foreach(var enemy in enemies)
             {
                 enemy.Tick(Time.deltaTime);
@@ -155,7 +167,7 @@ namespace SwordKing
                     Notify("Lost knight's coffer • +2 upgrade embers"); PlaySound("reward");
                 }
             }
-            else if(Vector3.Distance(p,World.Camp)<3 && Cleared(1))
+            else if(Vector3.Distance(p,World.Camp)<3 && (IceWorld || Cleared(1)))
             {
                 interaction="E  Rest at the shrine / improve your sword";
                 if(interact && !Player.IsRolling)
@@ -164,7 +176,7 @@ namespace SwordKing
                     PlaySound("reward"); SetScreen(ScreenState.Shrine);
                 }
             }
-            if(!boss.Alive && p.z>132)
+            if(IceWorld ? Cleared(0) && !boss.Alive : !boss.Alive && p.z>132)
             {
                 save.completed=true; Save(); PlaySound("victory"); SetScreen(ScreenState.Victory);
             }
@@ -175,6 +187,7 @@ namespace SwordKing
             if(InputBlocked) return false;
             float z=Player.PlayerTransform.position.z;
             if(enemy.IsBoss) return bossActive;
+            if(IceWorld) return true;
             return enemy.Zone==0?z>10 && z<48:z>58 && z<100;
         }
         public Vector3 Separation(GateEnemy moving)
@@ -245,8 +258,8 @@ namespace SwordKing
             if(save.defeated[enemy.Id]) return;
             save.defeated[enemy.Id]=true; save.shards+=enemy.IsBoss?3:1;
             SyncGates(); Save(); PlaySound("reward");
-            if(enemy.IsBoss) Notify("THE GATEKEEPER HAS FALLEN • Cross the open gate.");
-            else if(Cleared(enemy.Zone)) Notify("The seal is broken. The way is open.");
+            if(enemy.IsBoss) Notify(IceWorld?BossTitle+" HAS FALLEN • Finish clearing the courtyard.":"THE GATEKEEPER HAS FALLEN • Cross the open gate.");
+            else if(!IceWorld && Cleared(enemy.Zone)) Notify("The seal is broken. The way is open.");
             else Notify("+1 upgrade ember");
         }
         public void OnPlayerHurt()
@@ -267,6 +280,12 @@ namespace SwordKing
         void Notify(string text) { message=text; messageUntil=Time.time+4; }
         string Objective()
         {
+            if (IceWorld)
+            {
+                int remaining = 0;
+                foreach(var enemy in enemies) if(enemy.Alive && !enemy.IsBoss) remaining++;
+                return "Frost watch remaining: " + remaining + (boss.Alive ? " • Defeat the Frost Warden" : " • Warden defeated");
+            }
             float z=Player.PlayerTransform.position.z;
             if(!Cleared(0)) return z<16?"Follow the road into the outer courtyard":"Defeat the courtyard watch to break the first seal";
             if(z<64) return "Cross the broken bridge • a lost coffer lies to the east";

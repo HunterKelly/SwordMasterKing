@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 201a1c8f58d35088a5fe01e67b134be5, type: 3}
+  m_Name: IceWorld
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.LevelDefinition
+  iceWorld: 1
+  displayName: ICE WORLD
+  bossName: THE FROST WARDEN
+  saveKey: SwordKing.IceWorld.Save.v1
+  placementSeed: 2026
+  randomEnemyCount: 12
+  snowFootstepVolume: 0.16
+  snowfallRate: 180
+  arrival: {x: 0, y: 0.15, z: -22}
+  encounters: []

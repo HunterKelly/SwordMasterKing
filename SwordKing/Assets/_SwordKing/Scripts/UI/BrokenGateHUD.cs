@@ -39,7 +39,7 @@ namespace SwordKing
             if(screen==ScreenState.Playing)
             {
                 Panel(new Rect(22,20,292,108),ink);
-                GUI.Label(new Rect(38,29,255,24),"THE BROKEN GATE",small);
+                GUI.Label(new Rect(38,29,255,24),LevelTitle,small);
                 Bar(new Rect(38,60,255,13),Player.PlayerHealth/100,new Color(.78f,.24f,.23f));
                 GUI.Label(new Rect(38,78,170,20),"HEALTH  "+Mathf.CeilToInt(Player.PlayerHealth),small);
                 Bar(new Rect(38,103,255,7),Player.SwingCharge,gold);
@@ -55,7 +55,7 @@ namespace SwordKing
                 if(Time.time<messageUntil) GUI.Label(new Rect(260,95,760,45),message,centered);
                 if(bossActive && boss.Alive)
                 {
-                    GUI.Label(new Rect(350,642,580,25),boss.Health<boss.MaxHealth*.5f?"THE GATEKEEPER  •  UNBOUND":"THE GATEKEEPER",subtitle);
+                    GUI.Label(new Rect(350,642,580,25),boss.Health<boss.MaxHealth*.5f?BossTitle+"  •  UNBOUND":BossTitle,subtitle);
                     Bar(new Rect(350,679,580,10),boss.Health/boss.MaxHealth,new Color(.75f,.24f,.19f));
                 }
                 foreach(var enemy in enemies)
@@ -107,8 +107,13 @@ namespace SwordKing
                 else if(screen==ScreenState.Victory)
                 {
                     GUI.Label(new Rect(300,133,680,60),"THE ROAD IS OPEN",heading);
-                    GUI.Label(new Rect(340,212,600,60),"CHAPTER I  •  COMPLETE\nThe watch is broken. Beyond the gate, your journey begins.",subtitle);
+                    GUI.Label(new Rect(340,212,600,60),IceWorld?"CHAPTER II  •  COMPLETE\nThe frozen watch has fallen.":"CHAPTER I  •  COMPLETE\nThe watch is broken. Beyond the gate, your journey begins.",subtitle);
                     GUI.Label(new Rect(340,315,600,110),"Time  "+Mathf.FloorToInt(save.seconds/60)+"m "+Mathf.FloorToInt(save.seconds%60)+"s\nDeaths  "+save.deaths+"\nLost knight's coffer  "+(save.cache?"Found":"Unclaimed"),centered);
+                    if(!IceWorld && Button(460,423,360,"Continue to Level 2 - Ice World"))
+                    {
+                        SetScreen(ScreenState.Playing);
+                        UnityEngine.SceneManagement.SceneManager.LoadScene("IceWorld");
+                    }
                     if(Button(460,473,360,"Return to title")) SetScreen(ScreenState.Title);
                 }
             }
@@ -117,9 +122,9 @@ namespace SwordKing
         }
         void TitleScreen()
         {
-            GUI.Label(new Rect(300,109,680,64),"THE BROKEN GATE",heading);
-            GUI.Label(new Rect(340,179,600,36),"CHAPTER I  •  THE MOUNTAIN FORTRESS",subtitle);
-            GUI.Label(new Rect(340,239,600,60),"A sealed road. A fallen watch.\nFight your way through, and open the gate.",centered);
+            GUI.Label(new Rect(300,109,680,64),LevelTitle,heading);
+            GUI.Label(new Rect(340,179,600,36),IceWorld?"CHAPTER II  •  ICE WORLD":"CHAPTER I  •  THE MOUNTAIN FORTRESS",subtitle);
+            GUI.Label(new Rect(340,239,600,60),IceWorld?"Snow falls over the frozen watch.\nClear the courtyard and defeat its Warden.":"A sealed road. A fallen watch.\nFight your way through, and open the gate.",centered);
             GUI.Label(new Rect(340,319,600,30),"Choose your starting sword style",centered);
             string[] titles={"Heavy","Balanced","Fast"};
             for(int i=0;i<3;i++)
