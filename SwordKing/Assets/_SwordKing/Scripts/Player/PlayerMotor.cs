@@ -18,6 +18,7 @@ namespace SwordKing
                 activeRollDistance = Mathf.Max(.1f, rollDistance);
                 rollStartedAt = Time.time; rollEndsAt = Time.time + activeRollDuration;
                 rollReadyAt = rollEndsAt + Mathf.Max(0, rollRecovery); rollTravelTime = 0;
+                CancelAttackInput(); jumpStrikePending = false; IsSprinting = false;
                 attackHistory.Clear(); animationStart = -100f;
                 foreach (var slash in slashes) Destroy(slash.line.gameObject);
                 slashes.Clear();
@@ -39,7 +40,7 @@ namespace SwordKing
                 horizontal = rollDirection * (activeRollDistance / activeRollDuration) * step;
                 rollTravelTime += step;
             }
-            else horizontal = direction * moveSpeed * dt;
+            else horizontal = direction * moveSpeed * (IsSprinting ? Mathf.Max(1, sprintMultiplier) : 1) * dt;
             float rise = verticalSpeed * dt - .5f * gravity * dt * dt;
             verticalSpeed -= gravity * dt;
             CollisionFlags flags = controller.Move(horizontal + Vector3.up * rise);
@@ -110,6 +111,7 @@ namespace SwordKing
             yaw = 0; pitch = 22; player.rotation = Quaternion.identity;
             rollEndsAt = -100; rollReadyAt = 0; activeRollDuration = 0; rollTravelTime = 0;
             lastAttack = -100; animationStart = -100; attackHistory.Clear();
+            CancelCombatInput(); jumpStrikePending = false;
             strafeLean = 0;
             airborne = false; visualRoot.localRotation = Quaternion.identity;
             visualRoot.localPosition = Vector3.up * .95f; visualRoot.localScale = Vector3.one;

@@ -35,6 +35,8 @@ namespace SwordKing
             if (settings != null)
             {
                 power = settings.power; recovery = settings.recovery; speed = settings.speed;
+                sprintMultiplier = settings.sprintMultiplier; sprintHoldThreshold = settings.sprintHoldThreshold;
+                fullChargeDamageMultiplier = settings.fullChargeDamageMultiplier;
                 strafeLeanAngle = settings.strafeLeanAngle; strafeLeanSpeed = settings.strafeLeanSpeed;
                 moveSpeed = settings.moveSpeed; reach = settings.reach; attackAngle = settings.attackAngle;
                 jumpHeightFraction = settings.jumpHeightFraction; rollDuration = settings.rollDuration;
@@ -60,7 +62,7 @@ namespace SwordKing
             player = rig.transform; player.SetParent(transform, false);
             player.position = new Vector3(0, .1f, -3);
             controller = rig.controller; visualRoot = rig.visualRoot; swordPivot = rig.swordPivot;
-            leftLeg = rig.leftLeg; rightLeg = rig.rightLeg;
+            leftLeg = rig.leftLeg; rightLeg = rig.rightLeg; swordRestPosition = swordPivot.localPosition;
             lowerHurtbox = CreateHurtbox("Lower body damage hitbox", true, .475f);
             upperHurtbox = CreateHurtbox("Upper body damage hitbox", false, 1.425f);
             if (!adventureMode)
@@ -96,8 +98,25 @@ namespace SwordKing
             float t = (Time.time - animationStart) / animationDuration;
             float angle = flurry ? Mathf.Sin((Time.time - animationStart) * 65) * 65 : Mathf.Lerp(-75, 75, Mathf.Clamp01(t));
             if (IsRolling) swordPivot.localRotation = Quaternion.Euler(-65, -30, 0);
-            else if (t < 1 || flurry) swordPivot.localRotation = Quaternion.Euler(-10, angle * (swingIndex % 2 == 0 ? 1 : -1), 0);
+            else if (chargingAttack)
+            {
+                swordPivot.localRotation = chargeOverhead ? Quaternion.Euler(-135, 0, 0) : Quaternion.Euler(-15, -65, 0);
+                if (chargeSprint && !chargeOverhead) swordPivot.localPosition = swordRestPosition + Vector3.back * .25f;
+            }
+            else if (t < 1)
+            {
+                float progress = Mathf.Clamp01(t);
+                if (activeAttack == PlayerAttackKind.Overhead || activeAttack == PlayerAttackKind.JumpingOverhead)
+                    swordPivot.localRotation = Quaternion.Euler(Mathf.Lerp(-135, 70, progress), 0, 0);
+                else if (activeAttack == PlayerAttackKind.Thrust)
+                {
+                    swordPivot.localRotation = Quaternion.identity;
+                    swordPivot.localPosition = swordRestPosition + Vector3.forward * (Mathf.Sin(progress * Mathf.PI) * .65f);
+                }
+                else swordPivot.localRotation = Quaternion.Euler(-10, angle * (swingIndex % 2 == 0 ? 1 : -1), 0);
+            }
             else swordPivot.localRotation = Quaternion.Slerp(swordPivot.localRotation, Quaternion.Euler(-25, 10, 0), Time.deltaTime * 12);
+            if (!chargingAttack && (activeAttack != PlayerAttackKind.Thrust || t >= 1)) swordPivot.localPosition = swordRestPosition;
             for (int i = slashes.Count - 1; i >= 0; i--)
             {
                 float life = (Time.time - slashes[i].born) / .18f;

@@ -47,8 +47,10 @@ namespace SwordKing
                 Panel(new Rect(22,605,310,92),ink);
                 GUI.Label(new Rect(38,617,280,26),"Q  Ember flask  "+flasks+" / 2",body);
                 GUI.Label(new Rect(38,650,270,24),save.shards+" upgrade embers",small);
-                GUI.Label(new Rect(908,630,350,65),"WASD move  •  Mouse aim  •  Click attack\nSpace jump  •  Shift roll  •  Esc pause",small);
+                GUI.Label(new Rect(908,605,350,100),"WASD move • Mouse aim • Space jump\nLMB slash • RMB overhead • Hold to charge\nShift: hold sprint / tap roll • Esc pause",small);
                 GUI.Label(new Rect(634,348,24,24),"+",centered);
+                if(Player.IsChargingAttack) GUI.Label(new Rect(450,480,380,28),"CHARGING " + Mathf.RoundToInt(Player.ChargeFraction * 100) + "% • Release to strike",subtitle);
+                else if(Player.IsSprinting) GUI.Label(new Rect(500,480,280,28),"SPRINTING",small);
                 if(Player.IsRolling) GUI.Label(new Rect(500,520,280,25),"INVINCIBLE",subtitle);
                 else if(Player.LowerBodyProtected) GUI.Label(new Rect(500,520,280,25),"AIRBORNE",small);
                 if(interaction.Length>0) { Panel(new Rect(350,568,580,42),ink); GUI.Label(new Rect(360,574,560,30),interaction,centered); }
@@ -96,7 +98,7 @@ namespace SwordKing
                 else if(screen==ScreenState.Paused)
                 {
                     GUI.Label(new Rect(300,135,680,60),"JOURNEY PAUSED",heading);
-                    GUI.Label(new Rect(340,214,600,60),"Click quickly for light cuts. Wait for a heavy strike.\nJump amber sweeps. Roll through red strikes.",centered);
+                    GUI.Label(new Rect(340,214,600,60),"LMB slash / sprint thrust. RMB overhead / sprint jump.\nHold either click up to 2s; release to strike.",centered);
                     if(Button(460,320,360,"Return to the road")) SetScreen(ScreenState.Playing);
                     if(Button(460,378,360,"Save and return to title")) { Save(); SetScreen(ScreenState.Title); }
                     GUI.Label(new Rect(340,450,600,70),"Power "+Player.power+"   /   Recovery "+Player.recovery+"   /   Speed "+Player.speed+"\nSpend upgrade embers at the shrine beyond the gatehouse.",centered);
@@ -147,7 +149,7 @@ namespace SwordKing
                 if(confirmNew) GUI.Label(new Rect(340,528,600,35),"Starting again replaces this level's saved journey.",centered);
             }
             else if(Button(440,474,400,"Begin the journey")) StartRun(false);
-            GUI.Label(new Rect(340,581,600,28),"WASD • Mouse • Click • Space jump • Shift roll • Q heal",small);
+            GUI.Label(new Rect(340,581,600,28),"LMB / RMB • Hold click charge • Shift hold sprint / tap roll • Q heal",small);
         }
         void ShrineScreen()
         {

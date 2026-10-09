@@ -10,7 +10,9 @@ namespace SwordKing
         public BrokenGateLevel Level { get; private set; }
         public Transform PlayerTransform => player;
         public Camera PlayerCamera => view;
-        public float SwingCharge => SwingModel.Charge(Time.time - lastAttack, recovery);
+        public float SwingCharge => chargingAttack ? ChargeFraction : SwingModel.Charge(Time.time - lastAttack, recovery);
+        public bool IsSprinting { get; private set; }
+        public bool IsChargingAttack => chargingAttack;
         float damageGraceUntil;
         readonly AttackInputBuffer attackBuffer = new AttackInputBuffer();
         [Header("Project assets")]
@@ -36,6 +38,10 @@ namespace SwordKing
         public float reach = 2.8f;
         [Range(30, 180)] public float attackAngle = 110f;
 
+        [Header("Sprint and charged attacks")]
+        [Min(1)] public float sprintMultiplier = 1.6f;
+        [Range(.1f, .3f)] public float sprintHoldThreshold = .18f;
+        [Min(1)] public float fullChargeDamageMultiplier = 2f;
         [Header("Jump and roll")]
         [Range(.1f, 1.5f)] public float jumpHeightFraction = .5f;
         [Min(.1f)] public float rollDuration = .45f;
@@ -85,6 +91,7 @@ namespace SwordKing
 
         void SetMenu(bool value)
         {
+            if (value) CancelCombatInput();
             menu = value;
             Cursor.lockState = menu ? CursorLockMode.None : CursorLockMode.Locked;
             Cursor.visible = menu;
@@ -93,17 +100,17 @@ namespace SwordKing
         {
             var input = playerInput.Read();
             Vector2 move = input.Move, look = input.Look;
-            bool click = input.Attack, escape = input.Pause, jump = input.Jump, roll = input.Roll;
+            bool escape = input.Pause, jump = input.Jump;
             bool testLow = input.TestLow, testHigh = input.TestHigh;
             if (escape)
             {
                 if (adventureMode && Level != null) Level.TogglePause();
                 else SetMenu(!menu);
             }
-            if (adventureMode && (Level == null || Level.InputBlocked)) { attackBuffer.Clear(); return; }
-            if (menu || IsRolling) attackBuffer.Clear();
-            else if (click) attackBuffer.Press(Time.unscaledTime);
-            // Capture clicks even during an explicitly enabled impact freeze.
+            if (adventureMode && (Level == null || Level.InputBlocked)) { CancelCombatInput(); return; }
+            bool roll = UpdateShiftGesture(!menu && input.ShiftHeld, move);
+            if (menu || IsRolling) CancelAttackInput();
+            else ReadAttackInput(input);
             if (Feedback != null && Feedback.ImpactPaused) return;
             if (!menu)
             {
@@ -115,9 +122,13 @@ namespace SwordKing
             RefreshHurtboxes();
             if (!menu)
             {
-                if (IsRolling) attackBuffer.Clear();
-                else if (attackBuffer.Consume(Time.unscaledTime,
-                    Time.time - lastAttack + .00001f >= 1f / SwingModel.MaxRate(speed))) Attack();
+                if (IsRolling) { CancelAttackInput(); jumpStrikePending = false; }
+                else
+                {
+                    UpdateJumpStrike();
+                    if (!jumpStrikePending && attackBuffer.Consume(Time.unscaledTime,
+                        Time.time - lastAttack + .00001f >= 1f / SwingModel.MaxRate(speed))) Attack();
+                }
                 if (!adventureMode && testLow) ProbeDamage(lowerHurtbox);
                 if (!adventureMode && testHigh) ProbeDamage(upperHurtbox);
             }
@@ -130,7 +141,7 @@ namespace SwordKing
             cameraRig.Follow(player, controller, yaw, pitch);
             foreach (var d in dummies) d.label.transform.rotation = view.transform.rotation;
         }
-        public void SetGameplayInput(bool enabledInput) { attackBuffer.Clear(); SetMenu(!enabledInput); }
+        public void SetGameplayInput(bool enabledInput) { CancelCombatInput(); SetMenu(!enabledInput); }
 
         protected virtual void OnApplicationFocus(bool focus)
         {

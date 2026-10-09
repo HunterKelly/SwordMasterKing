@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SwordKing
@@ -9,42 +8,71 @@ namespace SwordKing
         {
             float elapsed = Time.time - lastAttack;
             if (elapsed + .00001f < 1f / SwingModel.MaxRate(speed)) { rejected++; return; }
-            // Resolve gameplay NOW; no dependency on sword pose or animation completion.
-            lastDamage = SwingModel.Damage(elapsed, power, recovery, speed);
-            lastAttack = Time.time; totalAttacks++; attackHistory.Enqueue(Time.time);
-            animationStart = Time.time; animationDuration = Mathf.Clamp(elapsed, .1f, .48f); swingIndex++;
-            foreach (var d in dummies)
+            activeAttack=queuedAttack;
+            float charge=PlayerAttackModel.ChargeFraction(queuedHold);
+            lastDamage=SwingModel.Damage(elapsed,power,recovery,speed) * PlayerAttackModel.DamageMultiplier(activeAttack,queuedHold,fullChargeDamageMultiplier);
+            lastAttack=Time.time; totalAttacks++; attackHistory.Enqueue(Time.time);
+            animationStart=Time.time; animationDuration=activeAttack==PlayerAttackKind.Slash ? Mathf.Clamp(elapsed,.1f,.48f) : activeAttack==PlayerAttackKind.Thrust ? .22f : .32f;
+            swingIndex++; swordPivot.localPosition=swordRestPosition;
+            float strikeReach=activeAttack==PlayerAttackKind.Thrust ? reach*1.45f : activeAttack==PlayerAttackKind.JumpingOverhead ? reach*1.15f : reach;
+            float strikeAngle=activeAttack==PlayerAttackKind.Thrust ? 25 : activeAttack==PlayerAttackKind.Slash ? attackAngle : 55;
+            float impactCharge=Mathf.Max(charge,SwingModel.Charge(elapsed,recovery));
+            if(activeAttack==PlayerAttackKind.JumpingOverhead)
             {
-                Vector3 delta = d.root.position - player.position; delta.y = 0;
-                if (d.health <= 0 || delta.magnitude > reach || Vector3.Angle(player.forward, delta) > attackAngle * .5f) continue;
-                float dealt = Mathf.Min(d.health, lastDamage); d.health -= dealt;
-                d.flashUntil = Time.time + .08f;
-                if (Feedback != null) Feedback.Impact(d.root.position + Vector3.up * 1.2f, delta, SwingModel.Charge(elapsed, recovery) >= .8f, d.health <= 0);
-                damageHistory.Enqueue(new Vector2(Time.time, dealt));
-                if (d.health <= 0) d.resetAt = Time.time + 1.5f;
+                if(controller.isGrounded)
+                {
+                    verticalSpeed=Mathf.Sqrt(2f*Mathf.Max(1,gravityStrength)*controller.height*Mathf.Max(.1f,jumpHeightFraction));
+                    airborne=true; RefreshHurtboxes();
+                }
+                jumpStrikePending=true; jumpStrikeStarted=Time.time;
+                jumpStrikeDamage=lastDamage; jumpStrikeReach=strikeReach; jumpStrikeAngle=strikeAngle; jumpStrikeCharge=impactCharge;
+                animationDuration=.6f;
+                if(Level!=null) Level.PlaySound("jump");
+                return;
             }
-            if (Level != null)
+            ResolveAttack(lastDamage,strikeReach,strikeAngle,impactCharge);
+            EmitAttackTrail(activeAttack,strikeReach,strikeAngle);
+        }
+        void ResolveAttack(float damage,float strikeReach,float strikeAngle,float charge)
+        {
+            foreach(var d in dummies)
             {
-                Level.ResolvePlayerAttack(lastDamage, reach, attackAngle, SwingModel.Charge(elapsed, recovery));
+                Vector3 delta=d.root.position-player.position; delta.y=0;
+                if(d.health<=0 || delta.magnitude>strikeReach || Vector3.Angle(player.forward,delta)>strikeAngle*.5f) continue;
+                float dealt=Mathf.Min(d.health,damage); d.health-=dealt; d.flashUntil=Time.time+.08f;
+                if(Feedback!=null) Feedback.Impact(d.root.position+Vector3.up*1.2f,delta,charge>=.8f,d.health<=0);
+                damageHistory.Enqueue(new Vector2(Time.time,dealt));
+                if(d.health<=0) d.resetAt=Time.time+1.5f;
+            }
+            if(Level!=null)
+            {
+                Level.ResolvePlayerAttack(damage,strikeReach,strikeAngle,charge);
                 Level.PlaySound("swing");
             }
-            EmitSlash(0);
-            // Extra arcs are cosmetic only. Exactly one damage resolution per accepted press.
-            if (attackHistory.Count >= 3) { EmitSlash(-.22f); EmitSlash(.22f); }
         }
-
-        void EmitSlash(float offset)
+        void EmitAttackTrail(PlayerAttackKind kind,float strikeReach,float strikeAngle)
         {
-            var line = new GameObject("Cosmetic slash").AddComponent<LineRenderer>();
-            line.transform.SetParent(transform); line.sharedMaterial = slashMaterial; line.positionCount = 18;
-            line.useWorldSpace = true; line.widthMultiplier = .075f; line.numCapVertices = 3;
-            for (int i = 0; i < 18; i++)
+            var line=new GameObject("Cosmetic "+kind+" trail").AddComponent<LineRenderer>();
+            line.transform.SetParent(transform); line.sharedMaterial=slashMaterial; line.positionCount=18;
+            line.useWorldSpace=true; line.widthMultiplier=.075f; line.numCapVertices=3;
+            for(int i=0;i<18;i++)
             {
-                float angle = Mathf.Lerp(-attackAngle * .5f, attackAngle * .5f, i / 17f) * Mathf.Deg2Rad;
-                Vector3 local = new Vector3(Mathf.Sin(angle) * 2, 1.25f + offset + Mathf.Sin(angle) * .22f * (swingIndex % 2 == 0 ? 1 : -1), Mathf.Cos(angle) * 2);
-                line.SetPosition(i, player.TransformPoint(local));
+                float t=i/17f;
+                Vector3 local;
+                if(kind==PlayerAttackKind.Thrust) local=new Vector3(0,1.25f,Mathf.Lerp(.5f,strikeReach,t));
+                else if(kind==PlayerAttackKind.Overhead || kind==PlayerAttackKind.JumpingOverhead)
+                {
+                    float a=Mathf.Lerp(-65,65,t)*Mathf.Deg2Rad;
+                    local=new Vector3(0,1.2f+Mathf.Cos(a)*1.5f,Mathf.Sin(a)*1.5f+.8f);
+                }
+                else
+                {
+                    float a=Mathf.Lerp(-strikeAngle*.5f,strikeAngle*.5f,t)*Mathf.Deg2Rad;
+                    local=new Vector3(Mathf.Sin(a)*strikeReach,1.25f+Mathf.Sin(a)*.22f*(swingIndex%2==0?1:-1),Mathf.Cos(a)*strikeReach);
+                }
+                line.SetPosition(i,player.TransformPoint(local));
             }
-            slashes.Add(new Slash { line = line, born = Time.time });
+            slashes.Add(new Slash { line=line,born=Time.time });
         }
     }
 }

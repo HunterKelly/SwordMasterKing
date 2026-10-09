@@ -20,6 +20,9 @@ MonoBehaviour:
   strafeLeanSpeed: 360
   reach: 2.8
   attackAngle: 110
+  sprintMultiplier: 1.6
+  sprintHoldThreshold: 0.18
+  fullChargeDamageMultiplier: 2
   jumpHeightFraction: 0.5
   rollDuration: 0.45
   rollDistance: 3.6
