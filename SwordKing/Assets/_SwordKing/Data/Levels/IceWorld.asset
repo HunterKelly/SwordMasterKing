@@ -20,5 +20,12 @@ MonoBehaviour:
   randomEnemyCount: 12
   snowFootstepVolume: 0.16
   snowfallRate: 180
+  combatFeedback:
+    hitStop: 0
+    cameraShake: 1
+    sparks: 1
+    lightHitPause: 0.018
+    heavyHitPause: 0.045
+    shakeStrength: 1
   arrival: {x: 0, y: 0.15, z: -22}
   encounters: []

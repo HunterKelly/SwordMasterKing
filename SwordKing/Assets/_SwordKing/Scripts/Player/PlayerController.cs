@@ -12,6 +12,7 @@ namespace SwordKing
         public Camera PlayerCamera => view;
         public float SwingCharge => SwingModel.Charge(Time.time - lastAttack, recovery);
         float damageGraceUntil;
+        readonly AttackInputBuffer attackBuffer = new AttackInputBuffer();
         [Header("Project assets")]
         [SerializeField] PlayerSettings settings;
         [SerializeField] PlayerRig playerPrefab;
@@ -95,7 +96,10 @@ namespace SwordKing
                 if (adventureMode && Level != null) Level.TogglePause();
                 else SetMenu(!menu);
             }
-            if (adventureMode && (Level == null || Level.InputBlocked)) return;
+            if (adventureMode && (Level == null || Level.InputBlocked)) { attackBuffer.Clear(); return; }
+            if (menu || IsRolling) attackBuffer.Clear();
+            else if (click) attackBuffer.Press(Time.unscaledTime);
+            // Capture clicks even during an explicitly enabled impact freeze.
             if (Feedback != null && Feedback.ImpactPaused) return;
             if (!menu)
             {
@@ -107,7 +111,9 @@ namespace SwordKing
             RefreshHurtboxes();
             if (!menu)
             {
-                if (click && !IsRolling) Attack();
+                if (IsRolling) attackBuffer.Clear();
+                else if (attackBuffer.Consume(Time.unscaledTime,
+                    Time.time - lastAttack + .00001f >= 1f / SwingModel.MaxRate(speed))) Attack();
                 if (!adventureMode && testLow) ProbeDamage(lowerHurtbox);
                 if (!adventureMode && testHigh) ProbeDamage(upperHurtbox);
             }
@@ -120,7 +126,7 @@ namespace SwordKing
             cameraRig.Follow(player, controller, yaw, pitch);
             foreach (var d in dummies) d.label.transform.rotation = view.transform.rotation;
         }
-        public void SetGameplayInput(bool enabledInput) { SetMenu(!enabledInput); }
+        public void SetGameplayInput(bool enabledInput) { attackBuffer.Clear(); SetMenu(!enabledInput); }
 
         protected virtual void OnApplicationFocus(bool focus)
         {
