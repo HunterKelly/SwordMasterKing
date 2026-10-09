@@ -38,9 +38,9 @@ namespace SwordKing
 
         [Header("Jump and roll")]
         [Range(.1f, 1.5f)] public float jumpHeightFraction = .5f;
-        [Min(.1f)] public float rollDuration = .55f;
+        [Min(.1f)] public float rollDuration = .45f;
         [Min(.1f)] public float rollDistance = 3.6f;
-        [Min(0f)] public float rollRecovery = .18f;
+        [Min(0f)] public float rollRecovery = .1f;
         [Min(1f)] public float gravityStrength = 20f;
         public bool showHurtboxes;
 

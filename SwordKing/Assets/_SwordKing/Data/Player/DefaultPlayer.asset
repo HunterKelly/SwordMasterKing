@@ -21,7 +21,7 @@ MonoBehaviour:
   reach: 2.8
   attackAngle: 110
   jumpHeightFraction: 0.5
-  rollDuration: 0.55
+  rollDuration: 0.45
   rollDistance: 3.6
-  rollRecovery: 0.18
+  rollRecovery: 0.1
   gravityStrength: 20
