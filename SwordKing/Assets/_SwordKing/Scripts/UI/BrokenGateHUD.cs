@@ -87,7 +87,12 @@ namespace SwordKing
             {
                 Panel(new Rect(0,0,1280,720),new Color(.015f,.025f,.03f,.79f));
                 Panel(new Rect(260,75,760,570),ink); Panel(new Rect(260,75,760,3),gold);
-                if(screen==ScreenState.Title) TitleScreen();
+                if(screen==ScreenState.Transition)
+                {
+                    GUI.Label(new Rect(300,180,680,60),"THE WATCH HAS FALLEN",heading);
+                    GUI.Label(new Rect(340,290,600,60),"Entering Chapter II • Ice World",subtitle);
+                }
+                else if(screen==ScreenState.Title) TitleScreen();
                 else if(screen==ScreenState.Paused)
                 {
                     GUI.Label(new Rect(300,135,680,60),"JOURNEY PAUSED",heading);
@@ -111,8 +116,7 @@ namespace SwordKing
                     GUI.Label(new Rect(340,315,600,110),"Time  "+Mathf.FloorToInt(save.seconds/60)+"m "+Mathf.FloorToInt(save.seconds%60)+"s\nDeaths  "+save.deaths+"\nLost knight's coffer  "+(save.cache?"Found":"Unclaimed"),centered);
                     if(!IceWorld && Button(460,423,360,"Continue to Level 2 - Ice World"))
                     {
-                        SetScreen(ScreenState.Playing);
-                        UnityEngine.SceneManagement.SceneManager.LoadScene("IceWorld");
+                        BeginNextChapter();
                     }
                     if(Button(460,473,360,"Return to title")) SetScreen(ScreenState.Title);
                 }

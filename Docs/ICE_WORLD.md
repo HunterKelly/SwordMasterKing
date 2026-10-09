@@ -5,7 +5,7 @@
 1. Pull the latest repository changes, then open the `SwordKing` project in Unity.
 2. Open `Assets/_SwordKing/Scenes/IceWorld.unity` and press Play. The supplied scene creates its courtyard when it starts.
 3. To make the scenery editable outside Play mode, choose **SwordKing → Setup → Create Level 2 - Ice World**. This builds and saves the scenery into that scene. Expand **World - editable Ice World** in the Hierarchy to move cover, towers, lamps, crates, and mountains.
-4. Level 1's victory screen also has **Continue to Level 2 - Ice World**. Both scenes are in the global build scene list. If your active Build Profile overrides the scene list, add IceWorld there too.
+4. Standalone builds start in Level 1. Defeat all seven Level 1 enemies, including the Gatekeeper, to enter Level 2 automatically after a one-second chapter message. Level 2 starts immediately with your current Power, Recovery, Speed and unspent embers, full health and flasks, and fresh encounters. Entering through Level 1 starts a new Level 2 save; opening IceWorld directly still offers its standalone title/Continue flow. Both scenes are in the global build scene list. If your active Build Profile overrides the scene list, add IceWorld there too.
 
 ## Tune it
 
