@@ -34,11 +34,11 @@ namespace SwordKing
             }
             bool charged=queuedHold>=PlayerAttackModel.SpinChargeThreshold;
             bool special=activeAttack==PlayerAttackKind.Spin || activeAttack==PlayerAttackKind.Thrust;
-            float recovery=special ? Mathf.Max(0,specialAttackRecovery) : charged ? Mathf.Max(0,chargedAttackRecovery) : 0;
+            float recoveryDelay=special ? Mathf.Max(0,specialAttackRecovery) : charged ? Mathf.Max(0,chargedAttackRecovery) : 0;
             if(special || charged)
             {
                 specialPoseUntil=Time.time+animationDuration;
-                attackReadyAt=specialPoseUntil+recovery;
+                attackReadyAt=specialPoseUntil+recoveryDelay;
                 rollReadyAt=Mathf.Max(rollReadyAt,attackReadyAt);
             }
             if(activeAttack==PlayerAttackKind.Thrust)
