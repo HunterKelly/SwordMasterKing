@@ -85,3 +85,7 @@ Thrust push distance is now 1.5 metres (previously 0.8). Verify front/back/side 
 ## Shift-left knockback on lethal hits
 
 The Shift + left click attack (called Thrust in code) now applies its 1.5-metre push to regular enemies even when the sword hit kills them. Previously ReceiveHit disabled the dead enemy's controller and ReactToSpecial skipped dead targets, so lethal hits showed no physical knockback. The dying body keeps collision-resolved movement for the brief push, then disables its controller again. Boss immunity and one push per target per attack remain. Unity must verify both lethal and nonlethal hits in open space and near walls.
+
+## Grounded Shift-left reaction
+
+Shift + left click clears any previous upward launch and grounds the target before its 1.5-metre backward slide. During this slide the enemy controller's step offset is zero so it cannot step up onto the hopping player or another enemy. Collision and ledge checks still apply. Shift + right click retains its upward pop. Verify in Unity with crowded enemies, a prior landing-pop combo and lethal thrusts.
