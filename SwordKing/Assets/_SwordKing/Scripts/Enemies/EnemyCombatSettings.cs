@@ -22,7 +22,7 @@ namespace SwordKing
         [Min(.45f)] public float bossPhaseTwoRecovery = .7f;
         [Min(.5f)] public float groupAttackSpacing = .8f;
         [Header("Special attack reactions (regular enemies)")]
-        [Min(0)] public float thrustPushDistance = .8f;
+        [Min(0)] public float thrustPushDistance = 1.5f;
         [Min(.05f)] public float thrustPushDuration = .2f;
         [Min(0)] public float landingPopHeight = .35f;
         public float ChaseSpeed(bool boss) => Mathf.Max(.1f, boss ? bossMoveSpeed : moveSpeed);

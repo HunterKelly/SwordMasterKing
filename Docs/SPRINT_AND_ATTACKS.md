@@ -60,7 +60,7 @@ Unity is not installed here; run the edit-mode tests and gameplay checks in Unit
 
 ## Regular enemy special reactions
 
-Shift + left click pushes each surviving regular enemy up to 0.8 metres along the player's forward direction over 0.2 seconds. The existing per-target hit window prevents repeated pushes from one thrust. Walls, encounter boundaries and unsupported ledges stop the push.
+Shift + left click pushes each surviving regular enemy up to 1.5 metres along the player's forward direction over 0.2 seconds. The existing per-target hit window prevents repeated pushes from one thrust. Walls, encounter boundaries and unsupported ledges stop the push.
 
 Shift + right click pops struck surviving regular enemies up approximately 0.35 metres when the jumping heavy lands. Gravity brings them down, with CharacterController collision against floors and ceilings. Both reactions interrupt their current attack and pause pursuit during the reaction. Bosses ignore both reactions.
 
@@ -80,4 +80,4 @@ Every sword and AOE damage event keeps its own popup. Sword hits are gold; charg
 
 Shift + right click now resolves two independent damage events on landing: 50% of its damage in the existing forward sword cone and 50% in a 4-metre, 360-degree blast centred at the player's actual landing position. Enemies behind and beside the player take the blast even when the sword misses them. Targets surviving the sword and within the blast display separate gold sword and cyan splash numbers. The blast pops surviving regular enemies upward; bosses resist the pop. Walls still block damage. The earlier standing charged-overhead splash remains available.
 
-Thrust push distance is now 0.8 metres (previously 0.65). Verify front/back/side targets, separate damage numbers, landing timing and boss pop immunity in Unity; Unity is unavailable in this environment.
+Thrust push distance is now 1.5 metres (previously 0.8). Verify front/back/side targets, separate damage numbers, landing timing and boss pop immunity in Unity; Unity is unavailable in this environment.
