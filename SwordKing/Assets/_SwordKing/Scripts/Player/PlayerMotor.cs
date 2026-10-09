@@ -60,10 +60,10 @@ namespace SwordKing
             else
             {
                 visualRoot.localPosition = Vector3.up * .95f;
-                // Positive local Z leans left, so right strafe uses a negative angle.
-                float targetLean = -Mathf.Clamp(input.x, -1, 1) * Mathf.Clamp(strafeLeanAngle, 0, 60);
+                // Turn the visual body toward the strafe direction while keeping it upright.
+                float targetLean = Mathf.Clamp(input.x, -1, 1) * Mathf.Clamp(strafeLeanAngle, 0, 60);
                 strafeLean = Mathf.MoveTowards(strafeLean, targetLean, Mathf.Max(1, strafeLeanSpeed) * dt);
-                visualRoot.localRotation = Quaternion.Euler(0, 0, strafeLean); visualRoot.localScale = Vector3.one;
+                visualRoot.localRotation = Quaternion.Euler(0, strafeLean, 0); visualRoot.localScale = Vector3.one;
                 walkPhase += direction.magnitude * moveSpeed * dt * 2;
                 float legAngle = airborne ? -30 : (direction.sqrMagnitude > .01f ? Mathf.Sin(walkPhase) * 25 : 0);
                 leftLeg.localRotation = Quaternion.Euler(legAngle, 0, 0);
