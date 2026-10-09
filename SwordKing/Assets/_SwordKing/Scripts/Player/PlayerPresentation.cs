@@ -37,6 +37,8 @@ namespace SwordKing
                 power = settings.power; recovery = settings.recovery; speed = settings.speed;
                 sprintMultiplier = settings.sprintMultiplier; sprintHoldThreshold = settings.sprintHoldThreshold;
                 fullChargeDamageMultiplier = settings.fullChargeDamageMultiplier;
+                overheadReachMultiplier = settings.overheadReachMultiplier; thrustReachMultiplier = settings.thrustReachMultiplier;
+                jumpingOverheadReachMultiplier = settings.jumpingOverheadReachMultiplier;
                 strafeLeanAngle = settings.strafeLeanAngle; strafeLeanSpeed = settings.strafeLeanSpeed;
                 moveSpeed = settings.moveSpeed; reach = settings.reach; attackAngle = settings.attackAngle;
                 jumpHeightFraction = settings.jumpHeightFraction; rollDuration = settings.rollDuration;
@@ -113,6 +115,7 @@ namespace SwordKing
                     swordPivot.localRotation = Quaternion.identity;
                     swordPivot.localPosition = swordRestPosition + Vector3.forward * (Mathf.Sin(progress * Mathf.PI) * .65f);
                 }
+                else if (activeAttack == PlayerAttackKind.Spin) swordPivot.localRotation = Quaternion.Euler(-10, 70, 0);
                 else swordPivot.localRotation = Quaternion.Euler(-10, angle * (swingIndex % 2 == 0 ? 1 : -1), 0);
             }
             else swordPivot.localRotation = Quaternion.Slerp(swordPivot.localRotation, Quaternion.Euler(-25, 10, 0), Time.deltaTime * 12);

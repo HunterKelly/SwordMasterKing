@@ -42,6 +42,10 @@ namespace SwordKing
         [Min(1)] public float sprintMultiplier = 1.6f;
         [Range(.1f, .3f)] public float sprintHoldThreshold = .18f;
         [Min(1)] public float fullChargeDamageMultiplier = 2f;
+        [Header("Special attack reach multipliers")]
+        [Min(1)] public float overheadReachMultiplier = 1.6f;
+        [Min(1)] public float thrustReachMultiplier = 1.8f;
+        [Min(1)] public float jumpingOverheadReachMultiplier = 1.6f;
         [Header("Jump and roll")]
         [Range(.1f, 1.5f)] public float jumpHeightFraction = .5f;
         [Min(.1f)] public float rollDuration = .45f;

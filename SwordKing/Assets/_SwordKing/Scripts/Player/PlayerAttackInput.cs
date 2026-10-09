@@ -11,6 +11,7 @@ namespace SwordKing
         Vector3 swordRestPosition;
         bool jumpStrikePending;
         float jumpStrikeStarted, jumpStrikeDamage, jumpStrikeCharge, jumpStrikeReach, jumpStrikeAngle;
+        bool SpinActive => activeAttack == PlayerAttackKind.Spin && Time.time-animationStart < animationDuration && !IsRolling;
         public float ChargeFraction => PlayerAttackModel.ChargeFraction(Time.time - chargeStarted);
 
         bool UpdateShiftGesture(bool held, Vector2 movement)
@@ -26,7 +27,7 @@ namespace SwordKing
         }
         void ReadAttackInput(PlayerInputFrame input)
         {
-            if(jumpStrikePending) { CancelAttackInput(); return; }
+            if(jumpStrikePending || SpinActive) { CancelAttackInput(); return; }
             if(!chargingAttack && (input.HeavyAttack || input.Attack))
             {
                 chargingAttack=true; chargeOverhead=input.HeavyAttack;
@@ -39,8 +40,8 @@ namespace SwordKing
             bool held=chargeOverhead ? input.HeavyHeld : input.AttackHeld;
             if(released)
             {
-                queuedAttack=PlayerAttackModel.Kind(chargeOverhead,chargeSprint);
                 queuedHold=Mathf.Clamp(Time.time-chargeStarted,0,PlayerAttackModel.MaxChargeSeconds);
+                queuedAttack=PlayerAttackModel.ChargedKind(chargeOverhead,chargeSprint,queuedHold);
                 chargingAttack=false; attackBuffer.Press(Time.unscaledTime);
             }
             else if(!held) CancelAttackInput();

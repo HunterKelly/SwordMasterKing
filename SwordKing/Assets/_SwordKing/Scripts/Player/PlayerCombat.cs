@@ -12,10 +12,12 @@ namespace SwordKing
             float charge=PlayerAttackModel.ChargeFraction(queuedHold);
             lastDamage=SwingModel.Damage(elapsed,power,recovery,speed) * PlayerAttackModel.DamageMultiplier(activeAttack,queuedHold,fullChargeDamageMultiplier);
             lastAttack=Time.time; totalAttacks++; attackHistory.Enqueue(Time.time);
-            animationStart=Time.time; animationDuration=activeAttack==PlayerAttackKind.Slash ? Mathf.Clamp(elapsed,.1f,.48f) : activeAttack==PlayerAttackKind.Thrust ? .22f : .32f;
+            animationStart=Time.time; animationDuration=activeAttack==PlayerAttackKind.Spin ? .45f : activeAttack==PlayerAttackKind.Slash ? Mathf.Clamp(elapsed,.1f,.48f) : activeAttack==PlayerAttackKind.Thrust ? .22f : .32f;
             swingIndex++; swordPivot.localPosition=swordRestPosition;
-            float strikeReach=activeAttack==PlayerAttackKind.Thrust ? reach*1.45f : activeAttack==PlayerAttackKind.JumpingOverhead ? reach*1.15f : reach;
-            float strikeAngle=activeAttack==PlayerAttackKind.Thrust ? 25 : activeAttack==PlayerAttackKind.Slash ? attackAngle : 55;
+            float strikeReach=reach * (activeAttack==PlayerAttackKind.Thrust ? Mathf.Max(1,thrustReachMultiplier)
+                : activeAttack==PlayerAttackKind.JumpingOverhead ? Mathf.Max(1,jumpingOverheadReachMultiplier)
+                : activeAttack==PlayerAttackKind.Overhead ? Mathf.Max(1,overheadReachMultiplier) : 1);
+            float strikeAngle=activeAttack==PlayerAttackKind.Spin ? 360 : activeAttack==PlayerAttackKind.Thrust ? 25 : activeAttack==PlayerAttackKind.Slash ? attackAngle : 55;
             float impactCharge=Mathf.Max(charge,SwingModel.Charge(elapsed,recovery));
             if(activeAttack==PlayerAttackKind.JumpingOverhead)
             {
@@ -53,17 +55,16 @@ namespace SwordKing
         void EmitAttackTrail(PlayerAttackKind kind,float strikeReach,float strikeAngle)
         {
             var line=new GameObject("Cosmetic "+kind+" trail").AddComponent<LineRenderer>();
-            line.transform.SetParent(transform); line.sharedMaterial=slashMaterial; line.positionCount=18;
+            line.transform.SetParent(transform); line.sharedMaterial=slashMaterial; line.positionCount=kind==PlayerAttackKind.Spin ? 49 : 18;
             line.useWorldSpace=true; line.widthMultiplier=.075f; line.numCapVertices=3;
-            for(int i=0;i<18;i++)
+            for(int i=0;i<line.positionCount;i++)
             {
-                float t=i/17f;
+                float t=i/(float)(line.positionCount-1);
                 Vector3 local;
                 if(kind==PlayerAttackKind.Thrust) local=new Vector3(0,1.25f,Mathf.Lerp(.5f,strikeReach,t));
                 else if(kind==PlayerAttackKind.Overhead || kind==PlayerAttackKind.JumpingOverhead)
                 {
-                    float a=Mathf.Lerp(-65,65,t)*Mathf.Deg2Rad;
-                    local=new Vector3(0,1.2f+Mathf.Cos(a)*1.5f,Mathf.Sin(a)*1.5f+.8f);
+                    local=new Vector3(0,Mathf.Lerp(2.8f,.2f,t),Mathf.Lerp(.5f,strikeReach,Mathf.Sin(t*Mathf.PI*.5f)));
                 }
                 else
                 {

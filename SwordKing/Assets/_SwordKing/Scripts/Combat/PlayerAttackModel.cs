@@ -2,10 +2,13 @@ using System;
 
 namespace SwordKing
 {
-    public enum PlayerAttackKind { Slash, Overhead, Thrust, JumpingOverhead }
+    public enum PlayerAttackKind { Slash, Overhead, Thrust, JumpingOverhead, Spin }
     public static class PlayerAttackModel
     {
         public const float MaxChargeSeconds = 2f;
+        public const float SpinChargeThreshold = .25f;
+        public static PlayerAttackKind ChargedKind(bool overhead, bool sprint, float heldSeconds)
+            => !overhead && !sprint && heldSeconds >= SpinChargeThreshold ? PlayerAttackKind.Spin : Kind(overhead,sprint);
         public static float ChargeFraction(float heldSeconds) => Math.Max(0, Math.Min(1, heldSeconds / MaxChargeSeconds));
         public static PlayerAttackKind Kind(bool overhead, bool sprint)
             => overhead ? (sprint ? PlayerAttackKind.JumpingOverhead : PlayerAttackKind.Overhead)

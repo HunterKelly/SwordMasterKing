@@ -34,6 +34,15 @@ namespace SwordKing.Tests
         [TestCase(true,true,PlayerAttackKind.JumpingOverhead)]
         public void MovementAndButtonSelectAttack(bool overhead,bool sprint,PlayerAttackKind expected)
         { Assert.That(PlayerAttackModel.Kind(overhead,sprint),Is.EqualTo(expected)); }
+        [Test]
+        public void WalkingChargeSpinsButQuickClicksAndSprintRetainTheirAttack()
+        {
+            Assert.That(PlayerAttackModel.ChargedKind(false,false,.1f),Is.EqualTo(PlayerAttackKind.Slash));
+            Assert.That(PlayerAttackModel.ChargedKind(false,false,.25f),Is.EqualTo(PlayerAttackKind.Spin));
+            Assert.That(PlayerAttackModel.ChargedKind(false,true,2),Is.EqualTo(PlayerAttackKind.Thrust));
+            Assert.That(PlayerAttackModel.ChargedKind(true,false,2),Is.EqualTo(PlayerAttackKind.Overhead));
+        }
+        [TestCase(PlayerAttackKind.Spin)]
         [TestCase(PlayerAttackKind.Slash)]
         [TestCase(PlayerAttackKind.Overhead)]
         [TestCase(PlayerAttackKind.Thrust)]

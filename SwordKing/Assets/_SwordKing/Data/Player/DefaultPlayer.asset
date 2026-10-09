@@ -23,6 +23,9 @@ MonoBehaviour:
   sprintMultiplier: 1.6
   sprintHoldThreshold: 0.18
   fullChargeDamageMultiplier: 2
+  overheadReachMultiplier: 1.6
+  thrustReachMultiplier: 1.8
+  jumpingOverheadReachMultiplier: 1.6
   jumpHeightFraction: 0.5
   rollDuration: 0.45
   rollDistance: 3.6
