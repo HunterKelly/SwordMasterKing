@@ -18,7 +18,7 @@ namespace SwordKing
                 activeRollDistance = Mathf.Max(.1f, rollDistance);
                 rollStartedAt = Time.time; rollEndsAt = Time.time + activeRollDuration;
                 rollReadyAt = rollEndsAt + Mathf.Max(0, rollRecovery); rollTravelTime = 0;
-                CancelAttackInput(); jumpStrikePending = false; thrustWindow.Cancel(); IsSprinting = false;
+                CancelAttackInput(); jumpStrikePending = false; thrustWindow.Cancel(); thrustSlideRemaining=0; IsSprinting = false;
                 attackHistory.Clear(); animationStart = -100f;
                 foreach (var slash in slashes) Destroy(slash.line.gameObject);
                 slashes.Clear();
@@ -41,6 +41,12 @@ namespace SwordKing
                 rollTravelTime += step;
             }
             else horizontal = direction * moveSpeed * (IsSprinting ? Mathf.Max(1, sprintMultiplier) : 1) * dt;
+            if(!IsRolling && thrustSlideRemaining>0)
+            {
+                float slideStep=Mathf.Min(dt,thrustSlideRemaining);
+                horizontal+=thrustSlideDirection*(Mathf.Max(0,thrustSlideDistance)/Mathf.Max(.05f,thrustSlideDuration))*slideStep;
+                thrustSlideRemaining-=slideStep;
+            }
             float rise = verticalSpeed * dt - .5f * gravity * dt * dt;
             verticalSpeed -= gravity * dt;
             CollisionFlags flags = controller.Move(horizontal + Vector3.up * rise);

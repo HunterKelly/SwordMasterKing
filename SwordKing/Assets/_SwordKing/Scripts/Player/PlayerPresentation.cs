@@ -37,6 +37,7 @@ namespace SwordKing
                 power = settings.power; recovery = settings.recovery; speed = settings.speed;
                 sprintMultiplier = settings.sprintMultiplier; sprintHoldThreshold = settings.sprintHoldThreshold;
                 fullChargeDamageMultiplier = settings.fullChargeDamageMultiplier;
+                thrustSlideDistance = settings.thrustSlideDistance; thrustSlideDuration = settings.thrustSlideDuration;
                 thrustDuration = settings.thrustDuration; thrustDamageWindow = settings.thrustDamageWindow;
                 specialAttackRecovery = settings.specialAttackRecovery; jumpingHeavyRecovery = settings.jumpingHeavyRecovery;
                 chargedAttackRecovery = settings.chargedAttackRecovery;
@@ -99,7 +100,7 @@ namespace SwordKing
         void UpdatePresentation()
         {
             while (attackHistory.Count > 0 && Time.time - attackHistory.Peek() > .5f) attackHistory.Dequeue();
-            flurry = attackHistory.Count >= 3 && Time.time - lastAttack < .2f;
+            flurry = HorizontalFlurry;
             float t = (Time.time - animationStart) / animationDuration;
             float angle = flurry ? Mathf.Sin((Time.time - animationStart) * 65) * 65 : Mathf.Lerp(-75, 75, Mathf.Clamp01(t));
             if (IsRolling) swordPivot.localRotation = Quaternion.Euler(-65, -30, 0);
@@ -112,7 +113,7 @@ namespace SwordKing
             else if (t < 1)
             {
                 float progress = Mathf.Clamp01(t);
-                if (activeAttack == PlayerAttackKind.Overhead || activeAttack == PlayerAttackKind.JumpingOverhead)
+                if (activeAttack == PlayerAttackKind.Overhead || activeAttack == PlayerAttackKind.ChargedOverhead || activeAttack == PlayerAttackKind.JumpingOverhead)
                     swordPivot.localRotation = Quaternion.Euler(activeAttack == PlayerAttackKind.Overhead && OverheadFlurry
                         ? -30 + Mathf.Sin((Time.time-animationStart)*65)*100 : Mathf.Lerp(-135,70,progress),0,0);
                 else if (activeAttack == PlayerAttackKind.Thrust)
@@ -129,6 +130,15 @@ namespace SwordKing
             for (int i = slashes.Count - 1; i >= 0; i--)
             {
                 float life = (Time.time - slashes[i].born) / slashes[i].duration;
+                if(slashes[i].shockwave)
+                {
+                    float radius=Mathf.Lerp(.15f,3.5f,Mathf.Clamp01(life));
+                    for(int j=0;j<slashes[i].line.positionCount;j++)
+                    {
+                        float a=j/(float)(slashes[i].line.positionCount-1)*Mathf.PI*2;
+                        slashes[i].line.SetPosition(j,slashes[i].center+new Vector3(Mathf.Sin(a)*radius,.06f,Mathf.Cos(a)*radius));
+                    }
+                }
                 if (life >= 1) { Destroy(slashes[i].line.gameObject); slashes.RemoveAt(i); }
                 else slashes[i].line.widthMultiplier = .075f * (1 - life);
             }

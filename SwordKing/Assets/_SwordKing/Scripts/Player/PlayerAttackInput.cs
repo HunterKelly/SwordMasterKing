@@ -13,6 +13,10 @@ namespace SwordKing
         float attackReadyAt, specialPoseUntil;
         readonly HitOnceWindow thrustWindow = new HitOnceWindow();
         float thrustDamage, thrustReach, thrustAngle, thrustCharge;
+        Vector3 thrustSlideDirection;
+        float thrustSlideRemaining;
+        readonly System.Collections.Generic.Queue<float> horizontalHistory = new System.Collections.Generic.Queue<float>();
+        bool HorizontalFlurry => activeAttack==PlayerAttackKind.Slash && horizontalHistory.Count>=3 && Time.time-lastAttack<.2f;
         readonly System.Collections.Generic.Queue<float> overheadHistory = new System.Collections.Generic.Queue<float>();
         bool OverheadFlurry => overheadHistory.Count >= 3 && Time.time-lastAttack < .2f;
         float jumpStrikeStarted, jumpStrikeDamage, jumpStrikeCharge, jumpStrikeReach, jumpStrikeAngle;
@@ -60,7 +64,7 @@ namespace SwordKing
         void CancelCombatInput()
         {
             CancelAttackInput(); jumpStrikePending=false; jumpDescending=false; thrustWindow.Cancel();
-            specialPoseUntil=0; attackReadyAt=0; shiftGesture.Clear(); IsSprinting=false;
+            specialPoseUntil=0; attackReadyAt=0; thrustSlideRemaining=0; horizontalHistory.Clear(); overheadHistory.Clear(); shiftGesture.Clear(); IsSprinting=false;
             ignoreShiftUntilRelease=playerInput!=null && playerInput.Read().ShiftHeld;
         }
         void UpdateAttackWindows()
@@ -80,6 +84,10 @@ namespace SwordKing
             jumpStrikePending=false;
             ResolveAttack(jumpStrikeDamage,jumpStrikeReach,jumpStrikeAngle,jumpStrikeCharge);
             EmitAttackTrail(PlayerAttackKind.JumpingOverhead,jumpStrikeReach,jumpStrikeAngle);
+            EmitLandingBlast();
+            if(cameraRig!=null) cameraRig.AddImpact(1.1f,.28f);
+            if(Feedback!=null) Feedback.Impact(player.position+player.forward,player.forward,true,false);
+            if(Level!=null) Level.PlaySound("slam");
             attackReadyAt=Time.time+Mathf.Max(0,jumpingHeavyRecovery);
             specialPoseUntil=attackReadyAt; rollReadyAt=Mathf.Max(rollReadyAt,attackReadyAt);
         }

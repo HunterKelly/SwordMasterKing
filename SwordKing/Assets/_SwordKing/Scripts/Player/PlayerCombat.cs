@@ -16,7 +16,7 @@ namespace SwordKing
             swingIndex++; swordPivot.localPosition=swordRestPosition;
             float strikeReach=reach * (activeAttack==PlayerAttackKind.Thrust ? Mathf.Max(1,thrustReachMultiplier)
                 : activeAttack==PlayerAttackKind.JumpingOverhead ? Mathf.Max(1,jumpingOverheadReachMultiplier)
-                : activeAttack==PlayerAttackKind.Overhead ? Mathf.Max(1,overheadReachMultiplier) : 1);
+                : (activeAttack==PlayerAttackKind.Overhead || activeAttack==PlayerAttackKind.ChargedOverhead) ? Mathf.Max(1,overheadReachMultiplier) : 1);
             float strikeAngle=activeAttack==PlayerAttackKind.Spin ? 360 : activeAttack==PlayerAttackKind.Thrust ? 25 : activeAttack==PlayerAttackKind.Slash ? attackAngle : 55;
             float impactCharge=Mathf.Max(charge,SwingModel.Charge(elapsed,recovery));
             if(activeAttack==PlayerAttackKind.JumpingOverhead)
@@ -43,6 +43,7 @@ namespace SwordKing
             }
             if(activeAttack==PlayerAttackKind.Thrust)
             {
+                thrustSlideDirection=player.forward; thrustSlideRemaining=Mathf.Max(.05f,thrustSlideDuration);
                 thrustWindow.Begin(Time.time,Mathf.Min(animationDuration,Mathf.Max(.1f,thrustDamageWindow)));
                 thrustDamage=lastDamage; thrustReach=strikeReach; thrustAngle=strikeAngle; thrustCharge=impactCharge;
                 ResolveAttack(lastDamage,strikeReach,strikeAngle,impactCharge,thrustWindow);
@@ -52,7 +53,13 @@ namespace SwordKing
             if(activeAttack==PlayerAttackKind.Overhead && !charged)
             {
                 overheadHistory.Enqueue(Time.time);
-                if(OverheadFlurry) EmitOverheadCloud(strikeReach);
+                if(OverheadFlurry) EmitSwingCloud(strikeReach,true);
+            }
+            while(horizontalHistory.Count>0 && Time.time-horizontalHistory.Peek()>.5f) horizontalHistory.Dequeue();
+            if(activeAttack==PlayerAttackKind.Slash && !charged)
+            {
+                horizontalHistory.Enqueue(Time.time);
+                if(HorizontalFlurry) EmitSwingCloud(strikeReach,false);
             }
             EmitAttackTrail(activeAttack,strikeReach,strikeAngle);
         }
@@ -75,12 +82,12 @@ namespace SwordKing
                 if(playSound) Level.PlaySound("swing");
             }
         }
-        void EmitOverheadCloud(float strikeReach)
+        void EmitSwingCloud(float strikeReach,bool overhead)
         {
             // Layered vertical scribbles sell the rapid overhead cartoon flurry.
             for(int layer=0;layer<3;layer++)
             {
-                var line=new GameObject("Overhead cartoon cloud").AddComponent<LineRenderer>();
+                var line=new GameObject(overhead?"Overhead cartoon cloud":"Horizontal cartoon cloud").AddComponent<LineRenderer>();
                 line.transform.SetParent(transform); line.sharedMaterial=slashMaterial;
                 line.positionCount=32; line.widthMultiplier=.07f; line.useWorldSpace=true;
                 for(int i=0;i<32;i++)
@@ -88,10 +95,21 @@ namespace SwordKing
                     float a=i/31f*Mathf.PI*4;
                     var local=new Vector3((layer-1)*.18f+Mathf.Sin(a*3)*.08f,1.5f+Mathf.Cos(a)*1.1f,
                         strikeReach*.45f+Mathf.Sin(a)*strikeReach*.4f);
+                    if(!overhead) local=new Vector3(Mathf.Cos(a)*strikeReach*.65f,
+                        1.25f+(layer-1)*.14f+Mathf.Sin(a*3)*.08f,strikeReach*.4f+Mathf.Sin(a)*strikeReach*.5f);
                     line.SetPosition(i,player.TransformPoint(local));
                 }
                 slashes.Add(new Slash { line=line,born=Time.time });
             }
+        }
+        void EmitLandingBlast()
+        {
+            var line=new GameObject("Landing shockwave").AddComponent<LineRenderer>();
+            line.transform.SetParent(transform); line.sharedMaterial=slashMaterial;
+            line.positionCount=49; line.widthMultiplier=.15f; line.useWorldSpace=true;
+            var center=player.position;
+            for(int i=0;i<49;i++) line.SetPosition(i,center+Vector3.up*.06f);
+            slashes.Add(new Slash { line=line,born=Time.time,duration=.35f,shockwave=true,center=center });
         }
         void EmitAttackTrail(PlayerAttackKind kind,float strikeReach,float strikeAngle)
         {
@@ -105,7 +123,7 @@ namespace SwordKing
                 float t=i/(float)(line.positionCount-1);
                 Vector3 local;
                 if(kind==PlayerAttackKind.Thrust) local=new Vector3(0,1.25f,Mathf.Lerp(.5f,strikeReach,t));
-                else if(kind==PlayerAttackKind.Overhead || kind==PlayerAttackKind.JumpingOverhead)
+                else if(kind==PlayerAttackKind.Overhead || kind==PlayerAttackKind.ChargedOverhead || kind==PlayerAttackKind.JumpingOverhead)
                 {
                     local=new Vector3(0,Mathf.Lerp(2.8f,.2f,t),Mathf.Lerp(.5f,strikeReach,Mathf.Sin(t*Mathf.PI*.5f)));
                 }

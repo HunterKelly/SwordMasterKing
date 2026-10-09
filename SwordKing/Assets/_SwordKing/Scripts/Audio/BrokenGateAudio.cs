@@ -12,7 +12,7 @@ namespace SwordKing
             Tone("hurt",.26f,90,.4f); Tone("roll",.28f,110,.8f); Tone("jump",.13f,300,.2f);
             Tone("tellLow",.16f,340,.02f); Tone("tellHigh",.16f,620,.02f);
             Tone("heal",.65f,700,.01f); Tone("reward",.5f,520,.01f);
-            Tone("boss",1.2f,55,.15f); Tone("victory",1.8f,440,.01f);
+            Tone("slam",.45f,45,.8f); Tone("boss",1.2f,55,.15f); Tone("victory",1.8f,440,.01f);
             int count=44100*4; float[] data=new float[count]; var random=new System.Random(58);
             float smooth=0;
             for(int i=0;i<count;i++)

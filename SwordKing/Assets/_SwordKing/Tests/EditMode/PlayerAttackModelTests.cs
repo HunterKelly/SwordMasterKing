@@ -40,14 +40,16 @@ namespace SwordKing.Tests
             Assert.That(PlayerAttackModel.ChargedKind(false,false,.1f),Is.EqualTo(PlayerAttackKind.Slash));
             Assert.That(PlayerAttackModel.ChargedKind(false,false,.25f),Is.EqualTo(PlayerAttackKind.Spin));
             Assert.That(PlayerAttackModel.ChargedKind(false,true,2),Is.EqualTo(PlayerAttackKind.Thrust));
-            Assert.That(PlayerAttackModel.ChargedKind(true,false,2),Is.EqualTo(PlayerAttackKind.Overhead));
+            Assert.That(PlayerAttackModel.ChargedKind(true,false,2),Is.EqualTo(PlayerAttackKind.ChargedOverhead));
         }
         [Test]
-        public void SpinChargesInOneSecondAndJumpHeavyHasHigherBaseDamage()
+        public void SpinChargesInPointSixSecondsAndHeavyVariantsHaveHigherBaseDamage()
         {
-            Assert.That(PlayerAttackModel.ChargeSeconds(PlayerAttackKind.Spin),Is.EqualTo(1));
+            Assert.That(PlayerAttackModel.ChargeSeconds(PlayerAttackKind.Spin),Is.EqualTo(.6f));
             Assert.That(PlayerAttackModel.ChargeSeconds(PlayerAttackKind.Overhead),Is.EqualTo(2));
-            Assert.That(PlayerAttackModel.DamageMultiplier(PlayerAttackKind.JumpingOverhead,0,2),Is.EqualTo(2.2f));
+            Assert.That(PlayerAttackModel.DamageMultiplier(PlayerAttackKind.ChargedOverhead,2,2),
+                Is.GreaterThan(PlayerAttackModel.DamageMultiplier(PlayerAttackKind.Overhead,2,2)));
+            Assert.That(PlayerAttackModel.DamageMultiplier(PlayerAttackKind.JumpingOverhead,0,2),Is.EqualTo(3.5f));
         }
         [Test]
         public void SustainedAttackHitsEachTargetOnceAndCanAcquireNewTargets()
@@ -61,6 +63,7 @@ namespace SwordKing.Tests
             Assert.That(window.TryHit(10,2),Is.True);
             window.Cancel(); Assert.That(window.TryHit(20,2.1f),Is.False);
         }
+        [TestCase(PlayerAttackKind.ChargedOverhead)]
         [TestCase(PlayerAttackKind.Spin)]
         [TestCase(PlayerAttackKind.Slash)]
         [TestCase(PlayerAttackKind.Overhead)]

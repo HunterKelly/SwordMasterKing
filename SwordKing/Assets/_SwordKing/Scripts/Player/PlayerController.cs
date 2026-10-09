@@ -43,6 +43,8 @@ namespace SwordKing
         [Range(.1f, .3f)] public float sprintHoldThreshold = .18f;
         [Min(1)] public float fullChargeDamageMultiplier = 2f;
         [Header("Attack windows and recovery")]
+        [Min(0)] public float thrustSlideDistance = 1.2f;
+        [Min(.05f)] public float thrustSlideDuration = .2f;
         [Min(.1f)] public float thrustDuration = .55f;
         [Min(.1f)] public float thrustDamageWindow = .45f;
         [Min(0)] public float specialAttackRecovery = .15f;
@@ -82,6 +84,8 @@ namespace SwordKing
         {
             public LineRenderer line;
             public float born, duration = .18f;
+            public bool shockwave;
+            public Vector3 center;
         }
         readonly List<Dummy> dummies = new List<Dummy>();
         readonly List<Slash> slashes = new List<Slash>();

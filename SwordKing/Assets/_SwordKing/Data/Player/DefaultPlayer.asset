@@ -23,6 +23,8 @@ MonoBehaviour:
   sprintMultiplier: 1.6
   sprintHoldThreshold: 0.18
   fullChargeDamageMultiplier: 2
+  thrustSlideDistance: 1.2
+  thrustSlideDuration: 0.2
   thrustDuration: 0.55
   thrustDamageWindow: 0.45
   specialAttackRecovery: 0.15
