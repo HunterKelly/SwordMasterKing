@@ -43,6 +43,7 @@ namespace SwordKing
         [Range(.1f, .3f)] public float sprintHoldThreshold = .18f;
         [Min(1)] public float fullChargeDamageMultiplier = 2f;
         [Header("Attack windows and recovery")]
+        [Range(0, .4f)] public float thrustHopHeight = .12f;
         [Min(0)] public float thrustSlideDistance = 1.2f;
         [Min(.05f)] public float thrustSlideDuration = .2f;
         [Min(.1f)] public float thrustDuration = .55f;

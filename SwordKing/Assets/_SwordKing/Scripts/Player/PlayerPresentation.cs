@@ -37,6 +37,7 @@ namespace SwordKing
                 power = settings.power; recovery = settings.recovery; speed = settings.speed;
                 sprintMultiplier = settings.sprintMultiplier; sprintHoldThreshold = settings.sprintHoldThreshold;
                 fullChargeDamageMultiplier = settings.fullChargeDamageMultiplier;
+                thrustHopHeight = settings.thrustHopHeight;
                 thrustSlideDistance = settings.thrustSlideDistance; thrustSlideDuration = settings.thrustSlideDuration;
                 thrustDuration = settings.thrustDuration; thrustDamageWindow = settings.thrustDamageWindow;
                 specialAttackRecovery = settings.specialAttackRecovery; jumpingHeavyRecovery = settings.jumpingHeavyRecovery;

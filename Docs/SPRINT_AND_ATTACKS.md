@@ -48,3 +48,9 @@ Jumping overhead animation starts about 0.04 seconds before the apex, with its a
 ## Final hyper-speed slash presentation
 
 The flurry visual is exactly three parallel copies of the ordinary slash trail: the main slash and two offset bars. Horizontal quick slashes offset the copies vertically; overhead quick slashes offset the copies left and right. Three accepted quick attacks of that type within 0.5 seconds activate the effect. Normal speed shows one bar. Circular scribble/cloud geometry has been removed from flurries. The extra bars never resolve extra damage.
+
+## Standing Shift specials and tiny thrust hop
+
+Holding Shift past the existing 0.18-second tap/hold threshold selects thrust (left click) or jumping overhead (right click), even with no movement input. Moving while holding Shift still sprints, and tapping Shift still rolls. The player does not need to run forward to select either special.
+
+Grounded thrusts add a tiny 0.12-metre hop alongside their existing forward slide. Thrust Hop Height in DefaultPlayer.asset adjusts it; zero disables it. An already airborne thrust does not add another jump. The existing damage window, one hit per enemy and recovery remain in effect.

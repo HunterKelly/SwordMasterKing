@@ -16,6 +16,7 @@ namespace SwordKing
         Vector3 thrustSlideDirection;
         float thrustSlideRemaining;
         readonly System.Collections.Generic.Queue<float> horizontalHistory = new System.Collections.Generic.Queue<float>();
+        bool ShiftSpecialReady => shiftGesture.SprintHeld && !IsRolling && !jumpStrikePending;
         bool HorizontalFlurry => activeAttack==PlayerAttackKind.Slash && horizontalHistory.Count>=3 && Time.time-lastAttack<.2f;
         readonly System.Collections.Generic.Queue<float> overheadHistory = new System.Collections.Generic.Queue<float>();
         bool OverheadFlurry => overheadHistory.Count >= 3 && Time.time-lastAttack < .2f;
@@ -41,11 +42,11 @@ namespace SwordKing
             if(!chargingAttack && (input.HeavyAttack || input.Attack))
             {
                 chargingAttack=true; chargeOverhead=input.HeavyAttack;
-                chargeSprint=IsSprinting; chargeStarted=Time.time;
+                chargeSprint=ShiftSpecialReady; chargeStarted=Time.time;
                 attackBuffer.Clear(); swordPivot.localPosition=swordRestPosition;
             }
             if(!chargingAttack) return;
-            chargeSprint |= IsSprinting;
+            chargeSprint |= ShiftSpecialReady;
             bool released=chargeOverhead ? input.HeavyReleased : input.AttackReleased;
             bool held=chargeOverhead ? input.HeavyHeld : input.AttackHeld;
             if(released)

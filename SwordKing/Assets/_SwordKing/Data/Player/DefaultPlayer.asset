@@ -23,6 +23,7 @@ MonoBehaviour:
   sprintMultiplier: 1.6
   sprintHoldThreshold: 0.18
   fullChargeDamageMultiplier: 2
+  thrustHopHeight: 0.12
   thrustSlideDistance: 1.2
   thrustSlideDuration: 0.2
   thrustDuration: 0.55

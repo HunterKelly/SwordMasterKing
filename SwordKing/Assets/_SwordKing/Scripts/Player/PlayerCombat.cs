@@ -43,6 +43,11 @@ namespace SwordKing
             }
             if(activeAttack==PlayerAttackKind.Thrust)
             {
+                if(controller.isGrounded && thrustHopHeight>0)
+                {
+                    verticalSpeed=Mathf.Sqrt(2f*Mathf.Max(1,gravityStrength)*Mathf.Clamp(thrustHopHeight,0,.4f));
+                    airborne=true; RefreshHurtboxes();
+                }
                 thrustSlideDirection=player.forward; thrustSlideRemaining=Mathf.Max(.05f,thrustSlideDuration);
                 thrustWindow.Begin(Time.time,Mathf.Min(animationDuration,Mathf.Max(.1f,thrustDamageWindow)));
                 thrustDamage=lastDamage; thrustReach=strikeReach; thrustAngle=strikeAngle; thrustCharge=impactCharge;
