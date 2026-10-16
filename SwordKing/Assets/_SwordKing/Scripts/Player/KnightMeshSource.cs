@@ -13,7 +13,7 @@ namespace SwordKing
     public sealed class KnightMeshSource : MonoBehaviour
     {
         public TextAsset source;
-        static readonly Dictionary<int, Mesh> Cache = new Dictionary<int, Mesh>();
+        static readonly Dictionary<TextAsset, Mesh> Cache = new Dictionary<TextAsset, Mesh>();
 
         void OnEnable() => EnsureMesh();
 
@@ -22,14 +22,13 @@ namespace SwordKing
             if (source == null) return;
             var filter = GetComponent<MeshFilter>();
             if (filter == null || filter.sharedMesh != null) return;
-            int key = source.GetInstanceID();
-            if (!Cache.TryGetValue(key, out var mesh) || mesh == null)
+            if (!Cache.TryGetValue(source, out var mesh) || mesh == null)
             {
                 try
                 {
                     mesh = CreateMesh();
                     mesh.hideFlags = HideFlags.HideAndDontSave;
-                    Cache[key] = mesh;
+                    Cache[source] = mesh;
                 }
                 catch (Exception error)
                 {
