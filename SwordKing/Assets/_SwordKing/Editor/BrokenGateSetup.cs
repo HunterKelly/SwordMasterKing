@@ -53,7 +53,7 @@ namespace SwordKing.Editor
         }
         static PlayerRig CreatePlayerPrefab()
         {
-            string path = Root + "/Prefabs/Player/Swordsman.prefab";
+            string path = Root + "/Prefabs/Player/ArmoredKnight.prefab";
             var existing = AssetDatabase.LoadAssetAtPath<PlayerRig>(path);
             if (existing != null) return existing;
             var template = AssetDatabase.LoadAssetAtPath<Material>(Root + "/Resources/BrokenGateLit.mat");

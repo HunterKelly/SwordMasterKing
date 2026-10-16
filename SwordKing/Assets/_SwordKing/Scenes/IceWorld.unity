@@ -35117,7 +35117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.PlayerController
   adventureMode: 1
   settings: {fileID: 11400000, guid: 09b0ac95947226743827a52b07d3416e, type: 2}
-  playerPrefab: {fileID: 0}
+  playerPrefab: {fileID: 7072597504312420402, guid: df58a1ad1012bad46882766e769590d9, type: 3}
   authoredWorld: {fileID: 928805564}
   levelDefinition: {fileID: 11400000, guid: db2660048a0a46f3a6ca09c90c4a589d, type: 2}
   power: 4
