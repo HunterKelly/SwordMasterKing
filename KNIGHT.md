@@ -37,7 +37,8 @@ whole body or dragging support feet. This affects joint offsets and leg meshes
 only; jump and roll restore authored leg dimensions. Walking Stride,
 Sprinting Stride, Walking Foot Lift, and Sprinting Foot Lift tune this motion.
 The feet target the character's local floor plane; this is not terrain-raycast
-foot placement. The cape is 7% narrower than the approved first plate-knight pass.
+foot placement. The cape is 16% narrower than the approved first plate-knight pass (about 10%
+narrower than the previous continuous cape).
 Two-bone visual arm fitting keeps the sword connected to the right hand, and
 supports it with the left hand during overhead windups. The visible sword stays
 within arm reach. Gameplay damage volumes, timings, movement collision, stamina,
@@ -72,3 +73,8 @@ Left-arm swing now follows the solved left-foot position directly: forward leg
 means backward arm, and backward leg means forward arm. A small pelvis yaw and
 side-to-side weight shift accompany opposing shoulder rotation. Combat poses
 still override the free walking arm, and the sword arm keeps its existing IK.
+
+Cape ripples increase with movement, with a stronger trailing wave during sprinting.
+A damped sideways response follows strafing and turns, and the fabric settles
+gradually after stopping. The shoulder edge stays pinned; cloth and gold hem
+use the same continuous deformation.

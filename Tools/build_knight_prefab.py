@@ -276,7 +276,7 @@ def author():
  c=mesh(bone,'Crimson');trim=mesh(bone,'Gold')
  rows=[]
  for j in range(31):
-  t=j/30;width=(.30+.29*t)*.93
+  t=j/30;width=(.30+.29*t)*.84
   row=[]
   for i in range(33):
    u=i/32;x=(u*2-1)*width
