@@ -130,7 +130,7 @@ namespace SwordKing
                 else if (activeAttack == PlayerAttackKind.Spin) swordPivot.localRotation = Quaternion.Euler(-10, 70, 0);
                 else swordPivot.localRotation = Quaternion.Euler(-10, angle * (swingIndex % 2 == 0 ? 1 : -1), 0);
             }
-            else swordPivot.localRotation = Quaternion.Slerp(swordPivot.localRotation, Quaternion.Euler(-25, 10, 0), Time.deltaTime * 12);
+            else swordPivot.localRotation = Quaternion.Slerp(swordPivot.localRotation, Quaternion.Euler(knightAnimation != null ? 35 : -25, knightAnimation != null ? -10 : 10, 0), Time.deltaTime * 12);
             if (!chargingAttack && (activeAttack != PlayerAttackKind.Thrust || t >= 1)) swordPivot.localPosition = swordRestPosition;
             if (knightAnimation != null)
                 knightAnimation.Present(menu ? Vector2.zero : playerInput.Read().Move, IsSprinting,

@@ -1,37 +1,56 @@
-# Armored knight
+# Plate-armored knight
 
-Open `SwordKing` in Unity and play BrokenGate, IceWorld, or CinderCastle.
-Each scene now references `Assets/_SwordKing/Prefabs/Player/ArmoredKnight.prefab`.
-The existing PlayerRig asset GUID and component ID are preserved.
+`Assets/_SwordKing/Prefabs/Player/ArmoredKnight.prefab` now uses human proportions,
+curved breastplate surfaces, a slotted closed helmet, overlapping shoulder lames,
+fluted arm and leg armor, modeled gauntlets, pointed sabatons, linked mail,
+a tapered diamond-section sword, and a three-section crimson cape. Steel, silver
+edges, dark steel, blue arming cloth, leather, and restrained gold details have
+separate materials under `Art/Materials/Knight_*`.
 
-Double-click the prefab to edit the model. It contains a closed helmet, visor,
-plume, layered plate armor, gold trim, split teal tabard, and sword. Armor uses
-the original mesh in `Art/Models/ArmorBevel.obj`; small details use Unity primitives.
-The model is assembled from editable rigid parts rather than a skinned humanoid.
+This is an original rigid-part model inspired by the supplied armor reference.
+It is not a photoreal scanned character, a skinned Humanoid avatar, or a set of
+Mecanim animation clips. The cape uses procedural joint motion, not cloth physics.
 
-The root CharacterController and gameplay hurtboxes stay independent of graphics.
-Hip, knee, shoulder, and elbow pivots have unit scale; their mesh children carry
-the proportions. Retain the PlayerRig references when replacing parts. Keep the
-sword shoulder in place: its animation uses the existing combat presentation.
+## Open and customize
 
-`KnightAnimation` on the prefab controls stride, knee bends, arm motion, idle
-breathing, torso follow-through, and tabard sway. Tune Movement Amount,
-Attack Amount, and Pose Response in the Inspector. Rolls and spins use the
-existing visual root. Attack timing still comes from PlayerController; these
-are procedural poses, not Animator clips or root motion. Damage, attack rates,
-movement speeds, knockback, and invulnerability rules are unchanged.
+Pull the changes and allow Unity to finish compiling. Open the prefab or play
+any of the three existing levels. The prefab's GUID and PlayerRig component ID
+are preserved, so existing scene assignments still resolve. No scene files are
+changed in this revision.
 
-To make a second knight, create a Prefab Variant and assign it to the scene's
-Game object's Player Prefab field. The scene Game object runs the combat and
-spawns the model; dragging a model prefab into an empty scene alone does not
-create a complete playable game.
+Create a Prefab Variant for custom armor proportions or material changes.
+Keep mesh children beneath their joint pivots. Meshes use actual authored
+vertices rather than scaled cubes and spheres. To modify the source geometry,
+edit `Tools/build_knight_prefab.py` and regenerate from the repository root.
+This overwrites the base prefab, generated source geometry, and knight materials.
 
-Validation: prefab structure, GUID references, hierarchy, collision isolation,
-scene assignments, and whitespace were checked outside Unity. Run Edit Mode
-`KnightPrefabTests` after import, then check movement, rapid swings, both charged
-attacks, Shift attacks, jumps, and rolls in Play Mode. Unity was unavailable in
-the implementation environment, so import and gameplay tests are still pending.
+`KnightAnimation` controls stride, knee bends, torso poses, and cape motion.
+Two-bone visual arm fitting keeps the sword connected to the right hand, and
+supports it with the left hand during overhead windups. The visible sword stays
+within arm reach. Gameplay damage volumes, timings, movement collision, stamina,
+knockback, and invulnerability still belong to PlayerController.
 
-`python Tools/build_knight_prefab.py` rebuilds the base prefab and bevel mesh.
-This overwrites hand edits to those two generated assets; use Prefab Variants
-for customizations you want to retain across regeneration.
+## Mesh import repair
+
+The previous model guessed Unity's OBJ mesh subasset ID. That caused invisible
+armor in the supplied screenshot. This version removes that OBJ dependency.
+`Art/Models/Knight/*.bytes` are deterministic vertex/normal/UV/index source data.
+`KnightMeshSource` decodes them into shared Unity meshes in Edit Mode, Prefab
+Mode, and standalone builds. It uses normal TextAsset references and has no
+external package dependency. It never generates gameplay colliders.
+
+For persistent native `.asset` meshes, choose **SwordKing > Player > Bake Knight
+Mesh Assets**. This optional command saves mesh assets under `Knight/Baked`
+and updates the prefab's MeshFilters. Keep the source data as a fallback.
+
+## Validation
+
+`python Tools/validate_knight.py` checks all source geometry, index bounds,
+finite vertices, normals, prefab references, material references, and the
+joint hierarchy. The preview is rendered from those same vertices and material
+colors outside Unity; it does not demonstrate Unity lighting or animation.
+
+Run the Unity Edit Mode `KnightPrefabTests`, then test idle, walking, strafing,
+sprinting, jumps, rolls, rapid attacks, both charges, and both Shift attacks.
+Unity is unavailable in the implementation environment, so import, animation,
+and standalone build verification still need to be performed there.

@@ -5,8 +5,11 @@ namespace SwordKing
     // Presentation only. Combat owns attack timing, movement, and invulnerability.
     public sealed class KnightAnimation : MonoBehaviour
     {
-        public Transform chest, head, leftArm, leftForearm, rightForearm;
-        public Transform leftShin, rightShin, frontTabard, backTabard;
+        public Transform chest, head, leftArm, rightArm, leftForearm, rightForearm;
+        public Transform leftShin, rightShin, weaponGrip;
+        public Transform capeTop, capeMid, capeHem;
+        [Min(.01f)] public float upperArmLength = .285f;
+        [Min(.01f)] public float forearmLength = .29f;
         [Range(0, 2)] public float movementAmount = 1f;
         [Range(0, 2)] public float attackAmount = 1f;
         [Min(1)] public float poseResponse = 18f;
@@ -39,8 +42,7 @@ namespace SwordKing
             Pose(leftArm, new Vector3(rolling ? -65 : charging || risingHeavy ? -65 : -stride * 22 - strike * 30,
                 0, rolling ? -10 : -12), blend);
             Pose(leftForearm, new Vector3(rolling ? -95 : sprint ? -70 : -35 - strike * 35, 0, 0), blend);
-            // Sword pivot remains controlled by PlayerPresentation; this only bends the visible elbow.
-            Pose(rightForearm, new Vector3(0, 0, attacking && attack == PlayerAttackKind.Thrust ? 0 : -8), blend);
+
             if (!rolling)
             {
                 float direction = input.y < -.1f ? -1 : 1;
@@ -49,9 +51,55 @@ namespace SwordKing
             }
             Pose(leftShin, new Vector3(rolling ? 105 : airborne ? 65 : Mathf.Max(0, -stride) * 65, 0, 0), blend);
             Pose(rightShin, new Vector3(rolling ? 105 : airborne ? 85 : Mathf.Max(0, stride) * 65, 0, 0), blend);
-            Pose(frontTabard, new Vector3(-8 - bounce * 14 - (rolling ? 30 : 0), 0, stride * 5), blend);
-            Pose(backTabard, new Vector3(8 + movement * (sprint ? 35 : 15) + Mathf.Sin(phase + .8f) * movement * 6,
-                0, -stride * 5), blend);
+            float breeze = Mathf.Sin(Time.time * 3.2f + phase * .12f);
+            float capeLift = rolling ? 25 : airborne ? 16 : movement * (sprint ? 27 : 11);
+            Pose(capeTop, new Vector3(capeLift * .35f + breeze * 1.2f, 0, -input.x * 3), blend);
+            Pose(capeMid, new Vector3(capeLift * .55f + breeze * 3, 0, stride * 2), blend);
+            Pose(capeHem, new Vector3(capeLift * .4f + Mathf.Sin(Time.time * 3.2f - .7f) * (2 + movement * 3),
+                0, -stride * 3), blend);
+            FitSwordArm(rolling);
+            if (!rolling && ((charging && overheadCharge) || risingHeavy || (attacking && overhead)))
+            {
+                if (weaponGrip != null)
+                    SolveArm(leftArm, leftForearm, weaponGrip.position - weaponGrip.forward * .085f,
+                        -chest.right, upperArmLength, forearmLength);
+            }
+        }
+
+        void FitSwordArm(bool rolling)
+        {
+            if (rightArm == null || rightForearm == null || weaponGrip == null) return;
+            var target = weaponGrip.position;
+            float reach = Mathf.Max(.02f, upperArmLength + forearmLength - .003f);
+            Vector3 offset = target - rightArm.position;
+            if (offset.sqrMagnitude > reach * reach)
+            {
+                // Fit only the visible sword to a human arm. Combat volumes still use PlayerController.
+                Vector3 clamped = rightArm.position + offset.normalized * reach;
+                weaponGrip.parent.position += clamped - target;
+                target = clamped;
+            }
+            SolveArm(rightArm, rightForearm, target,
+                chest.right - chest.forward * (rolling ? 1 : .35f),
+                upperArmLength, forearmLength);
+        }
+
+        static void SolveArm(Transform shoulder, Transform elbow, Vector3 target,
+            Vector3 pole, float upperLength, float lowerLength)
+        {
+            if (shoulder == null || elbow == null) return;
+            Vector3 delta = target - shoulder.position;
+            float distance = Mathf.Clamp(delta.magnitude, .001f, upperLength + lowerLength - .001f);
+            Vector3 forward = delta.sqrMagnitude > .000001f ? delta.normalized : Vector3.down;
+            Vector3 bend = Vector3.ProjectOnPlane(pole, forward).normalized;
+            if (bend.sqrMagnitude < .001f) bend = Vector3.Cross(forward, Vector3.up).normalized;
+            if (bend.sqrMagnitude < .001f) bend = Vector3.right;
+            float along = (upperLength * upperLength - lowerLength * lowerLength + distance * distance)
+                / (2 * distance);
+            float outwards = Mathf.Sqrt(Mathf.Max(0, upperLength * upperLength - along * along));
+            Vector3 elbowPosition = shoulder.position + forward * along + bend * outwards;
+            shoulder.rotation = Quaternion.FromToRotation(Vector3.down, elbowPosition - shoulder.position);
+            elbow.rotation = Quaternion.FromToRotation(Vector3.down, target - elbow.position);
         }
 
         static void Pose(Transform joint, Vector3 angles, float blend)

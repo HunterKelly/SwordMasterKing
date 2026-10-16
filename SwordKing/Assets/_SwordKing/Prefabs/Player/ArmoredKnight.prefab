@@ -65,13 +65,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1021}
-  - {fileID: 1061}
-  - {fileID: 1271}
-  - {fileID: 1361}
-  - {fileID: 1571}
-  - {fileID: 1671}
-  - {fileID: 1771}
-  - {fileID: 1781}
+  - {fileID: 1031}
+  - {fileID: 1091}
+  - {fileID: 1121}
+  - {fileID: 1151}
   m_Father: {fileID: 1001}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1020
@@ -84,7 +81,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1021}
   m_Layer: 0
-  m_Name: Hips
+  m_Name: Pelvis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,13 +96,14 @@ Transform:
   m_GameObject: {fileID: 1020}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.02, z: 0}
+  m_LocalPosition: {x: 0, y: 0.025, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1031}
-  - {fileID: 1041}
-  - {fileID: 1051}
+  - {fileID: 1461}
+  - {fileID: 1471}
+  - {fileID: 1481}
+  - {fileID: 1711}
   m_Father: {fileID: 1011}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1030
@@ -117,10 +115,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1031}
-  - component: {fileID: 1032}
-  - component: {fileID: 1033}
   m_Layer: 0
-  m_Name: Armored waist
+  m_Name: Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,69 +131,20 @@ Transform:
   m_GameObject: {fileID: 1030}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.02, z: 0}
-  m_LocalScale: {x: 0.46, y: 0.22, z: 0.3}
+  m_LocalPosition: {x: 0, y: 0.18, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1021}
+  m_Children:
+  - {fileID: 1041}
+  - {fileID: 1051}
+  - {fileID: 1071}
+  - {fileID: 1171}
+  - {fileID: 1201}
+  - {fileID: 1211}
+  - {fileID: 1221}
+  - {fileID: 1231}
+  m_Father: {fileID: 1011}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1032
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1030}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
---- !u!23 &1033
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1030}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 6c6cdbf19ea4e3b48b994da47684b99d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1040
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,10 +154,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1041}
-  - component: {fileID: 1042}
-  - component: {fileID: 1043}
   m_Layer: 0
-  m_Name: Gold belt
+  m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -225,69 +170,16 @@ Transform:
   m_GameObject: {fileID: 1040}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.08, z: 0.015}
-  m_LocalScale: {x: 0.51, y: 0.065, z: 0.34}
+  m_LocalPosition: {x: 0, y: 0.49, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1021}
+  m_Children:
+  - {fileID: 1241}
+  - {fileID: 1251}
+  - {fileID: 1261}
+  - {fileID: 1271}
+  m_Father: {fileID: 1031}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1042
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1040}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
---- !u!23 &1043
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1040}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 34928eecf5462b8458db8ef81cb5061b, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1050
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,10 +189,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1051}
-  - component: {fileID: 1052}
-  - component: {fileID: 1053}
   m_Layer: 0
-  m_Name: Belt buckle
+  m_Name: Left shoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -315,69 +205,18 @@ Transform:
   m_GameObject: {fileID: 1050}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.08, z: 0.197}
-  m_LocalScale: {x: 0.105, y: 0.09, z: 0.04}
+  m_LocalPosition: {x: -0.29, y: 0.33, z: -0.005}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1021}
+  m_Children:
+  - {fileID: 1061}
+  - {fileID: 1281}
+  - {fileID: 1291}
+  - {fileID: 1301}
+  - {fileID: 1311}
+  - {fileID: 1321}
+  m_Father: {fileID: 1031}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1052
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1050}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
---- !u!23 &1053
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1050}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 34928eecf5462b8458db8ef81cb5061b, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1060
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,7 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1061}
   m_Layer: 0
-  m_Name: Chest
+  m_Name: Left elbow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -403,19 +242,15 @@ Transform:
   m_GameObject: {fileID: 1060}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.17, z: 0}
+  m_LocalPosition: {x: 0, y: -0.285, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1071}
-  - {fileID: 1081}
-  - {fileID: 1091}
-  - {fileID: 1101}
-  - {fileID: 1111}
-  - {fileID: 1121}
-  - {fileID: 1131}
-  - {fileID: 1141}
-  m_Father: {fileID: 1011}
+  - {fileID: 1331}
+  - {fileID: 1341}
+  - {fileID: 1351}
+  - {fileID: 1361}
+  m_Father: {fileID: 1051}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1070
 GameObject:
@@ -426,10 +261,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1071}
-  - component: {fileID: 1072}
-  - component: {fileID: 1073}
   m_Layer: 0
-  m_Name: Breastplate
+  m_Name: Right shoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -444,69 +277,18 @@ Transform:
   m_GameObject: {fileID: 1070}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.16, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.44, z: 0.37}
+  m_LocalPosition: {x: 0.29, y: 0.33, z: -0.005}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1061}
+  m_Children:
+  - {fileID: 1081}
+  - {fileID: 1371}
+  - {fileID: 1381}
+  - {fileID: 1391}
+  - {fileID: 1401}
+  - {fileID: 1411}
+  m_Father: {fileID: 1031}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1072
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1070}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
---- !u!23 &1073
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1070}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: fb0017427d4ec6d48bef7d4ff50dd058, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1080
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,10 +298,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1081}
-  - component: {fileID: 1082}
-  - component: {fileID: 1083}
   m_Layer: 0
-  m_Name: Raised breastplate
+  m_Name: Right elbow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -534,69 +314,16 @@ Transform:
   m_GameObject: {fileID: 1080}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.19, z: 0.19}
-  m_LocalScale: {x: 0.4, y: 0.3, z: 0.065}
+  m_LocalPosition: {x: 0, y: -0.285, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1061}
+  m_Children:
+  - {fileID: 1421}
+  - {fileID: 1431}
+  - {fileID: 1441}
+  - {fileID: 1451}
+  m_Father: {fileID: 1071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1082
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1080}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
---- !u!23 &1083
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1080}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: fb0017427d4ec6d48bef7d4ff50dd058, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1090
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,10 +333,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1091}
-  - component: {fileID: 1092}
-  - component: {fileID: 1093}
   m_Layer: 0
-  m_Name: Tabard chest teal
+  m_Name: Left hip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -624,69 +349,17 @@ Transform:
   m_GameObject: {fileID: 1090}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.15, z: 0.231}
-  m_LocalScale: {x: 0.22, y: 0.35, z: 0.025}
+  m_LocalPosition: {x: -0.13, y: 0.015, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1061}
+  m_Children:
+  - {fileID: 1101}
+  - {fileID: 1491}
+  - {fileID: 1501}
+  - {fileID: 1511}
+  - {fileID: 1521}
+  m_Father: {fileID: 1011}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1092
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1090}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1093
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1090}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 89cb11afe09aa1342a89b99f336f26ea, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1100
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,10 +369,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1101}
-  - component: {fileID: 1102}
-  - component: {fileID: 1103}
   m_Layer: 0
-  m_Name: Gold crest vertical
+  m_Name: Left knee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -714,69 +385,17 @@ Transform:
   m_GameObject: {fileID: 1100}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.17, z: 0.251}
-  m_LocalScale: {x: 0.028, y: 0.18, z: 0.016}
+  m_LocalPosition: {x: 0, y: -0.415, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1061}
+  m_Children:
+  - {fileID: 1111}
+  - {fileID: 1531}
+  - {fileID: 1541}
+  - {fileID: 1551}
+  - {fileID: 1561}
+  m_Father: {fileID: 1091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1102
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1100}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
---- !u!23 &1103
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1100}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 34928eecf5462b8458db8ef81cb5061b, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1110
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,10 +405,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1111}
-  - component: {fileID: 1112}
-  - component: {fileID: 1113}
   m_Layer: 0
-  m_Name: Gold crest horizontal
+  m_Name: Left ankle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -804,69 +421,15 @@ Transform:
   m_GameObject: {fileID: 1110}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2, z: 0.253}
-  m_LocalScale: {x: 0.12, y: 0.025, z: 0.016}
+  m_LocalPosition: {x: 0, y: -0.405, z: 0.015}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1061}
+  m_Children:
+  - {fileID: 1571}
+  - {fileID: 1581}
+  - {fileID: 1591}
+  m_Father: {fileID: 1101}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1112
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1110}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
---- !u!23 &1113
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1110}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 34928eecf5462b8458db8ef81cb5061b, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1120
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,10 +439,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1121}
-  - component: {fileID: 1122}
-  - component: {fileID: 1123}
   m_Layer: 0
-  m_Name: Lower armor trim
+  m_Name: Right hip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -894,69 +455,17 @@ Transform:
   m_GameObject: {fileID: 1120}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.065, z: 0}
-  m_LocalScale: {x: 0.62, y: 0.045, z: 0.39}
+  m_LocalPosition: {x: 0.13, y: 0.015, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1061}
+  m_Children:
+  - {fileID: 1131}
+  - {fileID: 1601}
+  - {fileID: 1611}
+  - {fileID: 1621}
+  - {fileID: 1631}
+  m_Father: {fileID: 1011}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1122
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1120}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
---- !u!23 &1123
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1120}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 34928eecf5462b8458db8ef81cb5061b, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1130
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,10 +475,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1131}
-  - component: {fileID: 1132}
-  - component: {fileID: 1133}
   m_Layer: 0
-  m_Name: Gorget
+  m_Name: Right knee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -984,69 +491,17 @@ Transform:
   m_GameObject: {fileID: 1130}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.405, z: 0}
-  m_LocalScale: {x: 0.31, y: 0.1, z: 0.3}
+  m_LocalPosition: {x: 0, y: -0.415, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1061}
+  m_Children:
+  - {fileID: 1141}
+  - {fileID: 1641}
+  - {fileID: 1651}
+  - {fileID: 1661}
+  - {fileID: 1671}
+  m_Father: {fileID: 1121}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1132
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1130}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1133
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1130}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 6c6cdbf19ea4e3b48b994da47684b99d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1057,7 +512,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1141}
   m_Layer: 0
-  m_Name: Head
+  m_Name: Right ankle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1072,23 +527,14 @@ Transform:
   m_GameObject: {fileID: 1140}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.43, z: 0}
+  m_LocalPosition: {x: 0, y: -0.405, z: 0.015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1151}
-  - {fileID: 1161}
-  - {fileID: 1171}
-  - {fileID: 1181}
-  - {fileID: 1191}
-  - {fileID: 1201}
-  - {fileID: 1211}
-  - {fileID: 1221}
-  - {fileID: 1231}
-  - {fileID: 1241}
-  - {fileID: 1251}
-  - {fileID: 1261}
-  m_Father: {fileID: 1061}
+  - {fileID: 1681}
+  - {fileID: 1691}
+  - {fileID: 1701}
+  m_Father: {fileID: 1131}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1150
 GameObject:
@@ -1099,10 +545,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1151}
-  - component: {fileID: 1152}
-  - component: {fileID: 1153}
   m_Layer: 0
-  m_Name: Helmet shell
+  m_Name: Sword shoulder - combat pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1117,69 +561,17 @@ Transform:
   m_GameObject: {fileID: 1150}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.19, z: 0}
-  m_LocalScale: {x: 0.39, y: 0.43, z: 0.36}
+  m_LocalPosition: {x: 0.28, y: 0.36, z: 0.04}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1141}
+  m_Children:
+  - {fileID: 1161}
+  - {fileID: 1721}
+  - {fileID: 1731}
+  - {fileID: 1741}
+  - {fileID: 1751}
+  m_Father: {fileID: 1011}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1152
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1150}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1153
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1150}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: fb0017427d4ec6d48bef7d4ff50dd058, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1160
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,10 +581,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1161}
-  - component: {fileID: 1162}
-  - component: {fileID: 1163}
   m_Layer: 0
-  m_Name: Faceplate
+  m_Name: Sword grip target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1207,69 +597,12 @@ Transform:
   m_GameObject: {fileID: 1160}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.155, z: 0.158}
-  m_LocalScale: {x: 0.335, y: 0.28, z: 0.09}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1141}
+  m_Father: {fileID: 1151}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1162
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1160}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
---- !u!23 &1163
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1160}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: fb0017427d4ec6d48bef7d4ff50dd058, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1170
 GameObject:
   m_ObjectHideFlags: 0
@@ -1279,10 +612,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1171}
-  - component: {fileID: 1172}
-  - component: {fileID: 1173}
   m_Layer: 0
-  m_Name: Black visor slit
+  m_Name: Cape shoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1297,69 +628,14 @@ Transform:
   m_GameObject: {fileID: 1170}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.218, z: 0.209}
-  m_LocalScale: {x: 0.29, y: 0.035, z: 0.015}
+  m_LocalPosition: {x: 0, y: 0.4, z: -0.16}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1141}
+  m_Children:
+  - {fileID: 1181}
+  - {fileID: 1761}
+  m_Father: {fileID: 1031}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1172
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1170}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1173
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1170}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: b269f41990e3ccd4b80e65135faf39ae, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,10 +645,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1181}
-  - component: {fileID: 1182}
-  - component: {fileID: 1183}
   m_Layer: 0
-  m_Name: Helmet brow
+  m_Name: Cape middle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1387,69 +661,14 @@ Transform:
   m_GameObject: {fileID: 1180}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.26, z: 0.2}
-  m_LocalScale: {x: 0.36, y: 0.035, z: 0.05}
+  m_LocalPosition: {x: 0, y: -0.45, z: -0.135}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1141}
+  m_Children:
+  - {fileID: 1191}
+  - {fileID: 1771}
+  m_Father: {fileID: 1171}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1182
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1180}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
---- !u!23 &1183
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1180}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 34928eecf5462b8458db8ef81cb5061b, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1190
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,10 +678,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1191}
-  - component: {fileID: 1192}
-  - component: {fileID: 1193}
   m_Layer: 0
-  m_Name: Nose guard
+  m_Name: Cape hem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1477,69 +694,14 @@ Transform:
   m_GameObject: {fileID: 1190}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.14, z: 0.22}
-  m_LocalScale: {x: 0.035, y: 0.19, z: 0.035}
+  m_LocalPosition: {x: 0, y: -0.45, z: -0.135}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1141}
+  m_Children:
+  - {fileID: 1781}
+  - {fileID: 1791}
+  m_Father: {fileID: 1181}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1192
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
---- !u!23 &1193
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 34928eecf5462b8458db8ef81cb5061b, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1200
 GameObject:
   m_ObjectHideFlags: 0
@@ -1551,8 +713,9 @@ GameObject:
   - component: {fileID: 1201}
   - component: {fileID: 1202}
   - component: {fileID: 1203}
+  - component: {fileID: 1204}
   m_Layer: 0
-  m_Name: Visor vent
+  m_Name: Mesh Chest_Steel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1567,11 +730,11 @@ Transform:
   m_GameObject: {fileID: 1200}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.09, y: 0.095, z: 0.208}
-  m_LocalScale: {x: 0.052, y: 0.016, z: 0.013}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1141}
+  m_Father: {fileID: 1031}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1202
 MeshFilter:
@@ -1580,7 +743,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1200}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1203
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1606,7 +769,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b269f41990e3ccd4b80e65135faf39ae, type: 2}
+  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1630,6 +793,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 118851511614cbb0c5f4d60b0fd666d2, type: 3}
 --- !u!1 &1210
 GameObject:
   m_ObjectHideFlags: 0
@@ -1641,8 +817,9 @@ GameObject:
   - component: {fileID: 1211}
   - component: {fileID: 1212}
   - component: {fileID: 1213}
+  - component: {fileID: 1214}
   m_Layer: 0
-  m_Name: Visor vent
+  m_Name: Mesh Chest_Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1657,11 +834,11 @@ Transform:
   m_GameObject: {fileID: 1210}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.09, y: 0.14, z: 0.208}
-  m_LocalScale: {x: 0.052, y: 0.016, z: 0.013}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1141}
+  m_Father: {fileID: 1031}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1212
 MeshFilter:
@@ -1670,7 +847,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1213
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1696,7 +873,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b269f41990e3ccd4b80e65135faf39ae, type: 2}
+  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1720,6 +897,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 246327baa8282b0422334a32e0708e41, type: 3}
 --- !u!1 &1220
 GameObject:
   m_ObjectHideFlags: 0
@@ -1731,8 +921,9 @@ GameObject:
   - component: {fileID: 1221}
   - component: {fileID: 1222}
   - component: {fileID: 1223}
+  - component: {fileID: 1224}
   m_Layer: 0
-  m_Name: Visor vent
+  m_Name: Mesh Chest_DarkSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1747,11 +938,11 @@ Transform:
   m_GameObject: {fileID: 1220}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.09, y: 0.095, z: 0.208}
-  m_LocalScale: {x: 0.052, y: 0.016, z: 0.013}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1141}
+  m_Father: {fileID: 1031}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1222
 MeshFilter:
@@ -1760,7 +951,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1220}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1223
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1786,7 +977,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b269f41990e3ccd4b80e65135faf39ae, type: 2}
+  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1810,6 +1001,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: e11db0141a6501d0bfcfea3f215c058d, type: 3}
 --- !u!1 &1230
 GameObject:
   m_ObjectHideFlags: 0
@@ -1821,8 +1025,9 @@ GameObject:
   - component: {fileID: 1231}
   - component: {fileID: 1232}
   - component: {fileID: 1233}
+  - component: {fileID: 1234}
   m_Layer: 0
-  m_Name: Visor vent
+  m_Name: Mesh Chest_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1837,11 +1042,11 @@ Transform:
   m_GameObject: {fileID: 1230}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.09, y: 0.14, z: 0.208}
-  m_LocalScale: {x: 0.052, y: 0.016, z: 0.013}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1141}
+  m_Father: {fileID: 1031}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1232
 MeshFilter:
@@ -1850,7 +1055,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1230}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1233
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1876,7 +1081,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b269f41990e3ccd4b80e65135faf39ae, type: 2}
+  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1900,6 +1105,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 47c187ec0505ef8bffa8f449e409932a, type: 3}
 --- !u!1 &1240
 GameObject:
   m_ObjectHideFlags: 0
@@ -1911,8 +1129,9 @@ GameObject:
   - component: {fileID: 1241}
   - component: {fileID: 1242}
   - component: {fileID: 1243}
+  - component: {fileID: 1244}
   m_Layer: 0
-  m_Name: Helmet ridge
+  m_Name: Mesh Head_Steel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1927,11 +1146,11 @@ Transform:
   m_GameObject: {fileID: 1240}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.38, z: -0.015}
-  m_LocalScale: {x: 0.045, y: 0.075, z: 0.3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1141}
+  m_Father: {fileID: 1041}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1242
 MeshFilter:
@@ -1940,7 +1159,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1240}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1243
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1966,7 +1185,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 34928eecf5462b8458db8ef81cb5061b, type: 2}
+  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1990,6 +1209,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 87c3c15531757cded40e8fa65db235a8, type: 3}
 --- !u!1 &1250
 GameObject:
   m_ObjectHideFlags: 0
@@ -2001,8 +1233,9 @@ GameObject:
   - component: {fileID: 1251}
   - component: {fileID: 1252}
   - component: {fileID: 1253}
+  - component: {fileID: 1254}
   m_Layer: 0
-  m_Name: Teal plume
+  m_Name: Mesh Head_Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2017,11 +1250,11 @@ Transform:
   m_GameObject: {fileID: 1250}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.425, z: -0.06}
-  m_LocalScale: {x: 0.065, y: 0.11, z: 0.29}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1141}
+  m_Father: {fileID: 1041}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1252
 MeshFilter:
@@ -2030,7 +1263,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1253
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2056,7 +1289,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 89cb11afe09aa1342a89b99f336f26ea, type: 2}
+  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2080,6 +1313,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 4a19cafc65a75116e3f7c67c2f7c48e1, type: 3}
 --- !u!1 &1260
 GameObject:
   m_ObjectHideFlags: 0
@@ -2091,8 +1337,9 @@ GameObject:
   - component: {fileID: 1261}
   - component: {fileID: 1262}
   - component: {fileID: 1263}
+  - component: {fileID: 1264}
   m_Layer: 0
-  m_Name: Plume tail
+  m_Name: Mesh Head_DarkSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2107,11 +1354,11 @@ Transform:
   m_GameObject: {fileID: 1260}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.36, z: -0.23}
-  m_LocalScale: {x: 0.065, y: 0.19, z: 0.09}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1141}
+  m_Father: {fileID: 1041}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1262
 MeshFilter:
@@ -2120,7 +1367,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1260}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1263
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2146,7 +1393,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 89cb11afe09aa1342a89b99f336f26ea, type: 2}
+  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2170,6 +1417,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: d0585658b93115f5cef99ba3c855184d, type: 3}
 --- !u!1 &1270
 GameObject:
   m_ObjectHideFlags: 0
@@ -2179,8 +1439,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1271}
+  - component: {fileID: 1272}
+  - component: {fileID: 1273}
+  - component: {fileID: 1274}
   m_Layer: 0
-  m_Name: Left shoulder
+  m_Name: Mesh Head_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2195,16 +1458,82 @@ Transform:
   m_GameObject: {fileID: 1270}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4, y: 0.43, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1281}
-  - {fileID: 1291}
-  - {fileID: 1301}
-  - {fileID: 1311}
-  m_Father: {fileID: 1011}
+  m_Children: []
+  m_Father: {fileID: 1041}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1272
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270}
+  m_Mesh: {fileID: 0}
+--- !u!23 &1273
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 4176a12bd1298bdcf8b9ad62296a16ce, type: 3}
 --- !u!1 &1280
 GameObject:
   m_ObjectHideFlags: 0
@@ -2216,8 +1545,9 @@ GameObject:
   - component: {fileID: 1281}
   - component: {fileID: 1282}
   - component: {fileID: 1283}
+  - component: {fileID: 1284}
   m_Layer: 0
-  m_Name: Left pauldron
+  m_Name: Mesh Left_shoulder_Steel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2232,11 +1562,11 @@ Transform:
   m_GameObject: {fileID: 1280}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.015, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.24, z: 0.36}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1271}
+  m_Father: {fileID: 1051}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1282
 MeshFilter:
@@ -2245,7 +1575,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1280}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1283
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2271,7 +1601,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fb0017427d4ec6d48bef7d4ff50dd058, type: 2}
+  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2295,6 +1625,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 249ab1e0f2e78ab8515fd946e2163aea, type: 3}
 --- !u!1 &1290
 GameObject:
   m_ObjectHideFlags: 0
@@ -2306,8 +1649,9 @@ GameObject:
   - component: {fileID: 1291}
   - component: {fileID: 1292}
   - component: {fileID: 1293}
+  - component: {fileID: 1294}
   m_Layer: 0
-  m_Name: Left pauldron trim
+  m_Name: Mesh Left_shoulder_Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2322,11 +1666,11 @@ Transform:
   m_GameObject: {fileID: 1290}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.095, z: 0.015}
-  m_LocalScale: {x: 0.31, y: 0.045, z: 0.35}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1271}
+  m_Father: {fileID: 1051}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1292
 MeshFilter:
@@ -2335,7 +1679,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1290}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1293
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2361,7 +1705,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 34928eecf5462b8458db8ef81cb5061b, type: 2}
+  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2385,6 +1729,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 20262519e13254535784f21c36535776, type: 3}
 --- !u!1 &1300
 GameObject:
   m_ObjectHideFlags: 0
@@ -2396,8 +1753,9 @@ GameObject:
   - component: {fileID: 1301}
   - component: {fileID: 1302}
   - component: {fileID: 1303}
+  - component: {fileID: 1304}
   m_Layer: 0
-  m_Name: Left upper arm mail
+  m_Name: Mesh Left_shoulder_DarkSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2412,11 +1770,11 @@ Transform:
   m_GameObject: {fileID: 1300}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.21, z: 0}
-  m_LocalScale: {x: 0.17, y: 0.27, z: 0.19}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1271}
+  m_Father: {fileID: 1051}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1302
 MeshFilter:
@@ -2425,7 +1783,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1300}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1303
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2451,7 +1809,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6c6cdbf19ea4e3b48b994da47684b99d, type: 2}
+  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2475,6 +1833,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 3580dc02137ac6b2626497dc172cbc20, type: 3}
 --- !u!1 &1310
 GameObject:
   m_ObjectHideFlags: 0
@@ -2484,8 +1855,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1311}
+  - component: {fileID: 1312}
+  - component: {fileID: 1313}
+  - component: {fileID: 1314}
   m_Layer: 0
-  m_Name: Left elbow
+  m_Name: Mesh Left_shoulder_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2500,16 +1874,82 @@ Transform:
   m_GameObject: {fileID: 1310}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.32, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1321}
-  - {fileID: 1331}
-  - {fileID: 1341}
-  - {fileID: 1351}
-  m_Father: {fileID: 1271}
+  m_Children: []
+  m_Father: {fileID: 1051}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1312
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310}
+  m_Mesh: {fileID: 0}
+--- !u!23 &1313
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 042476aa7a3d887c505b1c1d67bb78ea, type: 3}
 --- !u!1 &1320
 GameObject:
   m_ObjectHideFlags: 0
@@ -2521,8 +1961,9 @@ GameObject:
   - component: {fileID: 1321}
   - component: {fileID: 1322}
   - component: {fileID: 1323}
+  - component: {fileID: 1324}
   m_Layer: 0
-  m_Name: Left elbow plate
+  m_Name: Mesh Left_shoulder_Mail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2537,11 +1978,11 @@ Transform:
   m_GameObject: {fileID: 1320}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.015}
-  m_LocalScale: {x: 0.21, y: 0.16, z: 0.23}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1311}
+  m_Father: {fileID: 1051}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1322
 MeshFilter:
@@ -2550,7 +1991,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1320}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1323
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2576,7 +2017,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fb0017427d4ec6d48bef7d4ff50dd058, type: 2}
+  - {fileID: 2100000, guid: 6cc98e661d72adf66afe6e56c0ddaca5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2600,6 +2041,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 6a7b70f19dc068ec1e174255691f12fd, type: 3}
 --- !u!1 &1330
 GameObject:
   m_ObjectHideFlags: 0
@@ -2611,8 +2065,9 @@ GameObject:
   - component: {fileID: 1331}
   - component: {fileID: 1332}
   - component: {fileID: 1333}
+  - component: {fileID: 1334}
   m_Layer: 0
-  m_Name: Left vambrace
+  m_Name: Mesh Left_elbow_Steel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2627,11 +2082,11 @@ Transform:
   m_GameObject: {fileID: 1330}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.14, z: 0}
-  m_LocalScale: {x: 0.18, y: 0.26, z: 0.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1311}
+  m_Father: {fileID: 1061}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1332
 MeshFilter:
@@ -2640,7 +2095,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1330}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1333
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2666,7 +2121,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fb0017427d4ec6d48bef7d4ff50dd058, type: 2}
+  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2690,6 +2145,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 9948d79029c5c7aa1d3a3cd0a59713e6, type: 3}
 --- !u!1 &1340
 GameObject:
   m_ObjectHideFlags: 0
@@ -2701,8 +2169,9 @@ GameObject:
   - component: {fileID: 1341}
   - component: {fileID: 1342}
   - component: {fileID: 1343}
+  - component: {fileID: 1344}
   m_Layer: 0
-  m_Name: Left wrist trim
+  m_Name: Mesh Left_elbow_Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2717,11 +2186,11 @@ Transform:
   m_GameObject: {fileID: 1340}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.27, z: 0}
-  m_LocalScale: {x: 0.19, y: 0.04, z: 0.21}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1311}
+  m_Father: {fileID: 1061}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1342
 MeshFilter:
@@ -2730,7 +2199,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1340}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1343
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2756,7 +2225,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 34928eecf5462b8458db8ef81cb5061b, type: 2}
+  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2780,6 +2249,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 0b57b10ecd26429b35a3035e04cbb080, type: 3}
 --- !u!1 &1350
 GameObject:
   m_ObjectHideFlags: 0
@@ -2791,8 +2273,9 @@ GameObject:
   - component: {fileID: 1351}
   - component: {fileID: 1352}
   - component: {fileID: 1353}
+  - component: {fileID: 1354}
   m_Layer: 0
-  m_Name: Left gauntlet
+  m_Name: Mesh Left_elbow_DarkSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2807,11 +2290,11 @@ Transform:
   m_GameObject: {fileID: 1350}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.335, z: 0.025}
-  m_LocalScale: {x: 0.19, y: 0.15, z: 0.22}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1311}
+  m_Father: {fileID: 1061}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1352
 MeshFilter:
@@ -2820,7 +2303,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1353
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2846,7 +2329,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6c6cdbf19ea4e3b48b994da47684b99d, type: 2}
+  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2870,6 +2353,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 0ca284c976a9811eb84167771682c035, type: 3}
 --- !u!1 &1360
 GameObject:
   m_ObjectHideFlags: 0
@@ -2879,8 +2375,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1361}
+  - component: {fileID: 1362}
+  - component: {fileID: 1363}
+  - component: {fileID: 1364}
   m_Layer: 0
-  m_Name: Sword shoulder - combat pivot
+  m_Name: Mesh Left_elbow_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2895,17 +2394,82 @@ Transform:
   m_GameObject: {fileID: 1360}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 0.25, z: 0.05}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1371}
-  - {fileID: 1381}
-  - {fileID: 1391}
-  - {fileID: 1401}
-  - {fileID: 1451}
-  m_Father: {fileID: 1011}
+  m_Children: []
+  m_Father: {fileID: 1061}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1362
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360}
+  m_Mesh: {fileID: 0}
+--- !u!23 &1363
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: ac24e2d7f72107d811cc8a125c11c4f7, type: 3}
 --- !u!1 &1370
 GameObject:
   m_ObjectHideFlags: 0
@@ -2917,8 +2481,9 @@ GameObject:
   - component: {fileID: 1371}
   - component: {fileID: 1372}
   - component: {fileID: 1373}
+  - component: {fileID: 1374}
   m_Layer: 0
-  m_Name: Right pauldron
+  m_Name: Mesh Right_shoulder_Steel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2933,11 +2498,11 @@ Transform:
   m_GameObject: {fileID: 1370}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.12, z: -0.025}
-  m_LocalScale: {x: 0.3, y: 0.24, z: 0.36}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1361}
+  m_Father: {fileID: 1071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1372
 MeshFilter:
@@ -2946,7 +2511,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1370}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1373
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2972,7 +2537,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fb0017427d4ec6d48bef7d4ff50dd058, type: 2}
+  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2996,6 +2561,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: df4c5833bbf0f1e13b0f3c5f481f307e, type: 3}
 --- !u!1 &1380
 GameObject:
   m_ObjectHideFlags: 0
@@ -3007,8 +2585,9 @@ GameObject:
   - component: {fileID: 1381}
   - component: {fileID: 1382}
   - component: {fileID: 1383}
+  - component: {fileID: 1384}
   m_Layer: 0
-  m_Name: Right pauldron trim
+  m_Name: Mesh Right_shoulder_Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3023,11 +2602,11 @@ Transform:
   m_GameObject: {fileID: 1380}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.04, z: -0.025}
-  m_LocalScale: {x: 0.31, y: 0.045, z: 0.35}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1361}
+  m_Father: {fileID: 1071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1382
 MeshFilter:
@@ -3036,7 +2615,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1383
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3062,7 +2641,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 34928eecf5462b8458db8ef81cb5061b, type: 2}
+  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3086,6 +2665,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 833db72c8f4807bd182da9f2f0e5068d, type: 3}
 --- !u!1 &1390
 GameObject:
   m_ObjectHideFlags: 0
@@ -3097,8 +2689,9 @@ GameObject:
   - component: {fileID: 1391}
   - component: {fileID: 1392}
   - component: {fileID: 1393}
+  - component: {fileID: 1394}
   m_Layer: 0
-  m_Name: Right upper arm mail
+  m_Name: Mesh Right_shoulder_DarkSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3113,11 +2706,11 @@ Transform:
   m_GameObject: {fileID: 1390}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.13}
-  m_LocalScale: {x: 0.18, y: 0.19, z: 0.28}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1361}
+  m_Father: {fileID: 1071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1392
 MeshFilter:
@@ -3126,7 +2719,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1390}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1393
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3152,7 +2745,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6c6cdbf19ea4e3b48b994da47684b99d, type: 2}
+  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3176,6 +2769,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 4a8feb249781f88fb85d0374309e8695, type: 3}
 --- !u!1 &1400
 GameObject:
   m_ObjectHideFlags: 0
@@ -3185,8 +2791,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1401}
+  - component: {fileID: 1402}
+  - component: {fileID: 1403}
+  - component: {fileID: 1404}
   m_Layer: 0
-  m_Name: Right elbow
+  m_Name: Mesh Right_shoulder_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3201,16 +2810,82 @@ Transform:
   m_GameObject: {fileID: 1400}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.29}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1411}
-  - {fileID: 1421}
-  - {fileID: 1431}
-  - {fileID: 1441}
-  m_Father: {fileID: 1361}
+  m_Children: []
+  m_Father: {fileID: 1071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1402
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400}
+  m_Mesh: {fileID: 0}
+--- !u!23 &1403
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: a5c34779c0fa9e3c478918acfbe8fe7c, type: 3}
 --- !u!1 &1410
 GameObject:
   m_ObjectHideFlags: 0
@@ -3222,8 +2897,9 @@ GameObject:
   - component: {fileID: 1411}
   - component: {fileID: 1412}
   - component: {fileID: 1413}
+  - component: {fileID: 1414}
   m_Layer: 0
-  m_Name: Right elbow plate
+  m_Name: Mesh Right_shoulder_Mail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3239,10 +2915,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.22, y: 0.22, z: 0.17}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1401}
+  m_Father: {fileID: 1071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1412
 MeshFilter:
@@ -3251,7 +2927,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1413
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3277,7 +2953,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fb0017427d4ec6d48bef7d4ff50dd058, type: 2}
+  - {fileID: 2100000, guid: 6cc98e661d72adf66afe6e56c0ddaca5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3301,6 +2977,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: f31e84220187479364a985bec41289c3, type: 3}
 --- !u!1 &1420
 GameObject:
   m_ObjectHideFlags: 0
@@ -3312,8 +3001,9 @@ GameObject:
   - component: {fileID: 1421}
   - component: {fileID: 1422}
   - component: {fileID: 1423}
+  - component: {fileID: 1424}
   m_Layer: 0
-  m_Name: Right vambrace
+  m_Name: Mesh Right_elbow_Steel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3328,11 +3018,11 @@ Transform:
   m_GameObject: {fileID: 1420}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.105}
-  m_LocalScale: {x: 0.19, y: 0.2, z: 0.24}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1401}
+  m_Father: {fileID: 1081}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1422
 MeshFilter:
@@ -3341,7 +3031,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1420}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1423
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3367,7 +3057,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fb0017427d4ec6d48bef7d4ff50dd058, type: 2}
+  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3391,6 +3081,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: e804ffc88f0058f1d72f098063cdd051, type: 3}
 --- !u!1 &1430
 GameObject:
   m_ObjectHideFlags: 0
@@ -3402,8 +3105,9 @@ GameObject:
   - component: {fileID: 1431}
   - component: {fileID: 1432}
   - component: {fileID: 1433}
+  - component: {fileID: 1434}
   m_Layer: 0
-  m_Name: Right wrist trim
+  m_Name: Mesh Right_elbow_Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3418,11 +3122,11 @@ Transform:
   m_GameObject: {fileID: 1430}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.23}
-  m_LocalScale: {x: 0.2, y: 0.21, z: 0.04}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1401}
+  m_Father: {fileID: 1081}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1432
 MeshFilter:
@@ -3431,7 +3135,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1433
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3457,7 +3161,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 34928eecf5462b8458db8ef81cb5061b, type: 2}
+  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3481,6 +3185,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: ef3e3e99c6acae64fb6f224d8cbc13c2, type: 3}
 --- !u!1 &1440
 GameObject:
   m_ObjectHideFlags: 0
@@ -3492,8 +3209,9 @@ GameObject:
   - component: {fileID: 1441}
   - component: {fileID: 1442}
   - component: {fileID: 1443}
+  - component: {fileID: 1444}
   m_Layer: 0
-  m_Name: Right gauntlet
+  m_Name: Mesh Right_elbow_DarkSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3508,11 +3226,11 @@ Transform:
   m_GameObject: {fileID: 1440}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.285}
-  m_LocalScale: {x: 0.2, y: 0.19, z: 0.16}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1401}
+  m_Father: {fileID: 1081}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1442
 MeshFilter:
@@ -3521,7 +3239,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1440}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1443
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3547,7 +3265,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6c6cdbf19ea4e3b48b994da47684b99d, type: 2}
+  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3571,6 +3289,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 81a8ea1d049757907fd09f8de0388098, type: 3}
 --- !u!1 &1450
 GameObject:
   m_ObjectHideFlags: 0
@@ -3580,8 +3311,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1451}
+  - component: {fileID: 1452}
+  - component: {fileID: 1453}
+  - component: {fileID: 1454}
   m_Layer: 0
-  m_Name: Sword - editable mesh pieces
+  m_Name: Mesh Right_elbow_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3599,20 +3333,79 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1461}
-  - {fileID: 1471}
-  - {fileID: 1481}
-  - {fileID: 1491}
-  - {fileID: 1501}
-  - {fileID: 1511}
-  - {fileID: 1521}
-  - {fileID: 1531}
-  - {fileID: 1541}
-  - {fileID: 1551}
-  - {fileID: 1561}
-  m_Father: {fileID: 1361}
+  m_Children: []
+  m_Father: {fileID: 1081}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1452
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450}
+  m_Mesh: {fileID: 0}
+--- !u!23 &1453
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: d4f78063cf8200704e788d464a32293b, type: 3}
 --- !u!1 &1460
 GameObject:
   m_ObjectHideFlags: 0
@@ -3624,8 +3417,9 @@ GameObject:
   - component: {fileID: 1461}
   - component: {fileID: 1462}
   - component: {fileID: 1463}
+  - component: {fileID: 1464}
   m_Layer: 0
-  m_Name: Leather grip
+  m_Name: Mesh Pelvis_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3640,11 +3434,11 @@ Transform:
   m_GameObject: {fileID: 1460}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.61}
-  m_LocalScale: {x: 0.075, y: 0.085, z: 0.29}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1451}
+  m_Father: {fileID: 1021}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1462
 MeshFilter:
@@ -3653,7 +3447,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1463
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3679,7 +3473,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6c6cdbf19ea4e3b48b994da47684b99d, type: 2}
+  - {fileID: 2100000, guid: 8e99864e8d026065e464ba18601ba1b9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3703,6 +3497,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 9670a67b550ce1e0a60abb2b0a5fe29c, type: 3}
 --- !u!1 &1470
 GameObject:
   m_ObjectHideFlags: 0
@@ -3714,8 +3521,9 @@ GameObject:
   - component: {fileID: 1471}
   - component: {fileID: 1472}
   - component: {fileID: 1473}
+  - component: {fileID: 1474}
   m_Layer: 0
-  m_Name: Grip winding
+  m_Name: Mesh Pelvis_Leather
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3730,11 +3538,11 @@ Transform:
   m_GameObject: {fileID: 1470}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.51}
-  m_LocalScale: {x: 0.085, y: 0.095, z: 0.012}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1451}
+  m_Father: {fileID: 1021}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1472
 MeshFilter:
@@ -3743,7 +3551,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1470}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1473
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3769,7 +3577,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 34928eecf5462b8458db8ef81cb5061b, type: 2}
+  - {fileID: 2100000, guid: 20e885e87d0cfa987768b304b2e916c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3793,6 +3601,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: a066bde9ec1b60edd70264c1f1280181, type: 3}
 --- !u!1 &1480
 GameObject:
   m_ObjectHideFlags: 0
@@ -3804,8 +3625,9 @@ GameObject:
   - component: {fileID: 1481}
   - component: {fileID: 1482}
   - component: {fileID: 1483}
+  - component: {fileID: 1484}
   m_Layer: 0
-  m_Name: Grip winding
+  m_Name: Mesh Pelvis_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3820,11 +3642,11 @@ Transform:
   m_GameObject: {fileID: 1480}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.56}
-  m_LocalScale: {x: 0.085, y: 0.095, z: 0.012}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1451}
+  m_Father: {fileID: 1021}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1482
 MeshFilter:
@@ -3833,7 +3655,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1480}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1483
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3859,7 +3681,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 34928eecf5462b8458db8ef81cb5061b, type: 2}
+  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3883,6 +3705,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 77bf3df0e86ff1acc48a11bb9f0b3664, type: 3}
 --- !u!1 &1490
 GameObject:
   m_ObjectHideFlags: 0
@@ -3894,8 +3729,9 @@ GameObject:
   - component: {fileID: 1491}
   - component: {fileID: 1492}
   - component: {fileID: 1493}
+  - component: {fileID: 1494}
   m_Layer: 0
-  m_Name: Grip winding
+  m_Name: Mesh Left_hip_Steel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3910,11 +3746,11 @@ Transform:
   m_GameObject: {fileID: 1490}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.61}
-  m_LocalScale: {x: 0.085, y: 0.095, z: 0.012}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1451}
+  m_Father: {fileID: 1091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1492
 MeshFilter:
@@ -3923,7 +3759,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1490}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1493
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3949,7 +3785,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 34928eecf5462b8458db8ef81cb5061b, type: 2}
+  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3973,6 +3809,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 2a627cb91d00a199f72d6c5bc0fb77ad, type: 3}
 --- !u!1 &1500
 GameObject:
   m_ObjectHideFlags: 0
@@ -3984,8 +3833,9 @@ GameObject:
   - component: {fileID: 1501}
   - component: {fileID: 1502}
   - component: {fileID: 1503}
+  - component: {fileID: 1504}
   m_Layer: 0
-  m_Name: Grip winding
+  m_Name: Mesh Left_hip_Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4000,11 +3850,11 @@ Transform:
   m_GameObject: {fileID: 1500}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.66}
-  m_LocalScale: {x: 0.085, y: 0.095, z: 0.012}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1451}
+  m_Father: {fileID: 1091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1502
 MeshFilter:
@@ -4013,7 +3863,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1503
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4039,7 +3889,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 34928eecf5462b8458db8ef81cb5061b, type: 2}
+  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4063,6 +3913,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: da22c3075ba2b400b832823e4c39e002, type: 3}
 --- !u!1 &1510
 GameObject:
   m_ObjectHideFlags: 0
@@ -4074,8 +3937,9 @@ GameObject:
   - component: {fileID: 1511}
   - component: {fileID: 1512}
   - component: {fileID: 1513}
+  - component: {fileID: 1514}
   m_Layer: 0
-  m_Name: Grip winding
+  m_Name: Mesh Left_hip_DarkSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4090,11 +3954,11 @@ Transform:
   m_GameObject: {fileID: 1510}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.71}
-  m_LocalScale: {x: 0.085, y: 0.095, z: 0.012}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1451}
+  m_Father: {fileID: 1091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1512
 MeshFilter:
@@ -4103,7 +3967,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1510}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1513
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4129,7 +3993,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 34928eecf5462b8458db8ef81cb5061b, type: 2}
+  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4153,6 +4017,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 01b1fee2786a444c940e8148e14d514d, type: 3}
 --- !u!1 &1520
 GameObject:
   m_ObjectHideFlags: 0
@@ -4164,8 +4041,9 @@ GameObject:
   - component: {fileID: 1521}
   - component: {fileID: 1522}
   - component: {fileID: 1523}
+  - component: {fileID: 1524}
   m_Layer: 0
-  m_Name: Pommel
+  m_Name: Mesh Left_hip_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4180,11 +4058,11 @@ Transform:
   m_GameObject: {fileID: 1520}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.435}
-  m_LocalScale: {x: 0.13, y: 0.12, z: 0.09}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1451}
+  m_Father: {fileID: 1091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1522
 MeshFilter:
@@ -4193,7 +4071,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1520}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1523
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4219,7 +4097,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 34928eecf5462b8458db8ef81cb5061b, type: 2}
+  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4243,6 +4121,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 1fef7930bcc3842f7961720a49d0a618, type: 3}
 --- !u!1 &1530
 GameObject:
   m_ObjectHideFlags: 0
@@ -4254,8 +4145,9 @@ GameObject:
   - component: {fileID: 1531}
   - component: {fileID: 1532}
   - component: {fileID: 1533}
+  - component: {fileID: 1534}
   m_Layer: 0
-  m_Name: Crossguard
+  m_Name: Mesh Left_knee_Steel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4270,11 +4162,11 @@ Transform:
   m_GameObject: {fileID: 1530}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.79}
-  m_LocalScale: {x: 0.46, y: 0.095, z: 0.08}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1451}
+  m_Father: {fileID: 1101}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1532
 MeshFilter:
@@ -4283,7 +4175,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1530}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1533
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4309,7 +4201,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 34928eecf5462b8458db8ef81cb5061b, type: 2}
+  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4333,6 +4225,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 707b37055da294af6b69ac652446753f, type: 3}
 --- !u!1 &1540
 GameObject:
   m_ObjectHideFlags: 0
@@ -4344,8 +4249,9 @@ GameObject:
   - component: {fileID: 1541}
   - component: {fileID: 1542}
   - component: {fileID: 1543}
+  - component: {fileID: 1544}
   m_Layer: 0
-  m_Name: Blade
+  m_Name: Mesh Left_knee_Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4360,11 +4266,11 @@ Transform:
   m_GameObject: {fileID: 1540}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.31}
-  m_LocalScale: {x: 0.14, y: 0.045, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1451}
+  m_Father: {fileID: 1101}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1542
 MeshFilter:
@@ -4373,7 +4279,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1540}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1543
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4399,7 +4305,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fb0017427d4ec6d48bef7d4ff50dd058, type: 2}
+  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4423,6 +4329,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: f4ae66625e367c0e56f29e03523916c1, type: 3}
 --- !u!1 &1550
 GameObject:
   m_ObjectHideFlags: 0
@@ -4434,8 +4353,9 @@ GameObject:
   - component: {fileID: 1551}
   - component: {fileID: 1552}
   - component: {fileID: 1553}
+  - component: {fileID: 1554}
   m_Layer: 0
-  m_Name: Blade fuller
+  m_Name: Mesh Left_knee_DarkSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4450,11 +4370,11 @@ Transform:
   m_GameObject: {fileID: 1550}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.025, z: 1.31}
-  m_LocalScale: {x: 0.035, y: 0.008, z: 0.88}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1451}
+  m_Father: {fileID: 1101}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1552
 MeshFilter:
@@ -4463,7 +4383,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1553
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4489,7 +4409,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6c6cdbf19ea4e3b48b994da47684b99d, type: 2}
+  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4513,6 +4433,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 82955558ee2d96476e70750ff87ccbf3, type: 3}
 --- !u!1 &1560
 GameObject:
   m_ObjectHideFlags: 0
@@ -4524,8 +4457,9 @@ GameObject:
   - component: {fileID: 1561}
   - component: {fileID: 1562}
   - component: {fileID: 1563}
+  - component: {fileID: 1564}
   m_Layer: 0
-  m_Name: Blade point
+  m_Name: Mesh Left_knee_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4540,11 +4474,11 @@ Transform:
   m_GameObject: {fileID: 1560}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.84}
-  m_LocalScale: {x: 0.075, y: 0.04, z: 0.12}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1451}
+  m_Father: {fileID: 1101}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1562
 MeshFilter:
@@ -4553,7 +4487,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1560}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1563
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4579,7 +4513,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fb0017427d4ec6d48bef7d4ff50dd058, type: 2}
+  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4603,6 +4537,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 7467cb3c7e356ec385449565f1bb561c, type: 3}
 --- !u!1 &1570
 GameObject:
   m_ObjectHideFlags: 0
@@ -4612,8 +4559,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1571}
+  - component: {fileID: 1572}
+  - component: {fileID: 1573}
+  - component: {fileID: 1574}
   m_Layer: 0
-  m_Name: Left hip
+  m_Name: Mesh Left_ankle_DarkSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4628,16 +4578,82 @@ Transform:
   m_GameObject: {fileID: 1570}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.18, y: -0.01, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1581}
-  - {fileID: 1591}
-  - {fileID: 1601}
-  - {fileID: 1611}
-  m_Father: {fileID: 1011}
+  m_Children: []
+  m_Father: {fileID: 1111}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1572
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570}
+  m_Mesh: {fileID: 0}
+--- !u!23 &1573
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 14ba1574e47b1100af19a6446af55fd7, type: 3}
 --- !u!1 &1580
 GameObject:
   m_ObjectHideFlags: 0
@@ -4649,8 +4665,9 @@ GameObject:
   - component: {fileID: 1581}
   - component: {fileID: 1582}
   - component: {fileID: 1583}
+  - component: {fileID: 1584}
   m_Layer: 0
-  m_Name: Left upper leg mail
+  m_Name: Mesh Left_ankle_Steel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4665,11 +4682,11 @@ Transform:
   m_GameObject: {fileID: 1580}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.18, z: 0}
-  m_LocalScale: {x: 0.22, y: 0.34, z: 0.24}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1571}
+  m_Father: {fileID: 1111}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1582
 MeshFilter:
@@ -4678,7 +4695,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1580}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1583
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4704,7 +4721,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6c6cdbf19ea4e3b48b994da47684b99d, type: 2}
+  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4728,6 +4745,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: b1b227ab2c478439208185f59e0c184c, type: 3}
 --- !u!1 &1590
 GameObject:
   m_ObjectHideFlags: 0
@@ -4739,8 +4769,9 @@ GameObject:
   - component: {fileID: 1591}
   - component: {fileID: 1592}
   - component: {fileID: 1593}
+  - component: {fileID: 1594}
   m_Layer: 0
-  m_Name: Left thigh plate
+  m_Name: Mesh Left_ankle_Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4755,11 +4786,11 @@ Transform:
   m_GameObject: {fileID: 1590}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.15, z: 0.11}
-  m_LocalScale: {x: 0.23, y: 0.27, z: 0.08}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1571}
+  m_Father: {fileID: 1111}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1592
 MeshFilter:
@@ -4768,7 +4799,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1590}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1593
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4794,7 +4825,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fb0017427d4ec6d48bef7d4ff50dd058, type: 2}
+  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4818,6 +4849,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 7f418c3c8e4d87a47d4e59fbdefac91b, type: 3}
 --- !u!1 &1600
 GameObject:
   m_ObjectHideFlags: 0
@@ -4829,8 +4873,9 @@ GameObject:
   - component: {fileID: 1601}
   - component: {fileID: 1602}
   - component: {fileID: 1603}
+  - component: {fileID: 1604}
   m_Layer: 0
-  m_Name: Left thigh trim
+  m_Name: Mesh Right_hip_Steel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4845,11 +4890,11 @@ Transform:
   m_GameObject: {fileID: 1600}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.27, z: 0.11}
-  m_LocalScale: {x: 0.24, y: 0.035, z: 0.095}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1571}
+  m_Father: {fileID: 1121}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1602
 MeshFilter:
@@ -4858,7 +4903,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1600}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1603
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4884,7 +4929,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 34928eecf5462b8458db8ef81cb5061b, type: 2}
+  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4908,6 +4953,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 03d8c1c14a2d8d42f522eb6728221812, type: 3}
 --- !u!1 &1610
 GameObject:
   m_ObjectHideFlags: 0
@@ -4917,8 +4975,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1611}
+  - component: {fileID: 1612}
+  - component: {fileID: 1613}
+  - component: {fileID: 1614}
   m_Layer: 0
-  m_Name: Left knee
+  m_Name: Mesh Right_hip_Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4933,17 +4994,82 @@ Transform:
   m_GameObject: {fileID: 1610}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.38, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1621}
-  - {fileID: 1631}
-  - {fileID: 1641}
-  - {fileID: 1651}
-  - {fileID: 1661}
-  m_Father: {fileID: 1571}
+  m_Children: []
+  m_Father: {fileID: 1121}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1612
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610}
+  m_Mesh: {fileID: 0}
+--- !u!23 &1613
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 65bf311e4e38f41de7745501014e0775, type: 3}
 --- !u!1 &1620
 GameObject:
   m_ObjectHideFlags: 0
@@ -4955,8 +5081,9 @@ GameObject:
   - component: {fileID: 1621}
   - component: {fileID: 1622}
   - component: {fileID: 1623}
+  - component: {fileID: 1624}
   m_Layer: 0
-  m_Name: Left knee plate
+  m_Name: Mesh Right_hip_DarkSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4971,11 +5098,11 @@ Transform:
   m_GameObject: {fileID: 1620}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.09}
-  m_LocalScale: {x: 0.25, y: 0.2, z: 0.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1611}
+  m_Father: {fileID: 1121}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1622
 MeshFilter:
@@ -4984,7 +5111,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1620}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1623
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5010,7 +5137,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fb0017427d4ec6d48bef7d4ff50dd058, type: 2}
+  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5034,6 +5161,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 0d1d31bd33474a3d667c2e1772985464, type: 3}
 --- !u!1 &1630
 GameObject:
   m_ObjectHideFlags: 0
@@ -5045,8 +5185,9 @@ GameObject:
   - component: {fileID: 1631}
   - component: {fileID: 1632}
   - component: {fileID: 1633}
+  - component: {fileID: 1634}
   m_Layer: 0
-  m_Name: Left greave
+  m_Name: Mesh Right_hip_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5061,11 +5202,11 @@ Transform:
   m_GameObject: {fileID: 1630}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.22, z: 0}
-  m_LocalScale: {x: 0.215, y: 0.36, z: 0.25}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1611}
+  m_Father: {fileID: 1121}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1632
 MeshFilter:
@@ -5074,7 +5215,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1630}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1633
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5100,7 +5241,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fb0017427d4ec6d48bef7d4ff50dd058, type: 2}
+  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5124,6 +5265,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: dcd25aceb0ad4e0a09202ed51d81a37e, type: 3}
 --- !u!1 &1640
 GameObject:
   m_ObjectHideFlags: 0
@@ -5135,8 +5289,9 @@ GameObject:
   - component: {fileID: 1641}
   - component: {fileID: 1642}
   - component: {fileID: 1643}
+  - component: {fileID: 1644}
   m_Layer: 0
-  m_Name: Left greave ridge
+  m_Name: Mesh Right_knee_Steel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5151,11 +5306,11 @@ Transform:
   m_GameObject: {fileID: 1640}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.21, z: 0.135}
-  m_LocalScale: {x: 0.035, y: 0.29, z: 0.025}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1611}
+  m_Father: {fileID: 1131}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1642
 MeshFilter:
@@ -5164,7 +5319,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1640}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1643
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5190,7 +5345,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 34928eecf5462b8458db8ef81cb5061b, type: 2}
+  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5214,6 +5369,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: e856cf5d80413754c416e6b14bd3ba9c, type: 3}
 --- !u!1 &1650
 GameObject:
   m_ObjectHideFlags: 0
@@ -5225,8 +5393,9 @@ GameObject:
   - component: {fileID: 1651}
   - component: {fileID: 1652}
   - component: {fileID: 1653}
+  - component: {fileID: 1654}
   m_Layer: 0
-  m_Name: Left sabaton
+  m_Name: Mesh Right_knee_Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5241,11 +5410,11 @@ Transform:
   m_GameObject: {fileID: 1650}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.445, z: 0.065}
-  m_LocalScale: {x: 0.25, y: 0.14, z: 0.43}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1611}
+  m_Father: {fileID: 1131}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1652
 MeshFilter:
@@ -5254,7 +5423,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1653
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5280,7 +5449,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6c6cdbf19ea4e3b48b994da47684b99d, type: 2}
+  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5304,6 +5473,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 0ee4797702945cf5ed110443ef80cbec, type: 3}
 --- !u!1 &1660
 GameObject:
   m_ObjectHideFlags: 0
@@ -5315,8 +5497,9 @@ GameObject:
   - component: {fileID: 1661}
   - component: {fileID: 1662}
   - component: {fileID: 1663}
+  - component: {fileID: 1664}
   m_Layer: 0
-  m_Name: Left toe plate
+  m_Name: Mesh Right_knee_DarkSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5331,11 +5514,11 @@ Transform:
   m_GameObject: {fileID: 1660}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.42, z: 0.19}
-  m_LocalScale: {x: 0.25, y: 0.085, z: 0.18}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1611}
+  m_Father: {fileID: 1131}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1662
 MeshFilter:
@@ -5344,7 +5527,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1660}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1663
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5370,7 +5553,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fb0017427d4ec6d48bef7d4ff50dd058, type: 2}
+  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5394,6 +5577,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 5de2c06a633079b425fb87ba55dd120c, type: 3}
 --- !u!1 &1670
 GameObject:
   m_ObjectHideFlags: 0
@@ -5403,8 +5599,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1671}
+  - component: {fileID: 1672}
+  - component: {fileID: 1673}
+  - component: {fileID: 1674}
   m_Layer: 0
-  m_Name: Right hip
+  m_Name: Mesh Right_knee_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5419,16 +5618,82 @@ Transform:
   m_GameObject: {fileID: 1670}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.18, y: -0.01, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1681}
-  - {fileID: 1691}
-  - {fileID: 1701}
-  - {fileID: 1711}
-  m_Father: {fileID: 1011}
+  m_Children: []
+  m_Father: {fileID: 1131}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1672
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670}
+  m_Mesh: {fileID: 0}
+--- !u!23 &1673
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 54601e86bba04ec9c4296391b2b75b1f, type: 3}
 --- !u!1 &1680
 GameObject:
   m_ObjectHideFlags: 0
@@ -5440,8 +5705,9 @@ GameObject:
   - component: {fileID: 1681}
   - component: {fileID: 1682}
   - component: {fileID: 1683}
+  - component: {fileID: 1684}
   m_Layer: 0
-  m_Name: Right upper leg mail
+  m_Name: Mesh Right_ankle_DarkSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5456,11 +5722,11 @@ Transform:
   m_GameObject: {fileID: 1680}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.18, z: 0}
-  m_LocalScale: {x: 0.22, y: 0.34, z: 0.24}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1671}
+  m_Father: {fileID: 1141}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1682
 MeshFilter:
@@ -5469,7 +5735,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1680}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1683
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5495,7 +5761,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6c6cdbf19ea4e3b48b994da47684b99d, type: 2}
+  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5519,6 +5785,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: a5a29b8ad05cac03f1382dbe4610fb48, type: 3}
 --- !u!1 &1690
 GameObject:
   m_ObjectHideFlags: 0
@@ -5530,8 +5809,9 @@ GameObject:
   - component: {fileID: 1691}
   - component: {fileID: 1692}
   - component: {fileID: 1693}
+  - component: {fileID: 1694}
   m_Layer: 0
-  m_Name: Right thigh plate
+  m_Name: Mesh Right_ankle_Steel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5546,11 +5826,11 @@ Transform:
   m_GameObject: {fileID: 1690}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.15, z: 0.11}
-  m_LocalScale: {x: 0.23, y: 0.27, z: 0.08}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1671}
+  m_Father: {fileID: 1141}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1692
 MeshFilter:
@@ -5559,7 +5839,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1690}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1693
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5585,7 +5865,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fb0017427d4ec6d48bef7d4ff50dd058, type: 2}
+  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5609,6 +5889,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: dea16316ecdb7a6aaf78ea517117c7d1, type: 3}
 --- !u!1 &1700
 GameObject:
   m_ObjectHideFlags: 0
@@ -5620,8 +5913,9 @@ GameObject:
   - component: {fileID: 1701}
   - component: {fileID: 1702}
   - component: {fileID: 1703}
+  - component: {fileID: 1704}
   m_Layer: 0
-  m_Name: Right thigh trim
+  m_Name: Mesh Right_ankle_Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5636,11 +5930,11 @@ Transform:
   m_GameObject: {fileID: 1700}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.27, z: 0.11}
-  m_LocalScale: {x: 0.24, y: 0.035, z: 0.095}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1671}
+  m_Father: {fileID: 1141}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1702
 MeshFilter:
@@ -5649,7 +5943,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1700}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1703
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5675,7 +5969,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 34928eecf5462b8458db8ef81cb5061b, type: 2}
+  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5699,6 +5993,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 75aa9f13e10ed7c5296a35edf22d9ca6, type: 3}
 --- !u!1 &1710
 GameObject:
   m_ObjectHideFlags: 0
@@ -5708,8 +6015,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1711}
+  - component: {fileID: 1712}
+  - component: {fileID: 1713}
+  - component: {fileID: 1714}
   m_Layer: 0
-  m_Name: Right knee
+  m_Name: Mesh Pelvis_Mail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5724,17 +6034,82 @@ Transform:
   m_GameObject: {fileID: 1710}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.38, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1721}
-  - {fileID: 1731}
-  - {fileID: 1741}
-  - {fileID: 1751}
-  - {fileID: 1761}
-  m_Father: {fileID: 1671}
+  m_Children: []
+  m_Father: {fileID: 1021}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1712
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710}
+  m_Mesh: {fileID: 0}
+--- !u!23 &1713
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 6cc98e661d72adf66afe6e56c0ddaca5, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: b2b6516eead5b1d93fac430476b5f112, type: 3}
 --- !u!1 &1720
 GameObject:
   m_ObjectHideFlags: 0
@@ -5746,8 +6121,9 @@ GameObject:
   - component: {fileID: 1721}
   - component: {fileID: 1722}
   - component: {fileID: 1723}
+  - component: {fileID: 1724}
   m_Layer: 0
-  m_Name: Right knee plate
+  m_Name: Mesh Sword_shoulder_-_combat_pivot_Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5762,11 +6138,11 @@ Transform:
   m_GameObject: {fileID: 1720}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.09}
-  m_LocalScale: {x: 0.25, y: 0.2, z: 0.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1711}
+  m_Father: {fileID: 1151}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1722
 MeshFilter:
@@ -5775,7 +6151,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1720}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1723
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5801,7 +6177,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fb0017427d4ec6d48bef7d4ff50dd058, type: 2}
+  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5825,6 +6201,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 1811a7b740403e6151749a369075edb5, type: 3}
 --- !u!1 &1730
 GameObject:
   m_ObjectHideFlags: 0
@@ -5836,8 +6225,9 @@ GameObject:
   - component: {fileID: 1731}
   - component: {fileID: 1732}
   - component: {fileID: 1733}
+  - component: {fileID: 1734}
   m_Layer: 0
-  m_Name: Right greave
+  m_Name: Mesh Sword_shoulder_-_combat_pivot_Leather
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5852,11 +6242,11 @@ Transform:
   m_GameObject: {fileID: 1730}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.22, z: 0}
-  m_LocalScale: {x: 0.215, y: 0.36, z: 0.25}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1711}
+  m_Father: {fileID: 1151}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1732
 MeshFilter:
@@ -5865,7 +6255,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1730}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1733
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5891,7 +6281,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fb0017427d4ec6d48bef7d4ff50dd058, type: 2}
+  - {fileID: 2100000, guid: 20e885e87d0cfa987768b304b2e916c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5915,6 +6305,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 3dfbf1c116aa1ad3cd331fb1788599bd, type: 3}
 --- !u!1 &1740
 GameObject:
   m_ObjectHideFlags: 0
@@ -5926,8 +6329,9 @@ GameObject:
   - component: {fileID: 1741}
   - component: {fileID: 1742}
   - component: {fileID: 1743}
+  - component: {fileID: 1744}
   m_Layer: 0
-  m_Name: Right greave ridge
+  m_Name: Mesh Sword_shoulder_-_combat_pivot_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5942,11 +6346,11 @@ Transform:
   m_GameObject: {fileID: 1740}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.21, z: 0.135}
-  m_LocalScale: {x: 0.035, y: 0.29, z: 0.025}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1711}
+  m_Father: {fileID: 1151}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1742
 MeshFilter:
@@ -5955,7 +6359,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1740}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1743
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5981,7 +6385,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 34928eecf5462b8458db8ef81cb5061b, type: 2}
+  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6005,6 +6409,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 9770d0010e0b420393627a269eb79712, type: 3}
 --- !u!1 &1750
 GameObject:
   m_ObjectHideFlags: 0
@@ -6016,8 +6433,9 @@ GameObject:
   - component: {fileID: 1751}
   - component: {fileID: 1752}
   - component: {fileID: 1753}
+  - component: {fileID: 1754}
   m_Layer: 0
-  m_Name: Right sabaton
+  m_Name: Mesh Sword_shoulder_-_combat_pivot_DarkSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6032,11 +6450,11 @@ Transform:
   m_GameObject: {fileID: 1750}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.445, z: 0.065}
-  m_LocalScale: {x: 0.25, y: 0.14, z: 0.43}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1711}
+  m_Father: {fileID: 1151}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1752
 MeshFilter:
@@ -6045,7 +6463,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1750}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1753
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6071,7 +6489,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6c6cdbf19ea4e3b48b994da47684b99d, type: 2}
+  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6095,6 +6513,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 847ccfa62233a14d9abd3c5a6b422a99, type: 3}
 --- !u!1 &1760
 GameObject:
   m_ObjectHideFlags: 0
@@ -6106,8 +6537,9 @@ GameObject:
   - component: {fileID: 1761}
   - component: {fileID: 1762}
   - component: {fileID: 1763}
+  - component: {fileID: 1764}
   m_Layer: 0
-  m_Name: Right toe plate
+  m_Name: Mesh Cape_shoulder_Crimson
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6122,11 +6554,11 @@ Transform:
   m_GameObject: {fileID: 1760}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.42, z: 0.19}
-  m_LocalScale: {x: 0.25, y: 0.085, z: 0.18}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1711}
+  m_Father: {fileID: 1171}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1762
 MeshFilter:
@@ -6135,7 +6567,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1760}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1763
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6161,7 +6593,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fb0017427d4ec6d48bef7d4ff50dd058, type: 2}
+  - {fileID: 2100000, guid: c7f21f7a6ae4e2dbeb2e29f1bd3d00f5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6185,6 +6617,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: c4731f9e57b1a975f60f2fb7c3889e6c, type: 3}
 --- !u!1 &1770
 GameObject:
   m_ObjectHideFlags: 0
@@ -6194,8 +6639,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1771}
+  - component: {fileID: 1772}
+  - component: {fileID: 1773}
+  - component: {fileID: 1774}
   m_Layer: 0
-  m_Name: Tabard front hinge
+  m_Name: Mesh Cape_middle_Crimson
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6210,16 +6658,82 @@ Transform:
   m_GameObject: {fileID: 1770}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.025, z: 0.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1791}
-  - {fileID: 1801}
-  - {fileID: 1811}
-  - {fileID: 1821}
-  m_Father: {fileID: 1011}
+  m_Children: []
+  m_Father: {fileID: 1181}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1772
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770}
+  m_Mesh: {fileID: 0}
+--- !u!23 &1773
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: c7f21f7a6ae4e2dbeb2e29f1bd3d00f5, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 14a06887598def8d020adc2337e43afe, type: 3}
 --- !u!1 &1780
 GameObject:
   m_ObjectHideFlags: 0
@@ -6229,8 +6743,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1781}
+  - component: {fileID: 1782}
+  - component: {fileID: 1783}
+  - component: {fileID: 1784}
   m_Layer: 0
-  m_Name: Tabard back hinge
+  m_Name: Mesh Cape_hem_Crimson
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6245,16 +6762,82 @@ Transform:
   m_GameObject: {fileID: 1780}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.025, z: -0.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1831}
-  - {fileID: 1841}
-  - {fileID: 1851}
-  - {fileID: 1861}
-  m_Father: {fileID: 1011}
+  m_Children: []
+  m_Father: {fileID: 1191}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1782
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780}
+  m_Mesh: {fileID: 0}
+--- !u!23 &1783
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: c7f21f7a6ae4e2dbeb2e29f1bd3d00f5, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 831daeb124c4a79890fc99f7a6db9717, type: 3}
 --- !u!1 &1790
 GameObject:
   m_ObjectHideFlags: 0
@@ -6266,8 +6849,9 @@ GameObject:
   - component: {fileID: 1791}
   - component: {fileID: 1792}
   - component: {fileID: 1793}
+  - component: {fileID: 1794}
   m_Layer: 0
-  m_Name: Split teal cloth
+  m_Name: Mesh Cape_hem_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6282,11 +6866,11 @@ Transform:
   m_GameObject: {fileID: 1790}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.085, y: -0.255, z: 0}
-  m_LocalScale: {x: 0.16, y: 0.51, z: 0.027}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1771}
+  m_Father: {fileID: 1191}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1792
 MeshFilter:
@@ -6295,7 +6879,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1790}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1793
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6321,7 +6905,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 89cb11afe09aa1342a89b99f336f26ea, type: 2}
+  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6345,636 +6929,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &1800
-GameObject:
+--- !u!114 &1794
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1801}
-  - component: {fileID: 1802}
-  - component: {fileID: 1803}
-  m_Layer: 0
-  m_Name: Gold hem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1801
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.085, y: -0.5, z: 0}
-  m_LocalScale: {x: 0.16, y: 0.027, z: 0.032}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1771}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1802
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
---- !u!23 &1803
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800}
+  m_GameObject: {fileID: 1790}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 34928eecf5462b8458db8ef81cb5061b, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &1810
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1811}
-  - component: {fileID: 1812}
-  - component: {fileID: 1813}
-  m_Layer: 0
-  m_Name: Split teal cloth
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1811
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1810}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.085, y: -0.255, z: 0}
-  m_LocalScale: {x: 0.16, y: 0.51, z: 0.027}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1771}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1812
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1810}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1813
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1810}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 89cb11afe09aa1342a89b99f336f26ea, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &1820
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1821}
-  - component: {fileID: 1822}
-  - component: {fileID: 1823}
-  m_Layer: 0
-  m_Name: Gold hem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1821
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1820}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.085, y: -0.5, z: 0}
-  m_LocalScale: {x: 0.16, y: 0.027, z: 0.032}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1771}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1822
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1820}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
---- !u!23 &1823
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1820}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 34928eecf5462b8458db8ef81cb5061b, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &1830
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1831}
-  - component: {fileID: 1832}
-  - component: {fileID: 1833}
-  m_Layer: 0
-  m_Name: Split teal cloth
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1831
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1830}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.085, y: -0.255, z: 0}
-  m_LocalScale: {x: 0.16, y: 0.51, z: 0.027}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1781}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1832
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1830}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1833
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1830}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 89cb11afe09aa1342a89b99f336f26ea, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &1840
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1841}
-  - component: {fileID: 1842}
-  - component: {fileID: 1843}
-  m_Layer: 0
-  m_Name: Gold hem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1841
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1840}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.085, y: -0.5, z: 0}
-  m_LocalScale: {x: 0.16, y: 0.027, z: 0.032}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1781}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1842
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1840}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
---- !u!23 &1843
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1840}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 34928eecf5462b8458db8ef81cb5061b, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &1850
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1851}
-  - component: {fileID: 1852}
-  - component: {fileID: 1853}
-  m_Layer: 0
-  m_Name: Split teal cloth
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1851
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1850}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.085, y: -0.255, z: 0}
-  m_LocalScale: {x: 0.16, y: 0.51, z: 0.027}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1781}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1852
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1850}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1853
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1850}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 89cb11afe09aa1342a89b99f336f26ea, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &1860
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1861}
-  - component: {fileID: 1862}
-  - component: {fileID: 1863}
-  m_Layer: 0
-  m_Name: Gold hem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1861
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1860}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.085, y: -0.5, z: 0}
-  m_LocalScale: {x: 0.16, y: 0.027, z: 0.032}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1781}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1862
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1860}
-  m_Mesh: {fileID: 4300000, guid: 0948d9c6d25b4ee78a9202cd825a5ea4, type: 3}
---- !u!23 &1863
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1860}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 34928eecf5462b8458db8ef81cb5061b, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 91f3b435ec05a6a37384989dec332846, type: 3}
 --- !u!143 &3648755183412612744
 CharacterController:
   m_ObjectHideFlags: 0
@@ -7010,13 +6977,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: baee79b2435c56c6993e0e128123f778, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.PlayerRig
   controller: {fileID: 3648755183412612744}
   visualRoot: {fileID: 1011}
-  swordPivot: {fileID: 1361}
-  leftLeg: {fileID: 1571}
-  rightLeg: {fileID: 1671}
+  swordPivot: {fileID: 1151}
+  leftLeg: {fileID: 1091}
+  rightLeg: {fileID: 1121}
 --- !u!114 &900000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7027,17 +6994,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85d7be92fb5b4dff914c0dca52e12bd4, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightAnimation
-  chest: {fileID: 1061}
-  head: {fileID: 1141}
-  leftArm: {fileID: 1271}
-  leftForearm: {fileID: 1311}
-  rightForearm: {fileID: 1401}
-  leftShin: {fileID: 1611}
-  rightShin: {fileID: 1711}
-  frontTabard: {fileID: 1771}
-  backTabard: {fileID: 1781}
-  movementAmount: 1
-  attackAmount: 1
+  chest: {fileID: 1031}
+  head: {fileID: 1041}
+  leftArm: {fileID: 1051}
+  rightArm: {fileID: 1071}
+  leftForearm: {fileID: 1061}
+  rightForearm: {fileID: 1081}
+  leftShin: {fileID: 1101}
+  rightShin: {fileID: 1131}
+  weaponGrip: {fileID: 1161}
+  capeTop: {fileID: 1171}
+  capeMid: {fileID: 1181}
+  capeHem: {fileID: 1191}
+  movementAmount: 0.85
+  attackAmount: 0.7
   poseResponse: 18
+  upperArmLength: 0.285
+  forearmLength: 0.29
