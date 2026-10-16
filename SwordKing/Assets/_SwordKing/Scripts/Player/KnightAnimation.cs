@@ -9,8 +9,8 @@ namespace SwordKing
         public Transform leftShin, rightShin, weaponGrip;
         public Transform pelvis, leftFoot, rightFoot;
         [Header("Gait")]
-        [Range(.05f, .4f)] public float walkingStride = .20f;
-        [Range(.1f, .5f)] public float sprintingStride = .29f;
+        [Range(.05f, .4f)] public float walkingStride = .28f;
+        [Range(.1f, .5f)] public float sprintingStride = .43f;
         [Range(.02f, .2f)] public float walkingFootLift = .07f;
         [Range(.04f, .25f)] public float sprintingFootLift = .13f;
         public Transform capeTop, capeMid, capeHem;
@@ -60,7 +60,7 @@ namespace SwordKing
                 var visuals = leftThigh.parent;
                 // Weight transfers over the support leg. The ankles stay on the same floor
                 // plane while the pelvis rises/falls; only the recovering foot lifts.
-                float drop = Mathf.Lerp(.04f, .065f, sprintWeight) * gaitWeight;
+                float drop = Mathf.Lerp(.07f, .135f, sprintWeight) * gaitWeight;
                 visuals.localPosition = new Vector3(-weightShift * .012f, .91f - drop - bounce * .006f, 0);
                 if (input.sqrMagnitude > .001f)
                 {
