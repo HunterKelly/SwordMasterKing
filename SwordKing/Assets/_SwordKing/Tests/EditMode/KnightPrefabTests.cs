@@ -68,5 +68,49 @@ namespace SwordKing.Tests
             }
             finally { Object.DestroyImmediate(rig.gameObject); }
         }
+        [Test]
+        public void SupportingAnkleStaysInWorldSpaceWhileRootMoves()
+        {
+            var asset = AssetDatabase.LoadAssetAtPath<PlayerRig>(
+                "Assets/_SwordKing/Prefabs/Player/ArmoredKnight.prefab");
+            var rig = Object.Instantiate(asset);
+            try
+            {
+                var animation = rig.GetComponent<KnightAnimation>();
+                Vector3 plantedPosition = Vector3.zero;
+                for (int frame = 0; frame < 20; frame++)
+                {
+                    Vector3 displacement = Vector3.forward * .02f;
+                    rig.transform.position += displacement;
+                    animation.Present(Vector2.up, false, false, false, false, false,
+                        false, PlayerAttackKind.Slash, 2, 0, rig.leftLeg, rig.rightLeg,
+                        displacement, 1f / 60);
+                    if (frame == 0) plantedPosition = animation.leftFoot.position;
+                    else Assert.That(Vector3.Distance(animation.leftFoot.position, plantedPosition),
+                        Is.LessThan(.003f), "Support foot slid with the character root");
+                }
+            }
+            finally { Object.DestroyImmediate(rig.gameObject); }
+        }
+
+        [Test]
+        public void IdlePoseStandsTallWithoutForwardHunch()
+        {
+            var asset = AssetDatabase.LoadAssetAtPath<PlayerRig>(
+                "Assets/_SwordKing/Prefabs/Player/ArmoredKnight.prefab");
+            var rig = Object.Instantiate(asset);
+            try
+            {
+                var animation = rig.GetComponent<KnightAnimation>();
+                for (int frame = 0; frame < 60; frame++)
+                    animation.Present(Vector2.zero, false, false, false, false, false,
+                        false, PlayerAttackKind.Slash, 2, 0, rig.leftLeg, rig.rightLeg,
+                        Vector3.zero, 1f / 60);
+                Assert.That(rig.visualRoot.localPosition.y, Is.GreaterThanOrEqualTo(.905f));
+                Assert.That(Quaternion.Angle(animation.chest.localRotation, Quaternion.identity), Is.LessThan(2));
+            }
+            finally { Object.DestroyImmediate(rig.gameObject); }
+        }
+
     }
 }

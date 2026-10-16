@@ -25,9 +25,13 @@ edit `Tools/build_knight_prefab.py` and regenerate from the repository root.
 This overwrites the base prefab, generated source geometry, and knight materials.
 
 `KnightAnimation` controls stride, knee bends, torso poses, and cape motion.
-The gait now uses a longer stance and shorter recovery, foot clearance during
-recovery, heel-to-toe ankle rotation, support-leg weight transfer, and opposing
-pelvis/shoulder rotation. Walk/sprint transitions blend gradually. Walking Stride,
+Step timing is driven by horizontal distance actually traveled after
+CharacterController collision, rather than a fixed timer. Support ankles lock
+in world space until lift-off; stops and blocked movement stop the step cycle.
+Longer strides, foot clearance, heel-to-toe rotation, and opposing pelvis/shoulder
+rotation support the motion. Walk/sprint transitions blend gradually. The torso
+leans only slightly, and body height is reduced only when a support leg needs
+extra reach instead of maintaining a crouch throughout the cycle. Walking Stride,
 Sprinting Stride, Walking Foot Lift, and Sprinting Foot Lift tune this motion.
 The feet target the character's local floor plane; this is not terrain-raycast
 foot placement. The cape is 7% narrower than the approved first plate-knight pass.

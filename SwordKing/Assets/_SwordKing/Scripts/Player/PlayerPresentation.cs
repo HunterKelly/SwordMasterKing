@@ -135,7 +135,7 @@ namespace SwordKing
             if (knightAnimation != null)
                 knightAnimation.Present(menu ? Vector2.zero : playerInput.Read().Move, IsSprinting,
                     airborne, IsRolling, chargingAttack, chargeOverhead, jumpStrikePending && !jumpDescending,
-                    activeAttack, t, swingIndex, leftLeg, rightLeg);
+                    activeAttack, t, swingIndex, leftLeg, rightLeg, presentationDisplacement);
             for (int i = slashes.Count - 1; i >= 0; i--)
             {
                 float life = (Time.time - slashes[i].born) / slashes[i].duration;

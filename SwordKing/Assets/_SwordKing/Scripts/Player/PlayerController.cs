@@ -103,6 +103,7 @@ namespace SwordKing
         readonly List<Material> materials = new List<Material>();
         Transform player, swordPivot, leftLeg, rightLeg;
         KnightAnimation knightAnimation;
+        Vector3 presentationDisplacement;
         CharacterController controller;
         Camera view;
         Material slashMaterial;

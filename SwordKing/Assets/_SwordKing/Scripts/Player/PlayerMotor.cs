@@ -49,7 +49,9 @@ namespace SwordKing
             }
             float rise = verticalSpeed * dt - .5f * gravity * dt * dt;
             verticalSpeed -= gravity * dt;
+            Vector3 beforeMove = player.position;
             CollisionFlags flags = controller.Move(horizontal + Vector3.up * rise);
+            presentationDisplacement = Vector3.ProjectOnPlane(player.position - beforeMove, Vector3.up);
             if ((flags & CollisionFlags.Above) != 0 && verticalSpeed > 0) verticalSpeed = 0;
             if ((flags & CollisionFlags.Below) != 0 && verticalSpeed < 0) verticalSpeed = -2;
             airborne = !controller.isGrounded;

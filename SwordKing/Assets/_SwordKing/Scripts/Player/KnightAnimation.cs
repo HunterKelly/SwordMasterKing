@@ -9,10 +9,10 @@ namespace SwordKing
         public Transform leftShin, rightShin, weaponGrip;
         public Transform pelvis, leftFoot, rightFoot;
         [Header("Gait")]
-        [Range(.05f, .4f)] public float walkingStride = .28f;
-        [Range(.1f, .5f)] public float sprintingStride = .43f;
-        [Range(.02f, .2f)] public float walkingFootLift = .07f;
-        [Range(.04f, .25f)] public float sprintingFootLift = .13f;
+        [Range(.05f, .4f)] public float walkingStride = .38f;
+        [Range(.1f, .5f)] public float sprintingStride = .50f;
+        [Range(.02f, .2f)] public float walkingFootLift = .10f;
+        [Range(.04f, .25f)] public float sprintingFootLift = .18f;
         public Transform capeTop, capeMid, capeHem;
         [Min(.01f)] public float upperArmLength = .285f;
         [Min(.01f)] public float forearmLength = .29f;
@@ -21,16 +21,42 @@ namespace SwordKing
         [Min(1)] public float poseResponse = 18f;
         float phase, movement, sprintWeight;
         Vector3 gaitDirection = Vector3.forward;
+        readonly FootContact leftContact = new FootContact();
+        readonly FootContact rightContact = new FootContact();
+
+        sealed class FootContact
+        {
+            public bool locked;
+            public Vector3 position;
+        }
+
+        struct StepPose
+        {
+            public Vector3 target;
+            public float pitch, landingWeight, lift;
+            public bool supporting;
+        }
 
         public void Present(Vector2 input, bool sprint, bool airborne, bool rolling,
             bool charging, bool overheadCharge, bool risingHeavy, PlayerAttackKind attack,
-            float progress, int swingIndex, Transform leftThigh, Transform rightThigh)
+            float progress, int swingIndex, Transform leftThigh, Transform rightThigh,
+            Vector3 worldDisplacement = default(Vector3), float frameSeconds = -1f)
         {
-            float dt = Time.deltaTime;
+            float dt = frameSeconds >= 0 ? frameSeconds : Time.deltaTime;
             float blend = 1f - Mathf.Exp(-poseResponse * dt);
-            movement = Mathf.Lerp(movement, Mathf.Clamp01(input.magnitude), 1f - Mathf.Exp(-8f * dt));
+            float distanceMoved = worldDisplacement.magnitude;
+            float actualSpeed = dt > .000001f ? distanceMoved / dt : 0;
+            bool moving = actualSpeed > .05f && !airborne && !rolling;
+            movement = Mathf.Lerp(movement, moving ? Mathf.Clamp01(actualSpeed / .6f) : 0,
+                1f - Mathf.Exp(-8f * dt));
             sprintWeight = Mathf.Lerp(sprintWeight, sprint ? 1 : 0, 1f - Mathf.Exp(-6f * dt));
-            if (!airborne && !rolling) phase = Mathf.Repeat(phase + movement * Mathf.Lerp(9.4f, 12.6f, sprintWeight) * dt, Mathf.PI * 2);
+            float stanceDuration = Mathf.Lerp(.30f, .22f, sprintWeight);
+            float strideLength = Mathf.Lerp(walkingStride, sprintingStride, sprintWeight);
+            // A support foot travels 2*stride relative to the character per stance.
+            // Match that distance exactly to collision-resolved root movement.
+            if (moving)
+                phase = Mathf.Repeat(phase + distanceMoved * stanceDuration
+                    / Mathf.Max(.02f, 2 * strideLength) * Mathf.PI * 2, Mathf.PI * 2);
             float gaitWeight = airborne || rolling ? 0 : movement * movementAmount;
             float stride = Mathf.Cos(phase) * gaitWeight;
             float weightShift = Mathf.Sin(phase) * gaitWeight;
@@ -43,7 +69,7 @@ namespace SwordKing
             float strike = attacking ? Mathf.Sin(Mathf.Clamp01(progress) * Mathf.PI) * attackAmount : 0;
             float twist = attacking && attack == PlayerAttackKind.Slash
                 ? Mathf.Lerp(-25, 25, Mathf.SmoothStep(0, 1, progress)) * (swingIndex % 2 == 0 ? 1 : -1) : 0;
-            float lean = (sprint ? 12 * movement : 4 * movement)
+            float lean = Mathf.Lerp(.75f, 4f, sprintWeight) * movement
                 + Mathf.Sin(Time.time * 1.8f) * .7f * (1 - movement);
             if (charging) lean = overheadCharge ? -12 : -6;
             if (attacking && overhead) lean += Mathf.Lerp(-18, 26, progress) * attackAmount;
@@ -58,22 +84,27 @@ namespace SwordKing
             if (!rolling && !airborne && leftFoot != null && rightFoot != null)
             {
                 var visuals = leftThigh.parent;
-                // Weight transfers over the support leg. The ankles stay on the same floor
-                // plane while the pelvis rises/falls; only the recovering foot lifts.
-                float drop = Mathf.Lerp(.07f, .135f, sprintWeight) * gaitWeight;
-                visuals.localPosition = new Vector3(-weightShift * .012f, .91f - drop - bounce * .006f, 0);
-                if (input.sqrMagnitude > .001f)
-                {
-                    Vector3 localMove = Quaternion.Inverse(visuals.localRotation)
-                        * new Vector3(input.x, 0, input.y).normalized;
-                    gaitDirection = Vector3.Lerp(gaitDirection, localMove, 1f - Mathf.Exp(-10 * dt));
-                }
-                AnimateStep(leftThigh, leftShin, leftFoot, visuals, phase / (Mathf.PI * 2), gaitWeight);
-                AnimateStep(rightThigh, rightShin, rightFoot, visuals,
-                    Mathf.Repeat(phase / (Mathf.PI * 2) + .5f, 1), gaitWeight);
+                visuals.localPosition = new Vector3(-weightShift * .009f, .93f, 0);
+                if (moving)
+                    gaitDirection = visuals.InverseTransformDirection(worldDisplacement.normalized);
+                float legWeight = moving ? 1 : movement;
+                var leftStep = PrepareStep(leftThigh, visuals, phase / (Mathf.PI * 2), legWeight,
+                    stanceDuration, moving, leftContact);
+                var rightStep = PrepareStep(rightThigh, visuals,
+                    Mathf.Repeat(phase / (Mathf.PI * 2) + .5f, 1), legWeight,
+                    stanceDuration, moving, rightContact);
+                // Stand tall between contacts. Lower only as far as a supporting leg
+                // physically requires, with anticipation as the other foot lands.
+                float height = Mathf.Lerp(.91f, .93f, movement) + bounce * .003f;
+                height = FitSupportHeight(leftThigh, leftShin, leftFoot, visuals, leftStep, height);
+                height = FitSupportHeight(rightThigh, rightShin, rightFoot, visuals, rightStep, height);
+                visuals.localPosition = new Vector3(visuals.localPosition.x, height, 0);
+                AnimateStep(leftThigh, leftShin, leftFoot, visuals, leftStep);
+                AnimateStep(rightThigh, rightShin, rightFoot, visuals, rightStep);
             }
             else
             {
+                leftContact.locked = rightContact.locked = false;
                 if (!rolling)
                 {
                     Pose(leftThigh, new Vector3(-35, 0, -2), blend);
@@ -99,10 +130,9 @@ namespace SwordKing
             }
         }
 
-        void AnimateStep(Transform hip, Transform knee, Transform ankle, Transform visuals,
-            float cycle, float weight)
+        StepPose PrepareStep(Transform hip, Transform visuals, float cycle, float weight,
+            float stanceDuration, bool moving, FootContact contact)
         {
-            const float stanceDuration = .62f;
             bool planted = cycle < stanceDuration;
             float t = planted ? cycle / stanceDuration : (cycle - stanceDuration) / (1 - stanceDuration);
             float travel = Mathf.Lerp(walkingStride, sprintingStride, sprintWeight) * weight;
@@ -111,12 +141,47 @@ namespace SwordKing
             float lift = planted ? 0 : Mathf.Pow(Mathf.Max(0, Mathf.Sin(t * Mathf.PI)), 1.25f)
                 * Mathf.Lerp(walkingFootLift, sprintingFootLift, sprintWeight) * weight;
             Vector3 step = gaitDirection * along;
-            // Fit the sabatons to the floor while the body shifts over the support leg.
-            Vector3 localTarget = new Vector3(hip.localPosition.x - visuals.localPosition.x + step.x,
-                .105f - visuals.localPosition.y + lift, .015f + step.z);
-            Vector3 target = visuals.TransformPoint(localTarget);
+            var target = visuals.TransformPoint(new Vector3(hip.localPosition.x - visuals.localPosition.x + step.x,
+                .105f - visuals.localPosition.y + lift, .015f + step.z));
+            if (planted && moving)
+            {
+                // Keep the support ankle in world space rather than dragging it with the root.
+                if (!contact.locked || Vector3.Distance(contact.position, target) > 1.5f)
+                    contact.position = target;
+                contact.locked = true;
+                target = contact.position;
+            }
+            else contact.locked = false;
+            float footRoll = planted
+                ? -10 * (1 - Mathf.SmoothStep(0, 1, Mathf.InverseLerp(0, .20f, t)))
+                    + 12 * Mathf.SmoothStep(0, 1, Mathf.InverseLerp(.76f, 1, t))
+                : Mathf.Lerp(12, -10, Mathf.SmoothStep(0, 1, t));
+            return new StepPose { target = target, pitch = footRoll * weight,
+                supporting = planted && moving, lift = lift,
+                landingWeight = !planted && moving
+                    ? Mathf.SmoothStep(0, 1, Mathf.InverseLerp(.72f, 1, t)) : 0 };
+        }
+
+        static float FitSupportHeight(Transform hip, Transform knee, Transform ankle,
+            Transform visuals, StepPose step, float currentHeight)
+        {
+            if (!step.supporting && step.landingWeight <= 0) return currentHeight;
+            float reach = knee.localPosition.magnitude + ankle.localPosition.magnitude - .004f;
+            Vector3 hipPosition = visuals.TransformPoint(hip.localPosition);
+            Vector3 offset = step.target - hipPosition;
+            float horizontalSquared = offset.x * offset.x + offset.z * offset.z;
+            float verticalReach = Mathf.Sqrt(Mathf.Max(.01f, reach * reach - horizontalSquared));
+            float allowedHeight = step.target.y - step.lift + verticalReach
+                - visuals.parent.position.y - hip.localPosition.y;
+            float limit = step.supporting ? allowedHeight : Mathf.Lerp(.93f, allowedHeight, step.landingWeight);
+            return Mathf.Min(currentHeight, limit);
+        }
+
+        static void AnimateStep(Transform hip, Transform knee, Transform ankle,
+            Transform visuals, StepPose step)
+        {
             float upper = knee.localPosition.magnitude, lower = ankle.localPosition.magnitude;
-            Vector3 delta = target - hip.position;
+            Vector3 delta = step.target - hip.position;
             float distance = Mathf.Clamp(delta.magnitude, Mathf.Abs(upper - lower) + .001f, upper + lower - .001f);
             Vector3 forward = delta.normalized;
             Vector3 bend = Vector3.ProjectOnPlane(visuals.forward, forward).normalized;
@@ -124,13 +189,8 @@ namespace SwordKing
             float outwards = Mathf.Sqrt(Mathf.Max(0, upper * upper - alongBone * alongBone));
             Vector3 joint = hip.position + forward * alongBone + bend * outwards;
             hip.rotation = Quaternion.FromToRotation(knee.localPosition.normalized, joint - hip.position);
-            knee.rotation = Quaternion.FromToRotation(ankle.localPosition.normalized, target - knee.position);
-            // Heel contact -> flat sole -> toe push-off. Swing clears the toes.
-            float footRoll = planted
-                ? -10 * (1 - Mathf.SmoothStep(0, 1, Mathf.InverseLerp(0, .20f, t)))
-                    + 12 * Mathf.SmoothStep(0, 1, Mathf.InverseLerp(.76f, 1, t))
-                : Mathf.Lerp(12, -10, Mathf.SmoothStep(0, 1, t));
-            ankle.rotation = visuals.rotation * Quaternion.Euler(footRoll * weight, 0, 0);
+            knee.rotation = Quaternion.FromToRotation(ankle.localPosition.normalized, step.target - knee.position);
+            ankle.rotation = visuals.rotation * Quaternion.Euler(step.pitch, 0, 0);
         }
 
         void FitSwordArm(bool rolling)

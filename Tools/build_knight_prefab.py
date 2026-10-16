@@ -400,7 +400,7 @@ MeshFilter:
  out.append(mono(7072597504312420402,'baee79b2435c56c6993e0e128123f778',rig,refs['player']['id'],'PlayerRig'))
  keys=['pelvis','leftFoot','rightFoot','chest','head','leftArm','rightArm','leftForearm','rightForearm','leftShin','rightShin','weaponGrip','capeTop','capeMid','capeHem']
  fields={k:ref(refs[k]['id']+1) for k in keys}
- fields.update(walkingStride='0.28',sprintingStride='0.43',walkingFootLift='0.07',sprintingFootLift='0.13',movementAmount='0.85',attackAmount='0.7',poseResponse='18',upperArmLength='0.285',forearmLength='0.29')
+ fields.update(walkingStride='0.38',sprintingStride='0.50',walkingFootLift='0.10',sprintingFootLift='0.18',movementAmount='0.85',attackAmount='0.7',poseResponse='18',upperArmLength='0.285',forearmLength='0.29')
  out.append(mono(900000,'85d7be92fb5b4dff914c0dca52e12bd4',fields,refs['player']['id'],'KnightAnimation'))
  PREFAB.write_text(''.join(out))
  (ROOT/'Scripts/Player/KnightMeshSource.cs.meta').write_text(f'fileFormatVersion: 2\nguid: {guid("KnightMeshSource.cs")}\n')

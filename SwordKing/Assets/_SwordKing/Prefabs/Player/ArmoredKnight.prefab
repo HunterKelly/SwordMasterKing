@@ -7011,10 +7011,10 @@ MonoBehaviour:
   capeTop: {fileID: 1171}
   capeMid: {fileID: 1181}
   capeHem: {fileID: 1191}
-  walkingStride: 0.28
-  sprintingStride: 0.43
-  walkingFootLift: 0.07
-  sprintingFootLift: 0.13
+  walkingStride: 0.38
+  sprintingStride: 0.50
+  walkingFootLift: 0.10
+  sprintingFootLift: 0.18
   movementAmount: 0.85
   attackAmount: 0.7
   poseResponse: 18
