@@ -67,3 +67,8 @@ Run the Unity Edit Mode `KnightPrefabTests`, then test idle, walking, strafing,
 sprinting, jumps, rolls, rapid attacks, both charges, and both Shift attacks.
 Unity is unavailable in the implementation environment, so import, animation,
 and standalone build verification still need to be performed there.
+
+Left-arm swing now follows the solved left-foot position directly: forward leg
+means backward arm, and backward leg means forward arm. A small pelvis yaw and
+side-to-side weight shift accompany opposing shoulder rotation. Combat poses
+still override the free walking arm, and the sword arm keeps its existing IK.

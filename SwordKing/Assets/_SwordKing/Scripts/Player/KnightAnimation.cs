@@ -60,10 +60,8 @@ namespace SwordKing
                 phase = Mathf.Repeat(phase + distanceMoved * stanceDuration
                     / Mathf.Max(.02f, 2 * strideLength) * Mathf.PI * 2, Mathf.PI * 2);
             float gaitWeight = airborne || rolling ? 0 : movement * movementAmount;
-            float stride = Mathf.Cos(phase) * gaitWeight;
             float weightShift = Mathf.Sin(phase) * gaitWeight;
-            float shoulderTurn = stride * 3f;
-            if (pelvis != null) Pose(pelvis, new Vector3(0, -stride * 3.5f, weightShift * 1.5f), blend);
+            float leftLegSwing = 0, hipOpposition = 0;
             bool attacking = progress >= 0 && progress < 1;
             bool overhead = attack == PlayerAttackKind.Overhead || attack == PlayerAttackKind.ChargedOverhead
                 || attack == PlayerAttackKind.JumpingOverhead;
@@ -76,16 +74,11 @@ namespace SwordKing
             if (attacking && overhead) lean += Mathf.Lerp(-18, 26, progress) * attackAmount;
             if (attacking && attack == PlayerAttackKind.Thrust) lean += strike * 18;
             if (rolling) lean = 22;
-            Pose(chest, new Vector3(lean, twist + shoulderTurn, -input.x * movement * 3 - weightShift * 1.5f), blend);
-            Pose(head, new Vector3(-lean * .4f, -twist * .4f - shoulderTurn * .7f, weightShift), blend);
-            Pose(leftArm, new Vector3(rolling ? -65 : charging || risingHeavy ? -65 : stride * 16 - strike * 30,
-                0, rolling ? -10 : -12), blend);
-            Pose(leftForearm, new Vector3(rolling ? -95 : -18 - sprintWeight * 18 - strike * 35 - Mathf.Max(0, stride) * 7, 0, 0), blend);
 
             if (!rolling && !airborne && leftFoot != null && rightFoot != null)
             {
                 var visuals = leftThigh.parent;
-                visuals.localPosition = new Vector3(-weightShift * .009f, .91f, 0);
+                visuals.localPosition = new Vector3(-weightShift * .014f, .91f, 0);
                 if (leftExtension == null) leftExtension = new LegExtension(leftThigh, leftShin, leftFoot);
                 if (rightExtension == null) rightExtension = new LegExtension(rightThigh, rightShin, rightFoot);
                 if (moving)
@@ -100,6 +93,15 @@ namespace SwordKing
                 // the extra reach instead of pumping the entire body up and down.
                 AnimateStep(leftThigh, leftShin, leftFoot, visuals, leftStep, leftExtension);
                 AnimateStep(rightThigh, rightShin, rightFoot, visuals, rightStep, rightExtension);
+                // Read the solved legs, not a separate sine wave: stance and recovery
+                // take different lengths of time, and a planted foot is locked in world space.
+                float leftForward = visuals.InverseTransformPoint(leftFoot.position).z
+                    - leftThigh.localPosition.z - .015f;
+                float rightForward = visuals.InverseTransformPoint(rightFoot.position).z
+                    - rightThigh.localPosition.z - .015f;
+                leftLegSwing = Mathf.Clamp(leftForward / Mathf.Max(.02f, strideLength), -1, 1) * movement;
+                hipOpposition = Mathf.Clamp((leftForward - rightForward)
+                    / Mathf.Max(.04f, 2 * strideLength), -1, 1) * gaitWeight;
             }
             else
             {
@@ -116,6 +118,20 @@ namespace SwordKing
                 Pose(leftFoot, new Vector3(rolling ? 0 : -12, 0, 0), blend);
                 Pose(rightFoot, new Vector3(rolling ? 0 : -12, 0, 0), blend);
             }
+            float shoulderTurn = -hipOpposition * 2.5f;
+            Pose(pelvis, new Vector3(0, hipOpposition * 4.5f, -weightShift * 2f), blend);
+            Pose(chest, new Vector3(lean, twist + shoulderTurn, -input.x * movement * 3 - weightShift * 1.5f), blend);
+            Pose(head, new Vector3(-lean * .4f, -twist * .4f - shoulderTurn * .7f, weightShift), blend);
+            float armSwing = leftLegSwing * Mathf.Lerp(20, 28, sprintWeight);
+            bool walkingArm = !rolling && !airborne && !charging && !risingHeavy && !attacking;
+            if (walkingArm && leftArm != null)
+                // Positive X swings a downward-pointing arm backward as the leg goes forward.
+                // No second interpolation here: the measured leg motion is already continuous.
+                leftArm.localRotation = Quaternion.Euler(armSwing, 0, -12);
+            else Pose(leftArm, new Vector3(rolling ? -65 : charging || risingHeavy ? -65 : armSwing - strike * 30,
+                0, rolling ? -10 : -12), blend);
+            Pose(leftForearm, new Vector3(rolling ? -95 : -18 - sprintWeight * 18 - strike * 35
+                - Mathf.Max(0, -leftLegSwing) * 7, 0, 0), blend);
             float breeze = Mathf.Sin(Time.time * 3.2f + phase * .12f);
             float capeLift = rolling ? 25 : airborne ? 16 : movement * (sprint ? 27 : 11);
             Pose(capeTop, new Vector3(capeLift * .35f + breeze * 1.2f, 0, -input.x * 3), blend);

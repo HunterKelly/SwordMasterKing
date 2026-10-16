@@ -138,5 +138,37 @@ namespace SwordKing.Tests
             finally { Object.DestroyImmediate(rig.gameObject); }
         }
 
+        [TestCase(false, 6f)]
+        [TestCase(true, 9.6f)]
+        public void FreeLeftArmSwingsOppositeTheSolvedLeftLeg(bool sprint, float speed)
+        {
+            var asset = AssetDatabase.LoadAssetAtPath<PlayerRig>(
+                "Assets/_SwordKing/Prefabs/Player/ArmoredKnight.prefab");
+            var rig = Object.Instantiate(asset);
+            try
+            {
+                var animation = rig.GetComponent<KnightAnimation>();
+                bool sawForward = false, sawBackward = false;
+                for (int frame = 0; frame < 180; frame++)
+                {
+                    Vector3 displacement = Vector3.forward * (speed / 60);
+                    rig.transform.position += displacement;
+                    animation.Present(Vector2.up, sprint, false, false, false, false,
+                        false, PlayerAttackKind.Slash, 2, 0, rig.leftLeg, rig.rightLeg,
+                        displacement, 1f / 60);
+                    float footForward = rig.visualRoot.InverseTransformPoint(animation.leftFoot.position).z
+                        - rig.leftLeg.localPosition.z - .015f;
+                    float armForward = (animation.leftArm.localRotation * Vector3.down).z;
+                    if (Mathf.Abs(footForward) > .03f)
+                        Assert.That(footForward * armForward, Is.LessThan(0), "Arm and leg swung the same way");
+                    sawForward |= footForward > .03f;
+                    sawBackward |= footForward < -.03f;
+                    Assert.That(rig.visualRoot.localPosition.y, Is.EqualTo(.91f).Within(.0001f));
+                }
+                Assert.That(sawForward && sawBackward, Is.True);
+            }
+            finally { Object.DestroyImmediate(rig.gameObject); }
+        }
+
     }
 }
