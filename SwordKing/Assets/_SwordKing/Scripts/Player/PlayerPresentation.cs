@@ -70,6 +70,7 @@ namespace SwordKing
             }
             var rig = playerPrefab != null ? Instantiate(playerPrefab, transform) : PlayerRig.CreateDefault(floor, stone, metal, gold, cloth);
             player = rig.transform; player.SetParent(transform, false);
+            knightAnimation = rig.GetComponent<KnightAnimation>();
             player.position = new Vector3(0, .1f, -3);
             controller = rig.controller; visualRoot = rig.visualRoot; swordPivot = rig.swordPivot;
             leftLeg = rig.leftLeg; rightLeg = rig.rightLeg; swordRestPosition = swordPivot.localPosition;
@@ -131,6 +132,10 @@ namespace SwordKing
             }
             else swordPivot.localRotation = Quaternion.Slerp(swordPivot.localRotation, Quaternion.Euler(-25, 10, 0), Time.deltaTime * 12);
             if (!chargingAttack && (activeAttack != PlayerAttackKind.Thrust || t >= 1)) swordPivot.localPosition = swordRestPosition;
+            if (knightAnimation != null)
+                knightAnimation.Present(menu ? Vector2.zero : playerInput.Read().Move, IsSprinting,
+                    airborne, IsRolling, chargingAttack, chargeOverhead, jumpStrikePending && !jumpDescending,
+                    activeAttack, t, swingIndex, leftLeg, rightLeg);
             for (int i = slashes.Count - 1; i >= 0; i--)
             {
                 float life = (Time.time - slashes[i].born) / slashes[i].duration;

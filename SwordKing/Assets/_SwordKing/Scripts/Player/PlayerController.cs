@@ -102,6 +102,7 @@ namespace SwordKing
         readonly Queue<float> attackHistory = new Queue<float>();
         readonly List<Material> materials = new List<Material>();
         Transform player, swordPivot, leftLeg, rightLeg;
+        KnightAnimation knightAnimation;
         CharacterController controller;
         Camera view;
         Material slashMaterial;

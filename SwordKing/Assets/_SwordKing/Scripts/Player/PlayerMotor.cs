@@ -74,8 +74,11 @@ namespace SwordKing
                 visualRoot.localRotation = Quaternion.Euler(0, strafeLean + spinTurn, 0); visualRoot.localScale = Vector3.one;
                 walkPhase += direction.magnitude * moveSpeed * dt * 2;
                 float legAngle = airborne ? -30 : (direction.sqrMagnitude > .01f ? Mathf.Sin(walkPhase) * 25 : 0);
-                leftLeg.localRotation = Quaternion.Euler(legAngle, 0, 0);
-                rightLeg.localRotation = Quaternion.Euler(airborne ? -45 : -legAngle, 0, 0);
+                if (knightAnimation == null)
+                {
+                    leftLeg.localRotation = Quaternion.Euler(legAngle, 0, 0);
+                    rightLeg.localRotation = Quaternion.Euler(airborne ? -45 : -legAngle, 0, 0);
+                }
             }
         }
 

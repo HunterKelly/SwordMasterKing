@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: 0948d9c6d25b4ee78a9202cd825a5ea4
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable:
+  - first:
+      43: 4300000
+    second: ArmorBevel
+  externalObjects: {}
+  materials:
+    materialImportMode: 0
+  meshes:
+    globalScale: 1
+    useFileUnits: 0
+    importBlendShapes: 0
+    addColliders: 0
+    isReadable: 0
+  tangentSpace:
+    normalSmoothAngle: 0
+    normalImportMode: 0
+    tangentImportMode: 2
+  importAnimation: 0
+  fileIdsGeneration: 1
+  userData:
+  assetBundleName:
+  assetBundleVariant:
