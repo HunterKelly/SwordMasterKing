@@ -34,9 +34,12 @@ namespace SwordKing.Tests
                 }
                 var animation = rig.GetComponent<KnightAnimation>();
                 Assert.That(animation, Is.Not.Null);
+                Assert.That(animation.capeTop.GetComponent<KnightCapeMotion>(), Is.Not.Null);
+                Assert.That(animation.capeTop.GetComponentsInChildren<MeshFilter>().Length,
+                    Is.EqualTo(2), "Cape should have one cloth mesh and its gold trim");
                 foreach (var joint in new[] { animation.chest, animation.head, animation.leftArm,
                     animation.rightArm, animation.leftForearm, animation.rightForearm, animation.leftShin,
-                    animation.rightShin, animation.capeTop, animation.capeMid, animation.capeHem,
+                    animation.rightShin, animation.capeTop,
                     animation.weaponGrip, animation.pelvis, animation.leftFoot, animation.rightFoot })
                 {
                     Assert.That(joint, Is.Not.Null);

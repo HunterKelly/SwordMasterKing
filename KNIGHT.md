@@ -3,13 +3,14 @@
 `Assets/_SwordKing/Prefabs/Player/ArmoredKnight.prefab` now uses human proportions,
 curved breastplate surfaces, a slotted closed helmet, overlapping shoulder lames,
 fluted arm and leg armor, modeled gauntlets, pointed sabatons, linked mail,
-a tapered diamond-section sword, and a three-section crimson cape. Steel, silver
+a tapered diamond-section sword, and a continuous crimson cape. Steel, silver
 edges, dark steel, blue arming cloth, leather, and restrained gold details have
 separate materials under `Art/Materials/Knight_*`.
 
 This is an original rigid-part model inspired by the supplied armor reference.
 It is not a photoreal scanned character, a skinned Humanoid avatar, or a set of
-Mecanim animation clips. The cape uses procedural joint motion, not cloth physics.
+Mecanim animation clips. The cape is one connected mesh, deformed smoothly at its vertices, not separate
+rotating panels. It uses procedural motion, not cloth physics.
 
 ## Open and customize
 

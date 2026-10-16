@@ -14,7 +14,8 @@ namespace SwordKing
         [Range(.1f, .5f)] public float sprintingStride = .50f;
         [Range(.02f, .2f)] public float walkingFootLift = .10f;
         [Range(.04f, .25f)] public float sprintingFootLift = .18f;
-        public Transform capeTop, capeMid, capeHem;
+        public Transform capeTop;
+        KnightCapeMotion capeMotion;
         [Min(.01f)] public float upperArmLength = .285f;
         [Min(.01f)] public float forearmLength = .29f;
         [Range(0, 2)] public float movementAmount = 1f;
@@ -118,9 +119,8 @@ namespace SwordKing
             float breeze = Mathf.Sin(Time.time * 3.2f + phase * .12f);
             float capeLift = rolling ? 25 : airborne ? 16 : movement * (sprint ? 27 : 11);
             Pose(capeTop, new Vector3(capeLift * .35f + breeze * 1.2f, 0, -input.x * 3), blend);
-            Pose(capeMid, new Vector3(capeLift * .55f + breeze * 3, 0, stride * 2), blend);
-            Pose(capeHem, new Vector3(capeLift * .4f + Mathf.Sin(Time.time * 3.2f - .7f) * (2 + movement * 3),
-                0, -stride * 3), blend);
+            if (capeMotion == null && capeTop != null) capeMotion = capeTop.GetComponent<KnightCapeMotion>();
+            if (capeMotion != null) capeMotion.SetMotion(movement, sprintWeight, airborne, rolling, input.x);
             FitSwordArm(rolling);
             if (!rolling && ((charging && overheadCharge) || risingHeavy || (attacking && overhead)))
             {

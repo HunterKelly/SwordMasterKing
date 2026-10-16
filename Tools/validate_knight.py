@@ -48,3 +48,19 @@ for ident,(parent,children) in transforms.items():
   assert i not in seen,('hierarchy cycle',ident)
   seen.add(i);i=transforms[i][0]
 print(f'PASS: {count} source meshes, {vertices:,} vertices, {triangles:,} nondegenerate triangles; valid normals, indices, material/script/source references, hierarchy, isolated collision, preserved PlayerRig ID.')
+# The cape must be one connected cloth surface, not detached panels.
+capes=list((root/'Art/Models/Knight').glob('Cape_*_Crimson.bytes'))
+assert len(capes)==1, 'Cape cloth must be one mesh'
+b=capes[0].read_bytes();_,nv,ni=struct.unpack_from('<III',b)
+ids=struct.unpack_from('<'+str(ni)+'I',b,12+nv*32)
+adj=[set() for _ in range(nv)]
+for i in range(0,ni,3):
+ a,c,d=ids[i:i+3]
+ adj[a].update((c,d));adj[c].update((a,d));adj[d].update((a,c))
+seen={0};pending=[0]
+while pending:
+ for n in adj[pending.pop()]:
+  if n not in seen:seen.add(n);pending.append(n)
+assert len(seen)==nv, 'Cape has disconnected cloth regions'
+assert 'Cape middle' not in s and 'Cape hem\n' not in s
+print(f'PASS: cape is one connected surface ({nv:,} welded vertices), with no detached panels.')

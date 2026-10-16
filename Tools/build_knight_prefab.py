@@ -271,27 +271,21 @@ def author():
  ellipsoid(sg,(0,0,.386),(.041,.027,.045),24,12)
  for z in (.41,.689):
   tube(sg,[(.026*math.cos(TAU*k/32),.026*math.sin(TAU*k/32),z) for k in range(33)],.003,8)
- # A long crimson cape made of three connected sections, with baked pleats.
- cape=[]
- parent=chest
- for section in range(3):
-  p=(0,.40,-.16) if section==0 else (0,-.45,-.135)
-  bone=joint(('Cape shoulder','Cape middle','Cape hem')[section],parent,p);cape.append(bone);parent=bone
-  c=mesh(bone,'Crimson');trim=mesh(bone,'Gold')
-  rows=[]
-  for j in range(11):
-   t=j/10;g=(section+t)/3;width=(.30+.29*g)*.93
-   row=[]
-   for i in range(33):
-    u=i/32;x=(u*2-1)*width
-    # Accumulated z positions match precisely across segment boundaries.
-    z=-.135*t+.045*math.cos((u-.5)*10*math.pi)*(.3+g)+.08*(u*2-1)**2
-    row.append(c.vertex((x,-.45*t,z),(u,g)))
-   rows.append(row)
-  for a,b in zip(rows,rows[1:]):
-   for i in range(32):c.quad(a[i],a[i+1],b[i+1],b[i])
-  if section==2:
-   tube(trim,[c.v[i] for i in rows[-1]],.0025,6)
+ # One connected cape surface. Rows share indices across its full length.
+ bone=joint('Cape shoulder',chest,(0,.40,-.16))
+ c=mesh(bone,'Crimson');trim=mesh(bone,'Gold')
+ rows=[]
+ for j in range(31):
+  t=j/30;width=(.30+.29*t)*.93
+  row=[]
+  for i in range(33):
+   u=i/32;x=(u*2-1)*width
+   z=-.405*t+.045*math.cos((u-.5)*10*math.pi)*(.3+t)+.08*(u*2-1)**2
+   row.append(c.vertex((x,-1.35*t,z),(u,t)))
+  rows.append(row)
+ for a,b in zip(rows,rows[1:]):
+  for i in range(32):c.quad(a[i],a[i+1],b[i+1],b[i])
+ tube(trim,[c.v[i] for i in rows[-1]],.0025,6)
  # Cloak fastening at the shoulders, with short chains.
  for sign in (-1,1):
   ellipsoid(gold,(sign*.225,.34,.092),(.021,.023,.009),16,8)
@@ -299,7 +293,7 @@ def author():
    t=i/8;x=sign*(.225-.225*t);y=.34-.08*math.sin(t*math.pi/2);z=.11+.02*t
    ellipsoid(gold,(x,y,z),(.009,.012,.003),8,4)
  for key in [key for key,value in MESHES.items() if not value.f]: del MESHES[key]
- return dict(player=player,visual=visual,pelvis=hips,leftFoot=feet[0],rightFoot=feet[1],chest=chest,head=head,leftArm=arms[0],rightArm=arms[1],leftForearm=elbows[0],rightForearm=elbows[1],leftLeg=thighs[0],rightLeg=thighs[1],leftShin=shins[0],rightShin=shins[1],sword=sword,weaponGrip=grip,capeTop=cape[0],capeMid=cape[1],capeHem=cape[2])
+ return dict(player=player,visual=visual,pelvis=hips,leftFoot=feet[0],rightFoot=feet[1],chest=chest,head=head,leftArm=arms[0],rightArm=arms[1],leftForearm=elbows[0],rightForearm=elbows[1],leftLeg=thighs[0],rightLeg=thighs[1],leftShin=shins[0],rightShin=shins[1],sword=sword,weaponGrip=grip,capeTop=bone)
 
 def build():
  refs=author();OUT.mkdir(parents=True,exist_ok=True)
@@ -349,6 +343,7 @@ MonoBehaviour:
  for n in NODES:
   i=n['id'];comps=[i+1]
   if 'mesh'in n:comps += [i+2,i+3,i+4]
+  if n is refs['capeTop']:comps += [900001]
   if n is refs['player']:comps += [3648755183412612744,7072597504312420402,900000]
   out.append(f'''--- !u!1 &{i}
 GameObject:
@@ -398,11 +393,13 @@ MeshFilter:
  c=re.sub(r'm_GameObject: \{fileID: \d+\}',f'm_GameObject: {ref(refs["player"]["id"])}',controller);out.append(c)
  rig=dict(controller=ref(3648755183412612744),visualRoot=ref(refs['visual']['id']+1),swordPivot=ref(refs['sword']['id']+1),leftLeg=ref(refs['leftLeg']['id']+1),rightLeg=ref(refs['rightLeg']['id']+1))
  out.append(mono(7072597504312420402,'baee79b2435c56c6993e0e128123f778',rig,refs['player']['id'],'PlayerRig'))
- keys=['pelvis','leftFoot','rightFoot','chest','head','leftArm','rightArm','leftForearm','rightForearm','leftShin','rightShin','weaponGrip','capeTop','capeMid','capeHem']
+ keys=['pelvis','leftFoot','rightFoot','chest','head','leftArm','rightArm','leftForearm','rightForearm','leftShin','rightShin','weaponGrip','capeTop']
  fields={k:ref(refs[k]['id']+1) for k in keys}
  fields.update(walkingStride='0.38',sprintingStride='0.50',walkingFootLift='0.10',sprintingFootLift='0.18',movementAmount='0.85',attackAmount='0.7',poseResponse='18',upperArmLength='0.285',forearmLength='0.29')
  out.append(mono(900000,'85d7be92fb5b4dff914c0dca52e12bd4',fields,refs['player']['id'],'KnightAnimation'))
+ out.append(mono(900001,guid('KnightCapeMotion.cs'),{},refs['capeTop']['id'],'KnightCapeMotion'))
  PREFAB.write_text(''.join(out))
+ (ROOT/'Scripts/Player/KnightCapeMotion.cs.meta').write_text(f'fileFormatVersion: 2\nguid: {guid("KnightCapeMotion.cs")}\n')
  (ROOT/'Scripts/Player/KnightMeshSource.cs.meta').write_text(f'fileFormatVersion: 2\nguid: {guid("KnightMeshSource.cs")}\n')
  (OUT.with_suffix('.meta')).write_text(f'fileFormatVersion: 2\nguid: {guid("KnightFolder")}\nfolderAsset: yes\nDefaultImporter:\n  externalObjects: {{}}\n')
  print(f'Knight: {len(MESHES)} mesh sections, {sum(len(m.v) for m in MESHES.values()):,} vertices, {sum(len(m.f) for m in MESHES.values()):,} triangles')

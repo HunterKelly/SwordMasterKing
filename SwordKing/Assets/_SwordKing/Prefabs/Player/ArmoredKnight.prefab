@@ -100,10 +100,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1441}
+  - {fileID: 1451}
   - {fileID: 1461}
-  - {fileID: 1471}
-  - {fileID: 1481}
-  - {fileID: 1711}
+  - {fileID: 1691}
   m_Father: {fileID: 1011}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1030
@@ -139,10 +139,10 @@ Transform:
   - {fileID: 1051}
   - {fileID: 1071}
   - {fileID: 1171}
+  - {fileID: 1181}
+  - {fileID: 1191}
   - {fileID: 1201}
   - {fileID: 1211}
-  - {fileID: 1221}
-  - {fileID: 1231}
   m_Father: {fileID: 1011}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1040
@@ -174,10 +174,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1221}
+  - {fileID: 1231}
   - {fileID: 1241}
   - {fileID: 1251}
-  - {fileID: 1261}
-  - {fileID: 1271}
   m_Father: {fileID: 1031}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1050
@@ -210,11 +210,11 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1061}
+  - {fileID: 1261}
+  - {fileID: 1271}
   - {fileID: 1281}
   - {fileID: 1291}
   - {fileID: 1301}
-  - {fileID: 1311}
-  - {fileID: 1321}
   m_Father: {fileID: 1031}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1060
@@ -246,10 +246,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1311}
+  - {fileID: 1321}
   - {fileID: 1331}
   - {fileID: 1341}
-  - {fileID: 1351}
-  - {fileID: 1361}
   m_Father: {fileID: 1051}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1070
@@ -282,11 +282,11 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1081}
+  - {fileID: 1351}
+  - {fileID: 1361}
   - {fileID: 1371}
   - {fileID: 1381}
   - {fileID: 1391}
-  - {fileID: 1401}
-  - {fileID: 1411}
   m_Father: {fileID: 1031}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1080
@@ -318,10 +318,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1401}
+  - {fileID: 1411}
   - {fileID: 1421}
   - {fileID: 1431}
-  - {fileID: 1441}
-  - {fileID: 1451}
   m_Father: {fileID: 1071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1090
@@ -354,10 +354,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1101}
+  - {fileID: 1471}
+  - {fileID: 1481}
   - {fileID: 1491}
   - {fileID: 1501}
-  - {fileID: 1511}
-  - {fileID: 1521}
   m_Father: {fileID: 1011}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1100
@@ -390,10 +390,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1111}
+  - {fileID: 1511}
+  - {fileID: 1521}
   - {fileID: 1531}
   - {fileID: 1541}
-  - {fileID: 1551}
-  - {fileID: 1561}
   m_Father: {fileID: 1091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1110
@@ -425,9 +425,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1551}
+  - {fileID: 1561}
   - {fileID: 1571}
-  - {fileID: 1581}
-  - {fileID: 1591}
   m_Father: {fileID: 1101}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1120
@@ -460,10 +460,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1131}
+  - {fileID: 1581}
+  - {fileID: 1591}
   - {fileID: 1601}
   - {fileID: 1611}
-  - {fileID: 1621}
-  - {fileID: 1631}
   m_Father: {fileID: 1011}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1130
@@ -496,10 +496,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1141}
+  - {fileID: 1621}
+  - {fileID: 1631}
   - {fileID: 1641}
   - {fileID: 1651}
-  - {fileID: 1661}
-  - {fileID: 1671}
   m_Father: {fileID: 1121}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1140
@@ -531,9 +531,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1661}
+  - {fileID: 1671}
   - {fileID: 1681}
-  - {fileID: 1691}
-  - {fileID: 1701}
   m_Father: {fileID: 1131}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1150
@@ -566,10 +566,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1161}
+  - {fileID: 1701}
+  - {fileID: 1711}
   - {fileID: 1721}
   - {fileID: 1731}
-  - {fileID: 1741}
-  - {fileID: 1751}
   m_Father: {fileID: 1011}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1160
@@ -612,6 +612,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1171}
+  - component: {fileID: 900001}
   m_Layer: 0
   m_Name: Cape shoulder
   m_TagString: Untagged
@@ -632,8 +633,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1181}
-  - {fileID: 1761}
+  - {fileID: 1741}
+  - {fileID: 1751}
   m_Father: {fileID: 1031}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1180
@@ -645,8 +646,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1181}
+  - component: {fileID: 1182}
+  - component: {fileID: 1183}
+  - component: {fileID: 1184}
   m_Layer: 0
-  m_Name: Cape middle
+  m_Name: Mesh Chest_Steel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -661,14 +665,82 @@ Transform:
   m_GameObject: {fileID: 1180}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.45, z: -0.135}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1191}
-  - {fileID: 1771}
-  m_Father: {fileID: 1171}
+  m_Children: []
+  m_Father: {fileID: 1031}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1182
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180}
+  m_Mesh: {fileID: 0}
+--- !u!23 &1183
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 118851511614cbb0c5f4d60b0fd666d2, type: 3}
 --- !u!1 &1190
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,8 +750,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1191}
+  - component: {fileID: 1192}
+  - component: {fileID: 1193}
+  - component: {fileID: 1194}
   m_Layer: 0
-  m_Name: Cape hem
+  m_Name: Mesh Chest_Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -694,14 +769,82 @@ Transform:
   m_GameObject: {fileID: 1190}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.45, z: -0.135}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1781}
-  - {fileID: 1791}
-  m_Father: {fileID: 1181}
+  m_Children: []
+  m_Father: {fileID: 1031}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1192
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190}
+  m_Mesh: {fileID: 0}
+--- !u!23 &1193
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
+  source: {fileID: 4900000, guid: 246327baa8282b0422334a32e0708e41, type: 3}
 --- !u!1 &1200
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,7 +858,7 @@ GameObject:
   - component: {fileID: 1203}
   - component: {fileID: 1204}
   m_Layer: 0
-  m_Name: Mesh Chest_Steel
+  m_Name: Mesh Chest_DarkSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -769,7 +912,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
+  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -805,7 +948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 118851511614cbb0c5f4d60b0fd666d2, type: 3}
+  source: {fileID: 4900000, guid: e11db0141a6501d0bfcfea3f215c058d, type: 3}
 --- !u!1 &1210
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,7 +962,7 @@ GameObject:
   - component: {fileID: 1213}
   - component: {fileID: 1214}
   m_Layer: 0
-  m_Name: Mesh Chest_Edge
+  m_Name: Mesh Chest_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -873,7 +1016,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
+  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -909,7 +1052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 246327baa8282b0422334a32e0708e41, type: 3}
+  source: {fileID: 4900000, guid: 47c187ec0505ef8bffa8f449e409932a, type: 3}
 --- !u!1 &1220
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,7 +1066,7 @@ GameObject:
   - component: {fileID: 1223}
   - component: {fileID: 1224}
   m_Layer: 0
-  m_Name: Mesh Chest_DarkSteel
+  m_Name: Mesh Head_Steel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -942,7 +1085,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1031}
+  m_Father: {fileID: 1041}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1222
 MeshFilter:
@@ -977,7 +1120,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
+  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1013,7 +1156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: e11db0141a6501d0bfcfea3f215c058d, type: 3}
+  source: {fileID: 4900000, guid: 87c3c15531757cded40e8fa65db235a8, type: 3}
 --- !u!1 &1230
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,7 +1170,7 @@ GameObject:
   - component: {fileID: 1233}
   - component: {fileID: 1234}
   m_Layer: 0
-  m_Name: Mesh Chest_Gold
+  m_Name: Mesh Head_Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1046,7 +1189,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1031}
+  m_Father: {fileID: 1041}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1232
 MeshFilter:
@@ -1081,7 +1224,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
+  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1117,7 +1260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 47c187ec0505ef8bffa8f449e409932a, type: 3}
+  source: {fileID: 4900000, guid: 4a19cafc65a75116e3f7c67c2f7c48e1, type: 3}
 --- !u!1 &1240
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,7 +1274,7 @@ GameObject:
   - component: {fileID: 1243}
   - component: {fileID: 1244}
   m_Layer: 0
-  m_Name: Mesh Head_Steel
+  m_Name: Mesh Head_DarkSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1185,7 +1328,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
+  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1221,7 +1364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 87c3c15531757cded40e8fa65db235a8, type: 3}
+  source: {fileID: 4900000, guid: d0585658b93115f5cef99ba3c855184d, type: 3}
 --- !u!1 &1250
 GameObject:
   m_ObjectHideFlags: 0
@@ -1235,7 +1378,7 @@ GameObject:
   - component: {fileID: 1253}
   - component: {fileID: 1254}
   m_Layer: 0
-  m_Name: Mesh Head_Edge
+  m_Name: Mesh Head_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1289,7 +1432,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
+  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1325,7 +1468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 4a19cafc65a75116e3f7c67c2f7c48e1, type: 3}
+  source: {fileID: 4900000, guid: 4176a12bd1298bdcf8b9ad62296a16ce, type: 3}
 --- !u!1 &1260
 GameObject:
   m_ObjectHideFlags: 0
@@ -1339,7 +1482,7 @@ GameObject:
   - component: {fileID: 1263}
   - component: {fileID: 1264}
   m_Layer: 0
-  m_Name: Mesh Head_DarkSteel
+  m_Name: Mesh Left_shoulder_Steel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1358,7 +1501,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1041}
+  m_Father: {fileID: 1051}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1262
 MeshFilter:
@@ -1393,7 +1536,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
+  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1429,7 +1572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: d0585658b93115f5cef99ba3c855184d, type: 3}
+  source: {fileID: 4900000, guid: 249ab1e0f2e78ab8515fd946e2163aea, type: 3}
 --- !u!1 &1270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1443,7 +1586,7 @@ GameObject:
   - component: {fileID: 1273}
   - component: {fileID: 1274}
   m_Layer: 0
-  m_Name: Mesh Head_Gold
+  m_Name: Mesh Left_shoulder_Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1462,7 +1605,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1041}
+  m_Father: {fileID: 1051}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1272
 MeshFilter:
@@ -1497,7 +1640,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
+  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1533,7 +1676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 4176a12bd1298bdcf8b9ad62296a16ce, type: 3}
+  source: {fileID: 4900000, guid: 20262519e13254535784f21c36535776, type: 3}
 --- !u!1 &1280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1547,7 +1690,7 @@ GameObject:
   - component: {fileID: 1283}
   - component: {fileID: 1284}
   m_Layer: 0
-  m_Name: Mesh Left_shoulder_Steel
+  m_Name: Mesh Left_shoulder_DarkSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1601,7 +1744,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
+  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1637,7 +1780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 249ab1e0f2e78ab8515fd946e2163aea, type: 3}
+  source: {fileID: 4900000, guid: 3580dc02137ac6b2626497dc172cbc20, type: 3}
 --- !u!1 &1290
 GameObject:
   m_ObjectHideFlags: 0
@@ -1651,7 +1794,7 @@ GameObject:
   - component: {fileID: 1293}
   - component: {fileID: 1294}
   m_Layer: 0
-  m_Name: Mesh Left_shoulder_Edge
+  m_Name: Mesh Left_shoulder_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1705,7 +1848,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
+  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1741,7 +1884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 20262519e13254535784f21c36535776, type: 3}
+  source: {fileID: 4900000, guid: 042476aa7a3d887c505b1c1d67bb78ea, type: 3}
 --- !u!1 &1300
 GameObject:
   m_ObjectHideFlags: 0
@@ -1755,7 +1898,7 @@ GameObject:
   - component: {fileID: 1303}
   - component: {fileID: 1304}
   m_Layer: 0
-  m_Name: Mesh Left_shoulder_DarkSteel
+  m_Name: Mesh Left_shoulder_Mail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1809,7 +1952,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
+  - {fileID: 2100000, guid: 6cc98e661d72adf66afe6e56c0ddaca5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1845,7 +1988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 3580dc02137ac6b2626497dc172cbc20, type: 3}
+  source: {fileID: 4900000, guid: 6a7b70f19dc068ec1e174255691f12fd, type: 3}
 --- !u!1 &1310
 GameObject:
   m_ObjectHideFlags: 0
@@ -1859,7 +2002,7 @@ GameObject:
   - component: {fileID: 1313}
   - component: {fileID: 1314}
   m_Layer: 0
-  m_Name: Mesh Left_shoulder_Gold
+  m_Name: Mesh Left_elbow_Steel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1878,7 +2021,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1051}
+  m_Father: {fileID: 1061}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1312
 MeshFilter:
@@ -1913,7 +2056,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
+  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1949,7 +2092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 042476aa7a3d887c505b1c1d67bb78ea, type: 3}
+  source: {fileID: 4900000, guid: 9948d79029c5c7aa1d3a3cd0a59713e6, type: 3}
 --- !u!1 &1320
 GameObject:
   m_ObjectHideFlags: 0
@@ -1963,7 +2106,7 @@ GameObject:
   - component: {fileID: 1323}
   - component: {fileID: 1324}
   m_Layer: 0
-  m_Name: Mesh Left_shoulder_Mail
+  m_Name: Mesh Left_elbow_Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1982,7 +2125,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1051}
+  m_Father: {fileID: 1061}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1322
 MeshFilter:
@@ -2017,7 +2160,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6cc98e661d72adf66afe6e56c0ddaca5, type: 2}
+  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2053,7 +2196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 6a7b70f19dc068ec1e174255691f12fd, type: 3}
+  source: {fileID: 4900000, guid: 0b57b10ecd26429b35a3035e04cbb080, type: 3}
 --- !u!1 &1330
 GameObject:
   m_ObjectHideFlags: 0
@@ -2067,7 +2210,7 @@ GameObject:
   - component: {fileID: 1333}
   - component: {fileID: 1334}
   m_Layer: 0
-  m_Name: Mesh Left_elbow_Steel
+  m_Name: Mesh Left_elbow_DarkSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2121,7 +2264,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
+  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2157,7 +2300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 9948d79029c5c7aa1d3a3cd0a59713e6, type: 3}
+  source: {fileID: 4900000, guid: 0ca284c976a9811eb84167771682c035, type: 3}
 --- !u!1 &1340
 GameObject:
   m_ObjectHideFlags: 0
@@ -2171,7 +2314,7 @@ GameObject:
   - component: {fileID: 1343}
   - component: {fileID: 1344}
   m_Layer: 0
-  m_Name: Mesh Left_elbow_Edge
+  m_Name: Mesh Left_elbow_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2225,7 +2368,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
+  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2261,7 +2404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 0b57b10ecd26429b35a3035e04cbb080, type: 3}
+  source: {fileID: 4900000, guid: ac24e2d7f72107d811cc8a125c11c4f7, type: 3}
 --- !u!1 &1350
 GameObject:
   m_ObjectHideFlags: 0
@@ -2275,7 +2418,7 @@ GameObject:
   - component: {fileID: 1353}
   - component: {fileID: 1354}
   m_Layer: 0
-  m_Name: Mesh Left_elbow_DarkSteel
+  m_Name: Mesh Right_shoulder_Steel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2294,7 +2437,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1061}
+  m_Father: {fileID: 1071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1352
 MeshFilter:
@@ -2329,7 +2472,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
+  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2365,7 +2508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 0ca284c976a9811eb84167771682c035, type: 3}
+  source: {fileID: 4900000, guid: df4c5833bbf0f1e13b0f3c5f481f307e, type: 3}
 --- !u!1 &1360
 GameObject:
   m_ObjectHideFlags: 0
@@ -2379,7 +2522,7 @@ GameObject:
   - component: {fileID: 1363}
   - component: {fileID: 1364}
   m_Layer: 0
-  m_Name: Mesh Left_elbow_Gold
+  m_Name: Mesh Right_shoulder_Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2398,7 +2541,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1061}
+  m_Father: {fileID: 1071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1362
 MeshFilter:
@@ -2433,7 +2576,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
+  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2469,7 +2612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: ac24e2d7f72107d811cc8a125c11c4f7, type: 3}
+  source: {fileID: 4900000, guid: 833db72c8f4807bd182da9f2f0e5068d, type: 3}
 --- !u!1 &1370
 GameObject:
   m_ObjectHideFlags: 0
@@ -2483,7 +2626,7 @@ GameObject:
   - component: {fileID: 1373}
   - component: {fileID: 1374}
   m_Layer: 0
-  m_Name: Mesh Right_shoulder_Steel
+  m_Name: Mesh Right_shoulder_DarkSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2537,7 +2680,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
+  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2573,7 +2716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: df4c5833bbf0f1e13b0f3c5f481f307e, type: 3}
+  source: {fileID: 4900000, guid: 4a8feb249781f88fb85d0374309e8695, type: 3}
 --- !u!1 &1380
 GameObject:
   m_ObjectHideFlags: 0
@@ -2587,7 +2730,7 @@ GameObject:
   - component: {fileID: 1383}
   - component: {fileID: 1384}
   m_Layer: 0
-  m_Name: Mesh Right_shoulder_Edge
+  m_Name: Mesh Right_shoulder_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2641,7 +2784,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
+  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2677,7 +2820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 833db72c8f4807bd182da9f2f0e5068d, type: 3}
+  source: {fileID: 4900000, guid: a5c34779c0fa9e3c478918acfbe8fe7c, type: 3}
 --- !u!1 &1390
 GameObject:
   m_ObjectHideFlags: 0
@@ -2691,7 +2834,7 @@ GameObject:
   - component: {fileID: 1393}
   - component: {fileID: 1394}
   m_Layer: 0
-  m_Name: Mesh Right_shoulder_DarkSteel
+  m_Name: Mesh Right_shoulder_Mail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2745,7 +2888,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
+  - {fileID: 2100000, guid: 6cc98e661d72adf66afe6e56c0ddaca5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2781,7 +2924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 4a8feb249781f88fb85d0374309e8695, type: 3}
+  source: {fileID: 4900000, guid: f31e84220187479364a985bec41289c3, type: 3}
 --- !u!1 &1400
 GameObject:
   m_ObjectHideFlags: 0
@@ -2795,7 +2938,7 @@ GameObject:
   - component: {fileID: 1403}
   - component: {fileID: 1404}
   m_Layer: 0
-  m_Name: Mesh Right_shoulder_Gold
+  m_Name: Mesh Right_elbow_Steel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2814,7 +2957,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1071}
+  m_Father: {fileID: 1081}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1402
 MeshFilter:
@@ -2849,7 +2992,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
+  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2885,7 +3028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: a5c34779c0fa9e3c478918acfbe8fe7c, type: 3}
+  source: {fileID: 4900000, guid: e804ffc88f0058f1d72f098063cdd051, type: 3}
 --- !u!1 &1410
 GameObject:
   m_ObjectHideFlags: 0
@@ -2899,7 +3042,7 @@ GameObject:
   - component: {fileID: 1413}
   - component: {fileID: 1414}
   m_Layer: 0
-  m_Name: Mesh Right_shoulder_Mail
+  m_Name: Mesh Right_elbow_Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2918,7 +3061,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1071}
+  m_Father: {fileID: 1081}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1412
 MeshFilter:
@@ -2953,7 +3096,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6cc98e661d72adf66afe6e56c0ddaca5, type: 2}
+  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2989,7 +3132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: f31e84220187479364a985bec41289c3, type: 3}
+  source: {fileID: 4900000, guid: ef3e3e99c6acae64fb6f224d8cbc13c2, type: 3}
 --- !u!1 &1420
 GameObject:
   m_ObjectHideFlags: 0
@@ -3003,7 +3146,7 @@ GameObject:
   - component: {fileID: 1423}
   - component: {fileID: 1424}
   m_Layer: 0
-  m_Name: Mesh Right_elbow_Steel
+  m_Name: Mesh Right_elbow_DarkSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3057,7 +3200,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
+  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3093,7 +3236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: e804ffc88f0058f1d72f098063cdd051, type: 3}
+  source: {fileID: 4900000, guid: 81a8ea1d049757907fd09f8de0388098, type: 3}
 --- !u!1 &1430
 GameObject:
   m_ObjectHideFlags: 0
@@ -3107,7 +3250,7 @@ GameObject:
   - component: {fileID: 1433}
   - component: {fileID: 1434}
   m_Layer: 0
-  m_Name: Mesh Right_elbow_Edge
+  m_Name: Mesh Right_elbow_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3161,7 +3304,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
+  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3197,7 +3340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: ef3e3e99c6acae64fb6f224d8cbc13c2, type: 3}
+  source: {fileID: 4900000, guid: d4f78063cf8200704e788d464a32293b, type: 3}
 --- !u!1 &1440
 GameObject:
   m_ObjectHideFlags: 0
@@ -3211,7 +3354,7 @@ GameObject:
   - component: {fileID: 1443}
   - component: {fileID: 1444}
   m_Layer: 0
-  m_Name: Mesh Right_elbow_DarkSteel
+  m_Name: Mesh Pelvis_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3230,7 +3373,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1081}
+  m_Father: {fileID: 1021}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1442
 MeshFilter:
@@ -3265,7 +3408,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
+  - {fileID: 2100000, guid: 8e99864e8d026065e464ba18601ba1b9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3301,7 +3444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 81a8ea1d049757907fd09f8de0388098, type: 3}
+  source: {fileID: 4900000, guid: 9670a67b550ce1e0a60abb2b0a5fe29c, type: 3}
 --- !u!1 &1450
 GameObject:
   m_ObjectHideFlags: 0
@@ -3315,7 +3458,7 @@ GameObject:
   - component: {fileID: 1453}
   - component: {fileID: 1454}
   m_Layer: 0
-  m_Name: Mesh Right_elbow_Gold
+  m_Name: Mesh Pelvis_Leather
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3334,7 +3477,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1081}
+  m_Father: {fileID: 1021}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1452
 MeshFilter:
@@ -3369,7 +3512,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
+  - {fileID: 2100000, guid: 20e885e87d0cfa987768b304b2e916c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3405,7 +3548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: d4f78063cf8200704e788d464a32293b, type: 3}
+  source: {fileID: 4900000, guid: a066bde9ec1b60edd70264c1f1280181, type: 3}
 --- !u!1 &1460
 GameObject:
   m_ObjectHideFlags: 0
@@ -3419,7 +3562,7 @@ GameObject:
   - component: {fileID: 1463}
   - component: {fileID: 1464}
   m_Layer: 0
-  m_Name: Mesh Pelvis_Blue
+  m_Name: Mesh Pelvis_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3473,7 +3616,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e99864e8d026065e464ba18601ba1b9, type: 2}
+  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3509,7 +3652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 9670a67b550ce1e0a60abb2b0a5fe29c, type: 3}
+  source: {fileID: 4900000, guid: 77bf3df0e86ff1acc48a11bb9f0b3664, type: 3}
 --- !u!1 &1470
 GameObject:
   m_ObjectHideFlags: 0
@@ -3523,7 +3666,7 @@ GameObject:
   - component: {fileID: 1473}
   - component: {fileID: 1474}
   m_Layer: 0
-  m_Name: Mesh Pelvis_Leather
+  m_Name: Mesh Left_hip_Steel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3542,7 +3685,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1021}
+  m_Father: {fileID: 1091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1472
 MeshFilter:
@@ -3577,7 +3720,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 20e885e87d0cfa987768b304b2e916c2, type: 2}
+  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3613,7 +3756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: a066bde9ec1b60edd70264c1f1280181, type: 3}
+  source: {fileID: 4900000, guid: 2a627cb91d00a199f72d6c5bc0fb77ad, type: 3}
 --- !u!1 &1480
 GameObject:
   m_ObjectHideFlags: 0
@@ -3627,7 +3770,7 @@ GameObject:
   - component: {fileID: 1483}
   - component: {fileID: 1484}
   m_Layer: 0
-  m_Name: Mesh Pelvis_Gold
+  m_Name: Mesh Left_hip_Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3646,7 +3789,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1021}
+  m_Father: {fileID: 1091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1482
 MeshFilter:
@@ -3681,7 +3824,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
+  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3717,7 +3860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 77bf3df0e86ff1acc48a11bb9f0b3664, type: 3}
+  source: {fileID: 4900000, guid: da22c3075ba2b400b832823e4c39e002, type: 3}
 --- !u!1 &1490
 GameObject:
   m_ObjectHideFlags: 0
@@ -3731,7 +3874,7 @@ GameObject:
   - component: {fileID: 1493}
   - component: {fileID: 1494}
   m_Layer: 0
-  m_Name: Mesh Left_hip_Steel
+  m_Name: Mesh Left_hip_DarkSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3785,7 +3928,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
+  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3821,7 +3964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 2a627cb91d00a199f72d6c5bc0fb77ad, type: 3}
+  source: {fileID: 4900000, guid: 01b1fee2786a444c940e8148e14d514d, type: 3}
 --- !u!1 &1500
 GameObject:
   m_ObjectHideFlags: 0
@@ -3835,7 +3978,7 @@ GameObject:
   - component: {fileID: 1503}
   - component: {fileID: 1504}
   m_Layer: 0
-  m_Name: Mesh Left_hip_Edge
+  m_Name: Mesh Left_hip_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3889,7 +4032,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
+  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3925,7 +4068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: da22c3075ba2b400b832823e4c39e002, type: 3}
+  source: {fileID: 4900000, guid: 1fef7930bcc3842f7961720a49d0a618, type: 3}
 --- !u!1 &1510
 GameObject:
   m_ObjectHideFlags: 0
@@ -3939,7 +4082,7 @@ GameObject:
   - component: {fileID: 1513}
   - component: {fileID: 1514}
   m_Layer: 0
-  m_Name: Mesh Left_hip_DarkSteel
+  m_Name: Mesh Left_knee_Steel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3958,7 +4101,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1091}
+  m_Father: {fileID: 1101}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1512
 MeshFilter:
@@ -3993,7 +4136,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
+  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4029,7 +4172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 01b1fee2786a444c940e8148e14d514d, type: 3}
+  source: {fileID: 4900000, guid: 707b37055da294af6b69ac652446753f, type: 3}
 --- !u!1 &1520
 GameObject:
   m_ObjectHideFlags: 0
@@ -4043,7 +4186,7 @@ GameObject:
   - component: {fileID: 1523}
   - component: {fileID: 1524}
   m_Layer: 0
-  m_Name: Mesh Left_hip_Gold
+  m_Name: Mesh Left_knee_Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4062,7 +4205,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1091}
+  m_Father: {fileID: 1101}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1522
 MeshFilter:
@@ -4097,7 +4240,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
+  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4133,7 +4276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 1fef7930bcc3842f7961720a49d0a618, type: 3}
+  source: {fileID: 4900000, guid: f4ae66625e367c0e56f29e03523916c1, type: 3}
 --- !u!1 &1530
 GameObject:
   m_ObjectHideFlags: 0
@@ -4147,7 +4290,7 @@ GameObject:
   - component: {fileID: 1533}
   - component: {fileID: 1534}
   m_Layer: 0
-  m_Name: Mesh Left_knee_Steel
+  m_Name: Mesh Left_knee_DarkSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4201,7 +4344,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
+  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4237,7 +4380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 707b37055da294af6b69ac652446753f, type: 3}
+  source: {fileID: 4900000, guid: 82955558ee2d96476e70750ff87ccbf3, type: 3}
 --- !u!1 &1540
 GameObject:
   m_ObjectHideFlags: 0
@@ -4251,7 +4394,7 @@ GameObject:
   - component: {fileID: 1543}
   - component: {fileID: 1544}
   m_Layer: 0
-  m_Name: Mesh Left_knee_Edge
+  m_Name: Mesh Left_knee_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4305,7 +4448,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
+  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4341,7 +4484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: f4ae66625e367c0e56f29e03523916c1, type: 3}
+  source: {fileID: 4900000, guid: 7467cb3c7e356ec385449565f1bb561c, type: 3}
 --- !u!1 &1550
 GameObject:
   m_ObjectHideFlags: 0
@@ -4355,7 +4498,7 @@ GameObject:
   - component: {fileID: 1553}
   - component: {fileID: 1554}
   m_Layer: 0
-  m_Name: Mesh Left_knee_DarkSteel
+  m_Name: Mesh Left_ankle_DarkSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4374,7 +4517,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1101}
+  m_Father: {fileID: 1111}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1552
 MeshFilter:
@@ -4445,7 +4588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 82955558ee2d96476e70750ff87ccbf3, type: 3}
+  source: {fileID: 4900000, guid: 14ba1574e47b1100af19a6446af55fd7, type: 3}
 --- !u!1 &1560
 GameObject:
   m_ObjectHideFlags: 0
@@ -4459,7 +4602,7 @@ GameObject:
   - component: {fileID: 1563}
   - component: {fileID: 1564}
   m_Layer: 0
-  m_Name: Mesh Left_knee_Gold
+  m_Name: Mesh Left_ankle_Steel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4478,7 +4621,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1101}
+  m_Father: {fileID: 1111}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1562
 MeshFilter:
@@ -4513,7 +4656,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
+  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4549,7 +4692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 7467cb3c7e356ec385449565f1bb561c, type: 3}
+  source: {fileID: 4900000, guid: b1b227ab2c478439208185f59e0c184c, type: 3}
 --- !u!1 &1570
 GameObject:
   m_ObjectHideFlags: 0
@@ -4563,7 +4706,7 @@ GameObject:
   - component: {fileID: 1573}
   - component: {fileID: 1574}
   m_Layer: 0
-  m_Name: Mesh Left_ankle_DarkSteel
+  m_Name: Mesh Left_ankle_Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4617,7 +4760,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
+  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4653,7 +4796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 14ba1574e47b1100af19a6446af55fd7, type: 3}
+  source: {fileID: 4900000, guid: 7f418c3c8e4d87a47d4e59fbdefac91b, type: 3}
 --- !u!1 &1580
 GameObject:
   m_ObjectHideFlags: 0
@@ -4667,7 +4810,7 @@ GameObject:
   - component: {fileID: 1583}
   - component: {fileID: 1584}
   m_Layer: 0
-  m_Name: Mesh Left_ankle_Steel
+  m_Name: Mesh Right_hip_Steel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4686,7 +4829,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1111}
+  m_Father: {fileID: 1121}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1582
 MeshFilter:
@@ -4757,7 +4900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: b1b227ab2c478439208185f59e0c184c, type: 3}
+  source: {fileID: 4900000, guid: 03d8c1c14a2d8d42f522eb6728221812, type: 3}
 --- !u!1 &1590
 GameObject:
   m_ObjectHideFlags: 0
@@ -4771,7 +4914,7 @@ GameObject:
   - component: {fileID: 1593}
   - component: {fileID: 1594}
   m_Layer: 0
-  m_Name: Mesh Left_ankle_Edge
+  m_Name: Mesh Right_hip_Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4790,7 +4933,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1111}
+  m_Father: {fileID: 1121}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1592
 MeshFilter:
@@ -4861,7 +5004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 7f418c3c8e4d87a47d4e59fbdefac91b, type: 3}
+  source: {fileID: 4900000, guid: 65bf311e4e38f41de7745501014e0775, type: 3}
 --- !u!1 &1600
 GameObject:
   m_ObjectHideFlags: 0
@@ -4875,7 +5018,7 @@ GameObject:
   - component: {fileID: 1603}
   - component: {fileID: 1604}
   m_Layer: 0
-  m_Name: Mesh Right_hip_Steel
+  m_Name: Mesh Right_hip_DarkSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4929,7 +5072,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
+  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4965,7 +5108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 03d8c1c14a2d8d42f522eb6728221812, type: 3}
+  source: {fileID: 4900000, guid: 0d1d31bd33474a3d667c2e1772985464, type: 3}
 --- !u!1 &1610
 GameObject:
   m_ObjectHideFlags: 0
@@ -4979,7 +5122,7 @@ GameObject:
   - component: {fileID: 1613}
   - component: {fileID: 1614}
   m_Layer: 0
-  m_Name: Mesh Right_hip_Edge
+  m_Name: Mesh Right_hip_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5033,7 +5176,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
+  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5069,7 +5212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 65bf311e4e38f41de7745501014e0775, type: 3}
+  source: {fileID: 4900000, guid: dcd25aceb0ad4e0a09202ed51d81a37e, type: 3}
 --- !u!1 &1620
 GameObject:
   m_ObjectHideFlags: 0
@@ -5083,7 +5226,7 @@ GameObject:
   - component: {fileID: 1623}
   - component: {fileID: 1624}
   m_Layer: 0
-  m_Name: Mesh Right_hip_DarkSteel
+  m_Name: Mesh Right_knee_Steel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5102,7 +5245,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1121}
+  m_Father: {fileID: 1131}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1622
 MeshFilter:
@@ -5137,7 +5280,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
+  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5173,7 +5316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 0d1d31bd33474a3d667c2e1772985464, type: 3}
+  source: {fileID: 4900000, guid: e856cf5d80413754c416e6b14bd3ba9c, type: 3}
 --- !u!1 &1630
 GameObject:
   m_ObjectHideFlags: 0
@@ -5187,7 +5330,7 @@ GameObject:
   - component: {fileID: 1633}
   - component: {fileID: 1634}
   m_Layer: 0
-  m_Name: Mesh Right_hip_Gold
+  m_Name: Mesh Right_knee_Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5206,7 +5349,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1121}
+  m_Father: {fileID: 1131}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1632
 MeshFilter:
@@ -5241,7 +5384,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
+  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5277,7 +5420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: dcd25aceb0ad4e0a09202ed51d81a37e, type: 3}
+  source: {fileID: 4900000, guid: 0ee4797702945cf5ed110443ef80cbec, type: 3}
 --- !u!1 &1640
 GameObject:
   m_ObjectHideFlags: 0
@@ -5291,7 +5434,7 @@ GameObject:
   - component: {fileID: 1643}
   - component: {fileID: 1644}
   m_Layer: 0
-  m_Name: Mesh Right_knee_Steel
+  m_Name: Mesh Right_knee_DarkSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5345,7 +5488,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
+  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5381,7 +5524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: e856cf5d80413754c416e6b14bd3ba9c, type: 3}
+  source: {fileID: 4900000, guid: 5de2c06a633079b425fb87ba55dd120c, type: 3}
 --- !u!1 &1650
 GameObject:
   m_ObjectHideFlags: 0
@@ -5395,7 +5538,7 @@ GameObject:
   - component: {fileID: 1653}
   - component: {fileID: 1654}
   m_Layer: 0
-  m_Name: Mesh Right_knee_Edge
+  m_Name: Mesh Right_knee_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5449,7 +5592,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
+  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5485,7 +5628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 0ee4797702945cf5ed110443ef80cbec, type: 3}
+  source: {fileID: 4900000, guid: 54601e86bba04ec9c4296391b2b75b1f, type: 3}
 --- !u!1 &1660
 GameObject:
   m_ObjectHideFlags: 0
@@ -5499,7 +5642,7 @@ GameObject:
   - component: {fileID: 1663}
   - component: {fileID: 1664}
   m_Layer: 0
-  m_Name: Mesh Right_knee_DarkSteel
+  m_Name: Mesh Right_ankle_DarkSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5518,7 +5661,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1131}
+  m_Father: {fileID: 1141}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1662
 MeshFilter:
@@ -5589,7 +5732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 5de2c06a633079b425fb87ba55dd120c, type: 3}
+  source: {fileID: 4900000, guid: a5a29b8ad05cac03f1382dbe4610fb48, type: 3}
 --- !u!1 &1670
 GameObject:
   m_ObjectHideFlags: 0
@@ -5603,7 +5746,7 @@ GameObject:
   - component: {fileID: 1673}
   - component: {fileID: 1674}
   m_Layer: 0
-  m_Name: Mesh Right_knee_Gold
+  m_Name: Mesh Right_ankle_Steel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5622,7 +5765,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1131}
+  m_Father: {fileID: 1141}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1672
 MeshFilter:
@@ -5657,7 +5800,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
+  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5693,7 +5836,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 54601e86bba04ec9c4296391b2b75b1f, type: 3}
+  source: {fileID: 4900000, guid: dea16316ecdb7a6aaf78ea517117c7d1, type: 3}
 --- !u!1 &1680
 GameObject:
   m_ObjectHideFlags: 0
@@ -5707,7 +5850,7 @@ GameObject:
   - component: {fileID: 1683}
   - component: {fileID: 1684}
   m_Layer: 0
-  m_Name: Mesh Right_ankle_DarkSteel
+  m_Name: Mesh Right_ankle_Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5761,7 +5904,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
+  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5797,7 +5940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: a5a29b8ad05cac03f1382dbe4610fb48, type: 3}
+  source: {fileID: 4900000, guid: 75aa9f13e10ed7c5296a35edf22d9ca6, type: 3}
 --- !u!1 &1690
 GameObject:
   m_ObjectHideFlags: 0
@@ -5811,7 +5954,7 @@ GameObject:
   - component: {fileID: 1693}
   - component: {fileID: 1694}
   m_Layer: 0
-  m_Name: Mesh Right_ankle_Steel
+  m_Name: Mesh Pelvis_Mail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5830,7 +5973,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1141}
+  m_Father: {fileID: 1021}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1692
 MeshFilter:
@@ -5865,7 +6008,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5164ceefd5a029a16f56debb914a1f70, type: 2}
+  - {fileID: 2100000, guid: 6cc98e661d72adf66afe6e56c0ddaca5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5901,7 +6044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: dea16316ecdb7a6aaf78ea517117c7d1, type: 3}
+  source: {fileID: 4900000, guid: b2b6516eead5b1d93fac430476b5f112, type: 3}
 --- !u!1 &1700
 GameObject:
   m_ObjectHideFlags: 0
@@ -5915,7 +6058,7 @@ GameObject:
   - component: {fileID: 1703}
   - component: {fileID: 1704}
   m_Layer: 0
-  m_Name: Mesh Right_ankle_Edge
+  m_Name: Mesh Sword_shoulder_-_combat_pivot_Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5934,7 +6077,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1141}
+  m_Father: {fileID: 1151}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1702
 MeshFilter:
@@ -6005,7 +6148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 75aa9f13e10ed7c5296a35edf22d9ca6, type: 3}
+  source: {fileID: 4900000, guid: 1811a7b740403e6151749a369075edb5, type: 3}
 --- !u!1 &1710
 GameObject:
   m_ObjectHideFlags: 0
@@ -6019,7 +6162,7 @@ GameObject:
   - component: {fileID: 1713}
   - component: {fileID: 1714}
   m_Layer: 0
-  m_Name: Mesh Pelvis_Mail
+  m_Name: Mesh Sword_shoulder_-_combat_pivot_Leather
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6038,7 +6181,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1021}
+  m_Father: {fileID: 1151}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1712
 MeshFilter:
@@ -6073,7 +6216,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6cc98e661d72adf66afe6e56c0ddaca5, type: 2}
+  - {fileID: 2100000, guid: 20e885e87d0cfa987768b304b2e916c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6109,7 +6252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: b2b6516eead5b1d93fac430476b5f112, type: 3}
+  source: {fileID: 4900000, guid: 3dfbf1c116aa1ad3cd331fb1788599bd, type: 3}
 --- !u!1 &1720
 GameObject:
   m_ObjectHideFlags: 0
@@ -6123,7 +6266,7 @@ GameObject:
   - component: {fileID: 1723}
   - component: {fileID: 1724}
   m_Layer: 0
-  m_Name: Mesh Sword_shoulder_-_combat_pivot_Edge
+  m_Name: Mesh Sword_shoulder_-_combat_pivot_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6177,7 +6320,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d54950defc9a011dbf38f75db1ac2e8b, type: 2}
+  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6213,7 +6356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 1811a7b740403e6151749a369075edb5, type: 3}
+  source: {fileID: 4900000, guid: 9770d0010e0b420393627a269eb79712, type: 3}
 --- !u!1 &1730
 GameObject:
   m_ObjectHideFlags: 0
@@ -6227,7 +6370,7 @@ GameObject:
   - component: {fileID: 1733}
   - component: {fileID: 1734}
   m_Layer: 0
-  m_Name: Mesh Sword_shoulder_-_combat_pivot_Leather
+  m_Name: Mesh Sword_shoulder_-_combat_pivot_DarkSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6281,7 +6424,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 20e885e87d0cfa987768b304b2e916c2, type: 2}
+  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6317,7 +6460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 3dfbf1c116aa1ad3cd331fb1788599bd, type: 3}
+  source: {fileID: 4900000, guid: 847ccfa62233a14d9abd3c5a6b422a99, type: 3}
 --- !u!1 &1740
 GameObject:
   m_ObjectHideFlags: 0
@@ -6331,7 +6474,7 @@ GameObject:
   - component: {fileID: 1743}
   - component: {fileID: 1744}
   m_Layer: 0
-  m_Name: Mesh Sword_shoulder_-_combat_pivot_Gold
+  m_Name: Mesh Cape_shoulder_Crimson
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6350,7 +6493,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1151}
+  m_Father: {fileID: 1171}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1742
 MeshFilter:
@@ -6385,7 +6528,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 347e997a942b4c31cda2df6458ed1434, type: 2}
+  - {fileID: 2100000, guid: c7f21f7a6ae4e2dbeb2e29f1bd3d00f5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6421,7 +6564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 9770d0010e0b420393627a269eb79712, type: 3}
+  source: {fileID: 4900000, guid: c4731f9e57b1a975f60f2fb7c3889e6c, type: 3}
 --- !u!1 &1750
 GameObject:
   m_ObjectHideFlags: 0
@@ -6435,7 +6578,7 @@ GameObject:
   - component: {fileID: 1753}
   - component: {fileID: 1754}
   m_Layer: 0
-  m_Name: Mesh Sword_shoulder_-_combat_pivot_DarkSteel
+  m_Name: Mesh Cape_shoulder_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6454,7 +6597,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1151}
+  m_Father: {fileID: 1171}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1752
 MeshFilter:
@@ -6471,422 +6614,6 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1750}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 007f8bdf1c9a7ab9637369c6f959f193, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
-  m_Name:
-  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 847ccfa62233a14d9abd3c5a6b422a99, type: 3}
---- !u!1 &1760
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1761}
-  - component: {fileID: 1762}
-  - component: {fileID: 1763}
-  - component: {fileID: 1764}
-  m_Layer: 0
-  m_Name: Mesh Cape_shoulder_Crimson
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1761
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1760}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1171}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1762
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1760}
-  m_Mesh: {fileID: 0}
---- !u!23 &1763
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1760}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: c7f21f7a6ae4e2dbeb2e29f1bd3d00f5, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
-  m_Name:
-  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: c4731f9e57b1a975f60f2fb7c3889e6c, type: 3}
---- !u!1 &1770
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1771}
-  - component: {fileID: 1772}
-  - component: {fileID: 1773}
-  - component: {fileID: 1774}
-  m_Layer: 0
-  m_Name: Mesh Cape_middle_Crimson
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1771
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1770}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1181}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1772
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1770}
-  m_Mesh: {fileID: 0}
---- !u!23 &1773
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1770}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: c7f21f7a6ae4e2dbeb2e29f1bd3d00f5, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
-  m_Name:
-  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 14a06887598def8d020adc2337e43afe, type: 3}
---- !u!1 &1780
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1781}
-  - component: {fileID: 1782}
-  - component: {fileID: 1783}
-  - component: {fileID: 1784}
-  m_Layer: 0
-  m_Name: Mesh Cape_hem_Crimson
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1781
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1780}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1191}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1782
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1780}
-  m_Mesh: {fileID: 0}
---- !u!23 &1783
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1780}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: c7f21f7a6ae4e2dbeb2e29f1bd3d00f5, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
-  m_Name:
-  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 831daeb124c4a79890fc99f7a6db9717, type: 3}
---- !u!1 &1790
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1791}
-  - component: {fileID: 1792}
-  - component: {fileID: 1793}
-  - component: {fileID: 1794}
-  m_Layer: 0
-  m_Name: Mesh Cape_hem_Gold
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1791
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1790}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1191}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1792
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1790}
-  m_Mesh: {fileID: 0}
---- !u!23 &1793
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1790}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -6929,19 +6656,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1794
+--- !u!114 &1754
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1790}
+  m_GameObject: {fileID: 1750}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7164d1f937d1bb96d96a997930148069, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightMeshSource
-  source: {fileID: 4900000, guid: 91f3b435ec05a6a37384989dec332846, type: 3}
+  source: {fileID: 4900000, guid: 83292db4de2fde4bce12552746c68d60, type: 3}
 --- !u!143 &3648755183412612744
 CharacterController:
   m_ObjectHideFlags: 0
@@ -7009,8 +6736,6 @@ MonoBehaviour:
   rightShin: {fileID: 1131}
   weaponGrip: {fileID: 1161}
   capeTop: {fileID: 1171}
-  capeMid: {fileID: 1181}
-  capeHem: {fileID: 1191}
   walkingStride: 0.38
   sprintingStride: 0.50
   walkingFootLift: 0.10
@@ -7020,3 +6745,15 @@ MonoBehaviour:
   poseResponse: 18
   upperArmLength: 0.285
   forearmLength: 0.29
+--- !u!114 &900001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8accad8dc49bd2631a4f99f2c17e9cdc, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightCapeMotion
