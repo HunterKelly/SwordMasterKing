@@ -59,6 +59,7 @@
     <Compile Include="Assets\TutorialInfo\Readme.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\_SwordKing\Resources\DamageNumbers-License.txt" />
     <None Include="Assets\TutorialInfo\StyleSheets\ReadmeEditor.uss" />
     <None Include="Assets\TutorialInfo\StyleSheets\ReadmeEditorLight.uss" />
     <None Include="Assets\TutorialInfo\StyleSheets\ReadmeEditorDark.uss" />
