@@ -112,5 +112,28 @@ namespace SwordKing.Tests
             finally { Object.DestroyImmediate(rig.gameObject); }
         }
 
+        [TestCase(false, 6f)]
+        [TestCase(true, 9.6f)]
+        public void GroundedLocomotionDoesNotPumpBodyHeight(bool sprint, float speed)
+        {
+            var asset = AssetDatabase.LoadAssetAtPath<PlayerRig>(
+                "Assets/_SwordKing/Prefabs/Player/ArmoredKnight.prefab");
+            var rig = Object.Instantiate(asset);
+            try
+            {
+                var animation = rig.GetComponent<KnightAnimation>();
+                for (int frame = 0; frame < 240; frame++)
+                {
+                    var displacement = Vector3.forward * (speed / 60);
+                    rig.transform.position += displacement;
+                    animation.Present(Vector2.up, sprint, false, false, false, false,
+                        false, PlayerAttackKind.Slash, 2, 0, rig.leftLeg, rig.rightLeg,
+                        displacement, 1f / 60);
+                    Assert.That(rig.visualRoot.localPosition.y, Is.EqualTo(.91f).Within(.0001f));
+                }
+            }
+            finally { Object.DestroyImmediate(rig.gameObject); }
+        }
+
     }
 }

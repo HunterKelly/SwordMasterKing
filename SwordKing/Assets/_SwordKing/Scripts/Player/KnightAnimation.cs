@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace SwordKing
@@ -21,6 +22,7 @@ namespace SwordKing
         [Min(1)] public float poseResponse = 18f;
         float phase, movement, sprintWeight;
         Vector3 gaitDirection = Vector3.forward;
+        LegExtension leftExtension, rightExtension;
         readonly FootContact leftContact = new FootContact();
         readonly FootContact rightContact = new FootContact();
 
@@ -33,8 +35,7 @@ namespace SwordKing
         struct StepPose
         {
             public Vector3 target;
-            public float pitch, landingWeight, lift;
-            public bool supporting;
+            public float pitch;
         }
 
         public void Present(Vector2 input, bool sprint, bool airborne, bool rolling,
@@ -60,7 +61,6 @@ namespace SwordKing
             float gaitWeight = airborne || rolling ? 0 : movement * movementAmount;
             float stride = Mathf.Cos(phase) * gaitWeight;
             float weightShift = Mathf.Sin(phase) * gaitWeight;
-            float bounce = Mathf.Cos(phase * 2) * gaitWeight;
             float shoulderTurn = stride * 3f;
             if (pelvis != null) Pose(pelvis, new Vector3(0, -stride * 3.5f, weightShift * 1.5f), blend);
             bool attacking = progress >= 0 && progress < 1;
@@ -84,7 +84,9 @@ namespace SwordKing
             if (!rolling && !airborne && leftFoot != null && rightFoot != null)
             {
                 var visuals = leftThigh.parent;
-                visuals.localPosition = new Vector3(-weightShift * .009f, .93f, 0);
+                visuals.localPosition = new Vector3(-weightShift * .009f, .91f, 0);
+                if (leftExtension == null) leftExtension = new LegExtension(leftThigh, leftShin, leftFoot);
+                if (rightExtension == null) rightExtension = new LegExtension(rightThigh, rightShin, rightFoot);
                 if (moving)
                     gaitDirection = visuals.InverseTransformDirection(worldDisplacement.normalized);
                 float legWeight = moving ? 1 : movement;
@@ -93,18 +95,16 @@ namespace SwordKing
                 var rightStep = PrepareStep(rightThigh, visuals,
                     Mathf.Repeat(phase / (Mathf.PI * 2) + .5f, 1), legWeight,
                     stanceDuration, moving, rightContact);
-                // Stand tall between contacts. Lower only as far as a supporting leg
-                // physically requires, with anticipation as the other foot lands.
-                float height = Mathf.Lerp(.91f, .93f, movement) + bounce * .003f;
-                height = FitSupportHeight(leftThigh, leftShin, leftFoot, visuals, leftStep, height);
-                height = FitSupportHeight(rightThigh, rightShin, rightFoot, visuals, rightStep, height);
-                visuals.localPosition = new Vector3(visuals.localPosition.x, height, 0);
-                AnimateStep(leftThigh, leftShin, leftFoot, visuals, leftStep);
-                AnimateStep(rightThigh, rightShin, rightFoot, visuals, rightStep);
+                // Keep the hips at a steady height. Soft visual leg extension absorbs
+                // the extra reach instead of pumping the entire body up and down.
+                AnimateStep(leftThigh, leftShin, leftFoot, visuals, leftStep, leftExtension);
+                AnimateStep(rightThigh, rightShin, rightFoot, visuals, rightStep, rightExtension);
             }
             else
             {
                 leftContact.locked = rightContact.locked = false;
+                leftExtension?.Reset();
+                rightExtension?.Reset();
                 if (!rolling)
                 {
                     Pose(leftThigh, new Vector3(-35, 0, -2), blend);
@@ -156,30 +156,53 @@ namespace SwordKing
                 ? -10 * (1 - Mathf.SmoothStep(0, 1, Mathf.InverseLerp(0, .20f, t)))
                     + 12 * Mathf.SmoothStep(0, 1, Mathf.InverseLerp(.76f, 1, t))
                 : Mathf.Lerp(12, -10, Mathf.SmoothStep(0, 1, t));
-            return new StepPose { target = target, pitch = footRoll * weight,
-                supporting = planted && moving, lift = lift,
-                landingWeight = !planted && moving
-                    ? Mathf.SmoothStep(0, 1, Mathf.InverseLerp(.72f, 1, t)) : 0 };
+            return new StepPose { target = target, pitch = footRoll * weight };
         }
 
-        static float FitSupportHeight(Transform hip, Transform knee, Transform ankle,
-            Transform visuals, StepPose step, float currentHeight)
+        // Stretch only visual geometry and joint offsets, never the controller or
+        // damage volumes. Save authored dimensions so extension cannot accumulate.
+        sealed class LegExtension
         {
-            if (!step.supporting && step.landingWeight <= 0) return currentHeight;
-            float reach = knee.localPosition.magnitude + ankle.localPosition.magnitude - .004f;
-            Vector3 hipPosition = visuals.TransformPoint(hip.localPosition);
-            Vector3 offset = step.target - hipPosition;
-            float horizontalSquared = offset.x * offset.x + offset.z * offset.z;
-            float verticalReach = Mathf.Sqrt(Mathf.Max(.01f, reach * reach - horizontalSquared));
-            float allowedHeight = step.target.y - step.lift + verticalReach
-                - visuals.parent.position.y - hip.localPosition.y;
-            float limit = step.supporting ? allowedHeight : Mathf.Lerp(.93f, allowedHeight, step.landingWeight);
-            return Mathf.Min(currentHeight, limit);
+            readonly Transform hip, knee, ankle;
+            readonly Vector3 kneeRest, ankleRest;
+            readonly List<Transform> parts = new List<Transform>();
+            readonly List<Vector3> scales = new List<Vector3>();
+
+            public LegExtension(Transform hip, Transform knee, Transform ankle)
+            {
+                this.hip = hip; this.knee = knee; this.ankle = ankle;
+                kneeRest = knee.localPosition; ankleRest = ankle.localPosition;
+                foreach (Transform parent in new[] { hip, knee })
+                    foreach (Transform child in parent)
+                        if (child.GetComponent<MeshFilter>() != null)
+                        {
+                            parts.Add(child); scales.Add(child.localScale);
+                        }
+            }
+
+            public void Fit(Vector3 target)
+            {
+                float length = kneeRest.magnitude + ankleRest.magnitude;
+                float extension = Mathf.Clamp(Vector3.Distance(hip.position, target)
+                    / Mathf.Max(.01f, length - .004f), 1, 1.22f);
+                Apply(extension);
+            }
+
+            public void Reset() => Apply(1);
+
+            void Apply(float extension)
+            {
+                knee.localPosition = kneeRest * extension;
+                ankle.localPosition = ankleRest * extension;
+                for (int i = 0; i < parts.Count; i++)
+                    parts[i].localScale = new Vector3(scales[i].x, scales[i].y * extension, scales[i].z);
+            }
         }
 
         static void AnimateStep(Transform hip, Transform knee, Transform ankle,
-            Transform visuals, StepPose step)
+            Transform visuals, StepPose step, LegExtension extension)
         {
+            extension.Fit(step.target);
             float upper = knee.localPosition.magnitude, lower = ankle.localPosition.magnitude;
             Vector3 delta = step.target - hip.position;
             float distance = Mathf.Clamp(delta.magnitude, Mathf.Abs(upper - lower) + .001f, upper + lower - .001f);
