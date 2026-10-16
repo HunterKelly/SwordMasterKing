@@ -6996,6 +6996,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d7be92fb5b4dff914c0dca52e12bd4, type: 3}
   m_Name:
   m_EditorClassIdentifier: SwordKing.Runtime::SwordKing.KnightAnimation
+  pelvis: {fileID: 1021}
+  leftFoot: {fileID: 1111}
+  rightFoot: {fileID: 1141}
   chest: {fileID: 1031}
   head: {fileID: 1041}
   leftArm: {fileID: 1051}
@@ -7008,6 +7011,10 @@ MonoBehaviour:
   capeTop: {fileID: 1171}
   capeMid: {fileID: 1181}
   capeHem: {fileID: 1191}
+  walkingStride: 0.20
+  sprintingStride: 0.29
+  walkingFootLift: 0.07
+  sprintingFootLift: 0.13
   movementAmount: 0.85
   attackAmount: 0.7
   poseResponse: 18

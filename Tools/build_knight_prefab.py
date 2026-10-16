@@ -212,7 +212,7 @@ def author():
  for side in (-1,1):
   for i in range(5):rivet(bg,(side*(.055+i*.021),.045,.12*math.sqrt(max(0,1-((.055+i*.021)/.18)**2))+.006),.003)
  # Tassets, cuisses, poleyns, greaves and pointed articulated sabatons.
- thighs=[];shins=[]
+ thighs=[];shins=[];feet=[]
  for sign,side in ((-1,'Left'),(1,'Right')):
   thigh=joint(side+' hip',visual,(sign*.13,.015,0));thighs.append(thigh)
   t=mesh(thigh,'Steel');te=mesh(thigh,'Edge');td=mesh(thigh,'DarkSteel');tg=mesh(thigh,'Gold')
@@ -236,7 +236,7 @@ def author():
    tube(se,[(offset*.6,-.39,.067),(offset*.8,-.29,.078),(offset,-.18,.082),(offset*.9,-.09,.073)],.0018,6)
   rivet(sg,(sign*.065,-.09,.018),.003)
   # Foot armor: overlapping convex plates narrow toward the toe.
-  foot=joint(side+' ankle',shin,(0,-.405,.015))
+  foot=joint(side+' ankle',shin,(0,-.405,.015));feet.append(foot)
   boot=mesh(foot,'DarkSteel');bs=mesh(foot,'Steel');be=mesh(foot,'Edge')
   ellipsoid(boot,(0,-.038,.078),(.073,.055,.163),32,12)
   for i in range(6):
@@ -280,7 +280,7 @@ def author():
   c=mesh(bone,'Crimson');trim=mesh(bone,'Gold')
   rows=[]
   for j in range(11):
-   t=j/10;g=(section+t)/3;width=.30+.29*g
+   t=j/10;g=(section+t)/3;width=(.30+.29*g)*.93
    row=[]
    for i in range(33):
     u=i/32;x=(u*2-1)*width
@@ -299,7 +299,7 @@ def author():
    t=i/8;x=sign*(.225-.225*t);y=.34-.08*math.sin(t*math.pi/2);z=.11+.02*t
    ellipsoid(gold,(x,y,z),(.009,.012,.003),8,4)
  for key in [key for key,value in MESHES.items() if not value.f]: del MESHES[key]
- return dict(player=player,visual=visual,chest=chest,head=head,leftArm=arms[0],rightArm=arms[1],leftForearm=elbows[0],rightForearm=elbows[1],leftLeg=thighs[0],rightLeg=thighs[1],leftShin=shins[0],rightShin=shins[1],sword=sword,weaponGrip=grip,capeTop=cape[0],capeMid=cape[1],capeHem=cape[2])
+ return dict(player=player,visual=visual,pelvis=hips,leftFoot=feet[0],rightFoot=feet[1],chest=chest,head=head,leftArm=arms[0],rightArm=arms[1],leftForearm=elbows[0],rightForearm=elbows[1],leftLeg=thighs[0],rightLeg=thighs[1],leftShin=shins[0],rightShin=shins[1],sword=sword,weaponGrip=grip,capeTop=cape[0],capeMid=cape[1],capeHem=cape[2])
 
 def build():
  refs=author();OUT.mkdir(parents=True,exist_ok=True)
@@ -398,9 +398,9 @@ MeshFilter:
  c=re.sub(r'm_GameObject: \{fileID: \d+\}',f'm_GameObject: {ref(refs["player"]["id"])}',controller);out.append(c)
  rig=dict(controller=ref(3648755183412612744),visualRoot=ref(refs['visual']['id']+1),swordPivot=ref(refs['sword']['id']+1),leftLeg=ref(refs['leftLeg']['id']+1),rightLeg=ref(refs['rightLeg']['id']+1))
  out.append(mono(7072597504312420402,'baee79b2435c56c6993e0e128123f778',rig,refs['player']['id'],'PlayerRig'))
- keys=['chest','head','leftArm','rightArm','leftForearm','rightForearm','leftShin','rightShin','weaponGrip','capeTop','capeMid','capeHem']
+ keys=['pelvis','leftFoot','rightFoot','chest','head','leftArm','rightArm','leftForearm','rightForearm','leftShin','rightShin','weaponGrip','capeTop','capeMid','capeHem']
  fields={k:ref(refs[k]['id']+1) for k in keys}
- fields.update(movementAmount='0.85',attackAmount='0.7',poseResponse='18',upperArmLength='0.285',forearmLength='0.29')
+ fields.update(walkingStride='0.20',sprintingStride='0.29',walkingFootLift='0.07',sprintingFootLift='0.13',movementAmount='0.85',attackAmount='0.7',poseResponse='18',upperArmLength='0.285',forearmLength='0.29')
  out.append(mono(900000,'85d7be92fb5b4dff914c0dca52e12bd4',fields,refs['player']['id'],'KnightAnimation'))
  PREFAB.write_text(''.join(out))
  (ROOT/'Scripts/Player/KnightMeshSource.cs.meta').write_text(f'fileFormatVersion: 2\nguid: {guid("KnightMeshSource.cs")}\n')

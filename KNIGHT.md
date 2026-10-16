@@ -25,6 +25,12 @@ edit `Tools/build_knight_prefab.py` and regenerate from the repository root.
 This overwrites the base prefab, generated source geometry, and knight materials.
 
 `KnightAnimation` controls stride, knee bends, torso poses, and cape motion.
+The gait now uses a longer stance and shorter recovery, foot clearance during
+recovery, heel-to-toe ankle rotation, support-leg weight transfer, and opposing
+pelvis/shoulder rotation. Walk/sprint transitions blend gradually. Walking Stride,
+Sprinting Stride, Walking Foot Lift, and Sprinting Foot Lift tune this motion.
+The feet target the character's local floor plane; this is not terrain-raycast
+foot placement. The cape is 7% narrower than the approved first plate-knight pass.
 Two-bone visual arm fitting keeps the sword connected to the right hand, and
 supports it with the left hand during overhead windups. The visible sword stays
 within arm reach. Gameplay damage volumes, timings, movement collision, stamina,

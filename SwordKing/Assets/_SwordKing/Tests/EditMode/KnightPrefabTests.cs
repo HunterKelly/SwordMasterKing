@@ -37,7 +37,7 @@ namespace SwordKing.Tests
                 foreach (var joint in new[] { animation.chest, animation.head, animation.leftArm,
                     animation.rightArm, animation.leftForearm, animation.rightForearm, animation.leftShin,
                     animation.rightShin, animation.capeTop, animation.capeMid, animation.capeHem,
-                    animation.weaponGrip })
+                    animation.weaponGrip, animation.pelvis, animation.leftFoot, animation.rightFoot })
                 {
                     Assert.That(joint, Is.Not.Null);
                     Assert.That(joint.IsChildOf(rig.visualRoot), Is.True);
