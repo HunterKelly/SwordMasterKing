@@ -72,7 +72,14 @@ namespace SwordKing
                 + Mathf.Sin(Time.time * 1.8f) * .7f * (1 - movement);
             if (charging) lean = overheadCharge ? -12 : -6;
             if (attacking && overhead) lean += Mathf.Lerp(-18, 26, progress) * attackAmount;
-            if (attacking && attack == PlayerAttackKind.Thrust) lean += strike * 18;
+            if (attacking && attack == PlayerAttackKind.Thrust)
+            {
+                // Drive into the thrust quickly, hold the punch-like lean through
+                // the damage window, then ease upright during the follow-through.
+                float drive = Mathf.SmoothStep(0, 1, Mathf.Clamp01(progress / .16f));
+                float recover = 1 - Mathf.SmoothStep(0, 1, Mathf.InverseLerp(.65f, 1, progress));
+                lean += drive * recover * 26f * Mathf.Clamp(attackAmount, .8f, 1.2f);
+            }
             if (rolling) lean = 22;
 
             if (!rolling && !airborne && leftFoot != null && rightFoot != null)

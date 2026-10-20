@@ -78,3 +78,8 @@ Cape ripples increase with movement, with a stronger trailing wave during sprint
 A damped sideways response follows strafing and turns, and the fabric settles
 gradually after stopping. The shoulder edge stays pinned; cloth and gold hem
 use the same continuous deformation.
+
+The Shift+left-click thrust now drives into a sustained forward torso lean, then
+returns upright during recovery. Its reach multiplier is 1.9 (previously 2.1):
+about 9.5% shorter maximum hit range. The hop, slide, damage window, damage,
+and grounded enemy knockback retain their existing settings.
