@@ -78,7 +78,7 @@ namespace SwordKing
                 // the damage window, then ease upright during the follow-through.
                 float drive = Mathf.SmoothStep(0, 1, Mathf.Clamp01(progress / .16f));
                 float recover = 1 - Mathf.SmoothStep(0, 1, Mathf.InverseLerp(.65f, 1, progress));
-                lean += drive * recover * 26f * Mathf.Clamp(attackAmount, .8f, 1.2f);
+                lean += drive * recover * 34f * Mathf.Clamp(attackAmount, .8f, 1.2f);
             }
             if (rolling) lean = 22;
 

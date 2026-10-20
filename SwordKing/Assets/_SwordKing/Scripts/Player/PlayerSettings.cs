@@ -32,7 +32,7 @@ namespace SwordKing
         [Min(0)] public float chargedAttackRecovery = .12f;
         [Header("Special attack reach multipliers")]
         [Min(1)] public float overheadReachMultiplier = 1.6f;
-        [Min(1)] public float thrustReachMultiplier = 1.9f;
+        [Min(1)] public float thrustReachMultiplier = 1.75f;
         [Min(1)] public float jumpingOverheadReachMultiplier = 1.6f;
         [Header("Jump and roll")]
         [Range(.1f, 1.5f)] public float jumpHeightFraction = .5f;

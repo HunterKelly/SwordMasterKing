@@ -80,6 +80,7 @@ gradually after stopping. The shoulder edge stays pinned; cloth and gold hem
 use the same continuous deformation.
 
 The Shift+left-click thrust now drives into a sustained forward torso lean, then
-returns upright during recovery. Its reach multiplier is 1.9 (previously 2.1):
-about 9.5% shorter maximum hit range. The hop, slide, damage window, damage,
+returns upright during recovery. The lean now uses a 34-degree drive envelope
+(previously 26), scaled by Attack Amount. Its reach multiplier is 1.75
+(previously 1.9): about 8% shorter again, or 16.7% shorter than the original 2.1. The hop, slide, damage window, damage,
 and grounded enemy knockback retain their existing settings.

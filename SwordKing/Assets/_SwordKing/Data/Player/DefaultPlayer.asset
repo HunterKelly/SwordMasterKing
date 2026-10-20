@@ -35,7 +35,7 @@ MonoBehaviour:
   jumpingHeavyRecovery: 0.2
   chargedAttackRecovery: 0.12
   overheadReachMultiplier: 1.6
-  thrustReachMultiplier: 1.9
+  thrustReachMultiplier: 1.75
   jumpingOverheadReachMultiplier: 1.6
   jumpHeightFraction: 0.5
   rollDuration: 0.45
