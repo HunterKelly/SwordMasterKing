@@ -90,11 +90,7 @@ namespace SwordKing
             if(pushRemaining>0)
             {
                 float step=Mathf.Min(dt,pushRemaining);
-                // A ground slide must not step up onto the hopping player or another enemy.
-                float previousStep=controller.stepOffset;
-                controller.stepOffset=0;
                 MoveAlong(pushDirection,Mathf.Max(0,tuning.thrustPushDistance)/Mathf.Max(.05f,tuning.thrustPushDuration),step,false);
-                controller.stepOffset=previousStep;
                 pushRemaining=Mathf.Max(0,pushRemaining-step);
                 if(!Alive && pushRemaining<=0) controller.enabled=false;
                 if(Alive && !popped) return;
@@ -201,8 +197,12 @@ namespace SwordKing
                 if (!(hit.collider is CharacterController) && !hit.collider.transform.IsChildOf(Root) && !hit.collider.transform.IsChildOf(level.Player.PlayerTransform)
                     && hit.normal.y > .6f) { supported=true; break; }
             if (!supported) return;
-            controller.Move(destination-Root.position+(popped?Vector3.zero:Vector3.down*dt*3));
-            graphics.localPosition += Vector3.up*(Mathf.Sin(Time.time*12+Id)*.035f);
+            if (!steer) GroundedKnockback.Move(controller, destination-Root.position, dt);
+            else
+            {
+                controller.Move(destination-Root.position+(popped?Vector3.zero:Vector3.down*dt*3));
+                graphics.localPosition += Vector3.up*(Mathf.Sin(Time.time*12+Id)*.035f);
+            }
         }
         Vector3 Steer(Vector3 desired)
         {
@@ -276,7 +276,7 @@ namespace SwordKing
                 popped=false; popVelocity=0;
                 // ReceiveHit disables movement on death; let the killing thrust push the body first.
                 controller.enabled=true;
-                controller.Move(Vector3.down*2f);
+                // The slide itself handles grounding without an impact-time step or pop.
             }
             else if(Alive && kind==PlayerAttackKind.JumpingOverhead && tuning.landingPopHeight>0)
             {

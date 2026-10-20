@@ -84,3 +84,8 @@ returns upright during recovery. The lean now uses a 34-degree drive envelope
 (previously 26), scaled by Attack Amount. Its reach multiplier is 1.75
 (previously 1.9): about 8% shorter again, or 16.7% shorter than the original 2.1. The hop, slide, damage window, damage,
 and grounded enemy knockback retain their existing settings.
+
+Thrust knockback uses a dedicated grounded controller move: stepping and slope
+climbing are disabled during each slide step, upward capsule correction is
+rejected, and the extra impact-time grounding move is removed. Jumping-overhead
+launches continue to use their separate pop velocity.
